@@ -10,7 +10,7 @@ import "@/styles/index.scss";
 
 const router = createBrowserRouter([
   {
-    path: ":language",
+    path: "/",
     element: <App />,
     errorElement: <div>Error</div>,
     children: [
