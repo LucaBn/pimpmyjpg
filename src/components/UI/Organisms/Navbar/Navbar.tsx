@@ -17,10 +17,13 @@ const NavbarComponent: React.FC = () => {
         <LinkContainer to="/">
           <Navbar.Brand>{APP_NAME}</Navbar.Brand>
         </LinkContainer>
+        <Nav.Item className="d-block mx-auto d-lg-none ms-auto me-3">
+          <ThemeToggle />
+        </Nav.Item>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse data-testid="navbar-collapse">
           <Nav className="ms-auto">
-            <Nav.Item className="d-block mx-auto">
+            <Nav.Item className="d-block mx-auto d-none d-lg-block py-2 me-3">
               <ThemeToggle />
             </Nav.Item>
             <LinkContainer to="/image-compressor">
