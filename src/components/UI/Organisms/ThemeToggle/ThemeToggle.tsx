@@ -18,10 +18,7 @@ const ThemeToggle: React.FC = () => {
     theme === Themes.Dark ? <IconMoon /> : <IconSun />;
 
   return (
-    <div
-      className={`${CLASS_APP_NAME}-theme-toggle me-2`}
-      onClick={toggleTheme}
-    >
+    <div className={`${CLASS_APP_NAME}-theme-toggle`} onClick={toggleTheme}>
       {VisibleIcon}
     </div>
   );
