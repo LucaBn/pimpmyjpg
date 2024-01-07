@@ -1,0 +1,25 @@
+.#{$app-name} {
+  &-theme-toggle {
+    height: 26px;
+    width: 48px;
+    margin-top: 8px;
+    border-radius: 2.25rem;
+    cursor: pointer;
+
+    svg {
+      margin: 2px;
+      height: 20px;
+    }
+
+    &.icon-s {
+      svg {
+        margin-right: auto;
+      }
+    }
+    &.icon-e {
+      svg {
+        margin-left: auto;
+      }
+    }
+  }
+}
