@@ -16,11 +16,10 @@ const ThemeToggle: React.FC = () => {
 
   const VisibleIcon: JSX.Element =
     theme === Themes.Dark ? <IconMoon /> : <IconSun />;
-  const iconAlignment: string = theme === Themes.Dark ? "e" : "s";
 
   return (
     <div
-      className={`${CLASS_APP_NAME}-theme-toggle d-flex me-2 border icon-${iconAlignment}`}
+      className={`${CLASS_APP_NAME}-theme-toggle me-2`}
       onClick={toggleTheme}
     >
       {VisibleIcon}
