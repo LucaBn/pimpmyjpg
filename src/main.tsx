@@ -4,6 +4,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 // Components
 import App from "@/components/App/App";
+import { ThemeProvider } from "@/components/providers/ThemeProvider/ThemeProvider";
 
 // CSS
 import "@/styles/index.scss";
@@ -22,8 +23,16 @@ const router = createBrowserRouter([
   },
 ]);
 
+const Providers = () => {
+  return (
+    <ThemeProvider>
+      <RouterProvider router={router} />
+    </ThemeProvider>
+  );
+};
+
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <Providers />
   </React.StrictMode>
 );
