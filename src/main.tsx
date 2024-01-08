@@ -4,6 +4,9 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 // Components
 import App from "@/components/App/App";
+import ImageCompressor from "./components/UI/Templates/ImageCompressor/ImageCompressor";
+
+// Providers
 import { ThemeProvider } from "@/components/providers/ThemeProvider/ThemeProvider";
 
 // CSS
@@ -17,7 +20,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "image-compressor",
-        element: <div>Image Compressor</div>,
+        element: <ImageCompressor />,
       },
     ],
   },
