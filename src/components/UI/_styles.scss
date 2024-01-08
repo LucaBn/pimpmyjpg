@@ -5,7 +5,10 @@
 // Molecules
 
 // Organisms
+@import "./Organisms/Footer/styles";
+@import "./Organisms/ImageCompressor/styles";
 @import "./Organisms/Navbar/styles";
 @import "./Organisms/ThemeToggle/styles";
 
 // Templates
+@import "./Templates/ImageCompressor/styles";
