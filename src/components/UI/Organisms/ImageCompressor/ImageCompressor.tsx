@@ -90,13 +90,13 @@ const ImageCompressor: React.FC = () => {
   };
 
   return (
-    <div>
+    <>
       <input type="file" onChange={handleInputChange} ref={inputRef} multiple />
       <button onClick={handleDownloadClick} ref={downloadButtonRef}>
         Download
       </button>
       <div id="container"></div>
-    </div>
+    </>
   );
 };
 

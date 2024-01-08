@@ -8,20 +8,22 @@ const Footer: React.FC = () => {
       <Container>
         <Row>
           <Col xs={12} className="mt-4">
-            &copy; 2024-2381 pimpmyjpg.com
+            <p>&copy; 2024-2381 pimpmyjpg.com</p>
           </Col>
         </Row>
         <Row>
           <Col xs={12} className="mb-4">
-            Made with ♥ by{" "}
-            <a
-              href="https://github.com/LucaBn"
-              title="Visit LucaBn's GitHub Page"
-              target="_blank"
-              rel="noopener noreferrer nofollow"
-            >
-              LucaBn
-            </a>
+            <p>
+              Made with ♥ by{" "}
+              <a
+                href="https://github.com/LucaBn"
+                title="Visit LucaBn's GitHub Page"
+                target="_blank"
+                rel="noopener noreferrer nofollow"
+              >
+                LucaBn
+              </a>
+            </p>
           </Col>
         </Row>
         <Row>
