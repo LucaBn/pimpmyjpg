@@ -7,11 +7,17 @@ import Navbar from "react-bootstrap/Navbar";
 import { LinkContainer } from "react-router-bootstrap";
 import ThemeToggle from "@/components/UI/Organisms/ThemeToggle/ThemeToggle";
 
+// Locales
+import { useTranslation } from "react-i18next";
+
 // Constants
 import { APP_NAME } from "@/constants/app";
 
 const NavbarComponent: React.FC = () => {
   const [expanded, setExpanded] = useState<boolean>(false);
+
+  const { i18n } = useTranslation("common");
+  const { language } = i18n;
 
   const navbarRef = useRef<HTMLDivElement>(null);
 
@@ -40,7 +46,7 @@ const NavbarComponent: React.FC = () => {
       ref={navbarRef as React.RefObject<HTMLDivElement>}
     >
       <Container>
-        <LinkContainer to="/">
+        <LinkContainer to={`/${language}`}>
           <Navbar.Brand>{APP_NAME}</Navbar.Brand>
         </LinkContainer>
         <Nav.Item className="d-block mx-auto d-lg-none ms-auto me-3">
@@ -52,12 +58,12 @@ const NavbarComponent: React.FC = () => {
             setExpanded((prevValue) => !prevValue);
           }}
         />
-        <Navbar.Collapse>
+        <Navbar.Collapse onClick={() => setExpanded(false)}>
           <Nav className="ms-auto">
             <Nav.Item className="d-block mx-auto d-none d-lg-block py-2 me-3">
               <ThemeToggle />
             </Nav.Item>
-            <LinkContainer to="/image-compressor">
+            <LinkContainer to={`/${language}/image-compressor`}>
               <Nav.Link>Image Compressor</Nav.Link>
             </LinkContainer>
           </Nav>
