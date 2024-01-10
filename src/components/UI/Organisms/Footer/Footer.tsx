@@ -28,7 +28,7 @@ const Footer: React.FC = () => {
         </Row>
         <Row>
           <Col xs={12} className="mb-4">
-            <h5 className="mb-0">Share</h5>
+            <p className="mb-0">Share</p>
             <ul className="list-unstyled d-flex justify-content-center gap-2">
               {/* TODO: Change with icons */}
               <li>Facebook</li>
@@ -53,6 +53,7 @@ const Footer: React.FC = () => {
                   src="/assets/img/buy-me-a-coffee.png"
                   width={200}
                   className="d-block mx-auto"
+                  alt="Buy me a coffee"
                 />
               </a>
             </p>

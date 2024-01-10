@@ -6,7 +6,7 @@ import Navbar from "@/components/UI/Organisms/Navbar/Navbar";
 import Footer from "@/components/UI/Organisms/Footer/Footer";
 
 // Providers
-import { useTheme } from "@/components/providers/ThemeProvider/ThemeProvider";
+import { useTheme } from "@/components/providers/ThemeProvider";
 
 // Constants
 import { CLASS_APP_NAME } from "@/constants/html-classes";
