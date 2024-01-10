@@ -19,7 +19,7 @@ const NavbarComponent: React.FC = () => {
   const { i18n } = useTranslation("common");
   const { language } = i18n;
 
-  const navbarRef = useRef<HTMLDivElement>(null);
+  const navbarRef = useRef<HTMLDivElement>(null); // TODO: fix outsideClick event when click on logo
 
   const handleOutsideClick = (event: MouseEvent) => {
     if (
@@ -47,7 +47,9 @@ const NavbarComponent: React.FC = () => {
     >
       <Container>
         <LinkContainer to={`/${language}`}>
-          <Navbar.Brand>{APP_NAME}</Navbar.Brand>
+          <Navbar.Brand onClick={() => setExpanded(false)}>
+            {APP_NAME}
+          </Navbar.Brand>
         </LinkContainer>
         <Nav.Item className="d-block mx-auto d-lg-none ms-auto me-3">
           <ThemeToggle />
