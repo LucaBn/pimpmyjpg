@@ -18,6 +18,8 @@ export interface IThemeContext {
   toggleTheme: () => void;
 }
 
+const LS_THEME_VARIABLE = "pmjTheme";
+
 // Default createContextValue
 const defaultCreateContextValue = {
   theme: Themes.Dark,
@@ -29,12 +31,12 @@ export const ThemeContext = createContext<IThemeContext>(
 );
 
 export const ThemeProvider: React.FC<IGenericComponent> = ({ children }) => {
-  const [theme, setTheme] = useState<Themes>(Themes.Dark); // Default theme is 'dark'
+  const [theme, setTheme] = useState<Themes>(Themes.Dark);
 
   useEffect(() => {
-    const storedBsTheme = readFromLocalStorage("bsTheme");
+    const storedPmjTheme = readFromLocalStorage(LS_THEME_VARIABLE);
 
-    switch (storedBsTheme) {
+    switch (storedPmjTheme) {
       case Themes.Dark:
         setTheme(Themes.Dark);
         break;
@@ -49,7 +51,7 @@ export const ThemeProvider: React.FC<IGenericComponent> = ({ children }) => {
   const toggleTheme = () => {
     const newValue = theme === Themes.Dark ? Themes.Light : Themes.Dark;
     setTheme(newValue);
-    writeToLocalStorage("bsTheme", newValue);
+    writeToLocalStorage(LS_THEME_VARIABLE, newValue);
   };
 
   const themeValues: IThemeContext = {
