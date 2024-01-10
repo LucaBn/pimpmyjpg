@@ -1,4 +1,8 @@
 {
+  "feature-selector": {
+    "title": "Seleziona cosa vuoi fare",
+    "description": "Seleziona il servizio che più ti aggrada"
+  },
   "image-compressor": {
     "title": "Compressore di immagini",
     "description": "Seleziona o trascina un'immagine, ottimizzala e scaricala!"

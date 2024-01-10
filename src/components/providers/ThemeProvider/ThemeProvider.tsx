@@ -1,4 +1,4 @@
-import React, { useState, useEffect, createContext, useContext } from "react";
+import React, { useState, useEffect, createContext } from "react";
 
 // Utils
 import {
@@ -13,7 +13,7 @@ import { IGenericComponent } from "@/typings/components";
 import { Themes } from "@/constants/themes";
 
 // Define the context
-interface IThemeContext {
+export interface IThemeContext {
   theme: Themes;
   toggleTheme: () => void;
 }
@@ -24,7 +24,9 @@ const defaultCreateContextValue = {
   toggleTheme: () => {},
 };
 
-const ThemeContext = createContext<IThemeContext>(defaultCreateContextValue);
+export const ThemeContext = createContext<IThemeContext>(
+  defaultCreateContextValue
+);
 
 export const ThemeProvider: React.FC<IGenericComponent> = ({ children }) => {
   const [theme, setTheme] = useState<Themes>(Themes.Dark); // Default theme is 'dark'
@@ -60,14 +62,4 @@ export const ThemeProvider: React.FC<IGenericComponent> = ({ children }) => {
       {children}
     </ThemeContext.Provider>
   );
-};
-
-// Define a custom hook to use the theme context
-export const useTheme = (): IThemeContext => {
-  const context = useContext(ThemeContext);
-
-  if (!context) {
-    throw new Error("useTheme must be used within a ThemeProvider");
-  }
-  return context;
 };

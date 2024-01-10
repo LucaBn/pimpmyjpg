@@ -5,7 +5,7 @@ import IconMoon from "@/components/UI/Atoms/IconMoon/IconMoon";
 import IconSun from "@/components/UI/Atoms/IconSun/IconSun";
 
 // Providers
-import { useTheme } from "@/components/providers/ThemeProvider/ThemeProvider";
+import { useTheme } from "@/components/providers/ThemeProvider";
 
 // Constants
 import { Themes } from "@/constants/themes";
