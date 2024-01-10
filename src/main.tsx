@@ -1,35 +1,41 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import {
+  BrowserRouter,
+  Navigate,
+  Outlet,
+  Route,
+  Routes,
+} from "react-router-dom";
 
 // Components
 import App from "@/components/App/App";
-import ImageCompressor from "./components/UI/Templates/ImageCompressor/ImageCompressor";
+import ImageCompressor from "@/components/UI/Templates/ImageCompressor/ImageCompressor";
 
 // Providers
 import { ThemeProvider } from "@/components/providers/ThemeProvider/ThemeProvider";
 
+// Localization
+import "@/i18n";
+
 // CSS
 import "@/styles/index.scss";
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <App />,
-    errorElement: <div>Error</div>,
-    children: [
-      {
-        path: "image-compressor",
-        element: <ImageCompressor />,
-      },
-    ],
-  },
-]);
+const RedirectComponent = () => <Navigate to="/en" replace />;
 
 const Providers = () => {
   return (
     <ThemeProvider>
-      <RouterProvider router={router} />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<RedirectComponent />} />
+          <Route path=":language" element={<App />}>
+            <Route index element={<div>Select feature</div>} />
+            <Route path="image-compressor" element={<ImageCompressor />} />
+            <Route path="*" element={<div>404</div>} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
     </ThemeProvider>
   );
 };

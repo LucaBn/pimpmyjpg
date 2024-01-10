@@ -45,9 +45,6 @@ export const ThemeProvider: React.FC<IGenericComponent> = ({ children }) => {
   }, []);
 
   const toggleTheme = () => {
-    console.log("IN");
-    console.log({ theme });
-
     const newValue = theme === Themes.Dark ? Themes.Light : Themes.Dark;
     setTheme(newValue);
     writeToLocalStorage("bsTheme", newValue);

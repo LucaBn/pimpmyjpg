@@ -4,15 +4,20 @@ import React from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import ImageCompressor from "@/components/UI/Organisms/ImageCompressor/ImageCompressor";
 
+// Locales
+import { useTranslation } from "react-i18next";
+
 const ImageCompressorTemplate: React.FC = () => {
+  const { t } = useTranslation("common");
+
   return (
     <Container className="py-5">
       <Row>
         <Col xs={12}>
-          <h1>Image Compressor</h1>
+          <h1>{t("image-compressor.title")}</h1>
         </Col>
         <Col xs={12}>
-          <p>Select or drop an image, optimize its size and download it!</p>
+          <p>{t("image-compressor.description")}</p>
         </Col>
       </Row>
       <Row className="mt-4">

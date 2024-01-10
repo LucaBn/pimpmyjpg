@@ -8,7 +8,7 @@ const Footer: React.FC = () => {
       <Container>
         <Row>
           <Col xs={12} className="mt-4">
-            <p>&copy; 2024-2381 pimpmyjpg.com</p>
+            <p>&copy; 2&zwj;024-2381 pimpmyjpg.com</p>
           </Col>
         </Row>
         <Row>
@@ -41,18 +41,21 @@ const Footer: React.FC = () => {
         </Row>
         <Row>
           <Col xs={12} className="mb-4">
-            <a
-              href="https://www.buymeacoffee.com/lucabn"
-              title="Buy me a coffee"
-              target="_blank"
-              rel="noopener noreferrer nofollow"
-            >
-              <img
-                src="/assets/img/buy-me-a-coffee.png"
-                width={200}
-                className="d-block mx-auto"
-              />
-            </a>
+            <p>
+              <a
+                href="https://www.buymeacoffee.com/lucabn"
+                title="Buy me a coffee"
+                target="_blank"
+                rel="noopener noreferrer nofollow"
+                className="footer__buy-me-a-coffee-link"
+              >
+                <img
+                  src="/assets/img/buy-me-a-coffee.png"
+                  width={200}
+                  className="d-block mx-auto"
+                />
+              </a>
+            </p>
           </Col>
         </Row>
       </Container>
