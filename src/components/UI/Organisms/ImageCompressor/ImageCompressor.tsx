@@ -1,103 +1,132 @@
-import React, { useRef, useState } from "react";
+import React, { ChangeEvent } from "react";
 
 // Utils
 import { readableBytes } from "@/utils/conversions";
 
-const ImageCompressor: React.FC = () => {
-  const [compressedBlobs, setCompressedBlobs] = useState<Blob[]>([]);
+interface ImageCompressorProps {
+  quality: number;
+}
 
-  const inputRef = useRef<HTMLInputElement>(null);
-  const downloadButtonRef = useRef<HTMLButtonElement>(null);
+interface ImageInfo {
+  label: string;
+  file: File | Blob;
+}
 
-  const calculateSize = (
-    img: HTMLImageElement,
-    maxWidth?: number,
-    maxHeight?: number
-  ): [number, number] => {
-    let width = img.width;
-    let height = img.height;
+const ImageUploader: React.FC<ImageCompressorProps> = ({ quality }) => {
+  const handleImageChange = (ev: ChangeEvent<HTMLInputElement>) => {
+    const files = ev.target.files;
 
-    if (width > height) {
-      if (maxWidth && width > maxWidth) {
-        height = Math.round((height * maxWidth) / width);
-        width = maxWidth;
-      }
-    } else {
-      if (maxHeight && height > maxHeight) {
-        width = Math.round((width * maxHeight) / height);
-        height = maxHeight;
-      }
+    if (files && files.length > 0) {
+      Array.from(files).forEach((file) => {
+        processImage(file);
+      });
     }
+  };
+
+  const processImage = (file: File) => {
+    const blobURL = URL.createObjectURL(file);
+    const img = new Image();
+
+    img.src = blobURL;
+    img.onerror = () => {
+      URL.revokeObjectURL(img.src);
+      console.log("Cannot load image");
+    };
+    img.onload = () => {
+      URL.revokeObjectURL(img.src);
+
+      const [newWidth, newHeight] = calculateSize(img);
+
+      const canvas = document.createElement("canvas");
+      canvas.width = newWidth;
+      canvas.height = newHeight;
+
+      const ctx = canvas.getContext("2d");
+      ctx?.drawImage(img, 0, 0, newWidth, newHeight);
+
+      canvas.toBlob(
+        (blob) => {
+          // Handle the compressed image. e.g., upload or save in local state
+          if (blob) {
+            const imageInfo: ImageInfo = {
+              label: "Compressed file",
+              file: blob,
+            };
+            displayInfo(imageInfo, file);
+          }
+        },
+        "image/jpeg",
+        quality
+      );
+
+      document.getElementById("img-container")?.append(canvas);
+    };
+  };
+
+  const calculateSize = (img: HTMLImageElement) => {
+    const width = img.width;
+    const height = img.height;
+
+    // Implement your logic to calculate new width and height based on maxWidth and maxHeight
 
     return [width, height];
   };
 
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const files = event.target.files;
+  // Utility functions for demo purpose
 
-    if (files && files.length > 0) {
-      const newCompressedBlobs: Blob[] = [];
-
-      Array.from(files).forEach((file) => {
-        const blobURL = URL.createObjectURL(file);
-        const img = new Image();
-        img.src = blobURL;
-
-        img.onload = () => {
-          const [newWidth, newHeight] = calculateSize(
-            img
-            // MAX_WIDTH,
-            // MAX_HEIGHT
-          );
-          const canvas = document.createElement("canvas");
-          canvas.width = newWidth;
-          canvas.height = newHeight;
-          const ctx = canvas.getContext("2d");
-
-          if (ctx) {
-            ctx.drawImage(img, 0, 0, newWidth, newHeight);
-            canvas.toBlob((blob) => {
-              if (blob) {
-                newCompressedBlobs.push(blob);
-                setCompressedBlobs([...newCompressedBlobs]);
-
-                const displayTag = document.createElement("p");
-                displayTag.innerText = `Original Image - ${readableBytes(
-                  file.size
-                )} :::::: Compressed Image - ${readableBytes(blob.size)}`;
-                document.getElementById("container")?.appendChild(displayTag);
-              }
-            });
-          }
-        };
-      });
-    }
+  const displayInfo = (imageInfo: ImageInfo, originalFile: File) => {
+    const p = document.createElement("p");
+    const sizeComparison = compareImageSizes(
+      originalFile,
+      imageInfo.file as File
+    );
+    p.innerText = `${imageInfo.label} - ${readableBytes(
+      imageInfo.file.size
+    )} (${sizeComparison})`;
+    document.getElementById("img-container")?.append(p);
+    createDownloadLink(imageInfo);
   };
 
-  const handleDownloadClick = () => {
-    if (compressedBlobs.length > 0) {
-      compressedBlobs.forEach((blob, index) => {
-        const downloadLink = document.createElement("a");
-        downloadLink.href = URL.createObjectURL(blob);
-        downloadLink.download = `compressed_image_${index}.jpg`;
-        document.body.appendChild(downloadLink);
-        downloadLink.click();
-        document.body.removeChild(downloadLink);
-      });
-    } else {
-      alert("Compress at least one image before downloading.");
-    }
+  const createDownloadLink = (imageInfo: ImageInfo) => {
+    const downloadLink = document.createElement("a");
+    downloadLink.href = URL.createObjectURL(imageInfo.file);
+    downloadLink.download = `compressed_${new Date().toISOString()}.jpg`;
+    downloadLink.innerText = "Download";
+    document.getElementById("img-container")?.append(downloadLink);
+    const lineBreak = document.createElement("br");
+    document.getElementById("img-container")?.append(lineBreak);
+  };
+
+  const compareImageSizes = (original: File, compressed: File): string => {
+    const originalSize = original.size;
+    const compressedSize = compressed.size;
+    const percentReduction =
+      ((originalSize - compressedSize) / originalSize) * 100;
+    return `${readableBytes(originalSize)} - ${readableBytes(
+      compressedSize
+    )} Reduced by ${percentReduction.toFixed(2)}%`;
   };
 
   return (
-    <>
-      <input type="file" onChange={handleInputChange} ref={inputRef} multiple />
-      <button onClick={handleDownloadClick} ref={downloadButtonRef}>
-        Download
-      </button>
-      <div id="container"></div>
-    </>
+    <div className="row">
+      <div className="col-12">
+        <div
+          className="d-flex"
+          style={{ flexDirection: "column", alignItems: "center" }}
+        >
+          <p>Upload images and see the result</p>
+          <input
+            type="file"
+            accept="image/*"
+            style={{ display: "block" }}
+            onChange={handleImageChange}
+            multiple
+          />
+        </div>
+      </div>
+      <div id="img-container" className="col-12"></div>
+    </div>
   );
 };
 
-export default ImageCompressor;
+export default ImageUploader;
