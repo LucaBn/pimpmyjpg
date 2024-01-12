@@ -1,9 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 
 // Components
-import Container from "react-bootstrap/Container";
-import Nav from "react-bootstrap/Nav";
-import Navbar from "react-bootstrap/Navbar";
+import { Container, Nav, Navbar } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import ThemeToggle from "@/components/UI/Organisms/ThemeToggle/ThemeToggle";
 
