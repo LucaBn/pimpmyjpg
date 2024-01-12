@@ -1,41 +1,50 @@
-import React, { ChangeEvent } from "react";
+import React, { useState, ChangeEvent } from "react";
+import { Image as ImageComponent } from "react-bootstrap";
 
 // Utils
 import { readableBytes } from "@/utils/conversions";
 
-interface ImageCompressorProps {
-  quality: number;
-}
+// Constants
+const QUALITY = 0.7;
 
 interface ImageInfo {
-  label: string;
-  file: File | Blob;
+  index: number;
+  originalFile: File | Blob;
+  file: Blob;
+  name: string;
+  downloaded: boolean;
 }
 
-const ImageUploader: React.FC<ImageCompressorProps> = ({ quality }) => {
+const ImageCompressor: React.FC = () => {
+  const [maxWidth, setMaxWidth] = useState(0);
+  const [maxHeight, setMaxHeight] = useState(0);
+  const [compressedImageList, setCompressedImageList] = useState<ImageInfo[]>(
+    []
+  );
+
   const handleImageChange = (ev: ChangeEvent<HTMLInputElement>) => {
     const files = ev.target.files;
 
     if (files && files.length > 0) {
-      Array.from(files).forEach((file) => {
-        processImage(file);
+      Array.from(files).forEach((file, index) => {
+        processImage(file, index + compressedImageList.length);
       });
     }
   };
 
-  const processImage = (file: File) => {
+  const processImage = (file: File, index: number) => {
     const blobURL = URL.createObjectURL(file);
     const img = new Image();
 
     img.src = blobURL;
     img.onerror = () => {
       URL.revokeObjectURL(img.src);
-      console.log("Cannot load image");
+      console.error("Cannot load image");
     };
     img.onload = () => {
       URL.revokeObjectURL(img.src);
 
-      const [newWidth, newHeight] = calculateSize(img);
+      const [newWidth, newHeight] = calculateSize(img, maxWidth, maxHeight);
 
       const canvas = document.createElement("canvas");
       canvas.width = newWidth;
@@ -46,55 +55,44 @@ const ImageUploader: React.FC<ImageCompressorProps> = ({ quality }) => {
 
       canvas.toBlob(
         (blob) => {
-          // Handle the compressed image. e.g., upload or save in local state
           if (blob) {
             const imageInfo: ImageInfo = {
-              label: "Compressed file",
+              index: index,
+              originalFile: file,
               file: blob,
+              name: getCleanFileName(file.name),
+              downloaded: false,
             };
-            displayInfo(imageInfo, file);
+            setCompressedImageList((prevValue) => [...prevValue, imageInfo]);
           }
         },
         "image/jpeg",
-        quality
+        QUALITY
       );
-
-      document.getElementById("img-container")?.append(canvas);
     };
   };
 
-  const calculateSize = (img: HTMLImageElement) => {
-    const width = img.width;
-    const height = img.height;
+  const calculateSize = (
+    img: HTMLImageElement,
+    maxWidth: number,
+    maxHeight: number
+  ) => {
+    let width = img.width;
+    let height = img.height;
 
-    // Implement your logic to calculate new width and height based on maxWidth and maxHeight
+    if (width > height) {
+      if (maxWidth && width > maxWidth) {
+        height = Math.round((height * maxWidth) / width);
+        width = maxWidth;
+      }
+    } else {
+      if (maxHeight && height > maxHeight) {
+        width = Math.round((width * maxHeight) / height);
+        height = maxHeight;
+      }
+    }
 
     return [width, height];
-  };
-
-  // Utility functions for demo purpose
-
-  const displayInfo = (imageInfo: ImageInfo, originalFile: File) => {
-    const p = document.createElement("p");
-    const sizeComparison = compareImageSizes(
-      originalFile,
-      imageInfo.file as File
-    );
-    p.innerText = `${imageInfo.label} - ${readableBytes(
-      imageInfo.file.size
-    )} (${sizeComparison})`;
-    document.getElementById("img-container")?.append(p);
-    createDownloadLink(imageInfo);
-  };
-
-  const createDownloadLink = (imageInfo: ImageInfo) => {
-    const downloadLink = document.createElement("a");
-    downloadLink.href = URL.createObjectURL(imageInfo.file);
-    downloadLink.download = `compressed_${new Date().toISOString()}.jpg`;
-    downloadLink.innerText = "Download";
-    document.getElementById("img-container")?.append(downloadLink);
-    const lineBreak = document.createElement("br");
-    document.getElementById("img-container")?.append(lineBreak);
   };
 
   const compareImageSizes = (original: File, compressed: File): string => {
@@ -107,6 +105,16 @@ const ImageUploader: React.FC<ImageCompressorProps> = ({ quality }) => {
     )} Reduced by ${percentReduction.toFixed(2)}%`;
   };
 
+  function getCleanFileName(fileName: string): string {
+    const lastDotIndex = fileName.lastIndexOf(".");
+
+    if (lastDotIndex <= 0) {
+      return fileName;
+    }
+
+    return fileName.substring(0, lastDotIndex);
+  }
+
   return (
     <div className="row">
       <div className="col-12">
@@ -115,6 +123,24 @@ const ImageUploader: React.FC<ImageCompressorProps> = ({ quality }) => {
           style={{ flexDirection: "column", alignItems: "center" }}
         >
           <p>Upload images and see the result</p>
+          <label htmlFor="max-width">Max width</label>
+          <input
+            id="max-width"
+            type="number"
+            value={maxWidth}
+            onChange={(e) => setMaxWidth(Number(e.target.value))}
+            // TODO: add check on min value
+          />
+          <br />
+          <label htmlFor="max-height">Max height</label>
+          <input
+            id="max-height"
+            type="number"
+            value={maxHeight}
+            onChange={(e) => setMaxHeight(Number(e.target.value))}
+            // TODO: add check on min value
+          />
+          <br />
           <input
             type="file"
             accept="image/*"
@@ -124,9 +150,44 @@ const ImageUploader: React.FC<ImageCompressorProps> = ({ quality }) => {
           />
         </div>
       </div>
-      <div id="img-container" className="col-12"></div>
+      <div className="col-12 my-4">
+        {compressedImageList?.length ? (
+          compressedImageList.map((compressedImage) => (
+            <div key={compressedImage.index}>
+              <div
+                className="d-flex"
+                style={{ justifyContent: "center", alignItems: "center" }}
+              >
+                <ImageComponent
+                  src={URL.createObjectURL(compressedImage.file)}
+                  rounded
+                  alt={compressedImage.name}
+                  height={200}
+                />
+                <p className="mx-3">{compressedImage.name}</p>
+                <p>
+                  <a
+                    href={URL.createObjectURL(compressedImage.file)}
+                    download={`${compressedImage.name}_compressed.jpg`}
+                  >
+                    Download
+                  </a>
+                </p>
+              </div>
+              <p>
+                {compareImageSizes(
+                  compressedImage.originalFile as File,
+                  compressedImage.file as File
+                )}
+              </p>
+            </div>
+          ))
+        ) : (
+          <p>Nothing</p>
+        )}
+      </div>
     </div>
   );
 };
 
-export default ImageUploader;
+export default ImageCompressor;
