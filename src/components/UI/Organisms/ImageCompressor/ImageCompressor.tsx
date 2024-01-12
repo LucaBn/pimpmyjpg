@@ -13,6 +13,7 @@ interface ImageInfo {
 }
 
 const ImageCompressor: React.FC = () => {
+  const [inputFileValueKey, setInputFileValueKey] = useState<number>(0);
   const [maxWidth, setMaxWidth] = useState(0);
   const [maxHeight, setMaxHeight] = useState(0);
   const [quality, setQuality] = useState(70);
@@ -22,6 +23,9 @@ const ImageCompressor: React.FC = () => {
 
   const handleImageChange = (ev: ChangeEvent<HTMLInputElement>) => {
     const files = ev.target.files;
+    if (ev.target.files) {
+      setInputFileValueKey((prevValue) => prevValue + 1);
+    }
 
     if (files && files.length > 0) {
       Array.from(files).forEach((file, index) => {
@@ -150,6 +154,7 @@ const ImageCompressor: React.FC = () => {
           />
           <br />
           <input
+            key={inputFileValueKey}
             type="file"
             accept="image/*"
             style={{ display: "block" }}
