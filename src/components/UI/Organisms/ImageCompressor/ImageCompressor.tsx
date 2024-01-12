@@ -4,9 +4,6 @@ import { Image as ImageComponent } from "react-bootstrap";
 // Utils
 import { readableBytes } from "@/utils/conversions";
 
-// Constants
-const QUALITY = 0.7;
-
 interface ImageInfo {
   index: number;
   originalFile: File | Blob;
@@ -18,6 +15,7 @@ interface ImageInfo {
 const ImageCompressor: React.FC = () => {
   const [maxWidth, setMaxWidth] = useState(0);
   const [maxHeight, setMaxHeight] = useState(0);
+  const [quality, setQuality] = useState(70);
   const [compressedImageList, setCompressedImageList] = useState<ImageInfo[]>(
     []
   );
@@ -67,7 +65,7 @@ const ImageCompressor: React.FC = () => {
           }
         },
         "image/jpeg",
-        QUALITY
+        quality / 100
       );
     };
   };
@@ -139,6 +137,16 @@ const ImageCompressor: React.FC = () => {
             value={maxHeight}
             onChange={(e) => setMaxHeight(Number(e.target.value))}
             // TODO: add check on min value
+          />
+          <br />
+          <label htmlFor="quality">Quality {quality}%</label>
+          <input
+            id="quality"
+            type="range"
+            min="0"
+            max="100"
+            value={quality}
+            onChange={(e) => setQuality(Number(e.target.value))}
           />
           <br />
           <input
