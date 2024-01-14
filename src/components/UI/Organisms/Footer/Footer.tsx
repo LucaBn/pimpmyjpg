@@ -1,6 +1,8 @@
 import React from "react";
 
-import { Container, Row, Col } from "react-bootstrap";
+// Components
+import { Container, Row, Col, Image } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 const Footer: React.FC = () => {
   return (
@@ -15,14 +17,14 @@ const Footer: React.FC = () => {
           <Col xs={12} className="mb-4">
             <p>
               Made with ♥ by{" "}
-              <a
-                href="https://github.com/LucaBn"
+              <Link
+                to="https://github.com/LucaBn"
                 title="Visit LucaBn's GitHub Page"
                 target="_blank"
                 rel="noopener noreferrer nofollow"
               >
                 LucaBn
-              </a>
+              </Link>
             </p>
           </Col>
         </Row>
@@ -42,20 +44,20 @@ const Footer: React.FC = () => {
         <Row>
           <Col xs={12} className="mb-4">
             <p>
-              <a
-                href="https://www.buymeacoffee.com/lucabn"
+              <Link
+                to="https://www.buymeacoffee.com/lucabn"
                 title="Buy me a coffee"
                 target="_blank"
                 rel="noopener noreferrer nofollow"
                 className="footer__buy-me-a-coffee-link"
               >
-                <img
+                <Image
                   src="/assets/img/buy-me-a-coffee.png"
                   width={200}
                   className="d-block mx-auto"
                   alt="Buy me a coffee"
                 />
-              </a>
+              </Link>
             </p>
           </Col>
         </Row>
