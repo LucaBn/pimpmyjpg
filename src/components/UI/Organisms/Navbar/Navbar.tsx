@@ -4,12 +4,10 @@ import React, { useState, useEffect, useRef } from "react";
 import { Container, Nav, Navbar } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import ThemeToggle from "@/components/UI/Organisms/ThemeToggle/ThemeToggle";
+import Logo from "@/components/UI/Molecules/Logo/Logo";
 
 // Locales
 import { useTranslation } from "react-i18next";
-
-// Constants
-import { APP_NAME } from "@/constants/app";
 
 const NavbarComponent: React.FC = () => {
   const [expanded, setExpanded] = useState<boolean>(false);
@@ -45,8 +43,8 @@ const NavbarComponent: React.FC = () => {
     >
       <Container>
         <LinkContainer to={`/${language}`}>
-          <Navbar.Brand onClick={() => setExpanded(false)}>
-            {APP_NAME}
+          <Navbar.Brand onClick={() => setExpanded(false)} className="py-0">
+            <Logo height={35} width={200} />
           </Navbar.Brand>
         </LinkContainer>
         <Nav.Item className="d-block mx-auto d-lg-none ms-auto me-3">

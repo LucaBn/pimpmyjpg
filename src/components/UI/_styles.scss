@@ -1,14 +1,19 @@
 // Atoms
 @import "./Atoms/IconMoon/styles";
 @import "./Atoms/IconSun/styles";
+@import "./Atoms/Text/styles";
 
 // Molecules
+@import "./Molecules/Logo/styles";
+@import "./Molecules/Title/styles";
 
 // Organisms
 @import "./Organisms/Footer/styles";
 @import "./Organisms/ImageCompressor/styles";
 @import "./Organisms/Navbar/styles";
+@import "./Organisms/Section/styles";
 @import "./Organisms/ThemeToggle/styles";
 
 // Templates
+@import "./Templates/FeatureSelector/styles";
 @import "./Templates/ImageCompressor/styles";
