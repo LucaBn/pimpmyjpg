@@ -1,4 +1,6 @@
 import React, { useState, ChangeEvent } from "react";
+
+// Components
 import { Image as ImageComponent } from "react-bootstrap";
 
 // Utils
