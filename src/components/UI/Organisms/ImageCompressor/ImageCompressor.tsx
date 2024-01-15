@@ -1,10 +1,14 @@
 import React, { useState, ChangeEvent } from "react";
 
 // Components
-import { Image as ImageComponent } from "react-bootstrap";
+import { Button, Image as ImageComponent } from "react-bootstrap";
 
 // Utils
-import { readableBytes } from "@/utils/conversions";
+import {
+  calculateSize,
+  compareImageSizes,
+  getCleanFileName,
+} from "@/utils/ImageCompressor";
 
 interface ImageInfo {
   index: number;
@@ -76,48 +80,30 @@ const ImageCompressor: React.FC = () => {
     };
   };
 
-  const calculateSize = (
-    img: HTMLImageElement,
-    maxWidth: number,
-    maxHeight: number
-  ) => {
-    let width = img.width;
-    let height = img.height;
+  const handleDownload = (compressedImage: ImageInfo) => {
+    const zip = new Blob();
+    const zipUrl = URL.createObjectURL(zip);
 
-    if (width > height) {
-      if (maxWidth && width > maxWidth) {
-        height = Math.round((height * maxWidth) / width);
-        width = maxWidth;
-      }
-    } else {
-      if (maxHeight && height > maxHeight) {
-        width = Math.round((width * maxHeight) / height);
-        height = maxHeight;
-      }
-    }
+    const zipLink = document.createElement("a");
+    zipLink.href = zipUrl;
+    zipLink.download = "compressed_images.zip";
+    document.body.appendChild(zipLink);
 
-    return [width, height];
+    const imageUrl = URL.createObjectURL(compressedImage.file);
+    zipLink.href = URL.createObjectURL(new Blob([zip, compressedImage.file]));
+    zipLink.download = `${compressedImage.name}_compressed.jpg`;
+    zipLink.click();
+    URL.revokeObjectURL(imageUrl);
+
+    document.body.removeChild(zipLink);
+    URL.revokeObjectURL(zipUrl);
   };
 
-  const compareImageSizes = (original: File, compressed: File): string => {
-    const originalSize = original.size;
-    const compressedSize = compressed.size;
-    const percentReduction =
-      ((originalSize - compressedSize) / originalSize) * 100;
-    return `${readableBytes(originalSize)} - ${readableBytes(
-      compressedSize
-    )} Reduced by ${percentReduction.toFixed(2)}%`;
+  const handleDownloadAll = () => {
+    compressedImageList.forEach((compressedImage) => {
+      handleDownload(compressedImage);
+    });
   };
-
-  function getCleanFileName(fileName: string): string {
-    const lastDotIndex = fileName.lastIndexOf(".");
-
-    if (lastDotIndex <= 0) {
-      return fileName;
-    }
-
-    return fileName.substring(0, lastDotIndex);
-  }
 
   return (
     <div className="row">
@@ -167,36 +153,37 @@ const ImageCompressor: React.FC = () => {
       </div>
       <div className="col-12 my-4">
         {compressedImageList?.length ? (
-          compressedImageList.map((compressedImage) => (
-            <div key={compressedImage.index}>
-              <div
-                className="d-flex"
-                style={{ justifyContent: "center", alignItems: "center" }}
-              >
-                <ImageComponent
-                  src={URL.createObjectURL(compressedImage.file)}
-                  rounded
-                  alt={compressedImage.name}
-                  height={200}
-                />
-                <p className="mx-3">{compressedImage.name}</p>
-                <p>
-                  <a
-                    href={URL.createObjectURL(compressedImage.file)}
-                    download={`${compressedImage.name}_compressed.jpg`}
-                  >
+          <>
+            {compressedImageList.map((compressedImage) => (
+              <div key={compressedImage.index}>
+                <div
+                  className="d-flex"
+                  style={{ justifyContent: "center", alignItems: "center" }}
+                >
+                  <ImageComponent
+                    src={URL.createObjectURL(compressedImage.file)}
+                    rounded
+                    alt={compressedImage.name}
+                    height={200}
+                  />
+                  <p className="mx-3">{compressedImage.name}</p>
+
+                  <Button onClick={() => handleDownload(compressedImage)}>
                     Download
-                  </a>
+                  </Button>
+                </div>
+                <p>
+                  {compareImageSizes(
+                    compressedImage.originalFile as File,
+                    compressedImage.file as File
+                  )}
                 </p>
               </div>
-              <p>
-                {compareImageSizes(
-                  compressedImage.originalFile as File,
-                  compressedImage.file as File
-                )}
-              </p>
+            ))}
+            <div className="d-flex justify-content-center">
+              <Button onClick={handleDownloadAll}>Download All</Button>
             </div>
-          ))
+          </>
         ) : (
           <p>Nothing</p>
         )}
