@@ -47,7 +47,9 @@ const NavbarComponent: React.FC = () => {
             <Logo height={35} width={200} />
           </Navbar.Brand>
         </LinkContainer>
-        <Nav.Item className="d-block mx-auto d-lg-none ms-auto me-3">
+        <Nav.Item className="d-lg-none d-flex align-items-center gap-3 ms-auto me-3">
+          <div>[...]</div>
+          {/* This is the current language flag, clicking on it opens a modal with language selection */}
           <ThemeToggle />
         </Nav.Item>
         <Navbar.Toggle
@@ -58,11 +60,19 @@ const NavbarComponent: React.FC = () => {
         />
         <Navbar.Collapse onClick={() => setExpanded(false)}>
           <Nav className="ms-auto">
-            <Nav.Item className="d-block mx-auto d-none d-lg-block py-2 me-3">
+            <Nav.Item className="d-none d-lg-flex align-items-center gap-3 mx-auto py-2 me-2">
+              <div>[...]</div>
+              {/* This is the current language flag, clicking on it opens a modal with language selection */}
               <ThemeToggle />
             </Nav.Item>
             <LinkContainer to={`/${language}/image-compressor`}>
               <Nav.Link>Image Compressor</Nav.Link>
+            </LinkContainer>
+            <LinkContainer to={`/${language}/`}>
+              <Nav.Link>Apply Filter</Nav.Link>
+            </LinkContainer>
+            <LinkContainer to={`/${language}/`}>
+              <Nav.Link>Add Watermark</Nav.Link>
             </LinkContainer>
           </Nav>
         </Navbar.Collapse>
