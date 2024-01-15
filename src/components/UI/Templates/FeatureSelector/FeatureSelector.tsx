@@ -33,7 +33,7 @@ const FeatureSelector: React.FC = () => {
             fluid
           />
         </Col>
-        <Col xs={12} md={5} className="d-flex align-items-center text-start">
+        <Col xs={12} md={5} className="d-flex align-items-center text-md-start">
           <div>
             <Section.Title>Titolo Sezione 1</Section.Title>
             <Section.Description>
@@ -61,7 +61,7 @@ const FeatureSelector: React.FC = () => {
         <Col
           xs={12}
           md={{ span: 5, offset: 1 }}
-          className="d-flex align-items-center text-end"
+          className="d-flex align-items-center text-md-end"
         >
           <div>
             <Section.Title>Titolo Sezione 2</Section.Title>
@@ -87,7 +87,7 @@ const FeatureSelector: React.FC = () => {
             fluid
           />
         </Col>
-        <Col xs={12} md={5} className="d-flex align-items-center text-start">
+        <Col xs={12} md={5} className="d-flex align-items-center text-md-start">
           <div>
             <Section.Title>Titolo Sezione 3</Section.Title>
             <Section.Description>
