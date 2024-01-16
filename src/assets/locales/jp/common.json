@@ -1,0 +1,10 @@
+{
+  "feature-selector": {
+    "title": "やりたいことを選択する",
+    "description": "お客様に最適なサービスをお選びください"
+  },
+  "image-compressor": {
+    "title": "画像圧縮機",
+    "description": "画像を選択またはドラッグし、最適化してダウンロードします！"
+  }
+}
