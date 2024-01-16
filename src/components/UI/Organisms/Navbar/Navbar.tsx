@@ -3,6 +3,7 @@ import React, { useState, useEffect, useRef } from "react";
 // Components
 import { Container, Nav, Navbar } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
+import LanguageSwitcher from "@/components/UI/Organisms/LanguageSwitcher/LanguageSwitcher";
 import ThemeToggle from "@/components/UI/Organisms/ThemeToggle/ThemeToggle";
 import Logo from "@/components/UI/Molecules/Logo/Logo";
 
@@ -48,7 +49,7 @@ const NavbarComponent: React.FC = () => {
           </Navbar.Brand>
         </LinkContainer>
         <Nav.Item className="d-lg-none d-flex align-items-center gap-3 ms-auto me-3">
-          <div>[...]</div>
+          <LanguageSwitcher />
           {/* This is the current language flag, clicking on it opens a modal with language selection */}
           <ThemeToggle />
         </Nav.Item>
@@ -60,8 +61,8 @@ const NavbarComponent: React.FC = () => {
         />
         <Navbar.Collapse onClick={() => setExpanded(false)}>
           <Nav className="ms-auto">
-            <Nav.Item className="d-none d-lg-flex align-items-center gap-3 mx-auto py-2 me-2">
-              <div>[...]</div>
+            <Nav.Item className="d-none d-lg-flex align-items-center gap-3 mx-auto me-2">
+              <LanguageSwitcher />
               {/* This is the current language flag, clicking on it opens a modal with language selection */}
               <ThemeToggle />
             </Nav.Item>

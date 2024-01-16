@@ -1,0 +1,10 @@
+.#{$app-name} {
+  &-language-switcher {
+    cursor: pointer;
+
+    svg {
+      height: 1.75rem;
+      width: 1.75rem;
+    }
+  }
+}
