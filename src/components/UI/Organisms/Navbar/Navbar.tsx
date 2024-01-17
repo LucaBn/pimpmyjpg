@@ -16,7 +16,7 @@ const NavbarComponent: React.FC = () => {
   const { i18n } = useTranslation("common");
   const { language } = i18n;
 
-  const navbarRef = useRef<HTMLDivElement>(null); // TODO: fix outsideClick event when click on logo
+  const navbarRef = useRef<HTMLDivElement>(null);
 
   const handleOutsideClick = (event: MouseEvent) => {
     if (
