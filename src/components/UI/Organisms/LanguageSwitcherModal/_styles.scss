@@ -1,0 +1,22 @@
+.#{$app-name} {
+  &-flag {
+    cursor: pointer;
+
+    svg {
+      height: 1.75rem;
+      width: 1.75rem;
+    }
+
+    &--active::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 0;
+      height: 0.75rem;
+      width: 0.75rem;
+      background-color: var(--bs-body-color);
+      border-radius: 50%;
+      transform: translateY(-50%);
+    }
+  }
+}

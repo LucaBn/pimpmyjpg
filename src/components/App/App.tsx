@@ -18,12 +18,10 @@ const App: React.FC = () => {
   const textColorClass =
     theme === Themes.Dark ? `text-${Themes.Light}` : `text-${Themes.Dark}`;
 
+  document.body.dataset.bsTheme = theme;
+
   return (
-    <div
-      className={`${CLASS_APP_NAME} ${textColorClass}`}
-      data-bs-theme={theme}
-      data-testid="vitest-app"
-    >
+    <div className={`${CLASS_APP_NAME} ${textColorClass}`}>
       <Navbar />
       <main
         className={`${CLASS_APP_NAME}-main bg-body-secondary ${textColorClass}`}
