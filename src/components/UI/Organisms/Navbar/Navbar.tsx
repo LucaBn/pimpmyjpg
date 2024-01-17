@@ -48,7 +48,7 @@ const NavbarComponent: React.FC = () => {
             <Logo height={35} width={200} />
           </Navbar.Brand>
         </LinkContainer>
-        <Nav.Item className="d-lg-none d-flex align-items-center gap-3 ms-auto me-3">
+        <Nav.Item className="d-lg-none d-flex align-items-center ms-auto me-3">
           <LanguageSwitcher />
           <ThemeToggle />
         </Nav.Item>
@@ -60,7 +60,7 @@ const NavbarComponent: React.FC = () => {
         />
         <Navbar.Collapse onClick={() => setExpanded(false)}>
           <Nav className="ms-auto">
-            <Nav.Item className="d-none d-lg-flex align-items-center gap-3 mx-auto me-2">
+            <Nav.Item className="d-none d-lg-flex align-items-center mx-auto me-2">
               <LanguageSwitcher />
               <ThemeToggle />
             </Nav.Item>
