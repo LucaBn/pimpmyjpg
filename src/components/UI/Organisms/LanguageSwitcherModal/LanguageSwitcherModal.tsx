@@ -83,6 +83,7 @@ const LanguageSwitcherModal: React.FC<ILanguageSwitcherModal> = ({
           </div>
         </Modal.Body>
         <Modal.Footer>
+          {/* TODO: rewrite these buttons */}
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>

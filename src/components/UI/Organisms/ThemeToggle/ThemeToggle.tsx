@@ -3,6 +3,7 @@ import React from "react";
 // Components
 import IconMoon from "@/components/UI/Atoms/IconMoon/IconMoon";
 import IconSun from "@/components/UI/Atoms/IconSun/IconSun";
+import { Button } from "react-bootstrap";
 
 // Providers
 import { useTheme } from "@/components/providers/ThemeProvider";
@@ -18,9 +19,13 @@ const ThemeToggle: React.FC = () => {
     theme === Themes.Dark ? <IconMoon /> : <IconSun />;
 
   return (
-    <div className={`${CLASS_APP_NAME}-theme-toggle`} onClick={toggleTheme}>
+    <Button
+      variant="link"
+      className={`${CLASS_APP_NAME}-theme-toggle rounded-0`}
+      onClick={toggleTheme}
+    >
       {VisibleIcon}
-    </div>
+    </Button>
   );
 };
 

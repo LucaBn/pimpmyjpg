@@ -50,7 +50,6 @@ const NavbarComponent: React.FC = () => {
         </LinkContainer>
         <Nav.Item className="d-lg-none d-flex align-items-center gap-3 ms-auto me-3">
           <LanguageSwitcher />
-          {/* This is the current language flag, clicking on it opens a modal with language selection */}
           <ThemeToggle />
         </Nav.Item>
         <Navbar.Toggle
@@ -63,7 +62,6 @@ const NavbarComponent: React.FC = () => {
           <Nav className="ms-auto">
             <Nav.Item className="d-none d-lg-flex align-items-center gap-3 mx-auto me-2">
               <LanguageSwitcher />
-              {/* This is the current language flag, clicking on it opens a modal with language selection */}
               <ThemeToggle />
             </Nav.Item>
             <LinkContainer to={`/${language}/image-compressor`}>
