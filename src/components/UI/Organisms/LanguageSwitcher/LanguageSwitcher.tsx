@@ -14,6 +14,7 @@ const LanguageSwitcher: React.FC = () => {
   return (
     <>
       <Button
+        aria-label="Switch language"
         variant="link"
         className={`${CLASS_APP_NAME}-language-switcher rounded-0`}
         onClick={() => setShowModal(true)}

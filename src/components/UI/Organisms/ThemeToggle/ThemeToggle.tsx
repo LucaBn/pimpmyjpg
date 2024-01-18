@@ -20,6 +20,7 @@ const ThemeToggle: React.FC = () => {
 
   return (
     <Button
+      aria-label="Toggle theme"
       variant="link"
       className={`${CLASS_APP_NAME}-theme-toggle rounded-0`}
       onClick={toggleTheme}
