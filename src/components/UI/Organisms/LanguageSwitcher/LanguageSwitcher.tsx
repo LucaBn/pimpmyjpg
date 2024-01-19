@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 // Components
 import IconLanguage from "@/components/UI/Atoms/IconLanguage/IconLanguage";
-import LanguageSwitcherModal from "@/components/UI/Organisms/LanguageSwitcherModal/LanguageSwitcherModal";
+import LanguageSwitcherModal from "@/components/UI/Organisms/LanguageSwitcher/LanguageSwitcherModal";
 import { Button } from "react-bootstrap";
 
 // Constants
