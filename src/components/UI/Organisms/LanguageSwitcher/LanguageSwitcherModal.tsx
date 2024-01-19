@@ -4,7 +4,7 @@ import React, { Dispatch, SetStateAction } from "react";
 import { Button, Modal } from "react-bootstrap";
 
 // Constants
-import LanguageSwitcherModalForm from "@/components/UI/Organisms/LanguageSwitcherModal/LanguageSwitcherModalForm";
+import LanguageSwitcherModalForm from "@/components/UI/Organisms/LanguageSwitcher/LanguageSwitcherModalForm";
 
 interface ILanguageSwitcherModal {
   show: boolean;
