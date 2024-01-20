@@ -35,10 +35,10 @@ const FeatureSelector: React.FC = () => {
         </Col>
         <Col xs={12} md={5} className="d-flex align-items-center text-md-start">
           <div>
-            <Section.Title>Titolo Sezione 1</Section.Title>
+            <Section.Title>Title Section One</Section.Title>
             <Section.Description>
-              Descrizione Sezione 1 Lorem ipsum dolor sit amet, consectetur
-              adipiscing elit.
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem
+              ipsum dolor sit amet, consectetur adipiscing elit.
             </Section.Description>
             <Link to="/">
               <Section.Button>Button</Section.Button>
@@ -64,10 +64,10 @@ const FeatureSelector: React.FC = () => {
           className="d-flex align-items-center text-md-end"
         >
           <div>
-            <Section.Title>Titolo Sezione 2</Section.Title>
+            <Section.Title>Title Section Two</Section.Title>
             <Section.Description>
-              Descrizione Sezione 2. Lorem ipsum dolor sit amet, consectetur
-              adipiscing elit.
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem
+              ipsum dolor sit amet, consectetur adipiscing elit.
             </Section.Description>
             <Link to="/">
               <Section.Button>Button</Section.Button>
@@ -89,10 +89,10 @@ const FeatureSelector: React.FC = () => {
         </Col>
         <Col xs={12} md={5} className="d-flex align-items-center text-md-start">
           <div>
-            <Section.Title>Titolo Sezione 3</Section.Title>
+            <Section.Title>Title Section Three</Section.Title>
             <Section.Description>
-              Descrizione Sezione 3 Lorem ipsum dolor sit amet, consectetur
-              adipiscing elit.
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem
+              ipsum dolor sit amet, consectetur adipiscing elit.
             </Section.Description>
             <Link to="/">
               <Section.Button>Button</Section.Button>
