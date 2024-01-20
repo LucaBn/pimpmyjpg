@@ -67,10 +67,10 @@ const NavbarComponent: React.FC = () => {
             <LinkContainer to={`/${language}/image-compressor`}>
               <Nav.Link>Image Compressor</Nav.Link>
             </LinkContainer>
-            <LinkContainer to={`/${language}/`}>
-              <Nav.Link>Apply Filter</Nav.Link>
+            <LinkContainer to={`/${language}/add-filter`}>
+              <Nav.Link>Add Filter</Nav.Link>
             </LinkContainer>
-            <LinkContainer to={`/${language}/`}>
+            <LinkContainer to={`/${language}/add-watermark`}>
               <Nav.Link>Add Watermark</Nav.Link>
             </LinkContainer>
           </Nav>
