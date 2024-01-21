@@ -2,7 +2,7 @@ import React from "react";
 
 // Components
 import FlagEn from "@/components/UI/Atoms/FlagEn/FlagEn";
-import FlagIt from "@/components/UI/Atoms/FlagIt-temp/FlagIt";
+import FlagIt from "@/components/UI/Atoms/FlagIt/FlagIt";
 import FlagJp from "@/components/UI/Atoms/FlagJp/FlagJp";
 import { Col, Form } from "react-bootstrap";
 
