@@ -1,4 +1,4 @@
-import React, { useState, ChangeEvent } from "react";
+import React, { useState, ChangeEvent, useRef } from "react";
 
 // Components
 import { Button, Image as ImageComponent } from "react-bootstrap";
@@ -30,6 +30,8 @@ const ImageCompressor: React.FC = () => {
     []
   );
 
+  const compressedImagesContainerRef = useRef<HTMLDivElement>(null);
+
   const { t } = useTranslation("common");
 
   const handleImageChange = (ev: ChangeEvent<HTMLInputElement>) => {
@@ -42,6 +44,14 @@ const ImageCompressor: React.FC = () => {
       Array.from(files).forEach((file, index) => {
         processImage(file, index + compressedImageList.length);
       });
+
+      if (compressedImagesContainerRef.current) {
+        // Scroll to compressed images section
+        compressedImagesContainerRef.current.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      }
     }
   };
 
@@ -166,7 +176,7 @@ const ImageCompressor: React.FC = () => {
           </div>
         </div>
       </div>
-      <div className="col-12 my-4">
+      <div ref={compressedImagesContainerRef} className="col-12 my-4">
         {compressedImageList?.length ? (
           <>
             {compressedImageList.map((compressedImage) => (
