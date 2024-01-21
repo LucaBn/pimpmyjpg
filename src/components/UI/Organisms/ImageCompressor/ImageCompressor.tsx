@@ -41,8 +41,8 @@ const ImageCompressor: React.FC = () => {
   const { t } = useTranslation("common");
 
   const optionsButtonText = optionsBoxIsOpen
-    ? t("image-compressor.open-options")
-    : t("image-compressor.close-options");
+    ? t("image-compressor.close-options")
+    : t("image-compressor.open-options");
   const activeKey = optionsBoxIsOpen ? "0" : "";
 
   const decoratedOnClick = useAccordionButton("0", () => {
