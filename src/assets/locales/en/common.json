@@ -46,6 +46,8 @@
     "file-input-description": "Click or drop your file(s) here.\nAny format is allowed!",
     "max-height": "Max height",
     "max-width": "Max width",
-    "quality": "Quality"
+    "quality": "Quality",
+    "download": "Download",
+    "download-all": "Download all"
   }
 }

@@ -233,7 +233,7 @@ const ImageCompressor: React.FC = () => {
                   <p className="mx-3">{compressedImage.name}</p>
 
                   <Button onClick={() => handleDownload(compressedImage)}>
-                    Download
+                    {t("image-compressor.download")}
                   </Button>
                 </div>
                 <p>
@@ -245,7 +245,9 @@ const ImageCompressor: React.FC = () => {
               </div>
             ))}
             <div className="d-flex justify-content-center">
-              <Button onClick={handleDownloadAll}>Download All</Button>
+              <Button onClick={handleDownloadAll}>
+                {t("image-compressor.download-all")}
+              </Button>
             </div>
           </>
         ) : (
