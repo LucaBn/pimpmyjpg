@@ -1,5 +1,5 @@
-import React from "react";
-import { Outlet } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Outlet, useLocation } from "react-router-dom";
 
 // Components
 import Navbar from "@/components/UI/Organisms/Navbar/Navbar";
@@ -14,6 +14,16 @@ import { Themes } from "@/constants/themes";
 
 const App: React.FC = () => {
   const { theme } = useTheme();
+
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    document.documentElement.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
+  }, [pathname]);
 
   const textColorClass =
     theme === Themes.Dark ? `text-${Themes.Light}` : `text-${Themes.Dark}`;
