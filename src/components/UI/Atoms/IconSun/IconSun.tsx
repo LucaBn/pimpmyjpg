@@ -9,7 +9,7 @@ import { Themes } from "@/constants/themes";
 const IconSun: React.FC = () => {
   const { theme } = useTheme();
 
-  const iconColor = theme === Themes.Dark ? "#fff" : "#000";
+  const iconColor = theme === Themes.Dark ? "#fff" : "#000"; // Check bootstrap bs-emphasis-color value
 
   return (
     <svg
