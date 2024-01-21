@@ -43,11 +43,10 @@ const ImageCompressor: React.FC = () => {
   const optionsButtonText = optionsBoxIsOpen
     ? t("image-compressor.close-options")
     : t("image-compressor.open-options");
+  const optionsButtonVariant = optionsBoxIsOpen ? "danger" : "success";
   const activeKey = optionsBoxIsOpen ? "0" : "";
 
-  const decoratedOnClick = useAccordionButton("0", () => {
-    console.log("ok");
-  });
+  const decoratedOnClick = useAccordionButton("0");
 
   const handleOptionBoxStatus = (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>
@@ -156,17 +155,19 @@ const ImageCompressor: React.FC = () => {
             </label>
             <input
               id="file-input"
-              className="image-compressor__upload-container-input opacity-0"
+              className="image-compressor__upload-container-input d-block opacity-0"
               key={inputFileValueKey}
               type="file"
               accept="image/*"
-              style={{ display: "block" }}
               onChange={handleImageChange}
               multiple
             />
           </div>
           {/* Options */}
-          <Button onClick={(e) => handleOptionBoxStatus(e)}>
+          <Button
+            variant={optionsButtonVariant}
+            onClick={(e) => handleOptionBoxStatus(e)}
+          >
             {optionsButtonText}
           </Button>
           <Accordion activeKey={activeKey}>
@@ -219,33 +220,38 @@ const ImageCompressor: React.FC = () => {
         {compressedImageList?.length ? (
           <>
             {compressedImageList.map((compressedImage) => (
-              <div key={compressedImage.index}>
-                <div
-                  className="d-flex"
-                  style={{ justifyContent: "center", alignItems: "center" }}
-                >
+              <div
+                key={compressedImage.index}
+                className="image-compressor__compressed-image-container d-flex align-items-center border rounded mx-auto mb-1 overflow-hidden"
+              >
+                <div className="image-compressor__compressed-image-miniature position-relative">
                   <ImageComponent
                     src={URL.createObjectURL(compressedImage.file)}
-                    rounded
                     alt={compressedImage.name}
-                    height={200}
+                    className="position-absolute h-100 w-100 object-fit-cover"
                   />
-                  <p className="mx-3">{compressedImage.name}</p>
-
-                  <Button onClick={() => handleDownload(compressedImage)}>
-                    {t("image-compressor.download")}
-                  </Button>
                 </div>
-                <p>
-                  {compareImageSizes(
-                    compressedImage.originalFile as File,
-                    compressedImage.file as File
-                  )}
-                </p>
+                <div className="d-flex flex-column align-items-start justify-content-center flex-grow-1">
+                  <p className="mx-3 mb-0">
+                    <strong>{compressedImage.name}</strong>
+                  </p>
+                  <p className="mx-3 mb-0">
+                    {compareImageSizes(
+                      compressedImage.originalFile as File,
+                      compressedImage.file as File
+                    )}
+                  </p>
+                </div>
+                <Button
+                  onClick={() => handleDownload(compressedImage)}
+                  className="me-2"
+                >
+                  {t("image-compressor.download")}
+                </Button>
               </div>
             ))}
             <div className="d-flex justify-content-center">
-              <Button onClick={handleDownloadAll}>
+              <Button onClick={handleDownloadAll} className="mt-3">
                 {t("image-compressor.download-all")}
               </Button>
             </div>
