@@ -1,7 +1,12 @@
 import React, { useState, ChangeEvent, useRef } from "react";
 
 // Components
-import { Button, Image as ImageComponent } from "react-bootstrap";
+import {
+  Accordion,
+  Button,
+  Image as ImageComponent,
+  useAccordionButton,
+} from "react-bootstrap";
 
 // Locales
 import { useTranslation } from "react-i18next";
@@ -22,6 +27,7 @@ interface ImageInfo {
 }
 
 const ImageCompressor: React.FC = () => {
+  const [optionsBoxIsOpen, setOptionsBoxIsOpen] = useState(false);
   const [inputFileValueKey, setInputFileValueKey] = useState<number>(0);
   const [maxWidth, setMaxWidth] = useState(0);
   const [maxHeight, setMaxHeight] = useState(0);
@@ -33,6 +39,22 @@ const ImageCompressor: React.FC = () => {
   const compressedImagesContainerRef = useRef<HTMLDivElement>(null);
 
   const { t } = useTranslation("common");
+
+  const optionsButtonText = optionsBoxIsOpen
+    ? t("image-compressor.open-options")
+    : t("image-compressor.close-options");
+  const activeKey = optionsBoxIsOpen ? "0" : "";
+
+  const decoratedOnClick = useAccordionButton("0", () => {
+    console.log("ok");
+  });
+
+  const handleOptionBoxStatus = (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
+    setOptionsBoxIsOpen((prevValue) => !prevValue);
+    decoratedOnClick(e);
+  };
 
   const handleImageChange = (ev: ChangeEvent<HTMLInputElement>) => {
     const files = ev.target.files;
@@ -126,7 +148,8 @@ const ImageCompressor: React.FC = () => {
     <div className="row">
       <div className="col-12">
         <div className="d-flex flex-column align-items-center gap-3">
-          <p>{t("image-compressor.instructions")}</p>
+          <p className="mb-0">⬇️ {t("image-compressor.instructions")} ⬇️</p>
+          {/* Drop picture(s) container */}
           <div className="image-compressor__upload-container bg-gradient rounded">
             <label htmlFor="file-input fs-1">
               {t("image-compressor.file-input-description")}
@@ -142,47 +165,56 @@ const ImageCompressor: React.FC = () => {
               multiple
             />
           </div>
-          <div className="d-flex flex-column align-items-center gap-3">
-            <div className="d-flex align-items-center gap-3">
-              <label htmlFor="max-width">
-                {t("image-compressor.max-width")}
-              </label>
-              <input
-                id="max-width"
-                type="number"
-                value={maxWidth}
-                onChange={(e) => setMaxWidth(Number(e.target.value))}
-                // TODO: add check on min value
-              />
-            </div>
-            <div className="d-flex align-items-center gap-3">
-              <label htmlFor="max-height">
-                {t("image-compressor.max-height")}
-              </label>
-              <input
-                id="max-height"
-                type="number"
-                value={maxHeight}
-                onChange={(e) => setMaxHeight(Number(e.target.value))}
-                // TODO: add check on min value
-              />
-            </div>
-            <div className="d-flex flex-column">
-              <label htmlFor="quality">
-                {t("image-compressor.quality")} {quality}%
-              </label>
-              <input
-                id="quality"
-                type="range"
-                min="0"
-                max="100"
-                value={quality}
-                onChange={(e) => setQuality(Number(e.target.value))}
-              />
-            </div>
-          </div>
+          {/* Options */}
+          <Button onClick={(e) => handleOptionBoxStatus(e)}>
+            {optionsButtonText}
+          </Button>
+          <Accordion activeKey={activeKey}>
+            <Accordion.Collapse eventKey="0">
+              <div className="d-flex flex-column align-items-center gap-3">
+                <div className="d-flex align-items-center gap-3">
+                  <label htmlFor="max-width">
+                    {t("image-compressor.max-width")}
+                  </label>
+                  <input
+                    id="max-width"
+                    type="number"
+                    value={maxWidth}
+                    onChange={(e) => setMaxWidth(Number(e.target.value))}
+                    // TODO: add check on min value
+                  />
+                </div>
+                <div className="d-flex align-items-center gap-3">
+                  <label htmlFor="max-height">
+                    {t("image-compressor.max-height")}
+                  </label>
+                  <input
+                    id="max-height"
+                    type="number"
+                    value={maxHeight}
+                    onChange={(e) => setMaxHeight(Number(e.target.value))}
+                    // TODO: add check on min value
+                  />
+                </div>
+                <div className="d-flex flex-column">
+                  <label htmlFor="quality">
+                    {t("image-compressor.quality")} {quality}%
+                  </label>
+                  <input
+                    id="quality"
+                    type="range"
+                    min="0"
+                    max="100"
+                    value={quality}
+                    onChange={(e) => setQuality(Number(e.target.value))}
+                  />
+                </div>
+              </div>
+            </Accordion.Collapse>
+          </Accordion>
         </div>
       </div>
+      {/* Result */}
       <div ref={compressedImagesContainerRef} className="col-12 my-4">
         {compressedImageList?.length ? (
           <>

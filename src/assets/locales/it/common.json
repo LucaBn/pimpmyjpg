@@ -41,7 +41,9 @@
     "title": "Compressore di immagini",
     "description": "Seleziona o trascina un'immagine, ottimizzala e scaricala!",
     "instructions": "Upload image(s) and see the result",
-    "file-input-description": "Click or drop your files here",
+    "open-options": "Open options panel",
+    "close-options": "Close options panel",
+    "file-input-description": "Clicca qui o trascina i tuoi file nel riquadro.\nSono accettati tutti i formati!",
     "max-height": "Max height",
     "max-width": "Max width",
     "quality": "Quality"
