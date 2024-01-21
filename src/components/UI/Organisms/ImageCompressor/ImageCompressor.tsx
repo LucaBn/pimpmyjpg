@@ -3,6 +3,9 @@ import React, { useState, ChangeEvent } from "react";
 // Components
 import { Button, Image as ImageComponent } from "react-bootstrap";
 
+// Locales
+import { useTranslation } from "react-i18next";
+
 // Utils
 import {
   calculateSize,
@@ -26,6 +29,8 @@ const ImageCompressor: React.FC = () => {
   const [compressedImageList, setCompressedImageList] = useState<ImageInfo[]>(
     []
   );
+
+  const { t } = useTranslation("common");
 
   const handleImageChange = (ev: ChangeEvent<HTMLInputElement>) => {
     const files = ev.target.files;
@@ -108,47 +113,57 @@ const ImageCompressor: React.FC = () => {
   return (
     <div className="row">
       <div className="col-12">
-        <div
-          className="d-flex"
-          style={{ flexDirection: "column", alignItems: "center" }}
-        >
-          <p>Upload images and see the result</p>
-          <label htmlFor="max-width">Max width</label>
-          <input
-            id="max-width"
-            type="number"
-            value={maxWidth}
-            onChange={(e) => setMaxWidth(Number(e.target.value))}
-            // TODO: add check on min value
-          />
-          <br />
-          <label htmlFor="max-height">Max height</label>
-          <input
-            id="max-height"
-            type="number"
-            value={maxHeight}
-            onChange={(e) => setMaxHeight(Number(e.target.value))}
-            // TODO: add check on min value
-          />
-          <br />
-          <label htmlFor="quality">Quality {quality}%</label>
-          <input
-            id="quality"
-            type="range"
-            min="0"
-            max="100"
-            value={quality}
-            onChange={(e) => setQuality(Number(e.target.value))}
-          />
-          <br />
-          <input
-            key={inputFileValueKey}
-            type="file"
-            accept="image/*"
-            style={{ display: "block" }}
-            onChange={handleImageChange}
-            multiple
-          />
+        <div className="d-flex flex-column align-items-center gap-3">
+          <p>{t("image-compressor.instructions")}</p>
+          <div>
+            <input
+              key={inputFileValueKey}
+              type="file"
+              accept="image/*"
+              style={{ display: "block" }}
+              onChange={handleImageChange}
+              multiple
+            />
+          </div>
+          <div className="d-flex flex-column align-items-center gap-3">
+            <div className="d-flex align-items-center gap-3">
+              <label htmlFor="max-width">
+                {t("image-compressor.max-width")}
+              </label>
+              <input
+                id="max-width"
+                type="number"
+                value={maxWidth}
+                onChange={(e) => setMaxWidth(Number(e.target.value))}
+                // TODO: add check on min value
+              />
+            </div>
+            <div className="d-flex align-items-center gap-3">
+              <label htmlFor="max-height">
+                {t("image-compressor.max-height")}
+              </label>
+              <input
+                id="max-height"
+                type="number"
+                value={maxHeight}
+                onChange={(e) => setMaxHeight(Number(e.target.value))}
+                // TODO: add check on min value
+              />
+            </div>
+            <div className="d-flex flex-column">
+              <label htmlFor="quality">
+                {t("image-compressor.quality")} {quality}%
+              </label>
+              <input
+                id="quality"
+                type="range"
+                min="0"
+                max="100"
+                value={quality}
+                onChange={(e) => setQuality(Number(e.target.value))}
+              />
+            </div>
+          </div>
         </div>
       </div>
       <div className="col-12 my-4">
@@ -185,7 +200,7 @@ const ImageCompressor: React.FC = () => {
             </div>
           </>
         ) : (
-          <p>Nothing</p>
+          <p>...</p>
         )}
       </div>
     </div>

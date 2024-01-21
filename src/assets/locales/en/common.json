@@ -39,6 +39,10 @@
   },
   "image-compressor": {
     "title": "Image compressor",
-    "description": "Select or drop an image, optimize its size and download it!"
+    "description": "Select or drop an image, optimize its size and download it!",
+    "instructions": "Upload image(s) and see the result",
+    "max-height": "Max height",
+    "max-width": "Max width",
+    "quality": "Quality"
   }
 }
