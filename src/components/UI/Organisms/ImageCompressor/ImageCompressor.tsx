@@ -45,13 +45,15 @@ const ImageCompressor: React.FC = () => {
         processImage(file, index + compressedImageList.length);
       });
 
-      if (compressedImagesContainerRef.current) {
-        // Scroll to compressed images section
-        compressedImagesContainerRef.current.scrollIntoView({
-          behavior: "smooth",
-          block: "start",
-        });
-      }
+      // Scroll to compressed images section
+      setTimeout(() => {
+        if (compressedImagesContainerRef.current) {
+          compressedImagesContainerRef.current.scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+          });
+        }
+      }, 50);
     }
   };
 
@@ -125,8 +127,13 @@ const ImageCompressor: React.FC = () => {
       <div className="col-12">
         <div className="d-flex flex-column align-items-center gap-3">
           <p>{t("image-compressor.instructions")}</p>
-          <div>
+          <div className="image-compressor__upload-container bg-gradient rounded">
+            <label htmlFor="file-input fs-1">
+              {t("image-compressor.file-input-description")}
+            </label>
             <input
+              id="file-input"
+              className="image-compressor__upload-container-input opacity-0"
               key={inputFileValueKey}
               type="file"
               accept="image/*"
