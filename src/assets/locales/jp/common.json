@@ -1,7 +1,41 @@
 {
+  "navbar": {
+    "logo-title": "Pimp My Jpg",
+    "language-switcher": "Switch language",
+    "theme-toggle": "Toggle theme",
+    "links": {
+      "image-compressor": "Image Compressor",
+      "add-filter": "Add Filter",
+      "add-watermark": "Add Watermark"
+    }
+  },
+  "footer": {
+    "made-by": "Made with ♥ by <authorLink>{{authorName}}</authorLink>",
+    "made-by-title": "Visit {{author}}'s GitHub Page",
+    "share": "Share",
+    "buy-me-a-coffee": "Buy Me A Coffee"
+  },
   "feature-selector": {
     "title": "やりたいことを選択する",
-    "description": "お客様に最適なサービスをお選びください"
+    "description": "お客様に最適なサービスをお選びください",
+    "image-compressor": {
+      "image-alt": "Image Compressor",
+      "title": "Image Compressor",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipisci elit, sed do eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrum exercitationem ullamco laboriosam.",
+      "cta": "COMPRESS NOW!"
+    },
+    "add-filter": {
+      "image-alt": "Add Filter",
+      "title": "Add Filter",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipisci elit, sed do eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrum exercitationem ullamco laboriosam.",
+      "cta": "FILTER NOW!"
+    },
+    "add-watermark": {
+      "image-alt": "Add Watermark",
+      "title": "Add Watermark",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipisci elit, sed do eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrum exercitationem ullamco laboriosam.",
+      "cta": "MARK NOW!"
+    }
   },
   "image-compressor": {
     "title": "画像圧縮機",

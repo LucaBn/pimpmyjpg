@@ -4,7 +4,31 @@ import React from "react";
 import { Container, Row, Col, Image } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
+// Locales
+import { Trans, useTranslation } from "react-i18next";
+
+// Constants
+import { AUTHOR_NAME } from "@/constants/app";
+
 const Footer: React.FC = () => {
+  const { t } = useTranslation("common");
+
+  const authorName: string = AUTHOR_NAME;
+  const authorLink: string = "https://github.com/LucaBn";
+  const authorLinkTitle: string = t("footer.made-by-title", {
+    author: authorName,
+  });
+  const authorLinkComponent: JSX.Element = (
+    <Link
+      to={authorLink}
+      title={authorLinkTitle}
+      target="_blank"
+      rel="noopener noreferrer nofollow"
+    >
+      {authorName}
+    </Link>
+  );
+
   return (
     <footer className="bg-body-tertiary py-4 border-top">
       <Container>
@@ -16,21 +40,20 @@ const Footer: React.FC = () => {
         <Row>
           <Col xs={12} className="mb-4">
             <p>
-              Made with ♥ by{" "}
-              <Link
-                to="https://github.com/LucaBn"
-                title="Visit LucaBn's GitHub Page"
-                target="_blank"
-                rel="noopener noreferrer nofollow"
-              >
-                LucaBn
-              </Link>
+              <Trans
+                i18nKey="footer.made-by"
+                t={t}
+                components={{
+                  authorLink: authorLinkComponent,
+                }}
+                values={{ authorName: authorName }}
+              />
             </p>
           </Col>
         </Row>
         <Row>
           <Col xs={12} className="mb-4">
-            <p className="mb-0">Share</p>
+            <p className="mb-0">{t("footer.share")}</p>
             <ul className="list-unstyled d-flex justify-content-center gap-2">
               {/* TODO: Change with icons */}
               <li>Facebook</li>
@@ -46,7 +69,7 @@ const Footer: React.FC = () => {
             <p>
               <Link
                 to="https://www.buymeacoffee.com/lucabn"
-                title="Buy me a coffee"
+                title={t("footer.buy-me-a-coffee")}
                 target="_blank"
                 rel="noopener noreferrer nofollow"
                 className="footer__buy-me-a-coffee-link"
@@ -55,7 +78,7 @@ const Footer: React.FC = () => {
                   src="/assets/img/buy-me-a-coffee.png"
                   width={200}
                   className="d-block mx-auto"
-                  alt="Buy me a coffee"
+                  alt={t("footer.buy-me-a-coffee")}
                 />
               </Link>
             </p>

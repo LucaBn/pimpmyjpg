@@ -13,7 +13,7 @@ import { useTranslation } from "react-i18next";
 const NavbarComponent: React.FC = () => {
   const [expanded, setExpanded] = useState<boolean>(false);
 
-  const { i18n } = useTranslation("common");
+  const { i18n, t } = useTranslation("common");
   const { language } = i18n;
 
   const navbarRef = useRef<HTMLDivElement>(null);
@@ -34,6 +34,13 @@ const NavbarComponent: React.FC = () => {
     };
   }, []);
 
+  const toggleNavbarDropdownStatus = () => {
+    setExpanded((prevValue) => !prevValue);
+  };
+  const closeNavbarDropdown = () => {
+    setExpanded(false);
+  };
+
   return (
     <Navbar
       expand="lg"
@@ -44,8 +51,8 @@ const NavbarComponent: React.FC = () => {
     >
       <Container>
         <LinkContainer to={`/${language}`}>
-          <Navbar.Brand onClick={() => setExpanded(false)} className="py-0">
-            <Logo height={35} width={200} />
+          <Navbar.Brand onClick={closeNavbarDropdown} className="py-0">
+            <Logo height={35} width={200} title={t("navbar.logo-title")} />
           </Navbar.Brand>
         </LinkContainer>
         <Nav.Item className="d-lg-none d-flex align-items-center ms-auto me-3">
@@ -54,24 +61,22 @@ const NavbarComponent: React.FC = () => {
         </Nav.Item>
         <Navbar.Toggle
           aria-controls="basic-navbar-nav"
-          onClick={() => {
-            setExpanded((prevValue) => !prevValue);
-          }}
+          onClick={toggleNavbarDropdownStatus}
         />
-        <Navbar.Collapse onClick={() => setExpanded(false)}>
+        <Navbar.Collapse onClick={closeNavbarDropdown}>
           <Nav className="ms-auto">
             <Nav.Item className="d-none d-lg-flex align-items-center mx-auto me-2">
               <LanguageSwitcher />
               <ThemeToggle />
             </Nav.Item>
             <LinkContainer to={`/${language}/image-compressor`}>
-              <Nav.Link>Image Compressor</Nav.Link>
+              <Nav.Link>{t("navbar.links.image-compressor")}</Nav.Link>
             </LinkContainer>
             <LinkContainer to={`/${language}/add-filter`}>
-              <Nav.Link>Add Filter</Nav.Link>
+              <Nav.Link>{t("navbar.links.add-filter")}</Nav.Link>
             </LinkContainer>
             <LinkContainer to={`/${language}/add-watermark`}>
-              <Nav.Link>Add Watermark</Nav.Link>
+              <Nav.Link>{t("navbar.links.add-watermark")}</Nav.Link>
             </LinkContainer>
           </Nav>
         </Navbar.Collapse>

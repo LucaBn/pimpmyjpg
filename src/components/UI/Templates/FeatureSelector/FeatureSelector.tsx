@@ -29,19 +29,22 @@ const FeatureSelector: React.FC = () => {
             src="https://placekitten.com/300/500"
             width={300}
             height={500}
-            alt="Immagine 1"
+            alt={t("feature-selector.image-compressor.image-alt")}
             fluid
           />
         </Col>
         <Col xs={12} md={5} className="d-flex align-items-center text-md-start">
           <div>
-            <Section.Title>Title Section One</Section.Title>
+            <Section.Title>
+              {t("feature-selector.image-compressor.title")}
+            </Section.Title>
             <Section.Description>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem
-              ipsum dolor sit amet, consectetur adipiscing elit.
+              {t("feature-selector.image-compressor.description")}
             </Section.Description>
             <Link to="/">
-              <Section.Button>Button</Section.Button>
+              <Section.Button tabIndex={-1}>
+                {t("feature-selector.image-compressor.cta")}
+              </Section.Button>
             </Link>
           </div>
         </Col>
@@ -54,7 +57,7 @@ const FeatureSelector: React.FC = () => {
             src="https://placekitten.com/300/500"
             width={300}
             height={500}
-            alt="Immagine 1"
+            alt={t("feature-selector.add-filter.image-alt")}
             fluid
           />
         </Col>
@@ -64,13 +67,16 @@ const FeatureSelector: React.FC = () => {
           className="d-flex align-items-center text-md-end"
         >
           <div>
-            <Section.Title>Title Section Two</Section.Title>
+            <Section.Title>
+              {t("feature-selector.add-filter.title")}
+            </Section.Title>
             <Section.Description>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem
-              ipsum dolor sit amet, consectetur adipiscing elit.
+              {t("feature-selector.add-filter.description")}
             </Section.Description>
             <Link to="/">
-              <Section.Button>Button</Section.Button>
+              <Section.Button tabIndex={-1}>
+                {t("feature-selector.add-filter.cta")}
+              </Section.Button>
             </Link>
           </div>
         </Col>
@@ -83,19 +89,22 @@ const FeatureSelector: React.FC = () => {
             src="https://placekitten.com/300/500"
             width={300}
             height={500}
-            alt="Immagine 1"
+            alt={t("feature-selector.add-watermark.image-alt")}
             fluid
           />
         </Col>
         <Col xs={12} md={5} className="d-flex align-items-center text-md-start">
           <div>
-            <Section.Title>Title Section Three</Section.Title>
+            <Section.Title>
+              {t("feature-selector.add-watermark.title")}
+            </Section.Title>
             <Section.Description>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem
-              ipsum dolor sit amet, consectetur adipiscing elit.
+              {t("feature-selector.add-watermark.description")}
             </Section.Description>
             <Link to="/">
-              <Section.Button>Button</Section.Button>
+              <Section.Button tabIndex={-1}>
+                {t("feature-selector.add-watermark.cta")}
+              </Section.Button>
             </Link>
           </div>
         </Col>
