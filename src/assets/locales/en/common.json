@@ -41,6 +41,7 @@
     "title": "Image compressor",
     "description": "Select or drop an image, optimize its size and download it!",
     "instructions": "Upload image(s) and see the result",
+    "file-input-description": "Click or drop your files here",
     "max-height": "Max height",
     "max-width": "Max width",
     "quality": "Quality"
