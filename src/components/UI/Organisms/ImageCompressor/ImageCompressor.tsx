@@ -1,10 +1,11 @@
-import React, { useState, ChangeEvent, useRef } from "react";
+import React, { useState, useEffect, ChangeEvent, useRef } from "react";
 
 // Components
 import {
   Accordion,
   Button,
   Image as ImageComponent,
+  Spinner,
   useAccordionButton,
 } from "react-bootstrap";
 
@@ -27,11 +28,14 @@ interface ImageInfo {
 }
 
 const ImageCompressor: React.FC = () => {
-  const [optionsBoxIsOpen, setOptionsBoxIsOpen] = useState(false);
+  const [optionsBoxIsOpen, setOptionsBoxIsOpen] = useState<boolean>(false);
   const [inputFileValueKey, setInputFileValueKey] = useState<number>(0);
-  const [maxWidth, setMaxWidth] = useState(0);
-  const [maxHeight, setMaxHeight] = useState(0);
-  const [quality, setQuality] = useState(70);
+  const [maxWidth, setMaxWidth] = useState<number>(0);
+  const [maxHeight, setMaxHeight] = useState<number>(0);
+  const [quality, setQuality] = useState<number>(70);
+  const [totalImages, setTotalImages] = useState<number>(0);
+  const [loadedImages, setLoadedImages] = useState<number>(0);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [compressedImageList, setCompressedImageList] = useState<ImageInfo[]>(
     []
   );
@@ -46,6 +50,14 @@ const ImageCompressor: React.FC = () => {
   const optionsButtonVariant = optionsBoxIsOpen ? "danger" : "success";
   const activeKey = optionsBoxIsOpen ? "0" : "";
 
+  useEffect(() => {
+    if (loadedImages === totalImages) {
+      setIsLoading(false);
+      setTotalImages(0);
+      setLoadedImages(0);
+    }
+  }, [loadedImages]);
+
   const decoratedOnClick = useAccordionButton("0");
 
   const handleOptionBoxStatus = (
@@ -56,12 +68,16 @@ const ImageCompressor: React.FC = () => {
   };
 
   const handleImageChange = (ev: ChangeEvent<HTMLInputElement>) => {
+    setIsLoading(true);
+
     const files = ev.target.files;
     if (ev.target.files) {
-      setInputFileValueKey((prevValue) => prevValue + 1);
+      setInputFileValueKey((prevValue) => prevValue + 1); // Need this to trigger change event even if the user uploads files with the same names in different moments
     }
 
     if (files && files.length > 0) {
+      setTotalImages(files.length);
+
       Array.from(files).forEach((file, index) => {
         processImage(file, index + compressedImageList.length);
       });
@@ -115,6 +131,8 @@ const ImageCompressor: React.FC = () => {
         "image/jpeg",
         quality / 100
       );
+
+      setLoadedImages((prevValue) => prevValue + 1);
     };
   };
 
@@ -250,15 +268,20 @@ const ImageCompressor: React.FC = () => {
                 </Button>
               </div>
             ))}
-            <div className="d-flex justify-content-center">
-              <Button onClick={handleDownloadAll} className="mt-3">
-                {t("image-compressor.download-all")}
-              </Button>
-            </div>
           </>
-        ) : (
-          <p>...</p>
+        ) : null}
+        {isLoading && (
+          <Spinner animation="border" role="status" className="m-2">
+            <span className="visually-hidden">Loading...</span>
+          </Spinner>
         )}
+        {compressedImageList?.length ? (
+          <div className="d-flex justify-content-center">
+            <Button onClick={handleDownloadAll} className="mt-3">
+              {t("image-compressor.download-all")}
+            </Button>
+          </div>
+        ) : null}
       </div>
     </div>
   );
