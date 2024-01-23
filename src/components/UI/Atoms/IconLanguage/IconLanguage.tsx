@@ -3,13 +3,19 @@ import React from "react";
 // Providers
 import { useTheme } from "@/components/providers/ThemeProvider";
 
-// Constants
-import { Themes } from "@/constants/themes";
+// Typings
+import { IImage } from "@/typings/icons";
 
-const IconLanguage: React.FC = () => {
+// Utils
+import { getImageColor } from "@/utils/image-color";
+
+interface IIconLanguage extends IImage {}
+
+const IconLanguage: React.FC<IIconLanguage> = ({ forceColor }) => {
   const { theme } = useTheme();
 
-  const iconColor = theme === Themes.Dark ? "#fff" : "#000"; // Check bootstrap bs-emphasis-color value
+  const iconColor = getImageColor(theme, forceColor);
+
   return (
     <svg
       width="800px"

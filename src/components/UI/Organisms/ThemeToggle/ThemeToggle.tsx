@@ -8,15 +8,24 @@ import { Button } from "react-bootstrap";
 // Providers
 import { useTheme } from "@/components/providers/ThemeProvider";
 
+// Typings
+import { IImage } from "@/typings/icons";
+
 // Constants
 import { Themes } from "@/constants/themes";
 import { CLASS_APP_NAME } from "@/constants/html-classes";
 
-const ThemeToggle: React.FC = () => {
+interface IThemeToggle extends IImage {}
+
+const ThemeToggle: React.FC<IThemeToggle> = ({ forceColor }) => {
   const { theme, toggleTheme } = useTheme();
 
   const VisibleIcon: JSX.Element =
-    theme === Themes.Dark ? <IconMoon /> : <IconSun />;
+    theme === Themes.Dark ? (
+      <IconMoon forceColor={forceColor} />
+    ) : (
+      <IconSun forceColor={forceColor} />
+    );
 
   return (
     <Button

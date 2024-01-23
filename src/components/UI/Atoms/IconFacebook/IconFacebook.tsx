@@ -1,20 +1,15 @@
 import React from "react";
 
 // Providers
-import { useTheme } from "@/components/providers/ThemeProvider";
+// import { useTheme } from "@/components/providers/ThemeProvider";
 
-// Typings
-import { IImage } from "@/typings/icons";
+// Constants
+// import { Themes } from "@/constants/themes";
 
-// Utils
-import { getImageColor } from "@/utils/image-color";
+const IconSun: React.FC = () => {
+  // const { theme } = useTheme();
 
-interface IIconSun extends IImage {}
-
-const IconSun: React.FC<IIconSun> = ({ forceColor }) => {
-  const { theme } = useTheme();
-
-  const strokeColor = getImageColor(theme, forceColor);
+  // const iconColor = theme === Themes.Dark ? "#fff" : "#000"; // Check bootstrap bs-emphasis-color value
 
   return (
     <svg
@@ -22,7 +17,7 @@ const IconSun: React.FC<IIconSun> = ({ forceColor }) => {
       fill="none"
       viewBox="0 0 24 24"
       strokeWidth={2}
-      stroke={strokeColor}
+      stroke="#fff"
       className="icon-sun"
     >
       <path

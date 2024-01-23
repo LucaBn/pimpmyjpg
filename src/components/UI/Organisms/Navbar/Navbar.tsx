@@ -41,11 +41,13 @@ const NavbarComponent: React.FC = () => {
     setExpanded(false);
   };
 
+  const iconColor = "#fff"; // Force icons color to white since .navbar-dark class is applied to <Navbar /> component
+
   return (
     <Navbar
       expand="lg"
       fixed="top"
-      className="bg-body-tertiary border-bottom"
+      className="navbar navbar-dark bg-dark border-bottom"
       expanded={expanded}
       ref={navbarRef as React.RefObject<HTMLDivElement>}
     >
@@ -56,8 +58,8 @@ const NavbarComponent: React.FC = () => {
           </Navbar.Brand>
         </LinkContainer>
         <Nav.Item className="d-lg-none d-flex align-items-center ms-auto me-3">
-          <LanguageSwitcher />
-          <ThemeToggle />
+          <LanguageSwitcher forceColor={iconColor} />
+          <ThemeToggle forceColor={iconColor} />
         </Nav.Item>
         <Navbar.Toggle
           aria-controls="basic-navbar-nav"
@@ -66,8 +68,8 @@ const NavbarComponent: React.FC = () => {
         <Navbar.Collapse onClick={closeNavbarDropdown}>
           <Nav className="ms-auto">
             <Nav.Item className="d-none d-lg-flex align-items-center mx-auto me-2">
-              <LanguageSwitcher />
-              <ThemeToggle />
+              <LanguageSwitcher forceColor={iconColor} />
+              <ThemeToggle forceColor={iconColor} />
             </Nav.Item>
             <LinkContainer to={`/${language}/image-compressor`}>
               <Nav.Link>{t("navbar.links.image-compressor")}</Nav.Link>
