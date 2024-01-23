@@ -16,15 +16,29 @@ const calculateSize = (
   let width = img.width;
   let height = img.height;
 
-  if (width > height) {
-    if (maxWidth && width > maxWidth) {
+  const reduceByWidth = () => {
+    if (width > maxWidth) {
       height = Math.round((height * maxWidth) / width);
       width = maxWidth;
     }
-  } else {
-    if (maxHeight && height > maxHeight) {
+  };
+
+  const reduceByHeight = () => {
+    if (height > maxHeight) {
       width = Math.round((width * maxHeight) / height);
       height = maxHeight;
+    }
+  };
+
+  if (maxWidth && !maxHeight) {
+    reduceByWidth();
+  } else if (!maxWidth && maxHeight) {
+    reduceByHeight();
+  } else if (maxWidth && maxHeight) {
+    if (width / height < maxWidth / maxHeight) {
+      reduceByHeight();
+    } else {
+      reduceByWidth();
     }
   }
 
