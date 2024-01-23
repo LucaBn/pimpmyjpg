@@ -48,8 +48,8 @@
     "open-options": "Open options panel",
     "close-options": "Close options panel",
     "file-input-description": "Clicca qui o trascina i tuoi file nel riquadro.\nSono accettati tutti i formati!",
-    "max-height": "Max height",
-    "max-width": "Max width",
+    "max-height": "Max height (px)",
+    "max-width": "Max width (px)",
     "quality": "Quality",
     "download": "Download",
     "download-all": "Download all"
