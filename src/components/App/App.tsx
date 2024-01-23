@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 
 // Components
@@ -16,13 +16,24 @@ const App: React.FC = () => {
   const { theme } = useTheme();
 
   const { pathname } = useLocation();
+  const previousPathname = useRef(pathname);
 
   useEffect(() => {
-    document.documentElement.scrollTo({
-      top: 0,
-      left: 0,
-      behavior: "smooth",
-    });
+    const currentPathWithoutLang = pathname.split("/").slice(2).join("/");
+    const previousPathWithoutLang = previousPathname.current
+      .split("/")
+      .slice(2)
+      .join("/");
+
+    if (currentPathWithoutLang !== previousPathWithoutLang) {
+      document.documentElement.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: "smooth",
+      });
+    }
+
+    previousPathname.current = pathname;
   }, [pathname]);
 
   const textColorClass =
