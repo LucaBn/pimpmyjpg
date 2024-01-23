@@ -1,14 +1,26 @@
 import React from "react";
 
 // Components
-import { Container, Row, Col, Image } from "react-bootstrap";
+import { Container, Row, Col, Image, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import IconFacebook from "@/components/UI/Atoms/IconFacebook/IconFacebook";
+import IconTwitter from "@/components/UI/Atoms/IconTwitter/IconTwitter";
+import IconWhatsapp from "@/components/UI/Atoms/IconWhatsapp/IconWhatsapp";
+import IconTelegram from "@/components/UI/Atoms/IconTelegram/IconTelegram";
 
 // Locales
 import { Trans, useTranslation } from "react-i18next";
 
+// Utils
+import {
+  shareOnFacebook,
+  shareOnTelegram,
+  shareOnTwitter,
+  shareOnWhatsapp,
+} from "@/utils/share";
+
 // Constants
-import { AUTHOR_NAME } from "@/constants/app";
+import { AUTHOR_NAME, WEBSITE_URL } from "@/constants/app";
 
 const Footer: React.FC = () => {
   const { t } = useTranslation("common");
@@ -30,12 +42,14 @@ const Footer: React.FC = () => {
     </Link>
   );
 
+  const urlToShare = `www.${WEBSITE_URL}`;
+
   return (
     <footer className="bg-dark text-white py-4 border-top">
       <Container>
         <Row>
           <Col xs={12} className="mt-4">
-            <p>&copy; 2&zwj;024-2381 pimpmyjpg.com</p>
+            <p>&copy; 2&zwj;024-2381 {WEBSITE_URL}</p>
           </Col>
         </Row>
         <Row>
@@ -55,13 +69,44 @@ const Footer: React.FC = () => {
         <Row>
           <Col xs={12} className="mb-4">
             <p className="mb-0">{t("footer.share")}</p>
-            <ul className="list-unstyled d-flex justify-content-center gap-2">
+            <ul className="footer__social-list list-unstyled d-flex justify-content-center gap-2">
               {/* TODO: Change with icons */}
-              <li>Facebook</li>
-              <li>VK</li>
-              <li>X</li>
-              <li>Whatsapp</li>
-              <li>Telegram</li>
+              <li>
+                <Button
+                  onClick={() => shareOnFacebook(urlToShare)}
+                  aria-label="Share on Facebook"
+                  variant="link"
+                >
+                  <IconFacebook />
+                </Button>
+              </li>
+              <li>
+                <Button
+                  onClick={() => shareOnTwitter(urlToShare)}
+                  aria-label="Share on Twitter"
+                  variant="link"
+                >
+                  <IconTwitter />
+                </Button>
+              </li>
+              <li>
+                <Button
+                  onClick={() => shareOnWhatsapp(urlToShare)}
+                  aria-label="Share on WhatsApp"
+                  variant="link"
+                >
+                  <IconWhatsapp />
+                </Button>
+              </li>
+              <li>
+                <Button
+                  onClick={() => shareOnTelegram(urlToShare)}
+                  aria-label="Share on Telegram"
+                  variant="link"
+                >
+                  <IconTelegram />
+                </Button>
+              </li>
             </ul>
           </Col>
         </Row>
