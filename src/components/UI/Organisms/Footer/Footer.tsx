@@ -24,13 +24,14 @@ const Footer: React.FC = () => {
       title={authorLinkTitle}
       target="_blank"
       rel="noopener noreferrer nofollow"
+      className="link-primary"
     >
       {authorName}
     </Link>
   );
 
   return (
-    <footer className="bg-body-tertiary py-4 border-top">
+    <footer className="bg-dark text-white py-4 border-top">
       <Container>
         <Row>
           <Col xs={12} className="mt-4">
