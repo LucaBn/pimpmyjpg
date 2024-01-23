@@ -4,7 +4,7 @@ import React, { useState, useEffect, createContext } from "react";
 import {
   readFromLocalStorage,
   writeToLocalStorage,
-} from "@/utils/localStorage";
+} from "@/utils/local-storage";
 
 // Typings
 import { IGenericComponent } from "@/typings/components";

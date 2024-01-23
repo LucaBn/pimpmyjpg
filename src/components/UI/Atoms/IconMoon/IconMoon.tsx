@@ -3,13 +3,18 @@ import React from "react";
 // Providers
 import { useTheme } from "@/components/providers/ThemeProvider";
 
-// Constants
-import { Themes } from "@/constants/themes";
+// Typings
+import { IImage } from "@/typings/icons";
 
-const IconMoon: React.FC = () => {
+// Utils
+import { getImageColor } from "@/utils/image-color";
+
+interface IIconMoon extends IImage {}
+
+const IconMoon: React.FC<IIconMoon> = ({ forceColor }) => {
   const { theme } = useTheme();
 
-  const iconColor = theme === Themes.Dark ? "#fff" : "#000"; // Check bootstrap bs-emphasis-color value
+  const strokeColor = getImageColor(theme, forceColor);
 
   return (
     <svg
@@ -17,7 +22,7 @@ const IconMoon: React.FC = () => {
       fill="none"
       viewBox="0 0 24 24"
       strokeWidth={2}
-      stroke={iconColor}
+      stroke={strokeColor}
       className="icon-moon"
     >
       <path

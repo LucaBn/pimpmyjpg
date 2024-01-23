@@ -46,6 +46,7 @@ const compareImageSizes = (original: File, compressed: File): string => {
   return `${readableBytes(originalSize)} - ${readableBytes(
     compressedSize
   )} Reduced by ${percentReduction.toFixed(2)}%`;
+  // TODO: return only sizes without text
   // TODO: break line so that "Reduced by..." is on a new line
 };
 
