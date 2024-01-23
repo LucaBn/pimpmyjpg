@@ -12,7 +12,11 @@
   "footer": {
     "made-by": "Creato con ♥ da <authorLink>{{authorName}}</authorLink>",
     "made-by-title": "Visita la pagina GitHub di {{author}}",
-    "share": "Share",
+    "share": "Condividi",
+    "share-on-facebook": "Condividi su Facebook",
+    "share-on-twitter": "Condividi su X (ex Twitter)",
+    "share-on-whatsapp": "Condividi su WhatsApp",
+    "share-on-telegram": "Condividi su Telegram",
     "buy-me-a-coffee": "Buy Me A Coffee"
   },
   "feature-selector": {

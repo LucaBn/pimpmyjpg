@@ -74,7 +74,7 @@ const Footer: React.FC = () => {
               <li>
                 <Button
                   onClick={() => shareOnFacebook(urlToShare)}
-                  aria-label="Share on Facebook"
+                  aria-label={t("footer.share-on-facebook")}
                   variant="link"
                 >
                   <IconFacebook />
@@ -83,7 +83,7 @@ const Footer: React.FC = () => {
               <li>
                 <Button
                   onClick={() => shareOnTwitter(urlToShare)}
-                  aria-label="Share on Twitter"
+                  aria-label={t("footer.share-on-twitter")}
                   variant="link"
                 >
                   <IconTwitter />
@@ -92,7 +92,7 @@ const Footer: React.FC = () => {
               <li>
                 <Button
                   onClick={() => shareOnWhatsapp(urlToShare)}
-                  aria-label="Share on WhatsApp"
+                  aria-label={t("footer.share-on-whatsapp")}
                   variant="link"
                 >
                   <IconWhatsapp />
@@ -101,7 +101,7 @@ const Footer: React.FC = () => {
               <li>
                 <Button
                   onClick={() => shareOnTelegram(urlToShare)}
-                  aria-label="Share on Telegram"
+                  aria-label={t("footer.share-on-telegram")}
                   variant="link"
                 >
                   <IconTelegram />
