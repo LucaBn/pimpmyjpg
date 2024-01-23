@@ -15,12 +15,7 @@
       left: 0;
       transform: translateY(-50%);
       white-space: pre-line;
-      // transition: transform 0.15s ease-in-out;
     }
-
-    //   &:hover label {
-    //     transform: translateY(-65%);
-    //   }
 
     &-input {
       position: absolute;
@@ -30,6 +25,14 @@
       width: 100%;
       cursor: pointer;
     }
+  }
+
+  &__accordion {
+    max-width: 300px;
+  }
+
+  &__quality-number {
+    width: 55px;
   }
 
   &__compressed-image-container {
