@@ -1,5 +1,19 @@
 $navbar-height: $nav-link-height + $navbar-padding-y * 2;
 
+@media only screen and (max-width: 150px) {
+  html {
+    width: 100%;
+    height: 100dvh;
+    background-image: url("/assets/img/why-is-it-so-small.jpg"); /* Easter egg */
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+  }
+  body {
+    display: none;
+  }
+}
+
 .#{$app-name} {
   text-align: center;
 
