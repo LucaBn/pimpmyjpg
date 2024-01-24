@@ -1,3 +1,9 @@
+// Typings
+import { LanguageList } from "@/typings/i18next";
+
+// Constants
+import { DECIMAL_SEPARATOR } from "@/constants/languages";
+
 /**
  * Converts a given number of bytes into a human-readable format with appropriate unit (B, KB, MB, GB, TB, PB, EB, ZB, YB).
  *
@@ -15,4 +21,14 @@ const readableBytes = (bytes: number): string => {
   return (bytes / Math.pow(1024, i)).toFixed(2) + " " + sizes[i];
 };
 
-export { readableBytes };
+/**
+ * Localizes the decimal separator in the given number based on the specified language.
+ *
+ * @param {string} number - The string containing the number to be localized.
+ * @param {LanguageList} language - The language for which the decimal separator should be applied.
+ * @returns {string} - The localized string with the appropriate decimal separator.
+ */
+const localizeDecimalSeparator = (number: string, language: LanguageList) =>
+  number.toString().replace(".", DECIMAL_SEPARATOR[language]);
+
+export { readableBytes, localizeDecimalSeparator };

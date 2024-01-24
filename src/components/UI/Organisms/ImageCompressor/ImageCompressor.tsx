@@ -17,12 +17,16 @@ import {
 // Locales
 import { useTranslation } from "react-i18next";
 
+// Typings
+import { LanguageList } from "@/typings/i18next";
+
 // Utils
 import {
   calculateSize,
   compareImageSizes,
   getCleanFileName,
 } from "@/utils/image-compressor";
+import { localizeDecimalSeparator } from "@/utils/conversions";
 
 interface ImageInfo {
   index: number;
@@ -47,7 +51,8 @@ const ImageCompressor: React.FC = () => {
 
   const compressedImagesContainerRef = useRef<HTMLDivElement>(null);
 
-  const { t } = useTranslation("common");
+  const { i18n, t } = useTranslation("common");
+  const { language } = i18n;
 
   const optionsButtonText = optionsBoxIsOpen
     ? t("image-compressor.close-options")
@@ -170,12 +175,28 @@ const ImageCompressor: React.FC = () => {
     const { originalSize, compressedSize, percentReduction } =
       compareImageSizes(originalFile, compressedFile);
 
+    const localizedOriginalSize = localizeDecimalSeparator(
+      originalSize,
+      language as LanguageList
+    );
+    const localizedCompressedSize = localizeDecimalSeparator(
+      compressedSize,
+      language as LanguageList
+    );
+    const localizedPercentReduction = localizeDecimalSeparator(
+      percentReduction,
+      language as LanguageList
+    );
+
     if (originalFile.size > compressedFile.size) {
       return (
         <>
-          {t("image-compressor.from-to", { originalSize, compressedSize })}
+          {t("image-compressor.from-to", {
+            localizedOriginalSize,
+            localizedCompressedSize,
+          })}
           <br />
-          {t("image-compressor.size-reduction", { percentReduction })}
+          {t("image-compressor.size-reduction", { localizedPercentReduction })}
         </>
       );
     } else {
@@ -183,7 +204,9 @@ const ImageCompressor: React.FC = () => {
         <>
           {t("image-compressor.not-compressed")}
           <br />
-          {t("image-compressor.not-compressed-size", { compressedSize })}
+          {t("image-compressor.not-compressed-size", {
+            localizedCompressedSize,
+          })}
         </>
       );
     }
@@ -193,7 +216,6 @@ const ImageCompressor: React.FC = () => {
     <div className="row">
       <div className="col-12">
         <div className="d-flex flex-column align-items-center gap-3">
-          <p className="mb-0">⬇️ {t("image-compressor.instructions")} ⬇️</p>
           {/* Drop picture(s) container */}
           <div className="image-compressor__upload-container bg-gradient rounded">
             <label htmlFor="file-input fs-1">
