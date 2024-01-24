@@ -42,6 +42,7 @@
   &__compressed-image-miniature {
     height: 80px;
     width: 80px;
+    min-width: 80px; // Need this to force width
 
     img {
       top: 0;
