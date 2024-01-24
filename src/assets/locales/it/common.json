@@ -51,7 +51,12 @@
     "max-height": "Max height (px)",
     "max-width": "Max width (px)",
     "quality": "Quality",
+    "from-to": "Da {{originalSize}} a {{compressedSize}}",
+    "size-reduction": "Dimensione ridotta del {{percentReduction}}%",
+    "not-compressed": "L'immagine non può essere ulteriormente compressa",
+    "not-compressed-size": "Il nuovo file pesa {{compressedSize}}",
     "download": "Download",
-    "download-all": "Download all"
+    "download-all": "Download all",
+    "clear": "Clear"
   }
 }
