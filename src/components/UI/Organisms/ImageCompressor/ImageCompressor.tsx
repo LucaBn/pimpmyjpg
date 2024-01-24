@@ -170,13 +170,23 @@ const ImageCompressor: React.FC = () => {
     const { originalSize, compressedSize, percentReduction } =
       compareImageSizes(originalFile, compressedFile);
 
-    return (
-      <>
-        From {originalSize} to {compressedSize}
-        <br />
-        Size reduced by {percentReduction}%
-      </>
-    );
+    if (originalFile.size > compressedFile.size) {
+      return (
+        <>
+          {t("image-compressor.from-to", { originalSize, compressedSize })}
+          <br />
+          {t("image-compressor.size-reduction", { percentReduction })}
+        </>
+      );
+    } else {
+      return (
+        <>
+          {t("image-compressor.not-compressed")}
+          <br />
+          {t("image-compressor.not-compressed-size", { compressedSize })}
+        </>
+      );
+    }
   };
 
   return (
@@ -318,13 +328,16 @@ const ImageCompressor: React.FC = () => {
           </Spinner>
         )}
         {compressedImageList?.length ? (
-          <div className="d-flex justify-content-center gap-3">
-            <Button onClick={handleDownloadAll} className="mt-3">
-              {t("image-compressor.download-all")} ({compressedImageList.length}
-              )
+          <div className="d-flex justify-content-center gap-3 mt-3">
+            <Button onClick={handleDownloadAll} className="position-relative">
+              {t("image-compressor.download-all")}{" "}
+              <span className="image-compressor__download-number">
+                {compressedImageList.length}
+              </span>
             </Button>
-            <Button variant="danger" onClick={() => {}} className="mt-3">
-              Clear
+            <Button variant="danger" onClick={() => {}}>
+              {/* TODO: Make it clear/reset the page */}
+              {t("image-compressor.clear")}
             </Button>
           </div>
         ) : null}
