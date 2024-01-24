@@ -8,10 +8,12 @@ import { Themes } from "@/constants/themes";
  * @param {string} [forceColor] - The forced color for the image. If not provided, the theme color is used.
  * @returns {string} - The calculated image color.
  */
-export const getImageColor = (theme: Themes, forceColor?: string) => {
+const getImageColor = (theme: Themes, forceColor?: string) => {
   if (forceColor) {
     return forceColor;
   }
 
   return theme === Themes.Dark ? "#fff" : "#000"; // Check bootstrap bs-emphasis-color value
 };
+
+export { getImageColor };

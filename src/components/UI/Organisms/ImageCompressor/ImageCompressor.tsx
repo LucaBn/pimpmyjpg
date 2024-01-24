@@ -166,6 +166,19 @@ const ImageCompressor: React.FC = () => {
     });
   };
 
+  const compareImageSizesLabel = (originalFile: File, compressedFile: File) => {
+    const { originalSize, compressedSize, percentReduction } =
+      compareImageSizes(originalFile, compressedFile);
+
+    return (
+      <>
+        From {originalSize} to {compressedSize}
+        <br />
+        Size reduced by {percentReduction}%
+      </>
+    );
+  };
+
   return (
     <div className="row">
       <div className="col-12">
@@ -231,7 +244,7 @@ const ImageCompressor: React.FC = () => {
                       <Form.Label htmlFor="quality">
                         {t("image-compressor.quality")}
                       </Form.Label>
-                      <InputGroup>
+                      <InputGroup className="mb-1">
                         <Form.Control
                           id="quality-number"
                           type="number"
@@ -269,7 +282,7 @@ const ImageCompressor: React.FC = () => {
             {compressedImageList.map((compressedImage) => (
               <div
                 key={compressedImage.index}
-                className="image-compressor__compressed-image-container bg-body-tertiary d-flex align-items-center border rounded mx-auto mb-1 overflow-hidden"
+                className="image-compressor__compressed-image-container bg-body-tertiary d-flex align-items-center border rounded mx-auto text-start mb-1 overflow-hidden"
               >
                 <div className="image-compressor__compressed-image-miniature position-relative">
                   <ImageComponent
@@ -282,16 +295,16 @@ const ImageCompressor: React.FC = () => {
                   <p className="mx-3 mb-0">
                     <strong>{compressedImage.name}</strong>
                   </p>
-                  <p className="mx-3 mb-0">
-                    {compareImageSizes(
+                  <small className="mx-3 mt-1 mb-0 text-muted lh-sm">
+                    {compareImageSizesLabel(
                       compressedImage.originalFile as File,
                       compressedImage.file as File
                     )}
-                  </p>
+                  </small>
                 </div>
                 <Button
                   onClick={() => handleDownload(compressedImage)}
-                  className="me-2"
+                  className="me-2 text-nowrap"
                 >
                   {t("image-compressor.download")}
                 </Button>
@@ -305,9 +318,13 @@ const ImageCompressor: React.FC = () => {
           </Spinner>
         )}
         {compressedImageList?.length ? (
-          <div className="d-flex justify-content-center">
+          <div className="d-flex justify-content-center gap-3">
             <Button onClick={handleDownloadAll} className="mt-3">
-              {t("image-compressor.download-all")}
+              {t("image-compressor.download-all")} ({compressedImageList.length}
+              )
+            </Button>
+            <Button variant="danger" onClick={() => {}} className="mt-3">
+              Clear
             </Button>
           </div>
         ) : null}

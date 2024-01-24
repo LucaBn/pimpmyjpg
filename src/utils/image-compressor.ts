@@ -45,23 +45,35 @@ const calculateSize = (
   return [width, height];
 };
 
+type CompareImageSizeInfo = {
+  originalSize: string;
+  compressedSize: string;
+  percentReduction: string;
+};
+
 /**
  * Compare the sizes of two image files and calculate the reduction percentage.
  *
  * @param {File} original - The original image file.
  * @param {File} compressed - The compressed image file.
- * @returns {string} - A string indicating the reduction in size.
+ * @returns {CompareImageSizeInfo} - An object with info about originalSize, compressedSize and percentReduction.
  */
-const compareImageSizes = (original: File, compressed: File): string => {
-  const originalSize = original.size;
-  const compressedSize = compressed.size;
-  const percentReduction =
-    ((originalSize - compressedSize) / originalSize) * 100;
-  return `${readableBytes(originalSize)} - ${readableBytes(
-    compressedSize
-  )} Reduced by ${percentReduction.toFixed(2)}%`;
-  // TODO: return only sizes without text
-  // TODO: break line so that "Reduced by..." is on a new line
+const compareImageSizes = (
+  original: File,
+  compressed: File
+): CompareImageSizeInfo => {
+  const originalSize = readableBytes(original.size);
+  const compressedSize = readableBytes(compressed.size);
+  const percentReduction = (
+    ((original.size - compressed.size) / original.size) *
+    100
+  ).toFixed(2);
+
+  return {
+    originalSize,
+    compressedSize,
+    percentReduction,
+  };
 };
 
 /**

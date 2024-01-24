@@ -7,10 +7,7 @@ type LocalStorageDataType = unknown;
  * @param {LocalStorageDataType} data - The data to be stored in localStorage.
  * @returns {void}
  */
-export const writeToLocalStorage = (
-  key: string,
-  data: LocalStorageDataType
-): void => {
+const writeToLocalStorage = (key: string, data: LocalStorageDataType): void => {
   try {
     localStorage.setItem(key, JSON.stringify(data));
   } catch (error) {
@@ -24,7 +21,7 @@ export const writeToLocalStorage = (
  * @param {string} key - The key under which the data is stored.
  * @returns {LocalStorageDataType} - The data retrieved from localStorage.
  */
-export const readFromLocalStorage = (key: string): LocalStorageDataType => {
+const readFromLocalStorage = (key: string): LocalStorageDataType => {
   try {
     const data = localStorage.getItem(key);
     return data ? JSON.parse(data) : null;
@@ -40,10 +37,12 @@ export const readFromLocalStorage = (key: string): LocalStorageDataType => {
  * @param {string} key - The key under which the data is stored.
  * @returns {void}
  */
-export const removeFromLocalStorage = (key: string): void => {
+const removeFromLocalStorage = (key: string): void => {
   try {
     localStorage.removeItem(key);
   } catch (error) {
     console.error("Error removing from localStorage:", error);
   }
 };
+
+export { writeToLocalStorage, readFromLocalStorage, removeFromLocalStorage };
