@@ -323,23 +323,25 @@ const ImageCompressor: React.FC = () => {
                     className="position-absolute h-100 w-100 object-fit-cover"
                   />
                 </div>
-                <div className="d-flex flex-column align-items-start justify-content-center flex-grow-1">
-                  <p className="mx-3 mb-0">
-                    <strong>{compressedImage.name}</strong>
-                  </p>
-                  <small className="mx-3 mt-1 mb-0 text-muted lh-sm">
-                    {compareImageSizesLabel(
-                      compressedImage.originalFile as File,
-                      compressedImage.file as File
-                    )}
-                  </small>
+                <div className="d-flex flex-column flex-sm-row flex-grow-1 align-items-center w-100">
+                  <div className="d-flex flex-column align-items-start justify-content-center flex-grow-1 w-100">
+                    <p className="mx-3 mt-2 mb-0">
+                      <strong>{compressedImage.name}</strong>
+                    </p>
+                    <small className="mx-3 mt-1 mb-0 text-muted lh-sm">
+                      {compareImageSizesLabel(
+                        compressedImage.originalFile as File,
+                        compressedImage.file as File
+                      )}
+                    </small>
+                  </div>
+                  <Button
+                    onClick={() => handleDownload(compressedImage)}
+                    className="m-2 ms-3 me-auto m-sm-2 text-nowrap"
+                  >
+                    {t("image-compressor.download")}
+                  </Button>
                 </div>
-                <Button
-                  onClick={() => handleDownload(compressedImage)}
-                  className="me-2 text-nowrap"
-                >
-                  {t("image-compressor.download")}
-                </Button>
               </div>
             ))}
           </>
