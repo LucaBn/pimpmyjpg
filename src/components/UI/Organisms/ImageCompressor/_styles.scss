@@ -45,6 +45,13 @@
     width: 80px;
     min-width: 80px; // Need this to force width
 
+    @media screen and (max-width: 575.98px) {
+      // TODO: check why var(--bs-breakpoint-sm) doesn't work
+      height: 120px;
+      width: 120px;
+      min-width: 120px; // Need this to force width
+    }
+
     img {
       top: 0;
       left: 0;
