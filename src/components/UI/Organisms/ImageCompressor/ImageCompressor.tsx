@@ -232,8 +232,9 @@ const ImageCompressor: React.FC = () => {
                 {t("image-compressor.options")}
               </Accordion.Header>
               <Accordion.Body className="px-0">
+                {/* TODO: add description on how options values work */}
                 <Container>
-                  <Row className="gy-3">
+                  <Row className="g-3">
                     <Col xs={12} md={6}>
                       <Form.Group>
                         <Form.Label htmlFor="max-width">
