@@ -39,7 +39,7 @@ interface ImageInfo {
 const DEFAULT_VALUES = {
   MAX_WIDTH: 0,
   MAX_HEIGHT: 0,
-  QUALITY: 0,
+  QUALITY: 70,
 };
 
 const ImageCompressor: React.FC = () => {
@@ -218,6 +218,11 @@ const ImageCompressor: React.FC = () => {
     }
   };
 
+  const clearCompressedImageList = () => {
+    setCompressedImageList([]);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
     <div className="row">
       <div className="col-12">
@@ -331,7 +336,7 @@ const ImageCompressor: React.FC = () => {
                 </div>
                 <div className="d-flex flex-column flex-sm-row flex-grow-1 align-items-center w-100">
                   <div className="d-flex flex-column align-items-start justify-content-center flex-grow-1 w-100">
-                    <p className="mx-3 mt-2 mb-0">
+                    <p className="mx-3 mt-2 mt-sm-0 mb-0">
                       <strong>{compressedImage.name}</strong>
                     </p>
                     <small className="mx-3 mt-1 mb-0 text-muted lh-sm">
@@ -358,18 +363,20 @@ const ImageCompressor: React.FC = () => {
           </Spinner>
         )}
         {compressedImageList?.length ? (
-          <div className="d-flex justify-content-center gap-3 mt-3">
-            <Button onClick={handleDownloadAll} className="position-relative">
-              {t("image-compressor.download-all")}{" "}
-              <span className="image-compressor__download-number">
-                {compressedImageList.length}
-              </span>
-            </Button>
-            <Button variant="danger" onClick={() => {}}>
-              {/* TODO: Make it clear/reset the page */}
-              {t("image-compressor.clear")}
-            </Button>
-          </div>
+          <>
+            <div className="d-flex justify-content-center gap-3 mt-3">
+              <Button onClick={handleDownloadAll} className="position-relative">
+                {t("image-compressor.download-all")}{" "}
+                <span className="image-compressor__download-number">
+                  {compressedImageList.length}
+                </span>
+              </Button>
+              <Button variant="danger" onClick={clearCompressedImageList}>
+                {/* TODO: Make it clear/reset the page */}
+                {t("image-compressor.clear")}
+              </Button>
+            </div>
+          </>
         ) : null}
       </div>
     </div>
