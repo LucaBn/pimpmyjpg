@@ -44,7 +44,7 @@
   "image-compressor": {
     "title": "Image compressor",
     "description": "Select or drop an image, optimize its size and download it!",
-    "options": "Options panel",
+    "options": "Options",
     "file-input-description": "Click or drop your file(s) here.\nAny format is allowed!",
     "max-height": "Max height (px)",
     "max-width": "Max width (px)",
