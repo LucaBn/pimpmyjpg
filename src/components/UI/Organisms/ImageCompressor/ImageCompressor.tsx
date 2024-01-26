@@ -36,12 +36,18 @@ interface ImageInfo {
   downloaded: boolean;
 }
 
+const DEFAULT_VALUES = {
+  MAX_WIDTH: 0,
+  MAX_HEIGHT: 0,
+  QUALITY: 0,
+};
+
 const ImageCompressor: React.FC = () => {
   const [optionsBoxIsOpen, setOptionsBoxIsOpen] = useState<boolean>(false);
   const [inputFileValueKey, setInputFileValueKey] = useState<number>(0);
-  const [maxWidth, setMaxWidth] = useState<number>(0);
-  const [maxHeight, setMaxHeight] = useState<number>(0);
-  const [quality, setQuality] = useState<number>(70);
+  const [maxWidth, setMaxWidth] = useState<number>(DEFAULT_VALUES.MAX_WIDTH);
+  const [maxHeight, setMaxHeight] = useState<number>(DEFAULT_VALUES.MAX_HEIGHT);
+  const [quality, setQuality] = useState<number>(DEFAULT_VALUES.QUALITY);
   const [totalImages, setTotalImages] = useState<number>(0);
   const [loadedImages, setLoadedImages] = useState<number>(0);
   const [isLoading, setIsLoading] = useState<boolean>(false);
