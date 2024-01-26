@@ -9,7 +9,6 @@
 
     label {
       position: absolute;
-      font-size: 24px;
       text-align: center;
       width: 100%;
       top: 50%;
@@ -41,15 +40,14 @@
   }
 
   &__compressed-image-miniature {
-    height: 80px;
-    width: 80px;
-    min-width: 80px; // Need this to force width
+    height: 120px;
+    width: 120px;
+    min-width: 120px; // Need this to force width
 
-    @media screen and (max-width: 575.98px) {
-      // TODO: check why var(--bs-breakpoint-sm) doesn't work
-      height: 120px;
-      width: 120px;
-      min-width: 120px; // Need this to force width
+    @include media-breakpoint-up(sm) {
+      height: 80px;
+      width: 80px;
+      min-width: 80px; // Need this to force width
     }
 
     img {
