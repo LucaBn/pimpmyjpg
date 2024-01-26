@@ -44,8 +44,7 @@
   "image-compressor": {
     "title": "画像圧縮機",
     "description": "画像を選択またはドラッグし、最適化してダウンロードします！",
-    "open-options": "Open options panel",
-    "close-options": "Close options panel",
+    "options": "Options panel",
     "file-input-description": "Click or drop your file(s) here.\nAny format is allowed!",
     "max-height": "Max height (px)",
     "max-width": "Max width (px)",

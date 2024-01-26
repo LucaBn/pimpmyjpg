@@ -11,7 +11,6 @@ import {
   InputGroup,
   Row,
   Spinner,
-  useAccordionButton,
 } from "react-bootstrap";
 
 // Locales
@@ -43,7 +42,6 @@ const DEFAULT_VALUES = {
 };
 
 const ImageCompressor: React.FC = () => {
-  const [optionsBoxIsOpen, setOptionsBoxIsOpen] = useState<boolean>(false);
   const [inputFileValueKey, setInputFileValueKey] = useState<number>(0);
   const [maxWidth, setMaxWidth] = useState<number>(DEFAULT_VALUES.MAX_WIDTH);
   const [maxHeight, setMaxHeight] = useState<number>(DEFAULT_VALUES.MAX_HEIGHT);
@@ -60,12 +58,6 @@ const ImageCompressor: React.FC = () => {
   const { i18n, t } = useTranslation("common");
   const { language } = i18n;
 
-  const optionsButtonText = optionsBoxIsOpen
-    ? t("image-compressor.close-options")
-    : t("image-compressor.open-options");
-  const optionsButtonVariant = optionsBoxIsOpen ? "danger" : "success";
-  const activeKey = optionsBoxIsOpen ? "0" : "";
-
   useEffect(() => {
     if (loadedImages === totalImages) {
       setIsLoading(false);
@@ -73,15 +65,6 @@ const ImageCompressor: React.FC = () => {
       setLoadedImages(0);
     }
   }, [loadedImages]);
-
-  const decoratedOnClick = useAccordionButton("0");
-
-  const handleOptionBoxStatus = (
-    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
-  ) => {
-    setOptionsBoxIsOpen((prevValue) => !prevValue);
-    decoratedOnClick(e);
-  };
 
   const handleImageChange = (ev: ChangeEvent<HTMLInputElement>) => {
     setIsLoading(true);
@@ -243,78 +226,74 @@ const ImageCompressor: React.FC = () => {
             />
           </div>
           {/* Options */}
-          <Button
-            variant={optionsButtonVariant}
-            onClick={(e) => handleOptionBoxStatus(e)}
-          >
-            {optionsButtonText}
-          </Button>
-          <Accordion
-            className="image-compressor__accordion text-start"
-            activeKey={activeKey}
-          >
-            <Accordion.Collapse eventKey="0">
-              <Container>
-                <Row className="gy-3">
-                  <Col xs={12} md={6}>
-                    <Form.Group>
-                      <Form.Label htmlFor="max-width">
-                        {t("image-compressor.max-width")}
-                      </Form.Label>
-                      <Form.Control
-                        id="max-width"
-                        type="number"
-                        value={maxWidth}
-                        onChange={(e) => setMaxWidth(Number(e.target.value))}
-                      />
-                    </Form.Group>
-                  </Col>
-                  <Col xs={12} md={6}>
-                    <Form.Group>
-                      <Form.Label htmlFor="max-height">
-                        {t("image-compressor.max-height")}
-                      </Form.Label>
-                      <Form.Control
-                        id="max-height"
-                        type="number"
-                        value={maxHeight}
-                        onChange={(e) => setMaxHeight(Number(e.target.value))}
-                      />
-                    </Form.Group>
-                  </Col>
-                  <Col xs={12}>
-                    <Form.Group>
-                      <Form.Label htmlFor="quality">
-                        {t("image-compressor.quality")}
-                      </Form.Label>
-                      <InputGroup className="mb-1">
+          <Accordion className="image-compressor__accordion w-100 text-start">
+            <Accordion.Item eventKey="0">
+              <Accordion.Header>
+                {t("image-compressor.options")}
+              </Accordion.Header>
+              <Accordion.Body className="px-0">
+                <Container>
+                  <Row className="gy-3">
+                    <Col xs={12} md={6}>
+                      <Form.Group>
+                        <Form.Label htmlFor="max-width">
+                          {t("image-compressor.max-width")}
+                        </Form.Label>
                         <Form.Control
-                          id="quality-number"
+                          id="max-width"
                           type="number"
+                          value={maxWidth}
+                          onChange={(e) => setMaxWidth(Number(e.target.value))}
+                        />
+                      </Form.Group>
+                    </Col>
+                    <Col xs={12} md={6}>
+                      <Form.Group>
+                        <Form.Label htmlFor="max-height">
+                          {t("image-compressor.max-height")}
+                        </Form.Label>
+                        <Form.Control
+                          id="max-height"
+                          type="number"
+                          value={maxHeight}
+                          onChange={(e) => setMaxHeight(Number(e.target.value))}
+                        />
+                      </Form.Group>
+                    </Col>
+                    <Col xs={12}>
+                      <Form.Group>
+                        <Form.Label htmlFor="quality">
+                          {t("image-compressor.quality")}
+                        </Form.Label>
+                        <InputGroup className="mb-1">
+                          <Form.Control
+                            id="quality-number"
+                            type="number"
+                            min="0"
+                            max="100"
+                            step="1"
+                            value={quality}
+                            onChange={(e) => setQuality(Number(e.target.value))}
+                            aria-labelledby="quality"
+                            className="image-compressor__quality-number me-1"
+                          />
+                          <InputGroup.Text>%</InputGroup.Text>
+                        </InputGroup>
+                        <Form.Control
+                          id="quality"
+                          type="range"
                           min="0"
                           max="100"
                           step="1"
                           value={quality}
                           onChange={(e) => setQuality(Number(e.target.value))}
-                          aria-labelledby="quality"
-                          className="image-compressor__quality-number me-1"
                         />
-                        <InputGroup.Text>%</InputGroup.Text>
-                      </InputGroup>
-                      <Form.Control
-                        id="quality"
-                        type="range"
-                        min="0"
-                        max="100"
-                        step="1"
-                        value={quality}
-                        onChange={(e) => setQuality(Number(e.target.value))}
-                      />
-                    </Form.Group>
-                  </Col>
-                </Row>
-              </Container>
-            </Accordion.Collapse>
+                      </Form.Group>
+                    </Col>
+                  </Row>
+                </Container>
+              </Accordion.Body>
+            </Accordion.Item>
           </Accordion>
         </div>
       </div>
