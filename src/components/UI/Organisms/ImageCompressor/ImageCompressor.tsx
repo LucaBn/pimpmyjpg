@@ -82,14 +82,12 @@ const ImageCompressor: React.FC = () => {
       });
 
       // Scroll to compressed images section
-      setTimeout(() => {
-        if (compressedImagesContainerRef.current) {
-          compressedImagesContainerRef.current.scrollIntoView({
-            behavior: "smooth",
-            block: "start",
-          });
-        }
-      }, 50);
+      if (compressedImagesContainerRef.current) {
+        compressedImagesContainerRef.current.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      }
     }
   };
 
@@ -152,6 +150,16 @@ const ImageCompressor: React.FC = () => {
 
     document.body.removeChild(zipLink);
     URL.revokeObjectURL(zipUrl);
+
+    if (!compressedImage.downloaded) {
+      setCompressedImageList((currentImages) =>
+        currentImages.map((image) =>
+          image.index === compressedImage.index
+            ? { ...image, downloaded: true }
+            : image
+        )
+      );
+    }
   };
 
   const handleDownloadAll = () => {
@@ -207,12 +215,12 @@ const ImageCompressor: React.FC = () => {
   };
 
   return (
-    <div className="row">
-      <div className="col-12">
+    <Row>
+      <Col xs={12}>
         <div className="d-flex flex-column align-items-center gap-3">
           {/* Drop picture(s) container */}
           <div className="image-compressor__upload-container bg-gradient rounded">
-            <label htmlFor="file-input" className="fs-3">
+            <label htmlFor="file-input" className="fs-5">
               {t("image-compressor.file-input-description")}
             </label>
             <input
@@ -297,9 +305,9 @@ const ImageCompressor: React.FC = () => {
             </Accordion.Item>
           </Accordion>
         </div>
-      </div>
+      </Col>
       {/* Result */}
-      <div ref={compressedImagesContainerRef} className="col-12 my-4">
+      <Col xs={12} ref={compressedImagesContainerRef} className="my-4">
         {compressedImageList?.length ? (
           <>
             {compressedImageList.map((compressedImage) => (
@@ -330,7 +338,8 @@ const ImageCompressor: React.FC = () => {
                     onClick={() => handleDownload(compressedImage)}
                     className="m-2 ms-3 me-auto m-sm-2 text-nowrap"
                   >
-                    {t("image-compressor.download")}
+                    {t("image-compressor.download")}{" "}
+                    {compressedImage.downloaded ? "👍" : ""}
                   </Button>
                 </div>
               </div>
@@ -358,8 +367,8 @@ const ImageCompressor: React.FC = () => {
             </div>
           </>
         ) : null}
-      </div>
-    </div>
+      </Col>
+    </Row>
   );
 };
 
