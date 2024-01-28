@@ -313,7 +313,7 @@ const ImageCompressor: React.FC = () => {
             {compressedImageList.map((compressedImage) => (
               <div
                 key={compressedImage.index}
-                className="image-compressor__compressed-image-container bg-body-tertiary d-flex align-items-center border rounded mx-auto text-start mb-1 overflow-hidden"
+                className="image-compressor__compressed-image-container bg-body-tertiary d-flex align-items-center border border-hover rounded mx-auto text-start mb-1 overflow-hidden"
               >
                 <div className="image-compressor__compressed-image-miniature position-relative">
                   <ImageComponent
