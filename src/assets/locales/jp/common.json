@@ -43,7 +43,7 @@
   },
   "image-compressor": {
     "title": "画像圧縮",
-    "description": "画像を選択またはドロップし、サイズを最適化してダウンロード！",
+    "description": "1枚以上の画像を選択またはドロップして、サイズを最適化しダウンロードしてください！",
     "options": "オプション",
     "file-input-description": "ここをクリックまたはファイルをドロップ。\nどんな形式もOKです！",
     "max-height": "最大高さ (px)",

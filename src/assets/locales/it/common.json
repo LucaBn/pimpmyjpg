@@ -43,7 +43,7 @@
   },
   "image-compressor": {
     "title": "Compressore di Immagini",
-    "description": "Seleziona o trascina un'immagine, ottimizza le sue dimensioni e scaricala!",
+    "description": "Seleziona o trascina una o più immagini, ottimizza le loro dimensioni e scaricale!",
     "options": "Opzioni",
     "file-input-description": "Clicca o trascina qui il(i) tuo(i) file.\nÈ permesso qualsiasi formato!",
     "max-height": "Altezza massima (px)",
