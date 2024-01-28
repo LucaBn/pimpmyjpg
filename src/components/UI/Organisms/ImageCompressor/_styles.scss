@@ -37,6 +37,7 @@
 
   &__compressed-image-container {
     max-width: 600px;
+    transition: border-color 0.15s;
   }
 
   &__compressed-image-miniature {
