@@ -1,60 +1,60 @@
 {
   "navbar": {
     "logo-title": "Pimp My Jpg",
-    "language-switcher": "Switch language",
-    "theme-toggle": "Toggle theme",
+    "language-switcher": "言語を切り替える",
+    "theme-toggle": "テーマを切り替える",
     "links": {
-      "image-compressor": "Image Compressor",
-      "add-filter": "Add Filter",
-      "add-watermark": "Add Watermark"
+      "image-compressor": "画像圧縮",
+      "add-filter": "フィルターを追加",
+      "add-watermark": "透かしを追加"
     }
   },
   "footer": {
-    "made-by": "Made with ♥ by <authorLink>{{authorName}}</authorLink>",
-    "made-by-title": "Visit {{author}}'s GitHub Page",
-    "share": "Share",
-    "share-on-facebook": "Share on Facebook",
-    "share-on-twitter": "Share on X (former Twitter)",
-    "share-on-whatsapp": "Share on WhatsApp",
-    "share-on-telegram": "Share on Telegram",
-    "buy-me-a-coffee": "Buy Me A Coffee"
+    "made-by": "♥で作成された <authorLink>{{authorName}}</authorLink>",
+    "made-by-title": "{{author}}のGitHubページを訪問",
+    "share": "共有",
+    "share-on-facebook": "Facebookで共有",
+    "share-on-twitter": "X（旧Twitter）で共有",
+    "share-on-whatsapp": "WhatsAppで共有",
+    "share-on-telegram": "Telegramで共有",
+    "buy-me-a-coffee": "コーヒーを買う"
   },
   "feature-selector": {
-    "title": "やりたいことを選択する",
-    "description": "お客様に最適なサービスをお選びください",
+    "title": "機能選択",
+    "description": "希望のサービスを選択",
     "image-compressor": {
-      "image-alt": "Image Compressor",
-      "title": "Image Compressor",
+      "image-alt": "画像圧縮",
+      "title": "画像圧縮",
       "description": "Lorem ipsum dolor sit amet, consectetur adipisci elit, sed do eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrum exercitationem ullamco laboriosam.",
-      "cta": "COMPRESS NOW!"
+      "cta": "今すぐ圧縮！"
     },
     "add-filter": {
-      "image-alt": "Add Filter",
-      "title": "Add Filter",
+      "image-alt": "フィルターを追加",
+      "title": "フィルターを追加",
       "description": "Lorem ipsum dolor sit amet, consectetur adipisci elit, sed do eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrum exercitationem ullamco laboriosam.",
-      "cta": "FILTER NOW!"
+      "cta": "今すぐフィルター！"
     },
     "add-watermark": {
-      "image-alt": "Add Watermark",
-      "title": "Add Watermark",
+      "image-alt": "透かしを追加",
+      "title": "透かしを追加",
       "description": "Lorem ipsum dolor sit amet, consectetur adipisci elit, sed do eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrum exercitationem ullamco laboriosam.",
-      "cta": "MARK NOW!"
+      "cta": "今すぐマーク！"
     }
   },
   "image-compressor": {
-    "title": "画像圧縮機",
-    "description": "画像を選択またはドラッグし、最適化してダウンロードします！",
-    "options": "Options",
-    "file-input-description": "Click or drop your file(s) here.\nAny format is allowed!",
-    "max-height": "Max height (px)",
-    "max-width": "Max width (px)",
-    "quality": "Quality",
-    "from-to": "From {{localizedOriginalSize}} to {{localizedCompressedSize}}",
-    "size-reduction": "Size reduced by {{localizedPercentReduction}}%",
-    "not-compressed": "The image cannot be further compressed",
-    "not-compressed-size": "New file is {{localizedCompressedSize}}",
-    "download": "Download",
-    "download-all": "Download all",
-    "clear": "Clear"
+    "title": "画像圧縮",
+    "description": "画像を選択またはドロップし、サイズを最適化してダウンロード！",
+    "options": "オプション",
+    "file-input-description": "ここをクリックまたはファイルをドロップ。\nどんな形式もOKです！",
+    "max-height": "最大高さ (px)",
+    "max-width": "最大幅 (px)",
+    "quality": "品質",
+    "from-to": "{{localizedOriginalSize}} から {{localizedCompressedSize}} へ",
+    "size-reduction": "サイズを {{localizedPercentReduction}}% 縮小",
+    "not-compressed": "これ以上画像を圧縮することはできません",
+    "not-compressed-size": "新しいファイルサイズは {{localizedCompressedSize}}",
+    "download": "ダウンロード",
+    "download-all": "すべてダウンロード",
+    "clear": "クリア"
   }
 }

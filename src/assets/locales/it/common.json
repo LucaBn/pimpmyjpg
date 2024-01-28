@@ -1,60 +1,60 @@
 {
   "navbar": {
     "logo-title": "Pimp My Jpg",
-    "language-switcher": "Switch language",
-    "theme-toggle": "Toggle theme",
+    "language-switcher": "Cambia lingua",
+    "theme-toggle": "Cambia tema",
     "links": {
-      "image-compressor": "Image Compressor",
-      "add-filter": "Add Filter",
-      "add-watermark": "Add Watermark"
+      "image-compressor": "Compressore di Immagini",
+      "add-filter": "Aggiungi Filtro",
+      "add-watermark": "Aggiungi Watermark"
     }
   },
   "footer": {
     "made-by": "Creato con ♥ da <authorLink>{{authorName}}</authorLink>",
-    "made-by-title": "Visita la pagina GitHub di {{author}}",
+    "made-by-title": "Visita la Pagina GitHub di {{author}}",
     "share": "Condividi",
     "share-on-facebook": "Condividi su Facebook",
     "share-on-twitter": "Condividi su X (ex Twitter)",
     "share-on-whatsapp": "Condividi su WhatsApp",
     "share-on-telegram": "Condividi su Telegram",
-    "buy-me-a-coffee": "Buy Me A Coffee"
+    "buy-me-a-coffee": "Offrimi un Caffè"
   },
   "feature-selector": {
-    "title": "Seleziona cosa vuoi fare",
-    "description": "Seleziona il servizio che più ti aggrada",
+    "title": "Seleziona Funzionalità",
+    "description": "Seleziona il servizio desiderato",
     "image-compressor": {
-      "image-alt": "Image Compressor",
-      "title": "Image Compressor",
+      "image-alt": "Compressore di Immagini",
+      "title": "Compressore di Immagini",
       "description": "Lorem ipsum dolor sit amet, consectetur adipisci elit, sed do eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrum exercitationem ullamco laboriosam.",
-      "cta": "COMPRESS NOW!"
+      "cta": "COMPRIMI ORA!"
     },
     "add-filter": {
-      "image-alt": "Add Filter",
-      "title": "Add Filter",
+      "image-alt": "Aggiungi Filtro",
+      "title": "Aggiungi Filtro",
       "description": "Lorem ipsum dolor sit amet, consectetur adipisci elit, sed do eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrum exercitationem ullamco laboriosam.",
-      "cta": "FILTER NOW!"
+      "cta": "FILTRA ORA!"
     },
     "add-watermark": {
-      "image-alt": "Add Watermark",
-      "title": "Add Watermark",
+      "image-alt": "Aggiungi Watermark",
+      "title": "Aggiungi Watermark",
       "description": "Lorem ipsum dolor sit amet, consectetur adipisci elit, sed do eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrum exercitationem ullamco laboriosam.",
-      "cta": "MARK NOW!"
+      "cta": "APPLICA ORA!"
     }
   },
   "image-compressor": {
-    "title": "Compressore di immagini",
-    "description": "Seleziona o trascina un'immagine, ottimizzala e scaricala!",
-    "options": "Options",
-    "file-input-description": "Clicca qui o trascina i tuoi file nel riquadro.\nSono accettati tutti i formati!",
-    "max-height": "Max height (px)",
-    "max-width": "Max width (px)",
-    "quality": "Quality",
+    "title": "Compressore di Immagini",
+    "description": "Seleziona o trascina un'immagine, ottimizza le sue dimensioni e scaricala!",
+    "options": "Opzioni",
+    "file-input-description": "Clicca o trascina qui il(i) tuo(i) file.\nÈ permesso qualsiasi formato!",
+    "max-height": "Altezza massima (px)",
+    "max-width": "Larghezza massima (px)",
+    "quality": "Qualità",
     "from-to": "Da {{localizedOriginalSize}} a {{localizedCompressedSize}}",
-    "size-reduction": "Dimensione ridotta del {{localizedPercentReduction}}%",
+    "size-reduction": "Riduzione della dimensione del {{localizedPercentReduction}}%",
     "not-compressed": "L'immagine non può essere ulteriormente compressa",
     "not-compressed-size": "Il nuovo file pesa {{localizedCompressedSize}}",
-    "download": "Download",
-    "download-all": "Download all",
-    "clear": "Clear"
+    "download": "Scarica",
+    "download-all": "Scarica tutto",
+    "clear": "Svuota"
   }
 }
