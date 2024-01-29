@@ -1,0 +1,33 @@
+.#{$app-name} {
+  &__logo {
+    opacity: 0.55;
+    transition: opacity 0.15s;
+
+    &:hover {
+      opacity: 0.75;
+    }
+
+    &-label {
+      display: block;
+      position: absolute;
+      top: 50%;
+      right: 0;
+      font-size: 1rem;
+      word-spacing: 100vw;
+      white-space: normal;
+      text-align: left;
+      line-height: 0.8;
+      margin-top: 1px;
+      transform: translate(100%, -50%);
+    }
+  }
+}
+
+.active {
+  .#{$app-name} {
+    &__logo,
+    &__logo:hover {
+      opacity: 1;
+    }
+  }
+}
