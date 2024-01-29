@@ -10,7 +10,11 @@ import { TitleTags } from "@/components/UI/Molecules/Title/typings";
 interface SectionTitleProps extends IGenericComponent {}
 
 const SectionTitle: React.FC<SectionTitleProps> = ({ children }) => {
-  return <Title tag={TitleTags.H2}>{children}</Title>;
+  return (
+    <Title tag={TitleTags.H2} attributeList={{ className: "mb-3" }}>
+      {children}
+    </Title>
+  );
 };
 
 export default SectionTitle;
