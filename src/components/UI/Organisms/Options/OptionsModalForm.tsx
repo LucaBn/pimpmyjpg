@@ -1,9 +1,11 @@
 import React from "react";
 
 // Components
+import Text from "@/components/UI/Atoms/Text/Text";
 import FlagEn from "@/components/UI/Atoms/FlagEn/FlagEn";
 import FlagIt from "@/components/UI/Atoms/FlagIt/FlagIt";
 import FlagJp from "@/components/UI/Atoms/FlagJp/FlagJp";
+import ThemeToggle from "@/components/UI/Organisms/ThemeToggle/ThemeToggle";
 import { Col, Form } from "react-bootstrap";
 
 // Locales
@@ -70,27 +72,37 @@ const OptionsModalForm: React.FC = () => {
   };
 
   return (
-    <Form>
-      <Form.Group as={Col}>
-        {LANGUAGE_OPTIONS.map((option) => (
-          <Form.Check
-            key={option.language}
-            id={`${CLASS_APP_NAME}-radio__${option.language}`}
-            type="radio"
-            name="language"
-            label={
-              <div className={flagContainerClassList(option.language)}>
-                {option.flagComponent}
-              </div>
-            }
-            value={option.language}
-            checked={language === option.language}
-            onChange={() => handleLanguage(option.language)}
-            title={option.title}
-          />
-        ))}
-      </Form.Group>
-    </Form>
+    <>
+      <Text tag="p" attributeList={{ className: "mb-1" }}>
+        Select Language:
+      </Text>
+      <Form>
+        <Form.Group as={Col} className=" d-flex gap-3">
+          {LANGUAGE_OPTIONS.map((option) => (
+            <Form.Check
+              key={option.language}
+              id={`${CLASS_APP_NAME}-radio__${option.language}`}
+              type="radio"
+              name="language"
+              label={
+                <div className={flagContainerClassList(option.language)}>
+                  {option.flagComponent}
+                </div>
+              }
+              value={option.language}
+              checked={language === option.language}
+              onChange={() => handleLanguage(option.language)}
+              title={option.title}
+            />
+          ))}
+        </Form.Group>
+      </Form>
+
+      <Text tag="p" attributeList={{ className: "mt-3 mb-1" }}>
+        Select Theme:
+      </Text>
+      <ThemeToggle />
+    </>
   );
 };
 
