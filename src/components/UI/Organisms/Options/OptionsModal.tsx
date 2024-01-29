@@ -16,9 +16,9 @@ const OptionsModal: React.FC<IOptionsModal> = ({ show, setShow }) => {
 
   return (
     <>
-      <Modal show={show} size="sm" onHide={handleClose}>
+      <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Select Language</Modal.Title>
+          <Modal.Title>Options</Modal.Title>
         </Modal.Header>
         <Modal.Body className="d-flex flex-column">
           <OptionsModalForm />

@@ -31,7 +31,7 @@ const ThemeToggle: React.FC<IThemeToggle> = ({ forceColor }) => {
     <Button
       aria-label="Toggle theme"
       variant="link"
-      className={`${CLASS_APP_NAME}-theme-toggle rounded-0`}
+      className={`${CLASS_APP_NAME}-theme-toggle rounded-0 me-auto p-0`}
       onClick={toggleTheme}
     >
       {VisibleIcon}
