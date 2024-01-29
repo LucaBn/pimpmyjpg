@@ -11,7 +11,11 @@ interface SectionDescriptionProps extends IGenericComponent {}
 const SectionDescription: React.FC<SectionDescriptionProps> = ({
   children,
 }) => {
-  return <Text tag="p">{children}</Text>;
+  return (
+    <Text tag="p" attributeList={{ className: "lh-lg mb-3" }}>
+      {children}
+    </Text>
+  );
 };
 
 export default SectionDescription;

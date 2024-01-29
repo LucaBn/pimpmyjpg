@@ -34,7 +34,7 @@ const FeatureSelector: React.FC = () => {
           />
         </Col>
         <Col xs={12} md={5} className="d-flex align-items-center text-md-start">
-          <div>
+          <div className="my-4">
             <Section.Title>
               {t("feature-selector.image-compressor.title")}
             </Section.Title>
@@ -66,7 +66,7 @@ const FeatureSelector: React.FC = () => {
           md={{ span: 5, offset: 1 }}
           className="d-flex align-items-center text-md-end"
         >
-          <div>
+          <div className="my-4">
             <Section.Title>
               {t("feature-selector.add-filter.title")}
             </Section.Title>
@@ -94,7 +94,7 @@ const FeatureSelector: React.FC = () => {
           />
         </Col>
         <Col xs={12} md={5} className="d-flex align-items-center text-md-start">
-          <div>
+          <div className="my-4">
             <Section.Title>
               {t("feature-selector.add-watermark.title")}
             </Section.Title>
