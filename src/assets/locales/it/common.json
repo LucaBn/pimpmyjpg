@@ -1,12 +1,16 @@
 {
   "navbar": {
     "logo-title": "Pimp My Jpg",
-    "language-switcher": "Cambia lingua",
-    "theme-toggle": "Cambia tema",
     "links": {
       "image-compressor": "Compressore di Immagini",
       "add-filter": "Aggiungi Filtro",
       "add-watermark": "Aggiungi Watermark"
+    },
+    "options": {
+      "title": "Opzioni",
+      "save-and-close": "Salva e chiudi",
+      "select-language": "Seleziona lingua",
+      "select-theme": "Seleziona tema"
     }
   },
   "footer": {
@@ -56,5 +60,6 @@
     "download": "Scarica",
     "download-all": "Scarica tutto",
     "clear": "Svuota"
-  }
+  },
+  "loading": "Caricamento..."
 }

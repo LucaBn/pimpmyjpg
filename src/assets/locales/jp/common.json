@@ -1,12 +1,16 @@
 {
   "navbar": {
     "logo-title": "Pimp My Jpg",
-    "language-switcher": "言語を切り替える",
-    "theme-toggle": "テーマを切り替える",
     "links": {
       "image-compressor": "画像圧縮",
       "add-filter": "フィルターを追加",
       "add-watermark": "透かしを追加"
+    },
+    "options": {
+      "title": "オプション",
+      "save-and-close": "保存して閉じる",
+      "select-language": "言語選択",
+      "select-theme": "テーマを選ぶ"
     }
   },
   "footer": {
@@ -56,5 +60,6 @@
     "download": "ダウンロード",
     "download-all": "すべてダウンロード",
     "clear": "クリア"
-  }
+  },
+  "loading": "読み込み中..."
 }
