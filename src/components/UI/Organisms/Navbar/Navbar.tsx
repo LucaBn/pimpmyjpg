@@ -4,15 +4,16 @@ import { useLocation } from "react-router-dom";
 // Components
 import { Container, Nav, Navbar } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
-import LanguageSwitcher from "@/components/UI/Organisms/LanguageSwitcher/LanguageSwitcher";
-import ThemeToggle from "@/components/UI/Organisms/ThemeToggle/ThemeToggle";
 import Logo from "@/components/UI/Molecules/Logo/Logo";
+import Options from "@/components/UI/Organisms/Options/Options";
+import OptionsModal from "@/components/UI/Organisms/Options/OptionsModal";
 
 // Locales
 import { useTranslation } from "react-i18next";
 
 const NavbarComponent: React.FC = () => {
   const [expanded, setExpanded] = useState<boolean>(false);
+  const [showOptionsModal, setShowOptionsModal] = useState<boolean>(false);
 
   const { i18n, t } = useTranslation("common");
   const { language } = i18n;
@@ -47,50 +48,57 @@ const NavbarComponent: React.FC = () => {
   const iconColor = "#fff"; // Force icons color to white since .navbar-dark class is applied to <Navbar /> component
 
   return (
-    <Navbar
-      expand="lg"
-      fixed="top"
-      className="navbar navbar-dark bg-dark border-bottom"
-      expanded={expanded}
-      ref={navbarRef as React.RefObject<HTMLDivElement>}
-    >
-      {/*
+    <>
+      <Navbar
+        expand="lg"
+        fixed="top"
+        className="navbar navbar-dark bg-dark border-bottom"
+        expanded={expanded}
+        ref={navbarRef as React.RefObject<HTMLDivElement>}
+      >
+        {/*
         Use key={pathname} to force the update of the component make links have correct classes
         https://github.com/react-bootstrap/react-router-bootstrap/issues/242#issuecomment-613761912
       */}
-      <Container key={pathname}>
-        <LinkContainer to={`/${language}`}>
-          <Navbar.Brand onClick={closeNavbarDropdown} className="py-0">
-            <Logo height={40} width={80} title={t("navbar.logo-title")} />
-          </Navbar.Brand>
-        </LinkContainer>
-        <Nav.Item className="d-lg-none d-flex align-items-center ms-auto me-3">
-          <LanguageSwitcher forceColor={iconColor} />
-          <ThemeToggle forceColor={iconColor} />
-        </Nav.Item>
-        <Navbar.Toggle
-          aria-controls="basic-navbar-nav"
-          onClick={toggleNavbarDropdownStatus}
-        />
-        <Navbar.Collapse onClick={closeNavbarDropdown}>
-          <Nav className="ms-auto">
-            <Nav.Item className="d-none d-lg-flex align-items-center mx-auto me-2">
-              <LanguageSwitcher forceColor={iconColor} />
-              <ThemeToggle forceColor={iconColor} />
-            </Nav.Item>
-            <LinkContainer to={`/${language}/image-compressor`}>
-              <Nav.Link>{t("navbar.links.image-compressor")}</Nav.Link>
-            </LinkContainer>
-            <LinkContainer to={`/${language}/add-filter`}>
-              <Nav.Link>{t("navbar.links.add-filter")}</Nav.Link>
-            </LinkContainer>
-            <LinkContainer to={`/${language}/add-watermark`}>
-              <Nav.Link>{t("navbar.links.add-watermark")}</Nav.Link>
-            </LinkContainer>
-          </Nav>
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
+        <Container key={pathname}>
+          <LinkContainer to={`/${language}`}>
+            <Navbar.Brand onClick={closeNavbarDropdown} className="py-0">
+              <Logo height={40} width={80} title={t("navbar.logo-title")} />
+            </Navbar.Brand>
+          </LinkContainer>
+          <Nav.Item
+            className="d-lg-none d-flex align-items-center ms-auto me-3"
+            onClick={() => setShowOptionsModal(true)}
+          >
+            <Options forceColor={iconColor} />
+          </Nav.Item>
+          <Navbar.Toggle
+            aria-controls="basic-navbar-nav"
+            onClick={toggleNavbarDropdownStatus}
+          />
+          <Navbar.Collapse onClick={closeNavbarDropdown}>
+            <Nav className="ms-auto">
+              <Nav.Item
+                className="d-none d-lg-flex align-items-center mx-auto me-2"
+                onClick={() => setShowOptionsModal(true)}
+              >
+                <Options forceColor={iconColor} />
+              </Nav.Item>
+              <LinkContainer to={`/${language}/image-compressor`}>
+                <Nav.Link>{t("navbar.links.image-compressor")}</Nav.Link>
+              </LinkContainer>
+              <LinkContainer to={`/${language}/add-filter`}>
+                <Nav.Link>{t("navbar.links.add-filter")}</Nav.Link>
+              </LinkContainer>
+              <LinkContainer to={`/${language}/add-watermark`}>
+                <Nav.Link>{t("navbar.links.add-watermark")}</Nav.Link>
+              </LinkContainer>
+            </Nav>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
+      <OptionsModal show={showOptionsModal} setShow={setShowOptionsModal} />
+    </>
   );
 };
 
