@@ -46,7 +46,7 @@ const LANGUAGE_OPTIONS: LanguageOption[] = [
 ];
 
 const OptionsModalForm: React.FC = () => {
-  const { i18n } = useTranslation("common");
+  const { t, i18n } = useTranslation("common");
   const { language, changeLanguage } = i18n;
 
   const location = useLocation();
@@ -73,8 +73,8 @@ const OptionsModalForm: React.FC = () => {
 
   return (
     <>
-      <Text tag="p" attributeList={{ className: "mb-1" }}>
-        Select Language:
+      <Text tag="p" attributeList={{ className: "mb-2" }}>
+        {t("navbar.options.select-language")}:
       </Text>
       <Form>
         <Form.Group as={Col} className=" d-flex gap-3">
@@ -98,7 +98,7 @@ const OptionsModalForm: React.FC = () => {
         </Form.Group>
       </Form>
 
-      <Text tag="p" attributeList={{ className: "mt-3 mb-1" }}>
+      <Text tag="p" attributeList={{ className: "mt-3 mb-2" }}>
         Select Theme:
       </Text>
       <ThemeToggle />

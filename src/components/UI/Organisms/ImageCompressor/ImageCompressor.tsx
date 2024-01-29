@@ -348,7 +348,7 @@ const ImageCompressor: React.FC = () => {
         ) : null}
         {isLoading && (
           <Spinner animation="border" role="status" className="m-2">
-            <span className="visually-hidden">Loading...</span>
+            <span className="visually-hidden">{t("loading")}</span>
           </Spinner>
         )}
         {compressedImageList?.length ? (
