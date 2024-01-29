@@ -54,7 +54,7 @@ const NavbarComponent: React.FC = () => {
       <Container>
         <LinkContainer to={`/${language}`}>
           <Navbar.Brand onClick={closeNavbarDropdown} className="py-0">
-            <Logo height={35} width={200} title={t("navbar.logo-title")} />
+            <Logo height={40} width={80} title={t("navbar.logo-title")} />
           </Navbar.Brand>
         </LinkContainer>
         <Nav.Item className="d-lg-none d-flex align-items-center ms-auto me-3">
