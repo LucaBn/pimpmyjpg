@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { useLocation } from "react-router-dom";
 
 // Components
 import { Container, Nav, Navbar } from "react-bootstrap";
@@ -15,6 +16,8 @@ const NavbarComponent: React.FC = () => {
 
   const { i18n, t } = useTranslation("common");
   const { language } = i18n;
+
+  const { pathname } = useLocation();
 
   const navbarRef = useRef<HTMLDivElement>(null);
 
@@ -51,7 +54,11 @@ const NavbarComponent: React.FC = () => {
       expanded={expanded}
       ref={navbarRef as React.RefObject<HTMLDivElement>}
     >
-      <Container>
+      {/*
+        Use key={pathname} to force the update of the component make links have correct classes
+        https://github.com/react-bootstrap/react-router-bootstrap/issues/242#issuecomment-613761912
+      */}
+      <Container key={pathname}>
         <LinkContainer to={`/${language}`}>
           <Navbar.Brand onClick={closeNavbarDropdown} className="py-0">
             <Logo height={40} width={80} title={t("navbar.logo-title")} />
