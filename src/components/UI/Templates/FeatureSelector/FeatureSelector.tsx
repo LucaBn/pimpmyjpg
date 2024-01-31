@@ -9,7 +9,8 @@ import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 
 const FeatureSelector: React.FC = () => {
-  const { t } = useTranslation("common");
+  const { i18n, t } = useTranslation("common");
+  const { language } = i18n;
 
   return (
     <Container className="py-5">
@@ -41,7 +42,7 @@ const FeatureSelector: React.FC = () => {
             <Section.Description>
               {t("feature-selector.image-compressor.description")}
             </Section.Description>
-            <Link to="/">
+            <Link to={`/${language}/image-compressor`}>
               <Section.Button tabIndex={-1}>
                 {t("feature-selector.image-compressor.cta")}
               </Section.Button>
