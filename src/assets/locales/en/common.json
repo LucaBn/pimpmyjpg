@@ -65,5 +65,10 @@
     "download-all": "Download all",
     "clear": "Clear"
   },
+  "error404": {
+    "title": "Error 404",
+    "description": "Page not found",
+    "goToHP": "Go back to Home Page"
+  },
   "loading": "Loading..."
 }

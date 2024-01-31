@@ -65,5 +65,10 @@
     "download-all": "Scarica tutto",
     "clear": "Svuota"
   },
+  "error404": {
+    "title": "Errore 404",
+    "description": "Pagina non trovata",
+    "goToHP": "Torna alla Home Page"
+  },
   "loading": "Caricamento..."
 }

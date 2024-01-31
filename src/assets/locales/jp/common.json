@@ -65,5 +65,10 @@
     "download-all": "すべてダウンロード",
     "clear": "クリア"
   },
+  "error404": {
+    "title": "エラー404",
+    "description": "ページが見つかりません",
+    "goToHP": "ホームページに戻る"
+  },
   "loading": "読み込み中..."
 }
