@@ -58,7 +58,7 @@
     "max-width": "Larghezza massima (px)",
     "quality": "Qualità",
     "from-to": "Da {{localizedOriginalSize}} a {{localizedCompressedSize}}",
-    "size-reduction": "Riduzione della dimensione del {{localizedPercentReduction}}%",
+    "size-reduction": "Dimensione ridotta del {{localizedPercentReduction}}%",
     "not-compressed": "L'immagine non può essere ulteriormente compressa",
     "not-compressed-size": "Il nuovo file pesa {{localizedCompressedSize}}",
     "download": "Scarica",

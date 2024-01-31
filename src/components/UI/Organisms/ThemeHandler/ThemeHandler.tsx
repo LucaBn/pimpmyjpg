@@ -11,6 +11,9 @@ import { useTheme } from "@/components/providers/ThemeProvider";
 // Typings
 import { IImage } from "@/typings/icons";
 
+// Locales
+import { useTranslation } from "react-i18next";
+
 // Constants
 import { Themes } from "@/constants/themes";
 import { CLASS_APP_NAME } from "@/constants/html-classes";
@@ -21,6 +24,8 @@ const THEME_OPTIONS = Object.values(Themes);
 
 const ThemeHandler: React.FC<IThemeHandler> = ({ forceColor }) => {
   const { theme, changeTheme } = useTheme();
+
+  const { t } = useTranslation("common");
 
   const handleTheme = (newTheme: Themes) => {
     changeTheme(newTheme);
@@ -50,7 +55,7 @@ const ThemeHandler: React.FC<IThemeHandler> = ({ forceColor }) => {
             value={option}
             checked={theme === option}
             onChange={() => handleTheme(option)}
-            title={option}
+            title={t(`navbar.theme.${option}`)}
           />
         ))}
       </Form.Group>
