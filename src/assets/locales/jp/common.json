@@ -11,6 +11,10 @@
       "save-and-close": "保存して閉じる",
       "select-language": "言語選択",
       "select-theme": "テーマを選ぶ"
+    },
+    "theme": {
+      "dark": "暗い",
+      "light": "明るい"
     }
   },
   "footer": {

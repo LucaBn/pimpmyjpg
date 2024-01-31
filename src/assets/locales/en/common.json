@@ -11,6 +11,10 @@
       "save-and-close": "Save and close",
       "select-language": "Select language",
       "select-theme": "Select theme"
+    },
+    "theme": {
+      "dark": "Dark",
+      "light": "Light"
     }
   },
   "footer": {
