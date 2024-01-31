@@ -6,6 +6,7 @@ import Navbar from "@/components/UI/Organisms/Navbar/Navbar";
 import Footer from "@/components/UI/Organisms/Footer/Footer";
 
 // Providers
+import { useBorders } from "../providers/BordersProvider";
 import { useTheme } from "@/components/providers/ThemeProvider";
 
 // Constants
@@ -13,6 +14,7 @@ import { CLASS_APP_NAME } from "@/constants/html-classes";
 import { Themes } from "@/constants/themes";
 
 const App: React.FC = () => {
+  const { borders } = useBorders();
   const { theme } = useTheme();
 
   const { pathname } = useLocation();
@@ -40,6 +42,7 @@ const App: React.FC = () => {
     theme === Themes.Dark ? `text-${Themes.Light}` : `text-${Themes.Dark}`;
 
   document.body.dataset.bsTheme = theme;
+  document.body.dataset.bsBorders = borders;
 
   return (
     <div className={`${CLASS_APP_NAME} ${textColorClass}`}>
