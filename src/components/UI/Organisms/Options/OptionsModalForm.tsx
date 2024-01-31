@@ -5,7 +5,7 @@ import Text from "@/components/UI/Atoms/Text/Text";
 import FlagEn from "@/components/UI/Atoms/FlagEn/FlagEn";
 import FlagIt from "@/components/UI/Atoms/FlagIt/FlagIt";
 import FlagJp from "@/components/UI/Atoms/FlagJp/FlagJp";
-import ThemeToggle from "@/components/UI/Organisms/ThemeToggle/ThemeToggle";
+import ThemeToggle from "@/components/UI/Organisms/ThemeHandler/ThemeHandler";
 import { Col, Form } from "react-bootstrap";
 
 // Locales
@@ -99,7 +99,7 @@ const OptionsModalForm: React.FC = () => {
       </Form>
 
       <Text tag="p" attributeList={{ className: "mt-3 mb-2" }}>
-        Select Theme:
+        {t("navbar.options.select-theme")}:
       </Text>
       <ThemeToggle />
     </>

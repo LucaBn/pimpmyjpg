@@ -11,6 +11,10 @@
       "save-and-close": "Salva e chiudi",
       "select-language": "Seleziona lingua",
       "select-theme": "Seleziona tema"
+    },
+    "theme": {
+      "dark": "Scuro",
+      "light": "Chiaro"
     }
   },
   "footer": {

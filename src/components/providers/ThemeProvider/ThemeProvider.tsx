@@ -11,19 +11,21 @@ import { IGenericComponent } from "@/typings/components";
 
 // Constants
 import { Themes } from "@/constants/themes";
+import { APP_NAME } from "@/constants/app";
 
 // Define the context
 export interface IThemeContext {
   theme: Themes;
-  toggleTheme: () => void;
+  changeTheme: (newTheme: Themes) => void;
 }
 
-const LS_THEME_VARIABLE = "pmjTheme";
+const lowercaseAppName = APP_NAME.toLowerCase();
+const LS_THEME_VARIABLE = `${lowercaseAppName}Theme`;
 
 // Default createContextValue
 const defaultCreateContextValue = {
   theme: Themes.Dark,
-  toggleTheme: () => {},
+  changeTheme: () => {},
 };
 
 export const ThemeContext = createContext<IThemeContext>(
@@ -48,15 +50,14 @@ export const ThemeProvider: React.FC<IGenericComponent> = ({ children }) => {
     }
   }, []);
 
-  const toggleTheme = () => {
-    const newValue = theme === Themes.Dark ? Themes.Light : Themes.Dark;
-    setTheme(newValue);
-    writeToLocalStorage(LS_THEME_VARIABLE, newValue);
+  const changeTheme = (newTheme: Themes) => {
+    setTheme(newTheme);
+    writeToLocalStorage(LS_THEME_VARIABLE, newTheme);
   };
 
   const themeValues: IThemeContext = {
     theme,
-    toggleTheme,
+    changeTheme,
   };
 
   return (
