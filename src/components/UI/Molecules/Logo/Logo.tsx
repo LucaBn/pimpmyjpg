@@ -27,7 +27,6 @@ const Logo: React.FC<ILogo> = ({
         title={title}
         height={height}
         width={width}
-        className="me-1"
       />
       <Text
         tag="span"
