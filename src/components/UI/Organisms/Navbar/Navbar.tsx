@@ -46,7 +46,6 @@ const NavbarComponent: React.FC = () => {
   };
 
   const iconColor = "#fff"; // Force icons color to white since .navbar-dark class is applied to <Navbar /> component
-  const logoContainerClass = pathname === "/" ? "active" : ""; // Force active class on "/" path
 
   return (
     <>
@@ -62,7 +61,7 @@ const NavbarComponent: React.FC = () => {
         https://github.com/react-bootstrap/react-router-bootstrap/issues/242#issuecomment-613761912
       */}
         <Container key={pathname}>
-          <LinkContainer to={`/${language}`} className={logoContainerClass}>
+          <LinkContainer to={`/${language}`}>
             <Navbar.Brand onClick={closeNavbarDropdown} className="py-0">
               <Logo height={40} width={80} title={t("navbar.logo-title")} />
             </Navbar.Brand>
