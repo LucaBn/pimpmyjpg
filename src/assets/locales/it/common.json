@@ -70,5 +70,12 @@
     "description": "Pagina non trovata",
     "goToHP": "Torna alla Home Page"
   },
+  "metatags": {
+    "error404": {
+      "title": "Errore 404",
+      "description": "Pagina non trovata",
+      "image": "/image.jpg"
+    }
+  },
   "loading": "Caricamento..."
 }

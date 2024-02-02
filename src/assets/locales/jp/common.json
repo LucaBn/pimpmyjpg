@@ -70,5 +70,12 @@
     "description": "ページが見つかりません",
     "goToHP": "ホームページに戻る"
   },
+  "metatags": {
+    "error404": {
+      "title": "エラー404",
+      "description": "ページが見つかりません",
+      "image": "/image.jpg"
+    }
+  },
   "loading": "読み込み中..."
 }
