@@ -11,6 +11,9 @@ import OptionsModal from "@/components/UI/Organisms/Options/OptionsModal";
 // Locales
 import { useTranslation } from "react-i18next";
 
+// Constants
+import { CLASS_APP_NAME } from "@/constants/html-classes";
+
 const NavbarComponent: React.FC = () => {
   const [expanded, setExpanded] = useState<boolean>(false);
   const [showOptionsModal, setShowOptionsModal] = useState<boolean>(false);
@@ -63,7 +66,7 @@ const NavbarComponent: React.FC = () => {
         <Container key={pathname}>
           <LinkContainer to={`/${language}`}>
             <Navbar.Brand onClick={closeNavbarDropdown} className="py-0">
-              <Logo height={40} width={80} title={t("navbar.logo-title")} />
+              <Logo height={40} width={80} label={t("navbar.logo-label")} />
             </Navbar.Brand>
           </LinkContainer>
           <Nav.Item
@@ -73,10 +76,13 @@ const NavbarComponent: React.FC = () => {
             <Options forceColor={iconColor} />
           </Nav.Item>
           <Navbar.Toggle
-            aria-controls="basic-navbar-nav"
+            aria-controls={`${CLASS_APP_NAME}-navbar`}
             onClick={toggleNavbarDropdownStatus}
           />
-          <Navbar.Collapse onClick={closeNavbarDropdown}>
+          <Navbar.Collapse
+            onClick={closeNavbarDropdown}
+            id={`${CLASS_APP_NAME}-navbar`}
+          >
             <Nav className="ms-auto">
               <Nav.Item
                 className="d-none d-lg-flex align-items-center mx-auto me-2"

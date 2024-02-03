@@ -1,6 +1,7 @@
 {
   "navbar": {
-    "logo-title": "Pimp My Jpg",
+    "logo-label": "Pimp My Jpg",
+    "logo-title": "巨大な上腕二頭筋のイメージアイコン",
     "links": {
       "image-compressor": "画像圧縮",
       "add-filter": "フィルターを追加",
