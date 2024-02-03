@@ -98,6 +98,14 @@ const Metatags: React.FC<MetatagsProps> = ({
       });
     }
 
+    if (langUrls?.en) {
+      const link = document.createElement("link");
+      link.setAttribute("rel", "alternate");
+      link.setAttribute("hreflang", "x-default");
+      link.setAttribute("href", langUrls.en);
+      head.appendChild(link);
+    }
+
     // Image
     const ogMetaImage = document.querySelector('meta[property="og:image"]');
     if (ogMetaImage) {
