@@ -20,7 +20,7 @@ const Error404: React.FC = () => {
       <Metatags
         title={t("metatags.error-404.title")}
         description={t("metatags.error-404.description")}
-        image="/meta/error-404.jpg"
+        image="https://www.pimpmyjpg.com/assets/img/meta/meta.jpg" /* TODO: update meta image */
       />
       <Container className="py-5">
         <Row className="mt-4">

@@ -21,7 +21,7 @@ const FeatureSelector: React.FC = () => {
         title={t("metatags.HP.title")}
         description={t("metatags.HP.description")}
         keywords={t("metatags.HP.keywords")}
-        image="/meta/hp.jpg"
+        image="https://www.pimpmyjpg.com/assets/img/meta/meta.jpg" /* TODO: update meta image */
         langUrls={{
           en: "https://www.pimpmyjpg.com/en",
           it: "https://www.pimpmyjpg.com/it",
