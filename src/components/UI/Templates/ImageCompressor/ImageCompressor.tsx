@@ -19,7 +19,7 @@ const ImageCompressorTemplate: React.FC = () => {
         title={t("metatags.image-compressor.title")}
         description={t("metatags.image-compressor.description")}
         keywords={t("metatags.image-compressor.keywords")}
-        image="/meta/image-compressor.jpg"
+        image="https://www.pimpmyjpg.com/assets/img/meta/meta.jpg" /* TODO: update meta image */
         langUrls={{
           en: "https://www.pimpmyjpg.com/en/image-compressor",
           it: "https://www.pimpmyjpg.com/it/image-compressor",
