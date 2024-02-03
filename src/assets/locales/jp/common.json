@@ -65,16 +65,25 @@
     "download-all": "すべてダウンロード",
     "clear": "クリア"
   },
-  "error404": {
+  "error-404": {
     "title": "エラー404",
     "description": "ページが見つかりません",
     "goToHP": "ホームページに戻る"
   },
   "metatags": {
-    "error404": {
-      "title": "エラー404",
-      "description": "ページが見つかりません",
-      "image": "/image.jpg"
+    "HP": {
+      "title": "PimpMyJpg",
+      "description": "PimpMyJpgは、JPG、GIF、PNG形式の画像を可能な限り小さなサイズに簡単に圧縮できる高度な無料画像最適化サービスを提供します。様々なフィルターを探索して写真を向上させ、画像を保護するために安全にウォーターマークを追加します。",
+      "keywords": "画像圧縮, 画像最適化, オンライン画像エディター, 画像フィルター適用, ウォーターマーク追加, 画像重量削減, 写真品質向上, 写真編集ツール, 画像形式変換, PimpMyJPG"
+    },
+    "image-compressor": {
+      "title": "PimpMyJpg :: 画像圧縮",
+      "description": "PimpMyJpgは、JPG、GIF、PNG形式の画像を可能な限り小さなサイズに簡単に圧縮できる高度な無料画像最適化サービスを提供します。",
+      "keywords": "画像圧縮, 画像最適化, 画像重量削減, PimpMyJPG"
+    },
+    "error-404": {
+      "title": "PimpMyJpg :: エラー404",
+      "description": "ページが見つかりません"
     }
   },
   "loading": "読み込み中..."

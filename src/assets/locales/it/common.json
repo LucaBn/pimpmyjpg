@@ -65,16 +65,25 @@
     "download-all": "Scarica tutto",
     "clear": "Svuota"
   },
-  "error404": {
+  "error-404": {
     "title": "Errore 404",
     "description": "Pagina non trovata",
     "goToHP": "Torna alla Home Page"
   },
   "metatags": {
-    "error404": {
-      "title": "Errore 404",
-      "description": "Pagina non trovata",
-      "image": "/image.jpg"
+    "HP": {
+      "title": "PimpMyJpg",
+      "description": "PimpMyJpg offre un avanzato servizio gratuito di ottimizzazione delle immagini, consentendoti di comprimere facilmente immagini in formato JPG, GIF e PNG alle loro dimensioni minime. Scopri una varietà di filtri per migliorare le tue foto e aggiungi in modo sicuro watermark per proteggere le tue immagini.",
+      "keywords": "compressione immagini, ottimizzazione immagini, editor immagini online, applicazione filtri immagini, aggiunta watermark, riduzione peso immagini, miglioramento qualità foto, strumento di editing foto, conversione formato immagini, PimpMyJPG"
+    },
+    "image-compressor": {
+      "title": "PimpMyJpg :: Compressore di Immagini",
+      "description": "PimpMyJpg offre un avanzato servizio gratuito di ottimizzazione delle immagini, consentendoti di comprimere facilmente immagini in formato JPG, GIF e PNG alle loro dimensioni minime.",
+      "keywords": "compressione immagini, ottimizzazione immagini, riduzione peso immagini, PimpMyJPG"
+    },
+    "error-404": {
+      "title": "PimpMyJpg :: Errore 404",
+      "description": "Pagina non trovata"
     }
   },
   "loading": "Caricamento..."
