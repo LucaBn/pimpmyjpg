@@ -1,23 +1,12 @@
 import React from "react";
 
 // Components
-import { Container, Row, Col, Image, Button } from "react-bootstrap";
+import { Container, Row, Col, Image } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import IconFacebook from "@/components/UI/Atoms/IconFacebook/IconFacebook";
 import IconTwitter from "@/components/UI/Atoms/IconTwitter/IconTwitter";
-import IconWhatsapp from "@/components/UI/Atoms/IconWhatsapp/IconWhatsapp";
-import IconTelegram from "@/components/UI/Atoms/IconTelegram/IconTelegram";
 
 // Locales
 import { Trans, useTranslation } from "react-i18next";
-
-// Utils
-import {
-  shareOnFacebook,
-  shareOnTelegram,
-  shareOnTwitter,
-  shareOnWhatsapp,
-} from "@/utils/share";
 
 // Constants
 import { AUTHOR_NAME, WEBSITE_URL } from "@/constants/app";
@@ -41,8 +30,6 @@ const Footer: React.FC = () => {
       {authorName}
     </Link>
   );
-
-  const urlToShare = `www.${WEBSITE_URL}`;
 
   return (
     <footer className="bg-dark text-white py-4 border-top">
@@ -68,44 +55,18 @@ const Footer: React.FC = () => {
         </Row>
         <Row>
           <Col xs={12} className="mb-4">
-            <p className="mb-0">{t("footer.share")}</p>
+            <p className="mb-1">{t("footer.stay-up-to-date")}</p>
             <ul className="footer__social-list list-unstyled d-flex justify-content-center gap-2">
               {/* TODO: Change with icons */}
               <li>
-                <Button
-                  onClick={() => shareOnFacebook(urlToShare)}
-                  aria-label={t("footer.share-on-facebook")}
-                  variant="link"
-                >
-                  <IconFacebook />
-                </Button>
-              </li>
-              <li>
-                <Button
-                  onClick={() => shareOnTwitter(urlToShare)}
-                  aria-label={t("footer.share-on-twitter")}
-                  variant="link"
+                <Link
+                  to="https://twitter.com/PimpMyJpg"
+                  title={t("footer.twitter-icon")}
+                  target="_blank"
+                  rel="noopener noreferrer nofollow"
                 >
                   <IconTwitter />
-                </Button>
-              </li>
-              <li>
-                <Button
-                  onClick={() => shareOnWhatsapp(urlToShare)}
-                  aria-label={t("footer.share-on-whatsapp")}
-                  variant="link"
-                >
-                  <IconWhatsapp />
-                </Button>
-              </li>
-              <li>
-                <Button
-                  onClick={() => shareOnTelegram(urlToShare)}
-                  aria-label={t("footer.share-on-telegram")}
-                  variant="link"
-                >
-                  <IconTelegram />
-                </Button>
+                </Link>
               </li>
             </ul>
           </Col>

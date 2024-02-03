@@ -1,7 +1,6 @@
 import React from "react";
 
 // Components
-import Text from "@/components/UI/Atoms/Text/Text";
 import { Col, Container, Row, Image, Button } from "react-bootstrap";
 
 // Locales
@@ -25,8 +24,8 @@ const Error404: React.FC = () => {
       <Container className="py-5">
         <Row className="mt-4">
           <Col xs={12}>
-            <Text tag="h1">{t("error-404.title")}</Text>
-            <Text tag="p">{t("error-404.description")}</Text>
+            <h1>{t("error-404.title")}</h1>
+            <p>{t("error-404.description")}</p>
           </Col>
           <Col xs={12}>
             <Image

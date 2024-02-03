@@ -21,11 +21,8 @@
   "footer": {
     "made-by": "♥で作成された <authorLink>{{authorName}}</authorLink>",
     "made-by-title": "{{author}}のGitHubページを訪問",
-    "share": "共有",
-    "share-on-facebook": "Facebookで共有",
-    "share-on-twitter": "X（旧Twitter）で共有",
-    "share-on-whatsapp": "WhatsAppで共有",
-    "share-on-telegram": "Telegramで共有",
+    "stay-up-to-date": "最新情報",
+    "twitter-icon": "X（旧ツイッター）へ",
     "buy-me-a-coffee": "コーヒーを買う"
   },
   "feature-selector": {

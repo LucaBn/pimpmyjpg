@@ -21,11 +21,8 @@
   "footer": {
     "made-by": "Creato con ♥ da <authorLink>{{authorName}}</authorLink>",
     "made-by-title": "Visita la Pagina GitHub di {{author}}",
-    "share": "Condividi",
-    "share-on-facebook": "Condividi su Facebook",
-    "share-on-twitter": "Condividi su X (ex Twitter)",
-    "share-on-whatsapp": "Condividi su WhatsApp",
-    "share-on-telegram": "Condividi su Telegram",
+    "stay-up-to-date": "Rimani aggiornato",
+    "twitter-icon": "Vai a X (ex Twitter)",
     "buy-me-a-coffee": "Offrimi un Caffè"
   },
   "feature-selector": {

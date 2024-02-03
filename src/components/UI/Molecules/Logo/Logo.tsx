@@ -2,7 +2,6 @@ import React from "react";
 
 // Components
 import { Image } from "react-bootstrap";
-import Text from "@/components/UI/Atoms/Text/Text";
 
 // Locales
 import { useTranslation } from "react-i18next";
@@ -33,12 +32,7 @@ const Logo: React.FC<ILogo> = ({
         width={width}
         alt={t("navbar.logo-title")}
       />
-      <Text
-        tag="span"
-        attributeList={{ className: `${CLASS_APP_NAME}__logo-label` }}
-      >
-        {logoLabel}
-      </Text>
+      <span className={`${CLASS_APP_NAME}__logo-label`}>{logoLabel}</span>
     </div>
   );
 };
