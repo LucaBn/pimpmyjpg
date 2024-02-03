@@ -7,25 +7,41 @@ import ImageCompressor from "@/components/UI/Organisms/ImageCompressor/ImageComp
 // Locales
 import { useTranslation } from "react-i18next";
 
+// SEO
+import Metatags from "@/components/metatags/Metatags";
+
 const ImageCompressorTemplate: React.FC = () => {
   const { t } = useTranslation("common");
 
   return (
-    <Container className="py-5">
-      <Row>
-        <Col xs={12}>
-          <h1>{t("image-compressor.title")}</h1>
-        </Col>
-        <Col xs={12}>
-          <p>{t("image-compressor.description")}</p>
-        </Col>
-      </Row>
-      <Row className="mt-4">
-        <Col xs={12}>
-          <ImageCompressor />
-        </Col>
-      </Row>
-    </Container>
+    <>
+      <Metatags
+        title={t("metatags.image-compressor.title")}
+        description={t("metatags.image-compressor.description")}
+        keywords={t("metatags.image-compressor.keywords")}
+        image="/meta/image-compressor.jpg"
+        langUrls={{
+          en: "https://www.pimpmyjpg.com/en/image-compressor",
+          it: "https://www.pimpmyjpg.com/it/image-compressor",
+          jp: "https://www.pimpmyjpg.com/jp/image-compressor",
+        }}
+      />
+      <Container className="py-5">
+        <Row>
+          <Col xs={12}>
+            <h1>{t("image-compressor.title")}</h1>
+          </Col>
+          <Col xs={12}>
+            <p>{t("image-compressor.description")}</p>
+          </Col>
+        </Row>
+        <Row className="mt-4">
+          <Col xs={12}>
+            <ImageCompressor />
+          </Col>
+        </Row>
+      </Container>
+    </>
   );
 };
 

@@ -47,7 +47,7 @@ const LanguageHandler: React.FC = () => {
   const { i18n } = useTranslation("common");
   const { language, changeLanguage } = i18n;
 
-  const location = useLocation();
+  const { pathname } = useLocation();
   const navigate = useNavigate();
 
   const flagContainerClassList = (flagLanguage: LanguageList) => {
@@ -61,7 +61,7 @@ const LanguageHandler: React.FC = () => {
   };
 
   const handleLanguage = (selectedLanguage: LanguageList) => {
-    const splitLocation = location.pathname.split("/");
+    const splitLocation = pathname.split("/");
     splitLocation[1] = selectedLanguage;
     const newLocation = splitLocation.join("/");
 
