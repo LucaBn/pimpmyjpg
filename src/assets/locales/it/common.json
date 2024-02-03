@@ -1,6 +1,7 @@
 {
   "navbar": {
-    "logo-title": "Pimp My Jpg",
+    "logo-label": "Pimp My Jpg",
+    "logo-title": "Icona del file immagine con bicipiti assurdi",
     "links": {
       "image-compressor": "Compressore di Immagini",
       "add-filter": "Aggiungi Filtro",
