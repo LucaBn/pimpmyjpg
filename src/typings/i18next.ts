@@ -16,5 +16,5 @@ declare module "i18next" {
 export enum LanguageList {
   En = "en",
   It = "it",
-  Jp = "jp",
+  Ja = "ja",
 }

@@ -11,7 +11,7 @@ import { DEFAULT_LANGUAGE } from "@/constants/languages";
 // Locales
 import enCommon from "@/assets/locales/en/common.json";
 import itCommon from "@/assets/locales/it/common.json";
-import jpCommon from "@/assets/locales/jp/common.json";
+import jaCommon from "@/assets/locales/ja/common.json";
 
 export const defaultNS = "common";
 
@@ -22,7 +22,7 @@ i18n
     resources: {
       en: { common: enCommon },
       it: { common: itCommon },
-      jp: { common: jpCommon },
+      ja: { common: jaCommon },
     },
     ns: ["common"],
     defaultNS: ["common"],

@@ -6,7 +6,7 @@ import { useTranslation } from "react-i18next";
 type LangUrlsType = {
   it: string;
   en: string;
-  jp: string;
+  ja: string;
 };
 
 interface MetatagsProps {

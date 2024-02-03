@@ -3,7 +3,7 @@ import React from "react";
 // Components
 import FlagEn from "@/components/UI/Atoms/FlagEn/FlagEn";
 import FlagIt from "@/components/UI/Atoms/FlagIt/FlagIt";
-import FlagJp from "@/components/UI/Atoms/FlagJp/FlagJp";
+import FlagJa from "@/components/UI/Atoms/FlagJa/FlagJa";
 import { Col, Form } from "react-bootstrap";
 
 // Utils
@@ -37,8 +37,8 @@ const LANGUAGE_OPTIONS: LanguageOption[] = [
     title: "Italiano",
   },
   {
-    language: LanguageList.Jp,
-    flagComponent: <FlagJp />,
+    language: LanguageList.Ja,
+    flagComponent: <FlagJa />,
     title: "日本語",
   },
 ];

@@ -25,7 +25,7 @@ const FeatureSelector: React.FC = () => {
         langUrls={{
           en: "https://www.pimpmyjpg.com/en",
           it: "https://www.pimpmyjpg.com/it",
-          jp: "https://www.pimpmyjpg.com/jp",
+          ja: "https://www.pimpmyjpg.com/ja",
         }}
       />
       <Container className="py-5">

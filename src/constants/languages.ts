@@ -5,7 +5,7 @@ const DEFAULT_LANGUAGE: LanguageList = LanguageList.En;
 const DECIMAL_SEPARATOR = {
   [LanguageList.En]: ".",
   [LanguageList.It]: ",",
-  [LanguageList.Jp]: ".",
+  [LanguageList.Ja]: ".",
 };
 
 export { DEFAULT_LANGUAGE, DECIMAL_SEPARATOR };

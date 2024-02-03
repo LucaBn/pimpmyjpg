@@ -23,7 +23,7 @@ const ImageCompressorTemplate: React.FC = () => {
         langUrls={{
           en: "https://www.pimpmyjpg.com/en/image-compressor",
           it: "https://www.pimpmyjpg.com/it/image-compressor",
-          jp: "https://www.pimpmyjpg.com/jp/image-compressor",
+          ja: "https://www.pimpmyjpg.com/ja/image-compressor",
         }}
       />
       <Container className="py-5">

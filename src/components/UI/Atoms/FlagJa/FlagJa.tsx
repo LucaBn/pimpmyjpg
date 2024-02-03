@@ -1,17 +1,17 @@
 import React from "react";
 
-const FlagJp: React.FC = () => {
+const FlagJa: React.FC = () => {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480">
       <defs>
-        <clipPath id="jp-a">
+        <clipPath id="ja-a">
           <path fillOpacity=".7" d="M-88 32h640v480H-88z" />
         </clipPath>
       </defs>
       <g
         fillRule="evenodd"
         strokeWidth="1pt"
-        clipPath="url(#jp-a)"
+        clipPath="url(#ja-a)"
         transform="translate(88 -32)"
       >
         <path fill="#fff" d="M-128 32h720v480h-720z" />
@@ -27,4 +27,4 @@ const FlagJp: React.FC = () => {
   );
 };
 
-export default FlagJp;
+export default FlagJa;
