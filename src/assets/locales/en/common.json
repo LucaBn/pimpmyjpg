@@ -68,21 +68,5 @@
     "description": "Page not found",
     "goToHP": "Go back to Home Page"
   },
-  "metatags": {
-    "HP": {
-      "title": "PimpMyJpg",
-      "description": "PimpMyJpg offers advanced, free image optimization services, enabling you to effortlessly compress JPG, GIF, and PNG images to their smallest possible sizes. Explore a variety of filters to enhance your photos and securely add watermarks to protect your images.",
-      "keywords": "image compression, image optimization, online image editor, image filters application, watermark addition, image weight reduction, photo quality improvement, photo editing tool, image format conversion, PimpMyJPG"
-    },
-    "image-compressor": {
-      "title": "PimpMyJpg :: Image compressor",
-      "description": "PimpMyJpg offers advanced, free image optimization services, enabling you to effortlessly compress JPG, GIF, and PNG images to their smallest possible sizes..",
-      "keywords": "image compression, image optimization, image weight reduction, PimpMyJPG"
-    },
-    "error-404": {
-      "title": "PimpMyJpg :: Error 404",
-      "description": "Page not found"
-    }
-  },
   "loading": "Loading..."
 }

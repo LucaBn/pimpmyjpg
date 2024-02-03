@@ -7,20 +7,12 @@ import { Col, Container, Row, Image, Button } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 
-// SEO
-import Metatags from "@/components/metatags/Metatags";
-
 const Error404: React.FC = () => {
   const { t, i18n } = useTranslation("common");
   const { language } = i18n;
 
   return (
     <>
-      <Metatags
-        title={t("metatags.error-404.title")}
-        description={t("metatags.error-404.description")}
-        image="https://www.pimpmyjpg.com/assets/img/meta/meta.jpg" /* TODO: update meta image */
-      />
       <Container className="py-5">
         <Row className="mt-4">
           <Col xs={12}>
