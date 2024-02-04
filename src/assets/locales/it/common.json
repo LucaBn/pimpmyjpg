@@ -31,30 +31,30 @@
     "image-compressor": {
       "image-alt": "Compressore di Immagini",
       "title": "Compressore di Immagini",
-      "description": "Lorem ipsum dolor sit amet, consectetur adipisci elit, sed do eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrum exercitationem ullamco laboriosam.",
+      "description": "Riduci il peso delle tue immagini e scaricale in JPG sul tuo dispositivo alla massima velocità e senza alcun limite di dimensioni, formato e numero di file!",
       "cta": "COMPRIMI ORA!"
     },
     "add-filter": {
       "image-alt": "Aggiungi Filtro",
       "title": "Aggiungi Filtro",
-      "description": "Lorem ipsum dolor sit amet, consectetur adipisci elit, sed do eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrum exercitationem ullamco laboriosam.",
+      "description": "Dalle vibe vintage alle eccentriche esplosioni di colore; trasforma le tue immagini in capolavori rinascimentali così come faresti con le migliori app del cellulare!",
       "cta": "FILTRA ORA!"
     },
     "add-watermark": {
       "image-alt": "Aggiungi Watermark",
       "title": "Aggiungi Watermark",
-      "description": "Lorem ipsum dolor sit amet, consectetur adipisci elit, sed do eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrum exercitationem ullamco laboriosam.",
+      "description": "Applica un watermark personale sulle tue preziose immagini per evitare che i delinquenti del web se ne approprino indebitamente!",
       "cta": "APPLICA ORA!"
     }
   },
   "image-compressor": {
     "title": "Compressore di Immagini",
-    "description": "Seleziona o trascina una o più immagini, ottimizza le loro dimensioni e scaricale!",
+    "description": "Riduci il peso delle tue immagini in un batter d'occhio cliccando nel box sottostante o trascinandoci direttamente dentro i tuoi file. Utilizza il menu delle opzioni per imporre limiti massimi di dimensione e di qualità.",
     "options": "Opzioni",
     "file-input-description": "Clicca o trascina qui il(i) tuo(i) file.\nÈ permesso qualsiasi formato!",
     "max-height": "Altezza massima (px)",
     "max-width": "Larghezza massima (px)",
-    "quality": "Qualità",
+    "quality": "Qualità (valore consigliato 70%)",
     "from-to": "Da {{localizedOriginalSize}} a {{localizedCompressedSize}}",
     "size-reduction": "Dimensione ridotta del {{localizedPercentReduction}}%",
     "not-compressed": "L'immagine non può essere ulteriormente compressa",

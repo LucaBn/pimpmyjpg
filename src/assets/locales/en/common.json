@@ -31,30 +31,30 @@
     "image-compressor": {
       "image-alt": "Image Compressor",
       "title": "Image Compressor",
-      "description": "Lorem ipsum dolor sit amet, consectetur adipisci elit, sed do eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrum exercitationem ullamco laboriosam.",
+      "description": "Reduce the weight of your images and download them as JPGs to your device at maximum speed and without any limits on size, format or number of files!",
       "cta": "COMPRESS NOW!"
     },
     "add-filter": {
       "image-alt": "Add Filter",
       "title": "Add Filter",
-      "description": "Lorem ipsum dolor sit amet, consectetur adipisci elit, sed do eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrum exercitationem ullamco laboriosam.",
+      "description": "From vintage vibes to eccentric explosions of colour; turn your images into Renaissance masterpieces as you would with the best mobile phone apps!",
       "cta": "FILTER NOW!"
     },
     "add-watermark": {
       "image-alt": "Add Watermark",
       "title": "Add Watermark",
-      "description": "Lorem ipsum dolor sit amet, consectetur adipisci elit, sed do eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrum exercitationem ullamco laboriosam.",
+      "description": "Apply a personal watermark to your precious images to prevent web crooks from misappropriating them!",
       "cta": "MARK NOW!"
     }
   },
   "image-compressor": {
     "title": "Image compressor",
-    "description": "Select or drop one or more images, optimize their size and download them!",
+    "description": "Reduce the size of your images in the blink of an eye by clicking in the box below or by dragging your files directly into it. Use the options menu to set maximum width and height and quality limits.",
     "options": "Options",
     "file-input-description": "Click or drop your file(s) here.\nAny format is allowed!",
     "max-height": "Max height (px)",
     "max-width": "Max width (px)",
-    "quality": "Quality",
+    "quality": "Quality (recommended value 70%)",
     "from-to": "From {{localizedOriginalSize}} to {{localizedCompressedSize}}",
     "size-reduction": "Size reduced by {{localizedPercentReduction}}%",
     "not-compressed": "The image cannot be further compressed",
