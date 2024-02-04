@@ -251,7 +251,9 @@ const ImageCompressor: React.FC = () => {
                         <Form.Control
                           id="max-width"
                           type="number"
-                          value={maxWidth}
+                          min="0"
+                          step="1"
+                          value={String(maxWidth)}
                           onChange={(e) => setMaxWidth(Number(e.target.value))}
                         />
                       </Form.Group>
@@ -264,7 +266,9 @@ const ImageCompressor: React.FC = () => {
                         <Form.Control
                           id="max-height"
                           type="number"
-                          value={maxHeight}
+                          min="0"
+                          step="1"
+                          value={String(maxHeight)}
                           onChange={(e) => setMaxHeight(Number(e.target.value))}
                         />
                       </Form.Group>

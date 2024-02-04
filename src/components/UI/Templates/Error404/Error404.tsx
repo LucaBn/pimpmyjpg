@@ -16,7 +16,7 @@ const Error404: React.FC = () => {
       <Container className="py-5">
         <Row className="mt-4">
           <Col xs={12}>
-            <h1>{t("error-404.title")}</h1>
+            <h1 className="mt-3">{t("error-404.title")}</h1>
             <p>{t("error-404.description")}</p>
           </Col>
           <Col xs={12}>
