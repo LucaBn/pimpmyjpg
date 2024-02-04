@@ -10,13 +10,13 @@ import {
 import { IGenericComponent } from "@/typings/components";
 
 // Constants
-import { Themes } from "@/constants/themes";
+import { ThemeList } from "@/constants/themes";
 import { APP_NAME } from "@/constants/app";
 
 // Define the context
 export interface IThemeContext {
-  theme: Themes;
-  changeTheme: (newTheme: Themes) => void;
+  theme: ThemeList;
+  changeTheme: (newTheme: ThemeList) => void;
 }
 
 const lowercaseAppName = APP_NAME.toLowerCase();
@@ -24,7 +24,7 @@ const LS_THEME_VARIABLE = `${lowercaseAppName}Theme`;
 
 // Default createContextValue
 const defaultCreateContextValue = {
-  theme: Themes.Dark,
+  theme: ThemeList.Dark,
   changeTheme: () => {},
 };
 
@@ -33,24 +33,24 @@ export const ThemeContext = createContext<IThemeContext>(
 );
 
 export const ThemeProvider: React.FC<IGenericComponent> = ({ children }) => {
-  const [theme, setTheme] = useState<Themes>(Themes.Dark);
+  const [theme, setTheme] = useState<ThemeList>(ThemeList.Dark);
 
   useEffect(() => {
     const storedPmjTheme = readFromLocalStorage(LS_THEME_VARIABLE);
 
     switch (storedPmjTheme) {
-      case Themes.Dark:
-        setTheme(Themes.Dark);
+      case ThemeList.Dark:
+        setTheme(ThemeList.Dark);
         break;
-      case Themes.Light:
-        setTheme(Themes.Light);
+      case ThemeList.Light:
+        setTheme(ThemeList.Light);
         break;
       default:
         break;
     }
   }, []);
 
-  const changeTheme = (newTheme: Themes) => {
+  const changeTheme = (newTheme: ThemeList) => {
     setTheme(newTheme);
     writeToLocalStorage(LS_THEME_VARIABLE, newTheme);
   };

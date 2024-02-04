@@ -15,26 +15,26 @@ import { IImage } from "@/typings/icons";
 import { useTranslation } from "react-i18next";
 
 // Constants
-import { Themes } from "@/constants/themes";
+import { ThemeList } from "@/constants/themes";
 import { CLASS_APP_NAME } from "@/constants/html-classes";
 
 interface IThemeHandler extends IImage {}
 
-const THEME_OPTIONS = Object.values(Themes);
+const THEME_OPTIONS = Object.values(ThemeList);
 
 const ThemeHandler: React.FC<IThemeHandler> = ({ forceColor }) => {
   const { theme, changeTheme } = useTheme();
 
   const { t } = useTranslation("common");
 
-  const handleTheme = (newTheme: Themes) => {
+  const handleTheme = (newTheme: ThemeList) => {
     changeTheme(newTheme);
   };
 
-  const getThemeIcon = (theme: Themes): JSX.Element => {
-    return theme === Themes.Dark ? (
+  const getThemeIcon = (theme: ThemeList): JSX.Element => {
+    return theme === ThemeList.Dark ? (
       <IconMoon forceColor={forceColor} />
-    ) : theme === Themes.Light ? (
+    ) : theme === ThemeList.Light ? (
       <IconSun forceColor={forceColor} />
     ) : (
       <></>

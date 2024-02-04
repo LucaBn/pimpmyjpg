@@ -15,7 +15,7 @@ import { useTranslation } from "react-i18next";
 // Constants
 import { CLASS_APP_NAME } from "@/constants/html-classes";
 import { DEFAULT_LANGUAGE } from "@/constants/languages";
-import { Themes } from "@/constants/themes";
+import { ThemeList } from "@/constants/themes";
 
 const App: React.FC = () => {
   const { borders } = useBorders();
@@ -61,7 +61,9 @@ const App: React.FC = () => {
   }, [pathname]);
 
   const textColorClass =
-    theme === Themes.Dark ? `text-${Themes.Light}` : `text-${Themes.Dark}`;
+    theme === ThemeList.Dark
+      ? `text-${ThemeList.Light}`
+      : `text-${ThemeList.Dark}`;
 
   document.body.dataset.bsTheme = theme;
   document.body.dataset.bsBorders = borders;
