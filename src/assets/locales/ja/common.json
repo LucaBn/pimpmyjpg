@@ -31,30 +31,30 @@
     "image-compressor": {
       "image-alt": "画像圧縮",
       "title": "画像圧縮",
-      "description": "Lorem ipsum dolor sit amet, consectetur adipisci elit, sed do eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrum exercitationem ullamco laboriosam.",
+      "description": "画像を軽量化し、サイズ、フォーマット、ファイル数に制限なく、最高速度でお使いのデバイスにJPGとしてダウンロードします！",
       "cta": "今すぐ圧縮！"
     },
     "add-filter": {
       "image-alt": "フィルターを追加",
       "title": "フィルターを追加",
-      "description": "Lorem ipsum dolor sit amet, consectetur adipisci elit, sed do eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrum exercitationem ullamco laboriosam.",
+      "description": "ヴィンテージな雰囲気からエキセントリックな爆発的な色彩まで、最高の携帯電話アプリを使うように、あなたの画像をルネッサンスの傑作に変えましょう！",
       "cta": "今すぐフィルター！"
     },
     "add-watermark": {
       "image-alt": "透かしを追加",
       "title": "透かしを追加",
-      "description": "Lorem ipsum dolor sit amet, consectetur adipisci elit, sed do eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrum exercitationem ullamco laboriosam.",
+      "description": "あなたの大切な画像に個人的な透かしを入れ、ウェブ詐欺師による画像の流用を防ぎます！",
       "cta": "今すぐマーク！"
     }
   },
   "image-compressor": {
     "title": "画像圧縮",
-    "description": "1枚以上の画像を選択またはドロップして、サイズを最適化しダウンロードしてください！",
+    "description": "下のボックスをクリックするか、ファイルを直接ドラッグすることで、あっという間に画像のサイズを縮小できます。オプションメニューを使用して、最大幅と高さ、および品質の制限を設定します。",
     "options": "オプション",
     "file-input-description": "ここをクリックまたはファイルをドロップ。\nどんな形式もOKです！",
     "max-height": "最大高さ (px)",
     "max-width": "最大幅 (px)",
-    "quality": "品質",
+    "quality": "品質（推奨値70）",
     "from-to": "{{localizedOriginalSize}} から {{localizedCompressedSize}} へ",
     "size-reduction": "サイズを {{localizedPercentReduction}}% 縮小",
     "not-compressed": "これ以上画像を圧縮することはできません",

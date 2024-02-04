@@ -16,7 +16,7 @@ const ImageCompressorTemplate: React.FC = () => {
         <Col xs={12}>
           <h1>{t("image-compressor.title")}</h1>
         </Col>
-        <Col xs={12}>
+        <Col xs={12} sm={{ span: 10, offset: 1 }} lg={{ span: 6, offset: 3 }}>
           <p>{t("image-compressor.description")}</p>
         </Col>
       </Row>
