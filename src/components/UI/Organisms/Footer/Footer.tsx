@@ -25,7 +25,7 @@ const Footer: React.FC = () => {
       title={authorLinkTitle}
       target="_blank"
       rel="noopener noreferrer nofollow"
-      className="link-primary"
+      className="text-white"
     >
       {authorName}
     </Link>
