@@ -253,7 +253,9 @@ const ImageCompressor: React.FC = () => {
                           type="number"
                           min="0"
                           step="1"
-                          value={String(maxWidth)}
+                          value={String(
+                            maxWidth
+                          )} /* Need this to prevent leading zeroes, hope it works correctly */
                           onChange={(e) => setMaxWidth(Number(e.target.value))}
                         />
                       </Form.Group>
@@ -268,7 +270,9 @@ const ImageCompressor: React.FC = () => {
                           type="number"
                           min="0"
                           step="1"
-                          value={String(maxHeight)}
+                          value={String(
+                            maxHeight
+                          )} /* Need this to prevent leading zeroes, hope it works correctly */
                           onChange={(e) => setMaxHeight(Number(e.target.value))}
                         />
                       </Form.Group>
@@ -285,7 +289,9 @@ const ImageCompressor: React.FC = () => {
                             min="0"
                             max="100"
                             step="1"
-                            value={quality}
+                            value={String(
+                              quality
+                            )} /* Need this to prevent leading zeroes, hope it works correctly */
                             onChange={(e) => setQuality(Number(e.target.value))}
                             aria-labelledby="quality"
                             className="image-compressor__quality-number me-1"
