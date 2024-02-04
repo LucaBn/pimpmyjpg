@@ -77,6 +77,8 @@ After adding the new language, it's important to update the sitemap.xml file to 
 
 After these steps remember to add a `<Icon... />` component to include in the `<LanguageHandler />` component so that the new language will be selectable for all users.
 
+## Theme Management
+
 ### Adding a New Theme
 
 To add a new theme to this project, you need to modify the `ThemeList` variable in the `src\constants\themes.ts` file. Here's how you can add a `Pink theme`:
