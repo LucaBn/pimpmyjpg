@@ -19,7 +19,9 @@ const FeatureSelector: React.FC = () => {
           <h1 className="mt-2 mt-sm-3">{t("feature-selector.title")}</h1>
         </Col>
         <Col xs={12} sm={{ span: 10, offset: 1 }} lg={{ span: 6, offset: 3 }}>
-          <p className="lh-lg">{t("feature-selector.description")}</p>
+          <p className="white-space-pre-line lh-lg">
+            {t("feature-selector.description")}
+          </p>
         </Col>
       </Row>
 
