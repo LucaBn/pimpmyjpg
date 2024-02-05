@@ -220,7 +220,7 @@ const ImageCompressor: React.FC = () => {
         <div className="d-flex flex-column align-items-center gap-3">
           {/* Drop picture(s) container */}
           <div className="image-compressor__upload-container bg-gradient rounded">
-            <label htmlFor="file-input" className="fs-5">
+            <label htmlFor="file-input" className="white-space-pre-line fs-5">
               {t("image-compressor.file-input-description")}
             </label>
             <input

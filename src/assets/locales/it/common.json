@@ -27,7 +27,7 @@
   },
   "feature-selector": {
     "title": "Heilà 👋",
-    "description": "Se desideri ridurre il peso delle tue immagini, trasformarle con filtri mozzafiato o proteggerle con watermark distintivi, sei nel posto giusto. Esplora la suite di Pimp My Jpg completa di strumenti per valorizzare e salvaguardare le tue immagini in modo semplice e all'insegna del rispetto della privacy.",
+    "description": "Se desideri ridurre il peso delle tue immagini, trasformarle con filtri mozzafiato o proteggerle con watermark distintivi, sei nel posto giusto.\nEsplora la suite di Pimp My Jpg completa di strumenti per valorizzare e salvaguardare le tue immagini in modo semplice e all'insegna del rispetto della privacy.",
     "image-compressor": {
       "image-alt": "Compressore di Immagini",
       "title": "Compressore di Immagini",
@@ -49,7 +49,7 @@
   },
   "image-compressor": {
     "title": "Compressore di Immagini",
-    "description": "Riduci il peso delle tue immagini in un batter d'occhio cliccando nel box sottostante o trascinandoci direttamente dentro i tuoi file. Utilizza il menu delle opzioni per imporre limiti massimi di dimensione e di qualità.",
+    "description": "Riduci il peso delle tue immagini in un batter d'occhio cliccando nel box sottostante o trascinandoci direttamente dentro i tuoi file.\nUtilizza il menu delle opzioni per imporre limiti massimi di dimensione e di qualità.",
     "options": "Opzioni",
     "file-input-description": "Clicca o trascina qui il(i) tuo(i) file.\nÈ permesso qualsiasi formato!",
     "max-height": "Altezza massima (px)",

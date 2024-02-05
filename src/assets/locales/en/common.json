@@ -27,7 +27,7 @@
   },
   "feature-selector": {
     "title": "Hey there 👋",
-    "description": "If you want to reduce the size of your images, transform them with stunning filters or protect them with distinctive watermarks, you've come to the right place. Explore Pimp My Jpg's suite of tools to enhance and safeguard your images in an easy and privacy-friendly way.",
+    "description": "If you want to reduce the size of your images, transform them with stunning filters or protect them with distinctive watermarks, you've come to the right place.\nExplore Pimp My Jpg's suite of tools to enhance and safeguard your images in an easy and privacy-friendly way.",
     "image-compressor": {
       "image-alt": "Image Compressor",
       "title": "Image Compressor",
@@ -49,7 +49,7 @@
   },
   "image-compressor": {
     "title": "Image compressor",
-    "description": "Reduce the size of your images in the blink of an eye by clicking in the box below or by dragging your files directly into it. Use the options menu to set maximum width and height and quality limits.",
+    "description": "Reduce the size of your images in the blink of an eye by clicking in the box below or by dragging your files directly into it.\nUse the options menu to set maximum width and height and quality limits.",
     "options": "Options",
     "file-input-description": "Click or drop your file(s) here.\nAny format is allowed!",
     "max-height": "Max height (px)",
