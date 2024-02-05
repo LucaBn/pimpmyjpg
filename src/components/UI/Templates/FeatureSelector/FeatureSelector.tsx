@@ -16,7 +16,7 @@ const FeatureSelector: React.FC = () => {
     <Container className="py-5">
       <Row>
         <Col xs={12}>
-          <h1 className="mt-3">{t("feature-selector.title")}</h1>
+          <h1 className="mt-2 mt-sm-3">{t("feature-selector.title")}</h1>
         </Col>
         <Col xs={12} sm={{ span: 10, offset: 1 }} lg={{ span: 6, offset: 3 }}>
           <p className="lh-lg">{t("feature-selector.description")}</p>

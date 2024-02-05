@@ -57,7 +57,6 @@ const Footer: React.FC = () => {
           <Col xs={12} className="mb-4">
             <p className="mb-1">{t("footer.stay-up-to-date")}</p>
             <ul className="footer__social-list list-unstyled d-flex justify-content-center gap-2">
-              {/* TODO: Change with icons */}
               <li>
                 <Link
                   to="https://twitter.com/PimpMyJpg"
