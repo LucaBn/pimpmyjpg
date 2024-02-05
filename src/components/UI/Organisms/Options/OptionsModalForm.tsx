@@ -1,6 +1,7 @@
 import React from "react";
 
 // Components
+import BordersHandler from "@/components/UI/Organisms/BordersHandler/BordersHandler";
 import LanguageHandler from "@/components/UI/Organisms/LanguageHandler/LanguageHandler";
 import ThemeHandler from "@/components/UI/Organisms/ThemeHandler/ThemeHandler";
 
@@ -17,6 +18,9 @@ const OptionsModalForm: React.FC = () => {
 
       <p className={"mt-3 mb-2"}>{t("navbar.options.select-theme")}:</p>
       <ThemeHandler />
+
+      <p className={"mt-3 mb-2"}>{t("navbar.options.select-borders")}:</p>
+      <BordersHandler />
     </>
   );
 };

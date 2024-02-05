@@ -10,12 +10,17 @@
     "options": {
       "title": "Opzioni",
       "save-and-close": "Salva e chiudi",
+      "select-borders": "Paraspigoli per bambini",
       "select-language": "Seleziona lingua",
       "select-theme": "Seleziona tema"
     },
     "theme": {
       "dark": "Scuro",
       "light": "Chiaro"
+    },
+    "borders": {
+      "rounded": "Arrotondati",
+      "squared": "Spigolosi"
     }
   },
   "footer": {

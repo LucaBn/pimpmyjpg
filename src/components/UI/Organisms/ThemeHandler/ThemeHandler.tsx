@@ -43,7 +43,7 @@ const ThemeHandler: React.FC<IThemeHandler> = ({ forceColor }) => {
 
   return (
     <Form>
-      <Form.Group as={Col} className="d-flex gap-3">
+      <Form.Group as={Col} className="d-flex flex-wrap gap-3">
         {THEME_OPTIONS.map((option) => (
           <Form.Check
             key={option}

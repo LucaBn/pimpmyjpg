@@ -51,10 +51,10 @@ const LanguageHandler: React.FC = () => {
   const navigate = useNavigate();
 
   const flagContainerClassList = (flagLanguage: LanguageList) => {
-    const classList = [`${CLASS_APP_NAME}-flag`, `position-relative`];
+    const classList = [`${CLASS_APP_NAME}-radio-flag`, `position-relative`];
 
     if (flagLanguage === language) {
-      classList.push(`${CLASS_APP_NAME}-flag--active`);
+      classList.push(`${CLASS_APP_NAME}-radio-flag--active`); // At the moment this class is not used
     }
 
     return generateClassNameValue(classList);
@@ -71,7 +71,7 @@ const LanguageHandler: React.FC = () => {
 
   return (
     <Form>
-      <Form.Group as={Col} className=" d-flex gap-3">
+      <Form.Group as={Col} className=" d-flex flex-wrap gap-3">
         {LANGUAGE_OPTIONS.map((option) => (
           <Form.Check
             key={option.language}

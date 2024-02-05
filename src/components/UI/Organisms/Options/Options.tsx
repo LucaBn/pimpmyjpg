@@ -14,15 +14,13 @@ interface IOptions extends IImage {}
 
 const Options: React.FC<IOptions> = ({ forceColor }) => {
   return (
-    <>
-      <Button
-        aria-label="Options"
-        variant="link"
-        className={`${CLASS_APP_NAME}-options rounded-0`}
-      >
-        <IconGear forceColor={forceColor} />
-      </Button>
-    </>
+    <Button
+      aria-label="Options"
+      variant="link"
+      className={`${CLASS_APP_NAME}-options rounded-0`}
+    >
+      <IconGear forceColor={forceColor} />
+    </Button>
   );
 };
 
