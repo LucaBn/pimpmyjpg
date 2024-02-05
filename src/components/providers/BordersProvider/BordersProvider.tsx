@@ -10,13 +10,13 @@ import {
 import { IGenericComponent } from "@/typings/components";
 
 // Constants
-import { Borders } from "@/constants/borders";
+import { BorderList } from "@/constants/borders";
 import { APP_NAME } from "@/constants/app";
 
 // Define the context
 export interface IBordersContext {
-  borders: Borders;
-  changeBorders: (newBorders: Borders) => void;
+  borders: BorderList;
+  changeBorders: (newBorders: BorderList) => void;
 }
 
 const lowercaseAppName = APP_NAME.toLowerCase();
@@ -24,7 +24,7 @@ const LS_BORDERS_VARIABLE = `${lowercaseAppName}Borders`;
 
 // Default createContextValue
 const defaultCreateContextValue = {
-  borders: Borders.Rounded,
+  borders: BorderList.Rounded,
   changeBorders: () => {},
 };
 
@@ -33,24 +33,24 @@ export const BordersContext = createContext<IBordersContext>(
 );
 
 export const BordersProvider: React.FC<IGenericComponent> = ({ children }) => {
-  const [borders, setBorders] = useState<Borders>(Borders.Rounded);
+  const [borders, setBorders] = useState<BorderList>(BorderList.Rounded);
 
   useEffect(() => {
     const storedPmjBorders = readFromLocalStorage(LS_BORDERS_VARIABLE);
 
     switch (storedPmjBorders) {
-      case Borders.Rounded:
-        setBorders(Borders.Rounded);
+      case BorderList.Rounded:
+        setBorders(BorderList.Rounded);
         break;
-      case Borders.Squared:
-        setBorders(Borders.Squared);
+      case BorderList.Squared:
+        setBorders(BorderList.Squared);
         break;
       default:
         break;
     }
   }, []);
 
-  const changeBorders = (newBorders: Borders) => {
+  const changeBorders = (newBorders: BorderList) => {
     setBorders(newBorders);
     writeToLocalStorage(LS_BORDERS_VARIABLE, newBorders);
   };

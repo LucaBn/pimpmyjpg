@@ -10,12 +10,17 @@
     "options": {
       "title": "Options",
       "save-and-close": "Save and close",
+      "select-borders": "Corner protectors for children",
       "select-language": "Select language",
       "select-theme": "Select theme"
     },
     "theme": {
       "dark": "Dark",
       "light": "Light"
+    },
+    "borders": {
+      "rounded": "Rounded",
+      "squared": "Edgy"
     }
   },
   "footer": {

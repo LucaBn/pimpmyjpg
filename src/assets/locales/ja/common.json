@@ -10,12 +10,17 @@
     "options": {
       "title": "オプション",
       "save-and-close": "保存して閉じる",
+      "select-borders": "子供用コーナープロテクター",
       "select-language": "言語選択",
       "select-theme": "テーマを選ぶ"
     },
     "theme": {
       "dark": "暗い",
       "light": "明るい"
+    },
+    "borders": {
+      "rounded": "丸みを帯びた",
+      "squared": "エッジー"
     }
   },
   "footer": {

@@ -5,12 +5,15 @@
 @import "./Atoms/IconGear/styles";
 @import "./Atoms/IconLanguage/styles";
 @import "./Atoms/IconMoon/styles";
+@import "./Atoms/IconRounded/styles";
+@import "./Atoms/IconSquared/styles";
 @import "./Atoms/IconSun/styles";
 
 // Molecules
 @import "./Molecules/Logo/styles";
 
 // Organisms
+@import "./Organisms/BordersHandler/styles";
 @import "./Organisms/Footer/styles";
 @import "./Organisms/ImageCompressor/styles";
 @import "./Organisms/LanguageHandler/styles";
