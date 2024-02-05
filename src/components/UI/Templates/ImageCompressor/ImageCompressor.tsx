@@ -14,7 +14,7 @@ const ImageCompressorTemplate: React.FC = () => {
     <Container className="py-5">
       <Row>
         <Col xs={12}>
-          <h1 className="mt-3">{t("image-compressor.title")}</h1>
+          <h1 className="mt-2 mt-sm-3">{t("image-compressor.title")}</h1>
         </Col>
         <Col xs={12} sm={{ span: 10, offset: 1 }} lg={{ span: 6, offset: 3 }}>
           <p>{t("image-compressor.description")}</p>
