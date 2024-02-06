@@ -24,7 +24,7 @@ const IconSquared: React.FC<IIconSquared> = ({ forceColor }) => {
       height="24"
       fill="none"
       stroke={iconColor}
-      stroke-width="2"
+      strokeWidth="2"
       className="icon-squared"
     >
       <rect height="18" width="18" x="3" y="3" />

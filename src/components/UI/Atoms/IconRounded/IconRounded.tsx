@@ -24,9 +24,9 @@ const IconRounded: React.FC<IIconRounded> = ({ forceColor }) => {
       height="24"
       fill="none"
       stroke={iconColor}
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
       className="icon-rounded"
     >
       <rect height="18" rx="6" ry="6" width="18" x="3" y="3" />
