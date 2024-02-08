@@ -1,6 +1,12 @@
 import React, { useState } from "react";
 
-const ImageWatermarkApp: React.FC = () => {
+// Components
+import { Col, Container, Row } from "react-bootstrap";
+
+// Locales
+import { useTranslation } from "react-i18next";
+
+const AddWatermark: React.FC = () => {
   const [uploadedImage, setUploadedImage] = useState<HTMLImageElement | null>(
     null
   );
@@ -14,6 +20,8 @@ const ImageWatermarkApp: React.FC = () => {
   const [opacity, setOpacity] = useState("1");
   const [watermarkPosition, setWatermarkPosition] = useState("center");
   const [previewUrl, setPreviewUrl] = useState<string | null>(null); // Aggiunto per l'anteprima
+
+  const { t } = useTranslation("common");
 
   const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files && event.target.files[0]) {
@@ -133,94 +141,108 @@ const ImageWatermarkApp: React.FC = () => {
   };
 
   return (
-    <div>
-      <input type="file" accept="image/*" onChange={handleImageUpload} />
-      <div>
-        <label>
+    <Container className="py-5">
+      <Row>
+        <Col xs={12}>
+          <h1 className="mt-2 mt-sm-3">{t("image-compressor.title")}</h1>
+        </Col>
+        <Col xs={12} sm={{ span: 10, offset: 1 }} lg={{ span: 6, offset: 3 }}>
+          <p className="white-space-pre-line">
+            {t("image-compressor.description")}
+          </p>
+        </Col>
+      </Row>
+      <Row className="mt-4">
+        <Col xs={12}>
+          <input type="file" accept="image/*" onChange={handleImageUpload} />
+          <div>
+            <label>
+              <input
+                type="radio"
+                value="text"
+                checked={watermarkType === "text"}
+                onChange={() => setWatermarkType("text")}
+              />
+              Text Watermark
+            </label>
+            <label>
+              <input
+                type="radio"
+                value="image"
+                checked={watermarkType === "image"}
+                onChange={() => setWatermarkType("image")}
+              />
+              Image Watermark
+            </label>
+          </div>
+          {watermarkType === "text" ? (
+            <>
+              <input
+                type="text"
+                placeholder="Watermark Text"
+                value={textWatermark}
+                onChange={(e) => setTextWatermark(e.target.value)}
+              />
+              <input
+                type="number"
+                placeholder="Font Size"
+                value={fontSize}
+                onChange={(e) => setFontSize(e.target.value)}
+              />
+              <input
+                type="text"
+                placeholder="Font Family"
+                value={fontFamily}
+                onChange={(e) => setFontFamily(e.target.value)}
+              />
+              <input
+                type="color"
+                value={textColor}
+                onChange={(e) => setTextColor(e.target.value)}
+              />
+            </>
+          ) : (
+            <input
+              type="file"
+              accept="image/*"
+              onChange={handleWatermarkImageUpload}
+            />
+          )}
           <input
-            type="radio"
-            value="text"
-            checked={watermarkType === "text"}
-            onChange={() => setWatermarkType("text")}
+            type="range"
+            min="0"
+            max="1"
+            step="0.1"
+            value={opacity}
+            onChange={(e) => setOpacity(e.target.value)}
           />
-          Text Watermark
-        </label>
-        <label>
-          <input
-            type="radio"
-            value="image"
-            checked={watermarkType === "image"}
-            onChange={() => setWatermarkType("image")}
-          />
-          Image Watermark
-        </label>
-      </div>
-      {watermarkType === "text" ? (
-        <>
-          <input
-            type="text"
-            placeholder="Watermark Text"
-            value={textWatermark}
-            onChange={(e) => setTextWatermark(e.target.value)}
-          />
-          <input
-            type="number"
-            placeholder="Font Size"
-            value={fontSize}
-            onChange={(e) => setFontSize(e.target.value)}
-          />
-          <input
-            type="text"
-            placeholder="Font Family"
-            value={fontFamily}
-            onChange={(e) => setFontFamily(e.target.value)}
-          />
-          <input
-            type="color"
-            value={textColor}
-            onChange={(e) => setTextColor(e.target.value)}
-          />
-        </>
-      ) : (
-        <input
-          type="file"
-          accept="image/*"
-          onChange={handleWatermarkImageUpload}
-        />
-      )}
-      <input
-        type="range"
-        min="0"
-        max="1"
-        step="0.1"
-        value={opacity}
-        onChange={(e) => setOpacity(e.target.value)}
-      />
-      <select
-        value={watermarkPosition}
-        onChange={(e) => setWatermarkPosition(e.target.value)}
-      >
-        <option value="center">Center</option>
-        <option value="top-left">Top Left</option>
-        <option value="top-right">Top Right</option>
-        <option value="bottom-left">Bottom Left</option>
-        <option value="bottom-right">Bottom Right</option>
-      </select>
-      <button onClick={applyWatermark}>Apply Watermark & Download</button>
-      {previewUrl && (
-        <div>
-          <img
-            src={previewUrl}
-            alt="Watermarked Preview"
-            style={{ maxWidth: "100%", maxHeight: "400px" }}
-          />
-          <a href={previewUrl} download="watermarked-image.jpg">
-            Download Image
-          </a>
-        </div>
-      )}
-    </div>
+          <select
+            value={watermarkPosition}
+            onChange={(e) => setWatermarkPosition(e.target.value)}
+          >
+            <option value="center">Center</option>
+            <option value="top-left">Top Left</option>
+            <option value="top-right">Top Right</option>
+            <option value="bottom-left">Bottom Left</option>
+            <option value="bottom-right">Bottom Right</option>
+          </select>
+          <button onClick={applyWatermark}>Apply Watermark & Download</button>
+          {previewUrl && (
+            <div>
+              <img
+                src={previewUrl}
+                alt="Watermarked Preview"
+                style={{ maxWidth: "100%", maxHeight: "400px" }}
+              />
+              <a href={previewUrl} download="watermarked-image.jpg">
+                Download Image
+              </a>
+            </div>
+          )}
+        </Col>
+      </Row>
+    </Container>
   );
 };
 
-export default ImageWatermarkApp;
+export default AddWatermark;
