@@ -68,6 +68,10 @@
     "download-all": "すべてダウンロード",
     "clear": "クリア"
   },
+  "add-watermark": {
+    "title": "透かしを追加",
+    "description": "あなたの大切な画像に個人的な透かしを入れ、ウェブ詐欺師による画像の流用を防ぎます！"
+  },
   "error-404": {
     "title": "エラー404",
     "description": "ページが見つかりません",
