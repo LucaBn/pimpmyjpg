@@ -68,6 +68,10 @@
     "download-all": "Download all",
     "clear": "Clear"
   },
+  "add-watermark": {
+    "title": "Add Watermark",
+    "description": "Apply a personal watermark to your precious images to prevent web crooks from misappropriating them!"
+  },
   "error-404": {
     "title": "Error 404",
     "description": "Page not found",

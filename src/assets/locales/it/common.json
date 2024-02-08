@@ -68,6 +68,10 @@
     "download-all": "Scarica tutto",
     "clear": "Svuota"
   },
+  "add-watermark": {
+    "title": "Aggiungi Watermark",
+    "description": "Applica un watermark personale sulle tue preziose immagini per evitare che i delinquenti del web se ne approprino indebitamente!"
+  },
   "error-404": {
     "title": "Errore 404",
     "description": "Pagina non trovata",

@@ -13,6 +13,7 @@
 @import "./Molecules/Logo/styles";
 
 // Organisms
+@import "./Organisms/AddWatermark/styles";
 @import "./Organisms/BordersHandler/styles";
 @import "./Organisms/Footer/styles";
 @import "./Organisms/ImageCompressor/styles";
@@ -23,6 +24,7 @@
 @import "./Organisms/ThemeHandler/styles";
 
 // Templates
+@import "./Templates/AddWatermark/styles";
 @import "./Templates/Error404/styles";
 @import "./Templates/FeatureSelector/styles";
 @import "./Templates/ImageCompressor/styles";
