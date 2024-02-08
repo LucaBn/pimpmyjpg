@@ -87,8 +87,36 @@ To add a new theme to this project, you need to modify the `ThemeList` variable 
 export enum ThemeList {
   Dark = "dark",
   Light = "light",
-  Pink = "pink", // Add this line Pink theme
+  Pink = "pink", // Add this line for Pink theme
 }
 ```
 
 Then remember to add a `<Icon... />` component to include in the `<ThemeHandler />` component so that the new theme will be selectable for all users.
+
+## Page Management
+
+### Adding a New Page
+
+To add a new page to this project, you need to add a new route in the `src\components\providers\ReactRouterProvider\ReactRouterProvider.tsx` file. Here's how you can add `/:language/privacy-policy` page:
+
+```tsx
+<BrowserRouter>
+  <Routes>
+    <Route path="/" element={<App />}>
+      <Route index element={<FeatureSelector />} />
+      <Route path=":language">
+        <Route index element={<FeatureSelector />} />
+        <Route path="image-compressor" element={<ImageCompressor />} />
+        <Route path="add-watermark" element={<WatermarkHandler />} />
+        <Route path="privacy-policy" element={<PrivacyPolicy />} /> // Add this line
+        for /:language/privacy-policy page
+        <Route path="*" element={<Error404 />} />
+      </Route>
+    </Route>
+  </Routes>
+</BrowserRouter>
+```
+
+Obviously the `<PrivacyPolicy />` component must exist!
+
+Then remember to update the `public\sitemap.xml` file and, if necessary also the `public\robots.txt` file.
