@@ -1,31 +1,4 @@
 .image-compressor {
-  &__upload-container {
-    position: relative;
-    height: 50dvh;
-    max-height: 300px;
-    width: 100%;
-    max-width: 600px;
-    border: 2px dashed var(--bs-body-color);
-
-    label {
-      position: absolute;
-      text-align: center;
-      width: 100%;
-      top: 50%;
-      left: 0;
-      transform: translateY(-50%);
-    }
-
-    &-input {
-      position: absolute;
-      top: 0;
-      left: 0;
-      height: 100%;
-      width: 100%;
-      cursor: pointer;
-    }
-  }
-
   &__accordion {
     max-width: 400px;
   }
