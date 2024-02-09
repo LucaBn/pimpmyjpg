@@ -12,6 +12,7 @@ import {
   Row,
   Spinner,
 } from "react-bootstrap";
+import DropFileInput from "@/components/UI/Molecules/DropFileInput/DropFileInput";
 
 // Locales
 import { useTranslation } from "react-i18next";
@@ -66,11 +67,11 @@ const ImageCompressor: React.FC = () => {
     }
   }, [loadedImages]);
 
-  const handleImageChange = (ev: ChangeEvent<HTMLInputElement>) => {
+  const handleImageChange = (e: ChangeEvent<HTMLInputElement>) => {
     setIsLoading(true);
 
-    const files = ev.target.files;
-    if (ev.target.files) {
+    const files = e.target.files;
+    if (e.target.files) {
       setInputFileValueKey((prevValue) => prevValue + 1); // Need this to trigger change event even if the user uploads files with the same names in different moments
     }
 
@@ -219,20 +220,12 @@ const ImageCompressor: React.FC = () => {
       <Col xs={12}>
         <div className="d-flex flex-column align-items-center gap-3">
           {/* Drop picture(s) container */}
-          <div className="image-compressor__upload-container bg-gradient rounded">
-            <label htmlFor="file-input" className="white-space-pre-line fs-5">
-              {t("image-compressor.file-input-description")}
-            </label>
-            <input
-              id="file-input"
-              className="image-compressor__upload-container-input d-block opacity-0"
-              key={inputFileValueKey}
-              type="file"
-              accept="image/*"
-              onChange={handleImageChange}
-              multiple
-            />
-          </div>
+          <DropFileInput
+            key={inputFileValueKey}
+            label={t("image-compressor.file-input-description")}
+            isMultiple={true}
+            handleImageChange={handleImageChange}
+          />
           {/* Options */}
           <Accordion className="image-compressor__accordion w-100 text-start">
             <Accordion.Item eventKey="0">
