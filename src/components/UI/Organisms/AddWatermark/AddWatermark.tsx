@@ -1,27 +1,71 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 // Components
-import { Row, Col, Form, InputGroup, Button } from "react-bootstrap";
+import {
+  Row,
+  Col,
+  Form,
+  InputGroup,
+  Button,
+  Tabs,
+  Tab,
+  Container,
+} from "react-bootstrap";
 import DropFileInput from "@/components/UI/Molecules/DropFileInput/DropFileInput";
 
 // Locales
 // import { useTranslation } from "react-i18next";
 
+enum WatermarkType {
+  Text = "text",
+  Image = "image",
+}
+
+enum FontFamilyType {
+  Arial = "Arial",
+  Monospace = "Monospace",
+  Roboto = "Roboto",
+  Georgia = "Georgia",
+  Cursive = "Cursive",
+}
+
+enum TextColorType {
+  White = "#fff",
+  Black = "#000",
+}
+
+enum WatermarkPositionType {
+  Center = "center",
+  TopLeft = "top-left",
+  TopRight = "top-right",
+  BottomLeft = "bottom-left",
+  BottomRight = "bottom-right",
+}
+
 const AddWatermark: React.FC = () => {
   const [uploadedImage, setUploadedImage] = useState<HTMLImageElement | null>(
     null
   );
-  const [watermarkType, setWatermarkType] = useState<"text" | "image">("text");
-  const [textWatermark, setTextWatermark] = useState("My Watermark");
+  const [watermarkType, setWatermarkType] = useState<WatermarkType>(
+    WatermarkType.Text
+  );
+  const [textWatermark, setTextWatermark] = useState<string>("My Watermark");
   const [watermarkImage, setWatermarkImage] = useState<HTMLImageElement | null>(
     null
   );
-  const [fontSize, setFontSize] = useState("30");
-  const [fontFamily, setFontFamily] = useState("Arial");
-  const [textColor, setTextColor] = useState("#FFFFFF");
+  const [fontSize, setFontSize] = useState<string>("45");
+  const [fontFamily, setFontFamily] = useState<FontFamilyType>(
+    FontFamilyType.Arial
+  );
+  const [textColor, setTextColor] = useState<TextColorType>(
+    TextColorType.White
+  );
   const [opacity, setOpacity] = useState<number>(75);
-  const [watermarkPosition, setWatermarkPosition] = useState("center");
-  const [previewUrl, setPreviewUrl] = useState<string | null>(null); // Aggiunto per l'anteprima
+  const [watermarkPosition, setWatermarkPosition] =
+    useState<WatermarkPositionType>(WatermarkPositionType.Center);
+  const [previewUrl, setPreviewUrl] = useState<string | null>(null);
+
+  const optionsRef = useRef<HTMLDivElement>(null);
 
   // const { t } = useTranslation("common");
 
@@ -66,8 +110,8 @@ const AddWatermark: React.FC = () => {
     }
     applyWatermark();
   }, [
-    watermarkType,
     uploadedImage,
+    watermarkType,
     textWatermark,
     watermarkImage,
     fontSize,
@@ -76,6 +120,16 @@ const AddWatermark: React.FC = () => {
     opacity,
     watermarkPosition,
   ]);
+
+  useEffect(() => {
+    // Scroll to Options
+    if (optionsRef.current) {
+      optionsRef.current.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+  }, [uploadedImage]);
 
   const applyWatermark = () => {
     if (!uploadedImage) return;
@@ -192,169 +246,241 @@ const AddWatermark: React.FC = () => {
   return (
     <Row className="mt-4">
       <Col xs={12}>
-        <div className="d-flex flex-column align-items-center gap-3">
+        <div className="d-flex flex-column align-items-center gap-3 text-start">
           <DropFileInput
             label="Drop Here"
             handleImageChange={handleImageChange}
           />
           {/* Select Watermark type */}
-          <div>
-            <label>
-              <input
-                type="radio"
-                value="text"
-                checked={watermarkType === "text"}
-                onChange={() => setWatermarkType("text")}
-              />
-              Text Watermark
-            </label>
-            <label>
-              <input
-                type="radio"
-                value="image"
-                checked={watermarkType === "image"}
-                onChange={() => setWatermarkType("image")}
-              />
-              Image Watermark
-            </label>
-          </div>
-          {/* Options */}
-          <div className="text-start" style={{ maxWidth: 400 }}>
-            {watermarkType === "text" ? (
-              <Row className="g-3">
-                <Col xs={12}>
-                  <Form.Group>
-                    <Form.Label htmlFor="watermark-text">
-                      Watermark Text
-                    </Form.Label>
-                    <Form.Control
-                      id="watermark-text"
-                      type="text"
-                      value={textWatermark}
-                      onChange={(e) => setTextWatermark(e.target.value)}
-                    />
-                  </Form.Group>
-                </Col>
-                <Col xs={12} md={3}>
-                  <Form.Group>
-                    <Form.Label htmlFor="font-size">Font size</Form.Label>
-                    <Form.Control
-                      id="font-size"
-                      type="number"
-                      min="6"
-                      max="999"
-                      step="1"
-                      value={fontSize}
-                      onChange={(e) => setFontSize(e.target.value)}
-                    />
-                  </Form.Group>
-                </Col>
-                <Col xs={12} md={5}>
-                  <Form.Group>
-                    <Form.Label htmlFor="font-family">Font family</Form.Label>
-                    <Form.Select
-                      id="font-family"
-                      aria-label="Font Family"
-                      value={fontFamily}
-                      onChange={(e) => setFontFamily(e.target.value)}
-                    >
-                      <option value="Arial">Arial</option>
-                      <option value="Monospace">Monospace</option>
-                      <option value="Roboto">Roboto</option>
-                      <option value="Georgia">Georgia</option>
-                      <option value="Cursive">Cursive</option>
-                    </Form.Select>
-                  </Form.Group>
-                </Col>
-                <Col xs={12} md={4}>
-                  <Form.Group>
-                    <Form.Label htmlFor="text-color">Colour</Form.Label>
-                    <Form.Select
-                      id="text-color"
-                      aria-label="Colour"
-                      value={textColor}
-                      onChange={(e) => setTextColor(e.target.value)}
-                    >
-                      <option value="#fff">White</option>
-                      <option value="#000">Black</option>
-                    </Form.Select>
-                  </Form.Group>
-                </Col>
-              </Row>
-            ) : (
-              <Row>
-                <Col xs={12}>
-                  <input
-                    type="file"
-                    accept="image/*"
-                    onChange={handleWatermarkImageUpload}
-                  />
-                </Col>
-              </Row>
+          <div ref={optionsRef}>
+            {uploadedImage && (
+              <Tabs
+                defaultActiveKey="text"
+                id="watermark-type-tab"
+                className="add-watermark__tabs w-100"
+                onSelect={(e) => {
+                  setWatermarkType(e as WatermarkType);
+                }}
+                fill
+              >
+                <Tab
+                  eventKey="text"
+                  title="Text"
+                  className="add-watermark__tabs-tab mt-3"
+                >
+                  <Container>
+                    <Row className="gy-3">
+                      <Col xs={12}>
+                        <Form.Group>
+                          <Form.Label htmlFor="watermark-text">
+                            Watermark Text
+                          </Form.Label>
+                          <Form.Control
+                            id="watermark-text"
+                            type="text"
+                            value={textWatermark}
+                            onChange={(e) => setTextWatermark(e.target.value)}
+                          />
+                        </Form.Group>
+                      </Col>
+                      <Col xs={12} md={3}>
+                        <Form.Group>
+                          <Form.Label htmlFor="font-size">Font size</Form.Label>
+                          <Form.Control
+                            id="font-size"
+                            type="number"
+                            min="6"
+                            max="999"
+                            step="1"
+                            value={fontSize}
+                            onChange={(e) => setFontSize(e.target.value)}
+                          />
+                        </Form.Group>
+                      </Col>
+                      <Col xs={12} md={5}>
+                        <Form.Group>
+                          <Form.Label htmlFor="font-family">
+                            Font family
+                          </Form.Label>
+                          <Form.Select
+                            id="font-family"
+                            aria-label="Font Family"
+                            value={fontFamily}
+                            onChange={(e) =>
+                              setFontFamily(e.target.value as FontFamilyType)
+                            }
+                          >
+                            <option value="Arial">Arial</option>
+                            <option value="Monospace">Monospace</option>
+                            <option value="Roboto">Roboto</option>
+                            <option value="Georgia">Georgia</option>
+                            <option value="Cursive">Cursive</option>
+                          </Form.Select>
+                        </Form.Group>
+                      </Col>
+                      <Col xs={12} md={4}>
+                        <Form.Group>
+                          <Form.Label htmlFor="text-color">Colour</Form.Label>
+                          <Form.Select
+                            id="text-color"
+                            aria-label="Colour"
+                            value={textColor}
+                            onChange={(e) =>
+                              setTextColor(e.target.value as TextColorType)
+                            }
+                          >
+                            <option value="#fff">White</option>
+                            <option value="#000">Black</option>
+                          </Form.Select>
+                        </Form.Group>
+                      </Col>
+                      <Col xs={12} md={8}>
+                        <Form.Group>
+                          <Form.Label htmlFor="watermark-txt-opacity">
+                            Opacity
+                          </Form.Label>
+                          <InputGroup className="mb-1">
+                            <Form.Control
+                              type="number"
+                              min="0"
+                              max="100"
+                              step="1"
+                              value={String(
+                                opacity
+                              )} /* Need this to prevent leading zeroes, hope it works correctly */
+                              onChange={(e) =>
+                                setOpacity(Number(e.target.value))
+                              }
+                              aria-labelledby="Opacity"
+                              className="me-1"
+                            />
+                            <InputGroup.Text>%</InputGroup.Text>
+                          </InputGroup>
+                          <Form.Control
+                            id="watermark-opacity"
+                            type="range"
+                            min="0"
+                            max="100"
+                            step="1"
+                            value={opacity}
+                            onChange={(e) => setOpacity(Number(e.target.value))}
+                          />
+                        </Form.Group>
+                      </Col>
+                      <Col xs={12} md={4}>
+                        <Form.Group>
+                          <Form.Label htmlFor="watermark-txt-position">
+                            Watermark position
+                          </Form.Label>
+                          <Form.Select
+                            id="watermark-txt-position"
+                            aria-label="Watermark position"
+                            value={watermarkPosition}
+                            onChange={(e) =>
+                              setWatermarkPosition(
+                                e.target.value as WatermarkPositionType
+                              )
+                            }
+                          >
+                            <option value="center">Center</option>
+                            <option value="top-left">Top Left</option>
+                            <option value="top-right">Top Right</option>
+                            <option value="bottom-left">Bottom Left</option>
+                            <option value="bottom-right">Bottom Right</option>
+                          </Form.Select>
+                        </Form.Group>
+                      </Col>
+                    </Row>
+                  </Container>
+                </Tab>
+                <Tab
+                  eventKey="image"
+                  title="Image"
+                  className="add-watermark__tabs-tab mt-3"
+                >
+                  <Container>
+                    <Row className="gy-3">
+                      <Col xs={12}>
+                        <Form.Group>
+                          <Form.Label htmlFor="watermark-image">
+                            Watermark Image
+                          </Form.Label>
+                          <Form.Control
+                            id="watermark-image"
+                            type="file"
+                            accept="image/*"
+                            onChange={handleWatermarkImageUpload}
+                          />
+                        </Form.Group>
+                      </Col>
+                      <Col xs={12} md={8}>
+                        <Form.Group>
+                          <Form.Label htmlFor="watermark-img-opacity">
+                            Opacity
+                          </Form.Label>
+                          <InputGroup className="mb-1">
+                            <Form.Control
+                              type="number"
+                              min="0"
+                              max="100"
+                              step="1"
+                              value={String(
+                                opacity
+                              )} /* Need this to prevent leading zeroes, hope it works correctly */
+                              onChange={(e) =>
+                                setOpacity(Number(e.target.value))
+                              }
+                              aria-labelledby="Opacity"
+                              className="me-1"
+                            />
+                            <InputGroup.Text>%</InputGroup.Text>
+                          </InputGroup>
+                          <Form.Control
+                            id="watermark-img-opacity"
+                            type="range"
+                            min="0"
+                            max="100"
+                            step="1"
+                            value={opacity}
+                            onChange={(e) => setOpacity(Number(e.target.value))}
+                          />
+                        </Form.Group>
+                      </Col>
+                      <Col xs={12} md={4}>
+                        <Form.Group>
+                          <Form.Label htmlFor="watermark-img-position">
+                            Watermark position
+                          </Form.Label>
+                          <Form.Select
+                            id="watermark-img-position"
+                            aria-label="Watermark position"
+                            value={watermarkPosition}
+                            onChange={(e) =>
+                              setWatermarkPosition(
+                                e.target.value as WatermarkPositionType
+                              )
+                            }
+                          >
+                            <option value="center">Center</option>
+                            <option value="top-left">Top Left</option>
+                            <option value="top-right">Top Right</option>
+                            <option value="bottom-left">Bottom Left</option>
+                            <option value="bottom-right">Bottom Right</option>
+                          </Form.Select>
+                        </Form.Group>
+                      </Col>
+                    </Row>
+                  </Container>
+                </Tab>
+              </Tabs>
             )}
-            <Row className="my-3">
-              <Col xs={12}>
-                <Form.Group>
-                  <Form.Label htmlFor="watermark-opacity">Opacity</Form.Label>
-                  <InputGroup className="mb-1">
-                    <Form.Control
-                      id="watermark-opacity"
-                      type="number"
-                      min="0"
-                      max="100"
-                      step="1"
-                      value={String(
-                        opacity
-                      )} /* Need this to prevent leading zeroes, hope it works correctly */
-                      onChange={(e) => setOpacity(Number(e.target.value))}
-                      aria-labelledby="quality"
-                      className="image-compressor__quality-number me-1"
-                    />
-                    <InputGroup.Text>%</InputGroup.Text>
-                  </InputGroup>
-                  <Form.Control
-                    id="quality"
-                    type="range"
-                    min="0"
-                    max="100"
-                    step="1"
-                    value={opacity}
-                    onChange={(e) => setOpacity(Number(e.target.value))}
-                  />
-                </Form.Group>
-              </Col>
-              <Col xs={12} className="mt-3">
-                <Form.Group>
-                  <Form.Label htmlFor="watermark-position">
-                    Watermark position
-                  </Form.Label>
-                  <Form.Select
-                    id="watermark-position"
-                    aria-label="Watermark position"
-                    value={watermarkPosition}
-                    onChange={(e) => setWatermarkPosition(e.target.value)}
-                  >
-                    <option value="center">Center</option>
-                    <option value="top-left">Top Left</option>
-                    <option value="top-right">Top Right</option>
-                    <option value="bottom-left">Bottom Left</option>
-                    <option value="bottom-right">Bottom Right</option>
-                  </Form.Select>
-                </Form.Group>
-              </Col>
-            </Row>
-
-            {/* <Button className="d-block mx-auto" onClick={applyWatermark}>
-              Apply Watermark
-            </Button> */}
           </div>
-
           {previewUrl && (
             <div>
               <img
                 src={previewUrl}
                 alt="Watermarked Preview"
-                style={{ maxWidth: "100%", maxHeight: "400px" }}
+                className="add-watermark__preview rounded mt-4 mw-100"
               />
               <a
                 href={previewUrl}
