@@ -31,4 +31,19 @@
         hreflang="en"
         href="https://www.pimpmyjpg.com/en/image-compressor"/>
   </url>
+  <url>
+    <loc>https://www.pimpmyjpg.com/en/add-watermark</loc>
+    <xhtml:link
+        rel="alternate"
+        hreflang="it"
+        href="https://www.pimpmyjpg.com/it/add-watermark"/>
+    <xhtml:link
+        rel="alternate"
+        hreflang="ja"
+        href="https://www.pimpmyjpg.com/ja/add-watermark"/>
+    <xhtml:link
+        rel="alternate"
+        hreflang="en"
+        href="https://www.pimpmyjpg.com/en/add-watermark"/>
+  </url>
 </urlset>
