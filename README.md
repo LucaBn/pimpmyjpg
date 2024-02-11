@@ -52,7 +52,9 @@ This section of the README provides a guide on managing multilingual support in 
 
 ### Adding a New Language
 
-To add a new language to this project, you need to modify the `LanguageList` variable in the `src/typings/i18next.ts` file. Here's how you can add French (`fr`):
+To add a new language to this project, you need to modify the `LanguageList` variable in the `src/typings/i18next.ts` file.
+
+Here's how you can add French (`fr`):
 
 ```typescript
 export enum LanguageList {
@@ -63,7 +65,9 @@ export enum LanguageList {
 }
 ```
 
-After adding the new language, it's important to update the sitemap.xml file to include routes associated with that language. Here's how you can add the French language to your sitemap.xml:
+After adding the new language, it's important to update the sitemap.xml file to include routes associated with that language.
+
+Here's how you can add the French language to your sitemap.xml:
 
 ```xml
 <url>
@@ -81,7 +85,9 @@ After these steps remember to add a `<Icon... />` component to include in the `<
 
 ### Adding a New Theme
 
-To add a new theme to this project, you need to modify the `ThemeList` variable in the `src\constants\themes.ts` file. Here's how you can add a `Pink theme`:
+To add a new theme to this project, you need to modify the `ThemeList` variable in the `src\constants\themes.ts` file.
+
+Here's how you can add a `Pink theme`:
 
 ```typescript
 export enum ThemeList {
@@ -97,7 +103,9 @@ Then remember to add a `<Icon... />` component to include in the `<ThemeHandler 
 
 ### Adding a New Page
 
-To add a new page to this project, you need to add a new route in the `src\components\providers\ReactRouterProvider\ReactRouterProvider.tsx` file. Here's how you can add `/:language/privacy-policy` page:
+To add a new page to this project, you need to add a new route in the `src\components\providers\ReactRouterProvider\ReactRouterProvider.tsx` file.
+
+Here's how you can add `/:language/privacy-policy` page:
 
 ```tsx
 <BrowserRouter>
