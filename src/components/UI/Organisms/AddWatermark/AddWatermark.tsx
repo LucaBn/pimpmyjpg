@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 // Components
 import { Row, Col, Form, InputGroup, Button } from "react-bootstrap";
@@ -12,9 +12,10 @@ const AddWatermark: React.FC = () => {
     null
   );
   const [watermarkType, setWatermarkType] = useState<"text" | "image">("text");
-  const [textWatermark, setTextWatermark] = useState("");
-  const [uploadedWatermarkImage, setUploadedWatermarkImage] =
-    useState<HTMLImageElement | null>(null);
+  const [textWatermark, setTextWatermark] = useState("My Watermark");
+  const [watermarkImage, setWatermarkImage] = useState<HTMLImageElement | null>(
+    null
+  );
   const [fontSize, setFontSize] = useState("30");
   const [fontFamily, setFontFamily] = useState("Arial");
   const [textColor, setTextColor] = useState("#FFFFFF");
@@ -54,10 +55,27 @@ const AddWatermark: React.FC = () => {
           image.height = uploadedImage!.height * 0.5;
           image.width = image.height * aspectRatio;
         }
-        setUploadedWatermarkImage(image);
+        setWatermarkImage(image);
       };
     }
   };
+
+  useEffect(() => {
+    if (watermarkType === "text") {
+      setWatermarkImage(null);
+    }
+    applyWatermark();
+  }, [
+    watermarkType,
+    uploadedImage,
+    textWatermark,
+    watermarkImage,
+    fontSize,
+    fontFamily,
+    textColor,
+    opacity,
+    watermarkPosition,
+  ]);
 
   const applyWatermark = () => {
     if (!uploadedImage) return;
@@ -80,50 +98,91 @@ const AddWatermark: React.FC = () => {
     let y = 0;
     switch (watermarkPosition) {
       case "center":
+        ctx.textAlign = "center";
         x = uploadedImage.width / 2;
-        y = uploadedImage.height / 2;
+        y =
+          uploadedImage.height / 2 +
+          (watermarkType === "text" ? Number(fontSize) / 3 : 0);
         break;
       case "top-left":
-        x = 10;
-        y = parseInt(fontSize, 10);
+        x = 15;
+        y = watermarkType === "text" ? parseInt(fontSize, 15) : 15;
         break;
       case "top-right":
-        x = uploadedImage.width - 10;
-        y = parseInt(fontSize, 10);
+        x = uploadedImage.width - 15;
+        y = watermarkType === "text" ? parseInt(fontSize, 15) : 15;
         ctx.textAlign = "right";
         break;
       case "bottom-left":
-        x = 10;
-        y = uploadedImage.height - 10;
+        x = 15;
+        y =
+          uploadedImage.height -
+          15 -
+          +(watermarkType === "text" ? Number(fontSize) / 5 : 0);
         break;
       case "bottom-right":
-        x = uploadedImage.width - 10;
-        y = uploadedImage.height - 10;
+        x = uploadedImage.width - 15;
+        y =
+          uploadedImage.height -
+          15 -
+          +(watermarkType === "text" ? Number(fontSize) / 5 : 0);
         ctx.textAlign = "right";
         break;
     }
 
     if (watermarkType === "text") {
       ctx.fillText(textWatermark, x, y);
-    } else if (watermarkType === "image" && uploadedWatermarkImage) {
+    } else if (watermarkType === "image" && watermarkImage) {
+      let watermarkImageWidth = watermarkImage.width;
+      let watermarkImageHeight = watermarkImage.height;
+
+      if (watermarkImageHeight > watermarkImageWidth) {
+        if (
+          watermarkImageHeight >= uploadedImage.height ||
+          watermarkImageHeight < uploadedImage.height / 2
+        ) {
+          watermarkImageWidth =
+            (watermarkImageWidth * (uploadedImage.height * 0.6)) /
+            watermarkImageHeight;
+          watermarkImageHeight = uploadedImage.height * 0.6;
+        }
+      } else {
+        if (
+          watermarkImageWidth >= uploadedImage.width ||
+          watermarkImageWidth < uploadedImage.width / 2
+        ) {
+          watermarkImageHeight =
+            (watermarkImageHeight * (uploadedImage.width * 0.6)) /
+            watermarkImageWidth;
+          watermarkImageWidth = uploadedImage.width * 0.6;
+        }
+      }
+
       // Adjust position for images based on selected position
       switch (watermarkPosition) {
         case "center":
-          x -= uploadedWatermarkImage.width / 2;
-          y -= uploadedWatermarkImage.height / 2;
+          x -= watermarkImageWidth / 2;
+          y -= watermarkImageHeight / 2;
           break;
         case "top-right":
-          x -= uploadedWatermarkImage.width;
+          x -= watermarkImageWidth;
           break;
         case "bottom-left":
-          y -= uploadedWatermarkImage.height;
+          y -= watermarkImageHeight;
           break;
         case "bottom-right":
-          x -= uploadedWatermarkImage.width;
-          y -= uploadedWatermarkImage.height;
+          x -= watermarkImageWidth;
+          y -= watermarkImageHeight;
           break;
       }
-      ctx.drawImage(uploadedWatermarkImage, x, y);
+
+      ctx.drawImage(
+        watermarkImage,
+        x,
+        y,
+        watermarkImageWidth,
+        watermarkImageHeight
+      );
     }
 
     const url = canvas.toDataURL("image/jpeg");
@@ -173,11 +232,10 @@ const AddWatermark: React.FC = () => {
                       type="text"
                       value={textWatermark}
                       onChange={(e) => setTextWatermark(e.target.value)}
-                      placeholder=""
                     />
                   </Form.Group>
                 </Col>
-                <Col xs={12} md={5}>
+                <Col xs={12} md={3}>
                   <Form.Group>
                     <Form.Label htmlFor="font-size">Font size</Form.Label>
                     <Form.Control
@@ -188,7 +246,6 @@ const AddWatermark: React.FC = () => {
                       step="1"
                       value={fontSize}
                       onChange={(e) => setFontSize(e.target.value)}
-                      placeholder=""
                     />
                   </Form.Group>
                 </Col>
@@ -209,16 +266,18 @@ const AddWatermark: React.FC = () => {
                     </Form.Select>
                   </Form.Group>
                 </Col>
-                <Col xs={12} md={2}>
+                <Col xs={12} md={4}>
                   <Form.Group>
                     <Form.Label htmlFor="text-color">Colour</Form.Label>
-                    <Form.Control
+                    <Form.Select
                       id="text-color"
-                      className="w-100"
-                      type="color"
+                      aria-label="Colour"
                       value={textColor}
                       onChange={(e) => setTextColor(e.target.value)}
-                    />
+                    >
+                      <option value="#fff">White</option>
+                      <option value="#000">Black</option>
+                    </Form.Select>
                   </Form.Group>
                 </Col>
               </Row>
@@ -285,9 +344,9 @@ const AddWatermark: React.FC = () => {
               </Col>
             </Row>
 
-            <Button className="d-block mx-auto" onClick={applyWatermark}>
+            {/* <Button className="d-block mx-auto" onClick={applyWatermark}>
               Apply Watermark
-            </Button>
+            </Button> */}
           </div>
 
           {previewUrl && (
