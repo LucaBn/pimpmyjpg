@@ -1,0 +1,13 @@
+.add-watermark {
+  &__tabs {
+    max-width: 600px;
+
+    &-tab {
+      max-width: 600px;
+    }
+  }
+
+  &__preview {
+    max-height: 400px;
+  }
+}
