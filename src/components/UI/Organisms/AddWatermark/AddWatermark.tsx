@@ -256,7 +256,7 @@ const AddWatermark: React.FC = () => {
                   title={t("add-watermark.tab-text")}
                   className="add-watermark__tabs-tab mt-3"
                 >
-                  <Container>
+                  <Container className="pb-3 border border-top-0 rounded-bottom">
                     <Row className="gy-3">
                       <Col xs={12}>
                         <Form.Group>
@@ -414,7 +414,7 @@ const AddWatermark: React.FC = () => {
                   title={t("add-watermark.tab-image")}
                   className="add-watermark__tabs-tab mt-3"
                 >
-                  <Container>
+                  <Container className="pb-3 border border-top-0 rounded-bottom">
                     <Row className="gy-3">
                       <Col xs={12}>
                         <Form.Group>
@@ -516,7 +516,7 @@ const AddWatermark: React.FC = () => {
               <img
                 src={previewUrl}
                 alt="Watermarked Preview"
-                className="add-watermark__preview rounded mt-4 mw-100"
+                className="add-watermark__preview rounded mw-100"
               />
               <a
                 href={previewUrl}
