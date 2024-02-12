@@ -90,7 +90,13 @@ const AddWatermark: React.FC = () => {
     if (watermarkType === "text") {
       setWatermarkImage(null);
     }
-    applyWatermark();
+    const handler = setTimeout(() => {
+      applyWatermark();
+    }, 50);
+
+    return () => {
+      clearTimeout(handler);
+    };
   }, [
     uploadedImage,
     watermarkType,
