@@ -2,45 +2,27 @@ import React, { useState, useEffect, useRef } from "react";
 
 // Components
 import {
+  Container,
   Row,
   Col,
+  Tabs,
+  Tab,
   Form,
   InputGroup,
   Button,
-  Tabs,
-  Tab,
-  Container,
 } from "react-bootstrap";
 import DropFileInput from "@/components/UI/Molecules/DropFileInput/DropFileInput";
 
+// Typings
+import {
+  FontFamilyType,
+  TextColorType,
+  WatermarkPositionType,
+  WatermarkType,
+} from "@/typings/watermarkOptions";
+
 // Locales
 // import { useTranslation } from "react-i18next";
-
-enum WatermarkType {
-  Text = "text",
-  Image = "image",
-}
-
-enum FontFamilyType {
-  Arial = "Arial",
-  Monospace = "Monospace",
-  Roboto = "Roboto",
-  Georgia = "Georgia",
-  Cursive = "Cursive",
-}
-
-enum TextColorType {
-  White = "#fff",
-  Black = "#000",
-}
-
-enum WatermarkPositionType {
-  Center = "center",
-  TopLeft = "top-left",
-  TopRight = "top-right",
-  BottomLeft = "bottom-left",
-  BottomRight = "bottom-right",
-}
 
 const AddWatermark: React.FC = () => {
   const [uploadedImage, setUploadedImage] = useState<HTMLImageElement | null>(
@@ -273,7 +255,7 @@ const AddWatermark: React.FC = () => {
                       <Col xs={12}>
                         <Form.Group>
                           <Form.Label htmlFor="watermark-text">
-                            Watermark Text
+                            Watermark text
                           </Form.Label>
                           <Form.Control
                             id="watermark-text"

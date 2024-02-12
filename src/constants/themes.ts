@@ -1,5 +1,7 @@
-export enum ThemeList {
+enum ThemeList {
   Dark = "dark",
   Light = "light",
   // Pink = "pink",
 }
+
+export { ThemeList };
