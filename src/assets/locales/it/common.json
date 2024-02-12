@@ -83,7 +83,7 @@
       "black": "Nero"
     },
     "opacity": "Opacità",
-    "watermark-position": "Posizione della filigrana",
+    "watermark-position": "Posizione del watermark",
     "watermark-position-options": {
       "center": "Centro",
       "top-left": "In alto a sinistra",
@@ -91,7 +91,7 @@
       "bottom-left": "In basso a sinistra",
       "bottom-right": "In basso a destra"
     },
-    "watermark-image": "Immagine del watermark",
+    "watermark-image": "Immagine watermark",
     "download": "Scarica immagine"
   },
   "error-404": {
