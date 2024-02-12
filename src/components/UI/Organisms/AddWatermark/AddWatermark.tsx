@@ -259,6 +259,7 @@ const AddWatermark: React.FC = () => {
                   <Container className="pb-3 border border-top-0 rounded-bottom">
                     <Row className="gy-3">
                       <Col xs={12}>
+                        {/* TODO: Create component to handle form inputs */}
                         <Form.Group>
                           <Form.Label htmlFor="watermark-text">
                             {t("add-watermark.watermark-text")}
@@ -294,7 +295,7 @@ const AddWatermark: React.FC = () => {
                           </Form.Label>
                           <Form.Select
                             id="font-family"
-                            aria-label="Font Family"
+                            aria-label={t("add-watermark.font-family")}
                             value={fontFamily}
                             onChange={(e) =>
                               setFontFamily(e.target.value as FontFamilyType)
@@ -315,7 +316,7 @@ const AddWatermark: React.FC = () => {
                           </Form.Label>
                           <Form.Select
                             id="text-color"
-                            aria-label="Colour"
+                            aria-label={t("add-watermark.color")}
                             value={textColor}
                             onChange={(e) =>
                               setTextColor(e.target.value as TextColorType)
@@ -347,13 +348,13 @@ const AddWatermark: React.FC = () => {
                               onChange={(e) =>
                                 setOpacity(Number(e.target.value))
                               }
-                              aria-labelledby="Opacity"
+                              aria-labelledby="watermark-txt-opacity"
                               className="me-1"
                             />
                             <InputGroup.Text>%</InputGroup.Text>
                           </InputGroup>
                           <Form.Control
-                            id="watermark-opacity"
+                            id="watermark-txt-opacity"
                             type="range"
                             min="0"
                             max="100"
@@ -370,7 +371,7 @@ const AddWatermark: React.FC = () => {
                           </Form.Label>
                           <Form.Select
                             id="watermark-txt-position"
-                            aria-label="Watermark position"
+                            aria-label={t("add-watermark.watermark-position")}
                             value={watermarkPosition}
                             onChange={(e) =>
                               setWatermarkPosition(
@@ -446,7 +447,7 @@ const AddWatermark: React.FC = () => {
                               onChange={(e) =>
                                 setOpacity(Number(e.target.value))
                               }
-                              aria-labelledby="Opacity"
+                              aria-labelledby="watermark-img-opacity"
                               className="me-1"
                             />
                             <InputGroup.Text>%</InputGroup.Text>
@@ -469,7 +470,7 @@ const AddWatermark: React.FC = () => {
                           </Form.Label>
                           <Form.Select
                             id="watermark-img-position"
-                            aria-label="Watermark position"
+                            aria-label={t("add-watermark.watermark-position")}
                             value={watermarkPosition}
                             onChange={(e) =>
                               setWatermarkPosition(
@@ -515,7 +516,7 @@ const AddWatermark: React.FC = () => {
             <div>
               <img
                 src={previewUrl}
-                alt="Watermarked Preview"
+                alt="Watermarked Preview" /* TODO: translate line */
                 className="add-watermark__preview rounded mw-100"
               />
               <a
