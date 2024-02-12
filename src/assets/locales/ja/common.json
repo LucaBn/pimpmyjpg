@@ -70,7 +70,29 @@
   },
   "add-watermark": {
     "title": "透かしを追加",
-    "description": "あなたの大切な画像に個人的な透かしを入れ、ウェブ詐欺師による画像の流用を防ぎます！"
+    "description": "あなたの大切な画像に個人的な透かしを入れ、ウェブ詐欺師による画像の流用を防ぎます！",
+    "file-input": "ここをクリックまたはファイルをドロップしてください。\nどんな形式でも大丈夫です！",
+    "tab-text": "テキスト",
+    "tab-image": "画像",
+    "watermark-text": "ウォーターマークのテキスト",
+    "font-size": "フォントサイズ",
+    "font-family": "フォントファミリー",
+    "color": "色",
+    "color-options": {
+      "white": "白",
+      "black": "黒"
+    },
+    "opacity": "不透明度",
+    "watermark-position": "ウォーターマークの位置",
+    "watermark-position-options": {
+      "center": "中央",
+      "top-left": "左上",
+      "top-right": "右上",
+      "bottom-left": "左下",
+      "bottom-right": "右下"
+    },
+    "watermark-image": "ウォーターマーク画像",
+    "download": "画像をダウンロード"
   },
   "error-404": {
     "title": "エラー404",

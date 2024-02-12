@@ -22,7 +22,7 @@ import {
 } from "@/typings/watermarkOptions";
 
 // Locales
-// import { useTranslation } from "react-i18next";
+import { useTranslation } from "react-i18next";
 
 const AddWatermark: React.FC = () => {
   const [uploadedImage, setUploadedImage] = useState<HTMLImageElement | null>(
@@ -49,7 +49,7 @@ const AddWatermark: React.FC = () => {
 
   const optionsRef = useRef<HTMLDivElement>(null);
 
-  // const { t } = useTranslation("common");
+  const { t } = useTranslation("common");
 
   const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files && event.target.files[0]) {
@@ -236,7 +236,7 @@ const AddWatermark: React.FC = () => {
       <Col xs={12}>
         <div className="d-flex flex-column align-items-center gap-3 text-start">
           <DropFileInput
-            label="Drop Here"
+            label={t("add-watermark.file-input")}
             handleImageChange={handleImageChange}
           />
           {/* Select Watermark type */}
@@ -253,7 +253,7 @@ const AddWatermark: React.FC = () => {
               >
                 <Tab
                   eventKey="text"
-                  title="Text"
+                  title={t("add-watermark.tab-text")}
                   className="add-watermark__tabs-tab mt-3"
                 >
                   <Container>
@@ -261,7 +261,7 @@ const AddWatermark: React.FC = () => {
                       <Col xs={12}>
                         <Form.Group>
                           <Form.Label htmlFor="watermark-text">
-                            Watermark text
+                            {t("add-watermark.watermark-text")}
                           </Form.Label>
                           <Form.Control
                             id="watermark-text"
@@ -273,7 +273,9 @@ const AddWatermark: React.FC = () => {
                       </Col>
                       <Col xs={12} md={3}>
                         <Form.Group>
-                          <Form.Label htmlFor="font-size">Font size</Form.Label>
+                          <Form.Label htmlFor="font-size">
+                            {t("add-watermark.font-size")}
+                          </Form.Label>
                           <Form.Control
                             id="font-size"
                             type="number"
@@ -288,7 +290,7 @@ const AddWatermark: React.FC = () => {
                       <Col xs={12} md={5}>
                         <Form.Group>
                           <Form.Label htmlFor="font-family">
-                            Font family
+                            {t("add-watermark.font-family")}
                           </Form.Label>
                           <Form.Select
                             id="font-family"
@@ -308,7 +310,9 @@ const AddWatermark: React.FC = () => {
                       </Col>
                       <Col xs={12} md={4}>
                         <Form.Group>
-                          <Form.Label htmlFor="text-color">Colour</Form.Label>
+                          <Form.Label htmlFor="text-color">
+                            {t("add-watermark.color")}
+                          </Form.Label>
                           <Form.Select
                             id="text-color"
                             aria-label="Colour"
@@ -317,15 +321,19 @@ const AddWatermark: React.FC = () => {
                               setTextColor(e.target.value as TextColorType)
                             }
                           >
-                            <option value="#fff">White</option>
-                            <option value="#000">Black</option>
+                            <option value="#fff">
+                              {t("add-watermark.color-options.white")}
+                            </option>
+                            <option value="#000">
+                              {t("add-watermark.color-options.black")}
+                            </option>
                           </Form.Select>
                         </Form.Group>
                       </Col>
                       <Col xs={12} md={8}>
                         <Form.Group>
                           <Form.Label htmlFor="watermark-txt-opacity">
-                            Opacity
+                            {t("add-watermark.opacity")}
                           </Form.Label>
                           <InputGroup className="mb-1">
                             <Form.Control
@@ -358,7 +366,7 @@ const AddWatermark: React.FC = () => {
                       <Col xs={12} md={4}>
                         <Form.Group>
                           <Form.Label htmlFor="watermark-txt-position">
-                            Watermark position
+                            {t("add-watermark.watermark-position")}
                           </Form.Label>
                           <Form.Select
                             id="watermark-txt-position"
@@ -370,11 +378,31 @@ const AddWatermark: React.FC = () => {
                               )
                             }
                           >
-                            <option value="center">Center</option>
-                            <option value="top-left">Top Left</option>
-                            <option value="top-right">Top Right</option>
-                            <option value="bottom-left">Bottom Left</option>
-                            <option value="bottom-right">Bottom Right</option>
+                            <option value="center">
+                              {t(
+                                "add-watermark.watermark-position-options.center"
+                              )}
+                            </option>
+                            <option value="top-left">
+                              {t(
+                                "add-watermark.watermark-position-options.top-left"
+                              )}
+                            </option>
+                            <option value="top-right">
+                              {t(
+                                "add-watermark.watermark-position-options.top-right"
+                              )}
+                            </option>
+                            <option value="bottom-left">
+                              {t(
+                                "add-watermark.watermark-position-options.bottom-left"
+                              )}
+                            </option>
+                            <option value="bottom-right">
+                              {t(
+                                "add-watermark.watermark-position-options.bottom-right"
+                              )}
+                            </option>
                           </Form.Select>
                         </Form.Group>
                       </Col>
@@ -383,7 +411,7 @@ const AddWatermark: React.FC = () => {
                 </Tab>
                 <Tab
                   eventKey="image"
-                  title="Image"
+                  title={t("add-watermark.tab-image")}
                   className="add-watermark__tabs-tab mt-3"
                 >
                   <Container>
@@ -391,7 +419,7 @@ const AddWatermark: React.FC = () => {
                       <Col xs={12}>
                         <Form.Group>
                           <Form.Label htmlFor="watermark-image">
-                            Watermark Image
+                            {t("add-watermark.watermark-image")}
                           </Form.Label>
                           <Form.Control
                             id="watermark-image"
@@ -404,7 +432,7 @@ const AddWatermark: React.FC = () => {
                       <Col xs={12} md={8}>
                         <Form.Group>
                           <Form.Label htmlFor="watermark-img-opacity">
-                            Opacity
+                            {t("add-watermark.opacity")}
                           </Form.Label>
                           <InputGroup className="mb-1">
                             <Form.Control
@@ -437,7 +465,7 @@ const AddWatermark: React.FC = () => {
                       <Col xs={12} md={4}>
                         <Form.Group>
                           <Form.Label htmlFor="watermark-img-position">
-                            Watermark position
+                            {t("add-watermark.watermark-position")}
                           </Form.Label>
                           <Form.Select
                             id="watermark-img-position"
@@ -449,11 +477,31 @@ const AddWatermark: React.FC = () => {
                               )
                             }
                           >
-                            <option value="center">Center</option>
-                            <option value="top-left">Top Left</option>
-                            <option value="top-right">Top Right</option>
-                            <option value="bottom-left">Bottom Left</option>
-                            <option value="bottom-right">Bottom Right</option>
+                            <option value="center">
+                              {t(
+                                "add-watermark.watermark-position-options.center"
+                              )}
+                            </option>
+                            <option value="top-left">
+                              {t(
+                                "add-watermark.watermark-position-options.top-left"
+                              )}
+                            </option>
+                            <option value="top-right">
+                              {t(
+                                "add-watermark.watermark-position-options.top-right"
+                              )}
+                            </option>
+                            <option value="bottom-left">
+                              {t(
+                                "add-watermark.watermark-position-options.bottom-left"
+                              )}
+                            </option>
+                            <option value="bottom-right">
+                              {t(
+                                "add-watermark.watermark-position-options.bottom-right"
+                              )}
+                            </option>
                           </Form.Select>
                         </Form.Group>
                       </Col>
@@ -475,7 +523,9 @@ const AddWatermark: React.FC = () => {
                 download="watermarked-image.jpg"
                 className="text-decoration-none"
               >
-                <Button className="d-block mt-3 mx-auto">Download Image</Button>
+                <Button className="d-block mt-3 mx-auto">
+                  {t("add-watermark.download")}
+                </Button>
               </a>
             </div>
           )}
