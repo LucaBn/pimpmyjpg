@@ -70,7 +70,29 @@
   },
   "add-watermark": {
     "title": "Aggiungi Watermark",
-    "description": "Applica un watermark personale sulle tue preziose immagini per evitare che i delinquenti del web se ne approprino indebitamente!"
+    "description": "Applica un watermark personale sulle tue preziose immagini per evitare che i delinquenti del web se ne approprino indebitamente!",
+    "file-input": "Clicca o trascina qui il tuo file.\nÈ permesso qualsiasi formato!",
+    "tab-text": "Testo",
+    "tab-image": "Immagine",
+    "watermark-text": "Testo del watermark",
+    "font-size": "Dimensione font",
+    "font-family": "Font family",
+    "color": "Colore",
+    "color-options": {
+      "white": "Bianco",
+      "black": "Nero"
+    },
+    "opacity": "Opacità",
+    "watermark-position": "Posizione della filigrana",
+    "watermark-position-options": {
+      "center": "Centro",
+      "top-left": "In alto a sinistra",
+      "top-right": "In alto a destra",
+      "bottom-left": "In basso a sinistra",
+      "bottom-right": "In basso a destra"
+    },
+    "watermark-image": "Immagine del watermark",
+    "download": "Scarica immagine"
   },
   "error-404": {
     "title": "Errore 404",
