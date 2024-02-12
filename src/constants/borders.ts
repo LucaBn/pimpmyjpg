@@ -1,4 +1,6 @@
-export enum BorderList {
+enum BorderList {
   Rounded = "rounded",
   Squared = "squared",
 }
+
+export { BorderList };

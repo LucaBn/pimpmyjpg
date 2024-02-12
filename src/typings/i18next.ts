@@ -13,8 +13,10 @@ declare module "i18next" {
   }
 }
 
-export enum LanguageList {
+enum LanguageList {
   En = "en",
   It = "it",
   Ja = "ja",
 }
+
+export { LanguageList };
