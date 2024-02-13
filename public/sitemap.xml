@@ -46,4 +46,19 @@
         hreflang="en"
         href="https://www.pimpmyjpg.com/en/add-watermark"/>
   </url>
+  <url>
+    <loc>https://www.pimpmyjpg.com/en/add-filter</loc>
+    <xhtml:link
+        rel="alternate"
+        hreflang="it"
+        href="https://www.pimpmyjpg.com/it/add-filter"/>
+    <xhtml:link
+        rel="alternate"
+        hreflang="ja"
+        href="https://www.pimpmyjpg.com/ja/add-filter"/>
+    <xhtml:link
+        rel="alternate"
+        hreflang="en"
+        href="https://www.pimpmyjpg.com/en/add-filter"/>
+  </url>
 </urlset>

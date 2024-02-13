@@ -14,6 +14,7 @@
 @import "./Molecules/DropFileInput/styles";
 
 // Organisms
+@import "./Organisms/AddFilter/styles";
 @import "./Organisms/AddWatermark/styles";
 @import "./Organisms/BordersHandler/styles";
 @import "./Organisms/Footer/styles";
@@ -25,6 +26,7 @@
 @import "./Organisms/ThemeHandler/styles";
 
 // Templates
+@import "./Templates/AddFilter/styles";
 @import "./Templates/AddWatermark/styles";
 @import "./Templates/Error404/styles";
 @import "./Templates/FeatureSelector/styles";
