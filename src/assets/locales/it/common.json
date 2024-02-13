@@ -99,5 +99,6 @@
     "description": "Pagina non trovata",
     "goToHP": "Torna alla Home Page"
   },
-  "loading": "Caricamento..."
+  "loading": "Caricamento...",
+  "input": { "current-file": "File corrente" }
 }
