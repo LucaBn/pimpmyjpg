@@ -68,6 +68,18 @@
     "download-all": "Scarica tutto",
     "clear": "Svuota"
   },
+  "add-filter": {
+    "title": "Aggiungi Filtro",
+    "description": "Applica uno o più filtri alle tue immagini e vantati con gli amici sostenendo di avere una laurea in manipolazione dello spettro cromatico!",
+    "file-input": "Clicca o trascina qui il tuo file.\nÈ permesso qualsiasi formato!",
+    "filter-list": {
+      "black-and-white": "Bianco e nero",
+      "sepia": "Seppia",
+      "sunset": "Tramonto",
+      "autumn": "Autunno"
+    },
+    "download": "Scarica immagine"
+  },
   "add-watermark": {
     "title": "Aggiungi Watermark",
     "description": "Applica un watermark personale sulle tue preziose immagini per evitare che i delinquenti del web se ne approprino indebitamente!",
