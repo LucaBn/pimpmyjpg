@@ -56,7 +56,7 @@
     "title": "Image compressor",
     "description": "Reduce the size of your images in the blink of an eye by clicking in the box below or by dragging your files directly into it.\nUse the options menu to set maximum width and height and quality limits.",
     "options": "Options",
-    "file-input-description": "Click or drop your file(s) here.\nAny format is allowed!",
+    "file-input-description": "Click or drag your file(s) here.\nAny format is allowed!",
     "max-height": "Max height (px)",
     "max-width": "Max width (px)",
     "quality": "Quality (recommended value 70%)",
@@ -68,10 +68,22 @@
     "download-all": "Download all",
     "clear": "Clear"
   },
+  "add-filter": {
+    "title": "Add Filter",
+    "description": "Apply one or more filters to your images and boast to your friends about having a degree in chromatic spectrum manipulation!",
+    "file-input": "Click or drag your file here.\nAny format is allowed!",
+    "filter-list": {
+      "black-and-white": "Black and White",
+      "sepia": "Sepia",
+      "sunset": "Sunset",
+      "autumn": "Autumn"
+    },
+    "download": "Download Image"
+  },
   "add-watermark": {
     "title": "Add Watermark",
     "description": "Apply a personal watermark to your precious images to prevent web crooks from misappropriating them!",
-    "file-input": "Click or drop your file here.\nAny format is allowed!",
+    "file-input": "Click or drag your file here.\nAny format is allowed!",
     "tab-text": "Text",
     "tab-image": "Image",
     "watermark-text": "Watermark text",

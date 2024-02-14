@@ -12,7 +12,7 @@ const AddFilter: React.FC = () => {
     null
   );
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
-  const [selectedFilter, setSelectedFilter] = useState<string>("none");
+  const [selectedFilter, setSelectedFilter] = useState<string | null>();
   const filtersRef = useRef<HTMLDivElement>(null);
 
   const { t } = useTranslation("common");
@@ -30,13 +30,15 @@ const AddFilter: React.FC = () => {
   };
 
   const applyFilter = () => {
-    if (uploadedImage && selectedFilter) {
+    if (uploadedImage) {
       const canvas = document.createElement("canvas");
       const ctx = canvas.getContext("2d");
       if (ctx) {
         canvas.width = uploadedImage.width;
         canvas.height = uploadedImage.height;
-        ctx.filter = selectedFilter;
+        if (selectedFilter) {
+          ctx.filter = selectedFilter;
+        }
         ctx.drawImage(uploadedImage, 0, 0, canvas.width, canvas.height);
         const url = canvas.toDataURL("image/jpeg");
         setPreviewUrl(url);
@@ -65,27 +67,18 @@ const AddFilter: React.FC = () => {
           {previewUrl && (
             <>
               <Container ref={filtersRef}>
-                <Row className="gx-3 justify-content-center">
-                  <Col
-                    xs={6}
-                    md={3}
-                    lg={2}
-                    onClick={() => setSelectedFilter("none")}
-                  >
-                    <Button className="ratio ratio-4x3">
-                      <div className="d-flex align-items-center text-center">
-                        {t("add-filter.filter-list.none")}
-                      </div>
-                    </Button>
-                  </Col>
+                <Row className="g-3 justify-content-center">
                   <Col
                     xs={6}
                     md={3}
                     lg={2}
                     onClick={() => setSelectedFilter("grayscale(100%)")}
                   >
-                    <Button className="ratio ratio-4x3">
-                      <div className="d-flex align-items-center text-center">
+                    <Button
+                      className="ratio ratio-16x9"
+                      variant="outline-primary"
+                    >
+                      <div className="d-flex align-items-center justify-content-center fs-4">
                         {t("add-filter.filter-list.black-and-white")}
                       </div>
                     </Button>
@@ -96,8 +89,11 @@ const AddFilter: React.FC = () => {
                     lg={2}
                     onClick={() => setSelectedFilter("sepia(100%)")}
                   >
-                    <Button className="ratio ratio-4x3">
-                      <div className="d-flex align-items-center text-center">
+                    <Button
+                      className="ratio ratio-16x9"
+                      variant="outline-primary"
+                    >
+                      <div className="d-flex align-items-center justify-content-center fs-4">
                         {t("add-filter.filter-list.sepia")}
                       </div>
                     </Button>
@@ -108,8 +104,11 @@ const AddFilter: React.FC = () => {
                     lg={2}
                     onClick={() => setSelectedFilter("sunset")}
                   >
-                    <Button className="ratio ratio-4x3">
-                      <div className="d-flex align-items-center text-center">
+                    <Button
+                      className="ratio ratio-16x9"
+                      variant="outline-primary"
+                    >
+                      <div className="d-flex align-items-center justify-content-center fs-4">
                         {t("add-filter.filter-list.sunset")}
                       </div>
                     </Button>
@@ -120,8 +119,11 @@ const AddFilter: React.FC = () => {
                     lg={2}
                     onClick={() => setSelectedFilter("hue-rotate(45deg)")}
                   >
-                    <Button className="ratio ratio-4x3">
-                      <div className="d-flex align-items-center text-center">
+                    <Button
+                      className="ratio ratio-16x9"
+                      variant="outline-primary"
+                    >
+                      <div className="d-flex align-items-center justify-content-center fs-4">
                         {t("add-filter.filter-list.autumn")}
                       </div>
                     </Button>
