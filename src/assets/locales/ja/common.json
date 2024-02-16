@@ -73,10 +73,12 @@
     "description": "一つまたは複数のフィルターを画像に適用し、色彩スペクトルの操作に関する学位を持っていると友達に自慢しましょう！",
     "file-input": "ここにファイルをクリックまたはドラッグしてください。\nどの形式でも構いません！",
     "filter-list": {
-      "black-and-white": "白黒",
+      "black-and-white": "モノクロ",
       "sepia": "セピア",
-      "sunset": "夕日",
-      "autumn": "秋"
+      "deep-fried": "ディープフライ",
+      "mexico": "メキシコ",
+      "blurred": "ぼやけた",
+      "high-contrast": "ハイコントラスト"
     },
     "download": "画像をダウンロード"
   },

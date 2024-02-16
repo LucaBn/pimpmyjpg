@@ -75,8 +75,10 @@
     "filter-list": {
       "black-and-white": "Black and White",
       "sepia": "Sepia",
-      "sunset": "Sunset",
-      "autumn": "Autumn"
+      "deep-fried": "Deep fried",
+      "mexico": "Mexico",
+      "blurred": "Blurred",
+      "high-contrast": "High Contrast"
     },
     "download": "Download Image"
   },
