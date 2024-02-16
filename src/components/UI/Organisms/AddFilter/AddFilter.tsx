@@ -72,13 +72,15 @@ const AddFilter: React.FC = () => {
                     xs={6}
                     md={3}
                     lg={2}
-                    onClick={() => setSelectedFilter("grayscale(100%)")}
+                    onClick={() =>
+                      setSelectedFilter("grayscale(100%)")
+                    } /* TODO: change this function and all the other setSelectedFilter to toggleFilter */
                   >
                     <Button
                       className="ratio ratio-16x9"
                       variant="outline-primary"
                     >
-                      <div className="d-flex align-items-center justify-content-center fs-4">
+                      <div className="d-flex align-items-center justify-content-center fs-5">
                         {t("add-filter.filter-list.black-and-white")}
                       </div>
                     </Button>
@@ -93,7 +95,7 @@ const AddFilter: React.FC = () => {
                       className="ratio ratio-16x9"
                       variant="outline-primary"
                     >
-                      <div className="d-flex align-items-center justify-content-center fs-4">
+                      <div className="d-flex align-items-center justify-content-center fs-5">
                         {t("add-filter.filter-list.sepia")}
                       </div>
                     </Button>
@@ -108,7 +110,7 @@ const AddFilter: React.FC = () => {
                       className="ratio ratio-16x9"
                       variant="outline-primary"
                     >
-                      <div className="d-flex align-items-center justify-content-center fs-4">
+                      <div className="d-flex align-items-center justify-content-center fs-5">
                         {t("add-filter.filter-list.sunset")}
                       </div>
                     </Button>
@@ -117,14 +119,29 @@ const AddFilter: React.FC = () => {
                     xs={6}
                     md={3}
                     lg={2}
-                    onClick={() => setSelectedFilter("hue-rotate(45deg)")}
+                    onClick={() => setSelectedFilter("mexico")}
                   >
                     <Button
                       className="ratio ratio-16x9"
                       variant="outline-primary"
                     >
-                      <div className="d-flex align-items-center justify-content-center fs-4">
-                        {t("add-filter.filter-list.autumn")}
+                      <div className="d-flex align-items-center justify-content-center fs-5">
+                        {t("add-filter.filter-list.mexico")}
+                      </div>
+                    </Button>
+                  </Col>
+                  <Col
+                    xs={6}
+                    md={3}
+                    lg={2}
+                    onClick={() => setSelectedFilter("contrast(200%)")}
+                  >
+                    <Button
+                      className="ratio ratio-16x9"
+                      variant="outline-primary"
+                    >
+                      <div className="d-flex align-items-center justify-content-center fs-5">
+                        {t("add-filter.filter-list.high-contrast")}
                       </div>
                     </Button>
                   </Col>
