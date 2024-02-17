@@ -11,7 +11,7 @@ import { IGenericComponent } from "@/typings/components";
 
 // Constants
 import { BorderList } from "@/constants/borders";
-import { APP_NAME } from "@/constants/app";
+import { APP_NAME_SHORT } from "@/constants/app";
 
 // Define the context
 export interface IBordersContext {
@@ -19,7 +19,7 @@ export interface IBordersContext {
   changeBorders: (newBorders: BorderList) => void;
 }
 
-const lowercaseAppName = APP_NAME.toLowerCase();
+const lowercaseAppName = APP_NAME_SHORT.toLowerCase();
 const LS_BORDERS_VARIABLE = `${lowercaseAppName}Borders`;
 
 // Default createContextValue
