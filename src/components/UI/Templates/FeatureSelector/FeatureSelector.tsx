@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 // Components
 import Section from "@/components/UI/Organisms/Section/Section";
@@ -8,9 +8,16 @@ import { Col, Container, Row } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 
+// Constants
+import { APP_NAME } from "@/constants/app";
+
 const FeatureSelector: React.FC = () => {
   const { i18n, t } = useTranslation("common");
   const { language } = i18n;
+
+  useEffect(() => {
+    document.title = APP_NAME;
+  }, [language]);
 
   return (
     <Container className="py-5">
