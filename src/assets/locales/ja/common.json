@@ -80,7 +80,7 @@
       "blurred": "ぼやけた",
       "high-contrast": "ハイコントラスト"
     },
-    "watermarked-preview": "透かし入りプレビュー",
+    "filtered-preview": "フィルター付きプレビュー",
     "download": "画像をダウンロード"
   },
   "add-watermark": {
@@ -107,6 +107,7 @@
       "bottom-right": "右下"
     },
     "watermark-image": "ウォーターマーク画像",
+    "watermarked-preview": "透かし入りプレビュー",
     "download": "画像をダウンロード"
   },
   "error-404": {

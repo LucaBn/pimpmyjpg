@@ -156,7 +156,7 @@ const AddFilter: React.FC = () => {
               <div>
                 <img
                   src={previewUrl}
-                  alt={t("add-filter.watermarked-preview")}
+                  alt={t("add-filter.filtered-preview")}
                   className="add-filter__preview rounded mw-100"
                 />
                 <a
