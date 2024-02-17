@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 // Components
 import { Col, Container, Row } from "react-bootstrap";
@@ -7,8 +7,16 @@ import ImageCompressor from "@/components/UI/Organisms/ImageCompressor/ImageComp
 // Locales
 import { useTranslation } from "react-i18next";
 
+// Constants
+import { APP_NAME } from "@/constants/app";
+
 const ImageCompressorTemplate: React.FC = () => {
-  const { t } = useTranslation("common");
+  const { t, i18n } = useTranslation("common");
+  const { language } = i18n;
+
+  useEffect(() => {
+    document.title = `${APP_NAME} :: ${t("image-compressor.title")}`;
+  }, [language]);
 
   return (
     <Container className="py-5">

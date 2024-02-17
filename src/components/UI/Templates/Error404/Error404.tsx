@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 // Components
 import { Col, Container, Row, Image, Button } from "react-bootstrap";
@@ -7,9 +7,16 @@ import { Col, Container, Row, Image, Button } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 
+// Constants
+import { APP_NAME } from "@/constants/app";
+
 const Error404: React.FC = () => {
   const { t, i18n } = useTranslation("common");
   const { language } = i18n;
+
+  useEffect(() => {
+    document.title = `${APP_NAME} :: ${t("error-404.title")}`;
+  }, [language]);
 
   return (
     <>

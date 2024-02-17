@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 // Components
 import { Col, Container, Row } from "react-bootstrap";
@@ -7,8 +7,16 @@ import AddFilter from "@/components/UI/Organisms/AddFilter/AddFilter";
 // Locales
 import { useTranslation } from "react-i18next";
 
+// Constants
+import { APP_NAME } from "@/constants/app";
+
 const AddFilterTemplate: React.FC = () => {
-  const { t } = useTranslation("common");
+  const { t, i18n } = useTranslation("common");
+  const { language } = i18n;
+
+  useEffect(() => {
+    document.title = `${APP_NAME} :: ${t("add-filter.title")}`;
+  }, [language]);
 
   return (
     <Container className="py-5">
