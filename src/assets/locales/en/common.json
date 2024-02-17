@@ -80,7 +80,7 @@
       "blurred": "Blurred",
       "high-contrast": "High Contrast"
     },
-    "watermarked-preview": "Watermarked Preview",
+    "filtered-preview": "Filtered preview",
     "download": "Download Image"
   },
   "add-watermark": {
@@ -107,6 +107,7 @@
       "bottom-right": "Bottom right"
     },
     "watermark-image": "Watermark image",
+    "watermarked-preview": "Watermarked Preview",
     "download": "Download image"
   },
   "error-404": {
