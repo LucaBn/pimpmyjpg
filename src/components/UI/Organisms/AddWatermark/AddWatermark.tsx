@@ -254,7 +254,7 @@ const AddWatermark: React.FC = () => {
                 <Tab
                   eventKey="text"
                   title={t("add-watermark.tab-text")}
-                  className="add-watermark__tabs-tab mt-3"
+                  className="add-watermark__tabs-tab bg-tab-content mt-3"
                 >
                   <Container className="pb-3 border border-top-0 rounded-bottom">
                     <Row className="gy-3">
@@ -353,9 +353,8 @@ const AddWatermark: React.FC = () => {
                             />
                             <InputGroup.Text>%</InputGroup.Text>
                           </InputGroup>
-                          <Form.Control
+                          <Form.Range
                             id="watermark-txt-opacity"
-                            type="range"
                             min="0"
                             max="100"
                             step="1"
@@ -413,7 +412,7 @@ const AddWatermark: React.FC = () => {
                 <Tab
                   eventKey="image"
                   title={t("add-watermark.tab-image")}
-                  className="add-watermark__tabs-tab mt-3"
+                  className="add-watermark__tabs-tab bg-tab-content mt-3"
                 >
                   <Container className="pb-3 border border-top-0 rounded-bottom">
                     <Row className="gy-3">
@@ -452,9 +451,8 @@ const AddWatermark: React.FC = () => {
                             />
                             <InputGroup.Text>%</InputGroup.Text>
                           </InputGroup>
-                          <Form.Control
+                          <Form.Range
                             id="watermark-img-opacity"
-                            type="range"
                             min="0"
                             max="100"
                             step="1"
