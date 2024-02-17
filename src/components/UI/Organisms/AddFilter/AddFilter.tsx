@@ -136,6 +136,7 @@ const AddFilter: React.FC = () => {
                   {Object.keys(EFFECT_CSS_TABLE).map((effect) => (
                     <Col
                       xs={6}
+                      sm={4}
                       md={3}
                       lg={2}
                       onClick={() => toggleFilter(effect)}
@@ -144,7 +145,7 @@ const AddFilter: React.FC = () => {
                         className="ratio ratio-16x9"
                         variant={getVariant(effect)}
                       >
-                        <div className="d-flex align-items-center justify-content-center fs-5">
+                        <div className="d-flex align-items-center justify-content-center fs-5 lh-1 px-1">
                           {t(`add-filter.filter-list.${effect}`)}
                         </div>
                       </Button>
@@ -155,7 +156,7 @@ const AddFilter: React.FC = () => {
               <div>
                 <img
                   src={previewUrl}
-                  alt="Watermarked Preview" /* TODO: translate line */
+                  alt={t("add-filter.watermarked-preview")}
                   className="add-filter__preview rounded mw-100"
                 />
                 <a
