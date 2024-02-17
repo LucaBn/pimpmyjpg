@@ -291,9 +291,8 @@ const ImageCompressor: React.FC = () => {
                           />
                           <InputGroup.Text>%</InputGroup.Text>
                         </InputGroup>
-                        <Form.Control
+                        <Form.Range
                           id="quality"
-                          type="range"
                           min="0"
                           max="100"
                           step="1"
