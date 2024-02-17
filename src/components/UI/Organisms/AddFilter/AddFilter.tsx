@@ -163,7 +163,10 @@ const AddFilter: React.FC = () => {
                   download="filtered-image.jpg"
                   className="text-decoration-none"
                 >
-                  <Button className="d-block mt-3 mx-auto">
+                  <Button
+                    className="d-block mt-3 mx-auto"
+                    disabled={selectedFilters.length === 0}
+                  >
                     {t("add-filter.download")}
                   </Button>
                 </a>
