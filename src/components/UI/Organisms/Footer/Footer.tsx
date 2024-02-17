@@ -64,7 +64,7 @@ const Footer: React.FC = () => {
                   target="_blank"
                   rel="noopener noreferrer nofollow"
                 >
-                  <IconTwitter />
+                  <IconTwitter forceColor="#fff" />
                 </Link>
               </li>
             </ul>
