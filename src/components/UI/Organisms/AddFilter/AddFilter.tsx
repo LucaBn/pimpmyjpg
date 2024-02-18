@@ -123,6 +123,8 @@ const AddFilter: React.FC = () => {
       : "outline-primary";
   };
 
+  const hasFilter = selectedFilters.length > 0;
+
   return (
     <Row className="mt-4">
       <Col xs={12}>
@@ -160,21 +162,24 @@ const AddFilter: React.FC = () => {
                 <img
                   src={previewUrl}
                   alt={t("add-filter.filtered-preview")}
-                  className="add-filter__preview rounded mw-100"
+                  className="add-filter__preview rounded mw-100 mb-3"
                   draggable={false}
                 />
-                <a
-                  href={previewUrl}
-                  download="filtered-image.jpg"
-                  className="text-decoration-none"
-                >
-                  <Button
-                    className="d-block mt-3 mx-auto"
-                    disabled={selectedFilters.length === 0}
+                {hasFilter ? (
+                  <a
+                    href={previewUrl}
+                    download="filtered-image.jpg"
+                    className="text-decoration-none"
                   >
-                    {t("add-filter.download")}
-                  </Button>
-                </a>
+                    <Button className="d-block mx-auto">
+                      {t("add-filter.download")}
+                    </Button>
+                  </a>
+                ) : (
+                  <small className="d-block mx-auto text-center">
+                    {t("add-filter.apply-filter")}
+                  </small>
+                )}
               </div>
             </>
           )}

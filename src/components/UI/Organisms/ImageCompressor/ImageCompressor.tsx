@@ -358,7 +358,7 @@ const ImageCompressor: React.FC = () => {
             <div className="d-flex justify-content-center gap-3 mt-3">
               <Button onClick={handleDownloadAll} className="position-relative">
                 {t("image-compressor.download-all")}{" "}
-                <span className="image-compressor__download-number rounded-circle">
+                <span className="image-compressor__download-number rounded-circle pointer-events-none">
                   {compressedImageList.length}
                 </span>
               </Button>
