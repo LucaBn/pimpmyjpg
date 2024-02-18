@@ -142,6 +142,7 @@ const AddFilter: React.FC = () => {
                       md={3}
                       lg={2}
                       onClick={() => toggleFilter(effect as FilterList)}
+                      key={effect}
                     >
                       <Button
                         className="ratio ratio-16x9"
