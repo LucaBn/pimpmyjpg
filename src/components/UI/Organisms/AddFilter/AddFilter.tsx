@@ -160,6 +160,7 @@ const AddFilter: React.FC = () => {
                   src={previewUrl}
                   alt={t("add-filter.filtered-preview")}
                   className="add-filter__preview rounded mw-100"
+                  draggable={false}
                 />
                 <a
                   href={previewUrl}

@@ -516,6 +516,7 @@ const AddWatermark: React.FC = () => {
                 src={previewUrl}
                 alt={t("add-watermark.watermarked-preview")}
                 className="add-watermark__preview rounded d-block mx-auto mw-100"
+                draggable={false}
               />
               <a
                 href={previewUrl}
