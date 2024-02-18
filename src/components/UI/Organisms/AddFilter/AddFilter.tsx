@@ -8,7 +8,8 @@ import DropFileInput from "@/components/UI/Molecules/DropFileInput/DropFileInput
 import { useTranslation } from "react-i18next";
 
 // Utils
-import { overlayBlend } from "@/utils/color";
+import { overlayBlend } from "@/utils/colors";
+import { getCleanFileName } from "@/utils/strings";
 
 enum FilterList {
   BlackAndWhite = "black-and-white",
@@ -34,6 +35,7 @@ const AddFilter: React.FC = () => {
   const [uploadedImage, setUploadedImage] = useState<HTMLImageElement | null>(
     null
   );
+  const [uploadedImageName, setUploadedImageName] = useState<string>();
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
   const [selectedFilters, setSelectedFilters] = useState<FilterList[]>([]);
   const filtersRef = useRef<HTMLDivElement>(null);
@@ -64,9 +66,13 @@ const AddFilter: React.FC = () => {
 
   const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files && event.target.files[0]) {
+      const imageName = getCleanFileName(event.target?.files[0].name) || "_";
       const image = new Image();
       image.src = URL.createObjectURL(event.target.files[0]);
-      image.onload = () => setUploadedImage(image);
+      image.onload = () => {
+        setUploadedImage(image);
+        setUploadedImageName(imageName);
+      };
     }
   };
 
@@ -168,7 +174,7 @@ const AddFilter: React.FC = () => {
                 {hasFilter ? (
                   <a
                     href={previewUrl}
-                    download="filtered-image.jpg"
+                    download={`${uploadedImageName}_filtered.jpg`}
                     className="text-decoration-none"
                   >
                     <Button className="d-block mx-auto">

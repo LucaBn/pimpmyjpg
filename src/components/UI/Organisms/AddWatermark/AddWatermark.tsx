@@ -21,6 +21,9 @@ import {
   WatermarkType,
 } from "@/typings/watermarkOptions";
 
+// Utils
+import { getCleanFileName } from "@/utils/strings";
+
 // Locales
 import { useTranslation } from "react-i18next";
 
@@ -28,6 +31,7 @@ const AddWatermark: React.FC = () => {
   const [uploadedImage, setUploadedImage] = useState<HTMLImageElement | null>(
     null
   );
+  const [uploadedImageName, setUploadedImageName] = useState<string>();
   const [watermarkType, setWatermarkType] = useState<WatermarkType>(
     WatermarkType.Text
   );
@@ -53,9 +57,13 @@ const AddWatermark: React.FC = () => {
 
   const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files && event.target.files[0]) {
+      const imageName = getCleanFileName(event.target?.files[0].name) || "_";
       const image = new Image();
       image.src = URL.createObjectURL(event.target.files[0]);
-      image.onload = () => setUploadedImage(image);
+      image.onload = () => {
+        setUploadedImage(image);
+        setUploadedImageName(imageName);
+      };
     }
   };
 
@@ -520,7 +528,7 @@ const AddWatermark: React.FC = () => {
               />
               <a
                 href={previewUrl}
-                download="watermarked-image.jpg"
+                download={`${uploadedImageName}_watermarked.jpg`}
                 className="text-decoration-none"
               >
                 <Button className="d-block mt-3 mx-auto">

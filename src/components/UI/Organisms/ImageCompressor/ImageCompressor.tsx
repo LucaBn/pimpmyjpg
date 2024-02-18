@@ -21,12 +21,9 @@ import { useTranslation } from "react-i18next";
 import { LanguageList } from "@/typings/i18next";
 
 // Utils
-import {
-  calculateSize,
-  compareImageSizes,
-  getCleanFileName,
-} from "@/utils/image-compressor";
+import { calculateSize, compareImageSizes } from "@/utils/image-compressor";
 import { localizeDecimalSeparator } from "@/utils/conversions";
+import { getCleanFileName } from "@/utils/strings";
 
 interface ImageInfo {
   index: number;
@@ -140,7 +137,7 @@ const ImageCompressor: React.FC = () => {
 
     const zipLink = document.createElement("a");
     zipLink.href = zipUrl;
-    zipLink.download = "compressed_images.zip";
+    zipLink.download = "compressed_images.zip"; // ???
     document.body.appendChild(zipLink);
 
     const imageUrl = URL.createObjectURL(compressedImage.file);
