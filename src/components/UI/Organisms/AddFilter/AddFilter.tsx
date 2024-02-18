@@ -7,8 +7,20 @@ import DropFileInput from "@/components/UI/Molecules/DropFileInput/DropFileInput
 // Locales
 import { useTranslation } from "react-i18next";
 
+// Utils
+import { overlayBlend } from "@/utils/color";
+
+enum FilterList {
+  BlackAndWhite = "black-and-white",
+  Sepia = "sepia",
+  DeepFried = "deep-fried",
+  Mexico = "mexico",
+  Blurred = "blurred",
+  HighContrast = "high-contrast",
+}
+
 const EFFECT_CSS_TABLE: {
-  [key: string]: string;
+  [key in FilterList]: string;
 } = {
   "black-and-white": "grayscale(100%)",
   sepia: "sepia(100%)",
@@ -23,12 +35,12 @@ const AddFilter: React.FC = () => {
     null
   );
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
-  const [selectedFilters, setSelectedFilters] = useState<string[]>([]);
+  const [selectedFilters, setSelectedFilters] = useState<FilterList[]>([]);
   const filtersRef = useRef<HTMLDivElement>(null);
 
   const { t } = useTranslation("common");
 
-  const toggleFilter = (effect: string) => {
+  const toggleFilter = (effect: FilterList) => {
     // setSelectedFilters((currentValues) => {
     //   if (currentValues.includes(effect)) {
     //     return currentValues.filter((item) => item !== effect);
@@ -58,15 +70,6 @@ const AddFilter: React.FC = () => {
     }
   };
 
-  function overlayBlend(base: number, blend: number) {
-    base /= 255;
-    blend /= 255;
-    // return base <= 0.5 ? 2 * base * blend : 1 - 2 * (1 - base) * (1 - blend);
-    return Math.round(
-      255 * (base <= 0.5 ? 2 * base * blend : 1 - 2 * (1 - base) * (1 - blend))
-    );
-  }
-
   const applyFilter = () => {
     if (uploadedImage) {
       const canvas = document.createElement("canvas");
@@ -83,21 +86,18 @@ const AddFilter: React.FC = () => {
         }
         ctx.drawImage(uploadedImage, 0, 0, canvas.width, canvas.height);
 
-        if (selectedFilters.includes("mexico")) {
+        if (selectedFilters.includes(FilterList.Mexico)) {
           const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
           const data = imageData.data;
 
           for (let i = 0; i < data.length; i += 4) {
-            // Converti il colore #b77d21 in RGB
             const overlayColor = { r: 0xb7, g: 0x7d, b: 0x21 };
 
-            // Calcola l'effetto overlay per ogni canale
             data[i] = overlayBlend(data[i], overlayColor.r); // R
             data[i + 1] = overlayBlend(data[i + 1], overlayColor.g); // G
             data[i + 2] = overlayBlend(data[i + 2], overlayColor.b); // B
           }
 
-          // Applica i dati dell'immagine modificati al canvas
           ctx.putImageData(imageData, 0, 0);
         }
 
@@ -118,7 +118,9 @@ const AddFilter: React.FC = () => {
   }, [uploadedImage]);
 
   const getVariant = (effect: string) => {
-    return selectedFilters.includes(effect) ? "primary" : "outline-primary";
+    return selectedFilters.includes(effect as FilterList)
+      ? "primary"
+      : "outline-primary";
   };
 
   return (
@@ -139,7 +141,7 @@ const AddFilter: React.FC = () => {
                       sm={4}
                       md={3}
                       lg={2}
-                      onClick={() => toggleFilter(effect)}
+                      onClick={() => toggleFilter(effect as FilterList)}
                     >
                       <Button
                         className="ratio ratio-16x9"
