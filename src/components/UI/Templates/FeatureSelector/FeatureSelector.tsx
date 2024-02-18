@@ -41,6 +41,7 @@ const FeatureSelector: React.FC = () => {
             height={500}
             alt={t("feature-selector.image-compressor.image-alt")}
             fluid
+            draggable={false}
             // loading="lazy" // Don't apply loading="lazy" to the very first image!
           />
         </Col>
@@ -70,6 +71,7 @@ const FeatureSelector: React.FC = () => {
             height={500}
             alt={t("feature-selector.add-filter.image-alt")}
             fluid
+            draggable={false}
             loading="lazy"
           />
         </Col>
@@ -103,6 +105,7 @@ const FeatureSelector: React.FC = () => {
             height={500}
             alt={t("feature-selector.add-watermark.image-alt")}
             fluid
+            draggable={false}
             loading="lazy"
           />
         </Col>
