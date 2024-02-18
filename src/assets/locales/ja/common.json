@@ -81,6 +81,7 @@
       "high-contrast": "ハイコントラスト"
     },
     "filtered-preview": "フィルター付きプレビュー",
+    "apply-filter": "1つのフィルターを適用して画像をダウンロードする",
     "download": "画像をダウンロード"
   },
   "add-watermark": {
