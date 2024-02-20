@@ -82,6 +82,7 @@ const Footer: React.FC = () => {
               >
                 <Image
                   src="/assets/img/buy-me-a-coffee.png"
+                  height={56}
                   width={200}
                   className="d-block mx-auto rounded"
                   alt={t("footer.buy-me-a-coffee")}
