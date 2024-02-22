@@ -17,7 +17,7 @@ const Options: React.FC<IOptions> = ({ forceColor }) => {
     <Button
       aria-label="Options"
       variant="link"
-      className={`${CLASS_APP_NAME}-options rounded-0`}
+      className={`${CLASS_APP_NAME}-options rounded-0 cursor-pointer`}
     >
       <IconGear forceColor={forceColor} />
     </Button>

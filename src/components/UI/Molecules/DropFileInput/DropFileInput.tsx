@@ -42,7 +42,7 @@ const DropFileInput: React.FC<IDropFileInput> = ({
       </label>
       <input
         id="file-input"
-        className="drop-file__container-input d-block opacity-0"
+        className="drop-file__container-input d-block opacity-0 cursor-pointer"
         type="file"
         accept="image/*"
         onChange={handleChange}
