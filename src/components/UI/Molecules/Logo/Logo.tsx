@@ -27,7 +27,7 @@ const Logo: React.FC<ILogo> = ({
   return (
     <div className={`${CLASS_APP_NAME}__logo position-relative`}>
       <Image
-        src={`/assets/img/logo.png`}
+        src="/assets/img/logo.png"
         height={height}
         width={width}
         alt={t("navbar.logo-title")}
