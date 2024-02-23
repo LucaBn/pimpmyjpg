@@ -28,7 +28,7 @@ const Error404: React.FC = () => {
           </Col>
           <Col xs={12}>
             <Image
-              src={`/assets/img/404.png`}
+              src="/assets/img/404.png"
               title={t("error-404.title")}
               height={360}
               width={512}

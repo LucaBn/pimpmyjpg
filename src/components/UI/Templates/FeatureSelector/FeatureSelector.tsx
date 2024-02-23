@@ -35,15 +35,21 @@ const FeatureSelector: React.FC = () => {
       {/* First section */}
       <Section>
         <Col xs={12} md={6}>
-          <Section.Image
-            src="https://placekitten.com/300/500"
-            width={300}
-            height={500}
-            alt={t("feature-selector.image-compressor.image-alt")}
-            fluid
-            draggable={false}
-            // loading="lazy" // Don't apply loading="lazy" to the very first image!
-          />
+          <picture>
+            <source
+              srcSet="https://placekitten.com/450/600"
+              type="image/webp"
+            />
+            <Section.Image
+              src="https://placekitten.com/450/600"
+              width={450}
+              height={600}
+              alt={t("feature-selector.image-compressor.image-alt")}
+              fluid
+              draggable={false}
+              // loading="lazy" // Don't apply loading="lazy" to the very first image!
+            />
+          </picture>
         </Col>
         <Col xs={12} md={5} className="d-flex align-items-center text-md-start">
           <div className="my-4">
@@ -65,15 +71,21 @@ const FeatureSelector: React.FC = () => {
       {/* Second section */}
       <Section>
         <Col xs={12} md={6} className="order-md-last">
-          <Section.Image
-            src="https://placekitten.com/300/500"
-            width={300}
-            height={500}
-            alt={t("feature-selector.add-filter.image-alt")}
-            fluid
-            draggable={false}
-            loading="lazy"
-          />
+          <picture>
+            <source
+              srcSet="https://placekitten.com/450/600"
+              type="image/webp"
+            />
+            <Section.Image
+              src="https://placekitten.com/450/600"
+              width={450}
+              height={600}
+              alt={t("feature-selector.add-filter.image-alt")}
+              fluid
+              draggable={false}
+              loading="lazy"
+            />
+          </picture>
         </Col>
         <Col
           xs={12}
@@ -99,15 +111,21 @@ const FeatureSelector: React.FC = () => {
       {/* Third section */}
       <Section>
         <Col xs={12} md={6}>
-          <Section.Image
-            src="https://placekitten.com/300/500"
-            width={300}
-            height={500}
-            alt={t("feature-selector.add-watermark.image-alt")}
-            fluid
-            draggable={false}
-            loading="lazy"
-          />
+          <picture>
+            <source
+              srcSet="/assets/img/chars/watermark.webp"
+              type="image/webp"
+            />
+            <Section.Image
+              src="/assets/img/chars/watermark.png"
+              width={450}
+              height={600}
+              alt={t("feature-selector.add-watermark.image-alt")}
+              fluid
+              draggable={false}
+              loading="lazy"
+            />
+          </picture>
         </Col>
         <Col xs={12} md={5} className="d-flex align-items-center text-md-start">
           <div className="my-4">
