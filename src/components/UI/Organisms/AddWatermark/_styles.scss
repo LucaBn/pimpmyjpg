@@ -4,8 +4,13 @@ $tab-max-width: 600px;
   &__tabs {
     max-width: $tab-max-width;
 
+    button {
+      transition: none;
+    }
+
     &-tab {
       max-width: $tab-max-width;
+      transition: none;
     }
   }
 

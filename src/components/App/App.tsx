@@ -6,7 +6,7 @@ import Navbar from "@/components/UI/Organisms/Navbar/Navbar";
 import Footer from "@/components/UI/Organisms/Footer/Footer";
 
 // Providers
-import { useBorders } from "../providers/BordersProvider";
+import { useBorders } from "@/components/providers/BordersProvider";
 import { useTheme } from "@/components/providers/ThemeProvider";
 
 // Locales
