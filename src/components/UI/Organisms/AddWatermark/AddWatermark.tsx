@@ -13,6 +13,9 @@ import {
 } from "react-bootstrap";
 import DropFileInput from "@/components/UI/Molecules/DropFileInput/DropFileInput";
 
+// Providers
+import { useUsageCounter } from "@/components/providers/UsageCounterProvider";
+
 // Typings
 import {
   FontFamilyType,
@@ -52,6 +55,8 @@ const AddWatermark: React.FC = () => {
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
 
   const optionsRef = useRef<HTMLDivElement>(null);
+
+  const { updateUsageCounter } = useUsageCounter();
 
   const { t } = useTranslation("common");
 
@@ -239,6 +244,10 @@ const AddWatermark: React.FC = () => {
     setPreviewUrl(url);
   };
 
+  const handleDownload = () => {
+    updateUsageCounter();
+  };
+
   return (
     <Row className="mt-4">
       <Col xs={12}>
@@ -262,9 +271,9 @@ const AddWatermark: React.FC = () => {
                 <Tab
                   eventKey="text"
                   title={t("add-watermark.tab-text")}
-                  className="add-watermark__tabs-tab bg-tab-content mt-3"
+                  className="add-watermark__tabs-tab bg-tab-content mt-3 border border-top-0 rounded-bottom"
                 >
-                  <Container className="pb-3 border border-top-0 rounded-bottom">
+                  <Container className="pb-3">
                     <Row className="gy-3">
                       <Col xs={12}>
                         {/* TODO: Create component to handle form inputs */}
@@ -420,9 +429,9 @@ const AddWatermark: React.FC = () => {
                 <Tab
                   eventKey="image"
                   title={t("add-watermark.tab-image")}
-                  className="add-watermark__tabs-tab bg-tab-content mt-3"
+                  className="add-watermark__tabs-tab bg-tab-content mt-3 border border-top-0 rounded-bottom"
                 >
-                  <Container className="pb-3 border border-top-0 rounded-bottom">
+                  <Container className="pb-3">
                     <Row className="gy-3">
                       <Col xs={12}>
                         <Form.Group>
@@ -530,6 +539,7 @@ const AddWatermark: React.FC = () => {
                 href={previewUrl}
                 download={`${uploadedImageName}_watermarked.jpg`}
                 className="text-decoration-none"
+                onClick={handleDownload}
               >
                 <Button className="d-block mt-3 mx-auto">
                   {t("add-watermark.download")}

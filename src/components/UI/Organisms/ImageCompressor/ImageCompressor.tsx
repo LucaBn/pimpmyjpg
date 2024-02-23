@@ -14,6 +14,9 @@ import {
 } from "react-bootstrap";
 import DropFileInput from "@/components/UI/Molecules/DropFileInput/DropFileInput";
 
+// Providers
+import { useUsageCounter } from "@/components/providers/UsageCounterProvider";
+
 // Locales
 import { useTranslation } from "react-i18next";
 
@@ -52,6 +55,8 @@ const ImageCompressor: React.FC = () => {
   );
 
   const compressedImagesContainerRef = useRef<HTMLDivElement>(null);
+
+  const { updateUsageCounter } = useUsageCounter();
 
   const { i18n, t } = useTranslation("common");
   const { language } = i18n;
@@ -158,6 +163,8 @@ const ImageCompressor: React.FC = () => {
         )
       );
     }
+
+    updateUsageCounter();
   };
 
   const handleDownloadAll = () => {

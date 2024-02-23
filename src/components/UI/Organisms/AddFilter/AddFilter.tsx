@@ -4,6 +4,9 @@ import React, { useState, useEffect, useRef } from "react";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import DropFileInput from "@/components/UI/Molecules/DropFileInput/DropFileInput";
 
+// Providers
+import { useUsageCounter } from "@/components/providers/UsageCounterProvider";
+
 // Locales
 import { useTranslation } from "react-i18next";
 
@@ -39,6 +42,8 @@ const AddFilter: React.FC = () => {
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
   const [selectedFilters, setSelectedFilters] = useState<FilterList[]>([]);
   const filtersRef = useRef<HTMLDivElement>(null);
+
+  const { updateUsageCounter } = useUsageCounter();
 
   const { t } = useTranslation("common");
 
@@ -129,6 +134,10 @@ const AddFilter: React.FC = () => {
       : "outline-primary";
   };
 
+  const handleDownload = () => {
+    updateUsageCounter();
+  };
+
   const hasFilter = selectedFilters.length > 0;
 
   return (
@@ -176,6 +185,7 @@ const AddFilter: React.FC = () => {
                     href={previewUrl}
                     download={`${uploadedImageName}_filtered.jpg`}
                     className="text-decoration-none"
+                    onClick={handleDownload}
                   >
                     <Button className="d-block mx-auto">
                       {t("add-filter.download")}
