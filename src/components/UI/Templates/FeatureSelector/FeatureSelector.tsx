@@ -34,14 +34,16 @@ const FeatureSelector: React.FC = () => {
 
       {/* First section */}
       <Section>
-        <Col xs={12} md={6}>
+        <Col xs={12} md={6} className="position-relative">
+          <div className="feature-image__bg feature-image__bg--compressor rounded"></div>
           <picture>
             <source
-              srcSet="https://placekitten.com/450/600"
+              srcSet="/assets/img/chars/compressor.webp"
               type="image/webp"
             />
             <Section.Image
-              src="https://placekitten.com/450/600"
+              src="/assets/img/chars/compressor.png"
+              className="position-relative feature-image__char"
               width={450}
               height={600}
               alt={t("feature-selector.image-compressor.image-alt")}
@@ -52,7 +54,7 @@ const FeatureSelector: React.FC = () => {
           </picture>
         </Col>
         <Col xs={12} md={5} className="d-flex align-items-center text-md-start">
-          <div className="my-4">
+          <div className="mt-2 mt-md-4 mb-4">
             <Section.Title>
               {t("feature-selector.image-compressor.title")}
             </Section.Title>
@@ -70,14 +72,13 @@ const FeatureSelector: React.FC = () => {
 
       {/* Second section */}
       <Section>
-        <Col xs={12} md={6} className="order-md-last">
+        <Col xs={12} md={6} className="position-relative order-md-last">
+          <div className="feature-image__bg feature-image__bg--filter rounded"></div>
           <picture>
-            <source
-              srcSet="https://placekitten.com/450/600"
-              type="image/webp"
-            />
+            <source srcSet="/assets/img/chars/filter.webp" type="image/webp" />
             <Section.Image
-              src="https://placekitten.com/450/600"
+              src="/assets/img/chars/filter.png"
+              className="position-relative feature-image__char"
               width={450}
               height={600}
               alt={t("feature-selector.add-filter.image-alt")}
@@ -92,7 +93,7 @@ const FeatureSelector: React.FC = () => {
           md={{ span: 5, offset: 1 }}
           className="d-flex align-items-center text-md-end"
         >
-          <div className="my-4">
+          <div className="mt-2 mt-md-4 mb-4">
             <Section.Title>
               {t("feature-selector.add-filter.title")}
             </Section.Title>
@@ -110,7 +111,8 @@ const FeatureSelector: React.FC = () => {
 
       {/* Third section */}
       <Section>
-        <Col xs={12} md={6}>
+        <Col xs={12} md={6} className="position-relative">
+          <div className="feature-image__bg feature-image__bg--watermark rounded"></div>
           <picture>
             <source
               srcSet="/assets/img/chars/watermark.webp"
@@ -118,6 +120,7 @@ const FeatureSelector: React.FC = () => {
             />
             <Section.Image
               src="/assets/img/chars/watermark.png"
+              className="position-relative feature-image__char"
               width={450}
               height={600}
               alt={t("feature-selector.add-watermark.image-alt")}
@@ -128,7 +131,7 @@ const FeatureSelector: React.FC = () => {
           </picture>
         </Col>
         <Col xs={12} md={5} className="d-flex align-items-center text-md-start">
-          <div className="my-4">
+          <div className="mt-2 mt-md-4 mb-4">
             <Section.Title>
               {t("feature-selector.add-watermark.title")}
             </Section.Title>
