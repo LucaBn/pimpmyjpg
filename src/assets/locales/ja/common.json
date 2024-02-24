@@ -27,8 +27,12 @@
     "made-by": "♥で作成された <authorLink>{{authorName}}</authorLink>",
     "made-by-title": "{{author}}のGitHubページを訪問",
     "stay-up-to-date": "最新情報",
-    "twitter-icon": "X（旧ツイッター）へ",
-    "buy-me-a-coffee": "コーヒーを買う"
+    "twitter-icon": "X（旧ツイッター）へ"
+  },
+  "beg-time": {
+    "title": "やあ！",
+    "description": "Pimp my Jpgを気に入ってくれたようだね！\nそれはとても嬉しいことだし、あなたが素晴らしい一日を過ごしていることを願っている。\n下の画像をクリックして、私にコーヒーを寄付してください！\nどうか僕をがっかりさせないでください、さもないと僕は今日もまたコケと地衣類を食べなければならなくなりますから🥺",
+    "cta": "お金を浪費したくない。"
   },
   "feature-selector": {
     "title": "こんにちは👋。",
@@ -116,6 +120,7 @@
     "description": "ページが見つかりません",
     "goToHP": "ホームページに戻る"
   },
+  "buy-me-a-coffee": "コーヒーを買う",
   "loading": "読み込み中...",
   "input": { "current-file": "現在のファイル" }
 }
