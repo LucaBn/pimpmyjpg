@@ -367,7 +367,6 @@ const ImageCompressor: React.FC = () => {
                 </span>
               </Button>
               <Button variant="danger" onClick={clearCompressedImageList}>
-                {/* TODO: Make it clear/reset the page */}
                 {t("image-compressor.clear")}
               </Button>
             </div>

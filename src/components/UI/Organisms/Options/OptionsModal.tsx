@@ -27,7 +27,6 @@ const OptionsModal: React.FC<IOptionsModal> = ({ show, setShow }) => {
           <OptionsModalForm />
         </Modal.Body>
         <Modal.Footer>
-          {/* TODO: rewrite this button */}
           <Button variant="primary" onClick={handleClose}>
             {t("navbar.options.save-and-close")}
           </Button>
