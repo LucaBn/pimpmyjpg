@@ -47,7 +47,7 @@ const BegTime: React.FC<IBegTime> = ({ show, setShow }) => {
           </Link>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="primary" onClick={handleClose}>
+          <Button variant="secondary" onClick={handleClose}>
             {t("beg-time.cta")}
           </Button>
         </Modal.Footer>

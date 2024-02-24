@@ -22,7 +22,7 @@ import { ThemeList } from "@/constants/themes";
 const App: React.FC = () => {
   const [showBegTimeModal, setShowBegTimeModal] = useState<boolean>(false);
 
-  const { usageCounter } = useUsageCounter();
+  const { usageCounter, updateUsageCounter } = useUsageCounter();
   const { borders } = useBorders();
   const { theme } = useTheme();
 
@@ -40,6 +40,7 @@ const App: React.FC = () => {
       (usageCounter === 15 || usageCounter % 100 === 0)
     ) {
       setShowBegTimeModal(true);
+      updateUsageCounter();
     }
   }, [usageCounter]);
 
@@ -64,8 +65,6 @@ const App: React.FC = () => {
       .join("/");
 
     if (currentPathWithoutLang !== previousPathWithoutLang) {
-      console.log("HERE");
-
       // TODO: check why /add-watermark page doesn't scroll correctly without setTimeout
       setTimeout(() => {
         document.documentElement.scrollTo({
