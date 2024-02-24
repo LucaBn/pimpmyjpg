@@ -64,11 +64,16 @@ const App: React.FC = () => {
       .join("/");
 
     if (currentPathWithoutLang !== previousPathWithoutLang) {
-      document.documentElement.scrollTo({
-        top: 0,
-        left: 0,
-        behavior: "smooth",
-      });
+      console.log("HERE");
+
+      // TODO: check why /add-watermark page doesn't scroll correctly without setTimeout
+      setTimeout(() => {
+        document.documentElement.scrollTo({
+          top: 0,
+          left: 0,
+          behavior: "smooth",
+        });
+      }, 0);
     }
 
     previousPathname.current = pathname;
