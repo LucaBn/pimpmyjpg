@@ -1,11 +1,13 @@
-import React, { useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
 
 // Components
+import BegTime from "../UI/Organisms/BegTime/BegTime";
 import Navbar from "@/components/UI/Organisms/Navbar/Navbar";
 import Footer from "@/components/UI/Organisms/Footer/Footer";
 
 // Providers
+import { useUsageCounter } from "@/components/providers/UsageCounterProvider";
 import { useBorders } from "@/components/providers/BordersProvider";
 import { useTheme } from "@/components/providers/ThemeProvider";
 
@@ -18,6 +20,9 @@ import { DEFAULT_LANGUAGE } from "@/constants/languages";
 import { ThemeList } from "@/constants/themes";
 
 const App: React.FC = () => {
+  const [showBegTimeModal, setShowBegTimeModal] = useState<boolean>(false);
+
+  const { usageCounter } = useUsageCounter();
   const { borders } = useBorders();
   const { theme } = useTheme();
 
@@ -28,6 +33,15 @@ const App: React.FC = () => {
   const previousPathname = useRef(pathname);
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (
+      usageCounter !== 0 &&
+      (usageCounter === 15 || usageCounter % 100 === 0)
+    ) {
+      setShowBegTimeModal(true);
+    }
+  }, [usageCounter]);
 
   useEffect(() => {
     if (pathname === "/") {
@@ -70,6 +84,7 @@ const App: React.FC = () => {
 
   return (
     <div className={`${CLASS_APP_NAME} ${textColorClass}`}>
+      <BegTime show={showBegTimeModal} setShow={setShowBegTimeModal} />
       <Navbar />
       <main
         className={`${CLASS_APP_NAME}-main bg-body-secondary ${textColorClass}`}

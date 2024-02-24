@@ -27,8 +27,12 @@
     "made-by": "Creato con ♥ da <authorLink>{{authorName}}</authorLink>",
     "made-by-title": "Visita la Pagina GitHub di {{author}}",
     "stay-up-to-date": "Rimani aggiornato",
-    "twitter-icon": "Vai a X (ex Twitter)",
-    "buy-me-a-coffee": "Offrimi un Caffè"
+    "twitter-icon": "Vai a X (ex Twitter)"
+  },
+  "beg-time": {
+    "title": "Hey amico!",
+    "description": "Sembra che ti piaccia Pimp my Jpg!\nSono molto felice di ciò e spero che tu stia passando una splendida giornata, ma sai cosa renderebbe questa giornata ancora più memorabile?\nDonarmi un caffè cliccando sull'immagine qui sotto!\nMi raccomando, non deludermi o sarò costretto anche oggi a cibarmi di muschi e licheni 🥺",
+    "cta": "Non voglio sperperare i miei denari"
   },
   "feature-selector": {
     "title": "Heilà 👋",
@@ -116,6 +120,7 @@
     "description": "Pagina non trovata",
     "goToHP": "Torna alla Home Page"
   },
+  "buy-me-a-coffee": "Offrimi un Caffè",
   "loading": "Caricamento...",
   "input": { "current-file": "File corrente" }
 }

@@ -2,12 +2,10 @@ import React, { Dispatch, SetStateAction } from "react";
 
 // Components
 import { Button, Modal } from "react-bootstrap";
+import OptionsModalForm from "@/components/UI/Organisms/Options/OptionsModalForm";
 
 // Locales
 import { useTranslation } from "react-i18next";
-
-// Constants
-import OptionsModalForm from "@/components/UI/Organisms/Options/OptionsModalForm";
 
 interface IOptionsModal {
   show: boolean;
@@ -29,7 +27,7 @@ const OptionsModal: React.FC<IOptionsModal> = ({ show, setShow }) => {
           <OptionsModalForm />
         </Modal.Body>
         <Modal.Footer>
-          {/* TODO: rewrite these button */}
+          {/* TODO: rewrite this button */}
           <Button variant="primary" onClick={handleClose}>
             {t("navbar.options.save-and-close")}
           </Button>

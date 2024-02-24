@@ -75,17 +75,17 @@ const Footer: React.FC = () => {
             <p>
               <Link
                 to="https://www.buymeacoffee.com/lucabn"
-                title={t("footer.buy-me-a-coffee")}
+                title={t("buy-me-a-coffee")}
                 target="_blank"
                 rel="noopener noreferrer nofollow"
-                className="footer__buy-me-a-coffee-link"
+                className="d-contents"
               >
                 <Image
                   src="/assets/img/buy-me-a-coffee.png"
                   height={56}
                   width={200}
                   className="d-block mx-auto rounded"
-                  alt={t("footer.buy-me-a-coffee")}
+                  alt={t("buy-me-a-coffee")}
                 />
               </Link>
             </p>
