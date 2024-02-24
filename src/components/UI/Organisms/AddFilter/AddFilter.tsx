@@ -130,8 +130,8 @@ const AddFilter: React.FC = () => {
 
   const getVariant = (effect: string) => {
     return selectedFilters.includes(effect as FilterList)
-      ? "primary"
-      : "outline-primary";
+      ? "secondary"
+      : "outline-secondary";
   };
 
   const handleDownload = () => {
@@ -177,7 +177,7 @@ const AddFilter: React.FC = () => {
                 <img
                   src={previewUrl}
                   alt={t("add-filter.filtered-preview")}
-                  className="add-filter__preview rounded mw-100 mb-3"
+                  className="add-filter__preview rounded d-block mx-auto mw-100 mb-3"
                   draggable={false}
                 />
                 {hasFilter ? (
