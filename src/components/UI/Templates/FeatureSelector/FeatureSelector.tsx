@@ -104,7 +104,7 @@ const FeatureSelector: React.FC = () => {
             <Section.Description>
               {t("feature-selector.add-filter.description")}
             </Section.Description>
-            <Link to="/">
+            <Link to={`/${language}/add-filter`}>
               <Section.Button
                 tabIndex={-1}
                 variant="dark"
@@ -146,7 +146,7 @@ const FeatureSelector: React.FC = () => {
             <Section.Description>
               {t("feature-selector.add-watermark.description")}
             </Section.Description>
-            <Link to="/">
+            <Link to={`/${language}/add-watermark`}>
               <Section.Button
                 tabIndex={-1}
                 variant="dark"
