@@ -30,7 +30,11 @@ const AddWatermarkTemplate: React.FC = () => {
           </p>
         </Col>
       </Row>
-      <AddWatermark />
+      <Row className="mt-4">
+        <Col xs={12}>
+          <AddWatermark />
+        </Col>
+      </Row>
     </Container>
   );
 };

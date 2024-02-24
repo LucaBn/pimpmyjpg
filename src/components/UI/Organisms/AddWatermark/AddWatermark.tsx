@@ -257,8 +257,8 @@ const AddWatermark: React.FC = () => {
             handleImageChange={handleImageChange}
           />
           {/* Select Watermark type */}
-          <div ref={optionsRef}>
-            {uploadedImage && (
+          {uploadedImage && (
+            <div ref={optionsRef}>
               <Tabs
                 defaultActiveKey="text"
                 id="watermark-type-tab"
@@ -525,8 +525,8 @@ const AddWatermark: React.FC = () => {
                   </Container>
                 </Tab>
               </Tabs>
-            )}
-          </div>
+            </div>
+          )}
           {previewUrl && (
             <div>
               <img
