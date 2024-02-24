@@ -14,20 +14,20 @@
     }
 
     &--compressor {
-      background-color: #3265b3;
+      background-color: $color-compressor;
     }
     &--filter {
-      background-color: #ff5941;
+      background-color: $color-filter;
     }
     &--watermark {
-      background-color: #4eda8f;
+      background-color: $color-watermark;
     }
   }
   &__char {
     transition: filter 0.2s;
 
     &:hover {
-      filter: drop-shadow(0px 6px 6px rgba(0, 0, 0, 0.5));
+      filter: drop-shadow(0px 6px 6px rgba(0, 0, 0, 0.35));
     }
   }
 }

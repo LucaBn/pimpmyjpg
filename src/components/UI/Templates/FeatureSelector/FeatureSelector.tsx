@@ -62,7 +62,7 @@ const FeatureSelector: React.FC = () => {
               {t("feature-selector.image-compressor.description")}
             </Section.Description>
             <Link to={`/${language}/image-compressor`}>
-              <Section.Button tabIndex={-1}>
+              <Section.Button tabIndex={-1} variant="dark">
                 {t("feature-selector.image-compressor.cta")}
               </Section.Button>
             </Link>
@@ -101,7 +101,7 @@ const FeatureSelector: React.FC = () => {
               {t("feature-selector.add-filter.description")}
             </Section.Description>
             <Link to="/">
-              <Section.Button tabIndex={-1}>
+              <Section.Button tabIndex={-1} variant="dark">
                 {t("feature-selector.add-filter.cta")}
               </Section.Button>
             </Link>
@@ -139,7 +139,7 @@ const FeatureSelector: React.FC = () => {
               {t("feature-selector.add-watermark.description")}
             </Section.Description>
             <Link to="/">
-              <Section.Button tabIndex={-1}>
+              <Section.Button tabIndex={-1} variant="dark">
                 {t("feature-selector.add-watermark.cta")}
               </Section.Button>
             </Link>
