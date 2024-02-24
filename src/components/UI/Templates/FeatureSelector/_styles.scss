@@ -1,0 +1,33 @@
+.feature-image {
+  &__bg {
+    position: absolute;
+    top: 20%;
+    left: 0;
+    height: 60%;
+    width: 100%;
+
+    @media screen and (min-width: 767px) {
+      top: 25%;
+      left: 10%;
+      height: 50%;
+      width: 80%;
+    }
+
+    &--compressor {
+      background-color: #3265b3;
+    }
+    &--filter {
+      background-color: #ff5941;
+    }
+    &--watermark {
+      background-color: #4eda8f;
+    }
+  }
+  &__char {
+    transition: filter 0.2s;
+
+    &:hover {
+      filter: drop-shadow(0px 6px 6px rgba(0, 0, 0, 0.5));
+    }
+  }
+}
