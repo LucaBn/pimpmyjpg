@@ -37,7 +37,7 @@ const App: React.FC = () => {
   useEffect(() => {
     if (
       usageCounter !== 0 &&
-      (usageCounter === 15 || usageCounter % 100 === 0)
+      (usageCounter === 15 || usageCounter % 300 === 0)
     ) {
       setShowBegTimeModal(true);
       updateUsageCounter();
