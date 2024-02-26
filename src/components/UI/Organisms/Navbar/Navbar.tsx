@@ -70,7 +70,7 @@ const NavbarComponent: React.FC = () => {
             </Navbar.Brand>
           </LinkContainer>
           <Nav.Item
-            className="d-lg-none d-flex align-items-center ms-auto me-3"
+            className="d-lg-none d-flex align-items-center ms-auto me-2"
             onClick={() => setShowOptionsModal(true)}
           >
             <Options forceColor={iconColor} />
