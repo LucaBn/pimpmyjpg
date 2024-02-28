@@ -326,6 +326,7 @@ const ImageCompressor: React.FC = () => {
                     src={URL.createObjectURL(compressedImage.file)}
                     alt={compressedImage.name}
                     className="position-absolute h-100 w-100 object-fit-cover"
+                    draggable={false}
                   />
                 </div>
                 <div className="d-flex flex-column flex-sm-row flex-grow-1 align-items-center w-100">
