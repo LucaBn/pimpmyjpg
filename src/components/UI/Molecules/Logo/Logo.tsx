@@ -31,6 +31,7 @@ const Logo: React.FC<ILogo> = ({
         height={height}
         width={width}
         alt={t("navbar.logo-title")}
+        draggable={false}
       />
       <span className={`${CLASS_APP_NAME}__logo-label`}>{logoLabel}</span>
     </div>

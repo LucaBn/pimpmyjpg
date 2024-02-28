@@ -86,6 +86,7 @@ const Footer: React.FC = () => {
                   width={200}
                   className="d-block mx-auto rounded"
                   alt={t("buy-me-a-coffee")}
+                  draggable={false}
                 />
               </Link>
             </p>

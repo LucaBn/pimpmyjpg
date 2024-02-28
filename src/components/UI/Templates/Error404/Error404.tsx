@@ -33,6 +33,7 @@ const Error404: React.FC = () => {
               height={360}
               width={512}
               className="mw-100 h-auto"
+              draggable={false}
             />
           </Col>
           <Col xs={12} className="mt-4">
