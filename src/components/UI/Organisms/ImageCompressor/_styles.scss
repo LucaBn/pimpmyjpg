@@ -1,43 +1,19 @@
-.image-compressor {
-  &__accordion {
-    max-width: 400px;
-  }
+.image-filter {
+  &__filters {
+    min-width: 50%;
 
-  &__quality-number {
-    width: 55px;
-  }
-
-  &__compressed-image-container {
-    max-width: 600px;
-    transition: border-color 0.15s;
-  }
-
-  &__compressed-image-miniature {
-    height: 120px;
-    width: 120px;
-    min-width: 120px; // Need this to force width
-
-    @include media-breakpoint-up(sm) {
-      height: 80px;
-      width: 80px;
-      min-width: 80px; // Need this to force width
-    }
-
-    img {
-      top: 0;
-      left: 0;
+    @media screen and (min-width: 767px) {
+      min-width: 160px;
     }
   }
 
-  &__download-number {
+  &__spinner {
     position: absolute;
-    top: 0;
-    right: 0;
-    background-color: var(--bs-primary);
-    width: 20px;
-    height: 20px;
-    font-size: 13px;
-    border: 1px solid var(--bs-border-color);
-    transform: translate(50%, -50%);
+    top: calc(50% - 20px);
+    left: calc(50% - 20px);
+
+    &-bg img {
+      filter: brightness(0.2);
+    }
   }
 }

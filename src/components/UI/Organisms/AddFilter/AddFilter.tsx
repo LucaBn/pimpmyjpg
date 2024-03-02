@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 
 // Components
-import { Container, Row, Col, Button } from "react-bootstrap";
+import { Row, Col, Button, Spinner } from "react-bootstrap";
 import DropFileInput from "@/components/UI/Molecules/DropFileInput/DropFileInput";
 
 // Providers
@@ -41,6 +41,7 @@ const AddFilter: React.FC = () => {
   const [uploadedImageName, setUploadedImageName] = useState<string>();
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
   const [selectedFilters, setSelectedFilters] = useState<FilterList[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const filtersRef = useRef<HTMLDivElement>(null);
 
   const { updateUsageCounter } = useUsageCounter();
@@ -59,6 +60,7 @@ const AddFilter: React.FC = () => {
       if (currentValues.includes(effect)) {
         return [];
       } else {
+        setIsLoading(true);
         return [effect];
       }
     });
@@ -66,7 +68,9 @@ const AddFilter: React.FC = () => {
   };
 
   useEffect(() => {
-    applyFilter();
+    setTimeout(() => {
+      applyFilter().then(() => setIsLoading(false));
+    }, 0);
   }, [uploadedImage, selectedFilters]);
 
   const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -81,7 +85,7 @@ const AddFilter: React.FC = () => {
     }
   };
 
-  const applyFilter = () => {
+  const applyFilter = async () => {
     if (uploadedImage) {
       const canvas = document.createElement("canvas");
       const ctx = canvas.getContext("2d");
@@ -116,6 +120,7 @@ const AddFilter: React.FC = () => {
         setPreviewUrl(url);
       }
     }
+    return new Promise((resolve) => setTimeout(resolve, 0));
   };
 
   useEffect(() => {
@@ -143,23 +148,20 @@ const AddFilter: React.FC = () => {
   return (
     <Row className="mt-4">
       <Col xs={12}>
-        <div className="d-flex flex-column align-items-center gap-3 text-start">
+        <div className="d-flex flex-column align-items-md-center gap-3 text-start">
           <DropFileInput
             label={t("add-filter.file-input")}
             handleImageChange={handleImageChange}
           />
           {previewUrl && (
             <>
-              <Container ref={filtersRef}>
+              <div ref={filtersRef}>
                 <Row className="g-3 justify-content-center">
                   {Object.keys(EFFECT_CSS_TABLE).map((effect) => (
                     <Col
-                      xs={6}
-                      sm={4}
-                      md={3}
-                      lg={2}
                       onClick={() => toggleFilter(effect as FilterList)}
                       key={effect}
+                      className="image-filter__filters col-auto"
                     >
                       <Button
                         className="ratio ratio-16x9"
@@ -172,31 +174,44 @@ const AddFilter: React.FC = () => {
                     </Col>
                   ))}
                 </Row>
-              </Container>
-              <div>
+              </div>
+              <div
+                className={`position-relative ${
+                  isLoading ? "image-filter__spinner-bg" : ""
+                }`}
+              >
                 <img
                   src={previewUrl}
                   alt={t("add-filter.filtered-preview")}
-                  className="add-filter__preview rounded d-block mx-auto mw-100 mb-3"
+                  className="add-filter__preview rounded d-block mx-auto mw-100"
                   draggable={false}
                 />
-                {hasFilter ? (
-                  <a
-                    href={previewUrl}
-                    download={`${uploadedImageName}_filtered.jpg`}
-                    className="text-decoration-none"
-                    onClick={handleDownload}
+                {isLoading && (
+                  <Spinner
+                    animation="border"
+                    role="status"
+                    className="image-filter__spinner"
                   >
-                    <Button className="d-block mx-auto">
-                      {t("add-filter.download")}
-                    </Button>
-                  </a>
-                ) : (
-                  <small className="d-block mx-auto text-center">
-                    {t("add-filter.apply-filter")}
-                  </small>
+                    <span className="visually-hidden">{t("loading")}</span>
+                  </Spinner>
                 )}
               </div>
+              {hasFilter ? (
+                <a
+                  href={previewUrl}
+                  download={`${uploadedImageName}_filtered.jpg`}
+                  className="text-decoration-none "
+                  onClick={handleDownload}
+                >
+                  <Button className="d-block mx-auto" disabled={isLoading}>
+                    {t("add-filter.download")}
+                  </Button>
+                </a>
+              ) : (
+                <small className="d-block mx-auto text-center">
+                  {t("add-filter.apply-filter")}
+                </small>
+              )}
             </>
           )}
         </div>
