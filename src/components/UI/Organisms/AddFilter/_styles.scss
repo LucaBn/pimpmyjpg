@@ -2,4 +2,22 @@
   &__preview {
     max-height: 400px;
   }
+
+  &__filters {
+    min-width: 50%;
+
+    @media screen and (min-width: 767px) {
+      min-width: 160px;
+    }
+  }
+
+  &__spinner {
+    position: absolute;
+    top: calc(50% - 20px);
+    left: calc(50% - 20px);
+
+    &-bg img {
+      filter: brightness(0.2);
+    }
+  }
 }

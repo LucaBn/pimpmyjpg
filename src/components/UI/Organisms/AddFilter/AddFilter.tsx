@@ -161,7 +161,7 @@ const AddFilter: React.FC = () => {
                     <Col
                       onClick={() => toggleFilter(effect as FilterList)}
                       key={effect}
-                      className="image-filter__filters col-auto"
+                      className="add-filter__filters col-auto"
                     >
                       <Button
                         className="ratio ratio-16x9"
@@ -177,7 +177,7 @@ const AddFilter: React.FC = () => {
               </div>
               <div
                 className={`position-relative ${
-                  isLoading ? "image-filter__spinner-bg" : ""
+                  isLoading ? "add-filter__spinner-bg" : ""
                 }`}
               >
                 <img
@@ -190,7 +190,7 @@ const AddFilter: React.FC = () => {
                   <Spinner
                     animation="border"
                     role="status"
-                    className="image-filter__spinner"
+                    className="add-filter__spinner"
                   >
                     <span className="visually-hidden">{t("loading")}</span>
                   </Spinner>
