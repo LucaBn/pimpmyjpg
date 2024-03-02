@@ -11,6 +11,9 @@ import OptionsModal from "@/components/UI/Organisms/Options/OptionsModal";
 // Locales
 import { useTranslation } from "react-i18next";
 
+// Typings
+import { LanguageList } from "@/typings/i18next";
+
 // Constants
 import { CLASS_APP_NAME } from "@/constants/html-classes";
 
@@ -48,6 +51,17 @@ const NavbarComponent: React.FC = () => {
     setExpanded(false);
   };
 
+  const handleLogoClick = () => {
+    const regex = new RegExp(`^/(${Object.values(LanguageList).join("|")})$`);
+    if (regex.test(pathname)) {
+      document.documentElement.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: "smooth",
+      });
+    }
+  };
+
   const iconColor = "#fff"; // Force icons color to white since .navbar-dark class is applied to <Navbar /> component
 
   return (
@@ -64,7 +78,7 @@ const NavbarComponent: React.FC = () => {
         https://github.com/react-bootstrap/react-router-bootstrap/issues/242#issuecomment-613761912
       */}
         <Container key={pathname}>
-          <LinkContainer to={`/${language}`}>
+          <LinkContainer to={`/${language}`} onClick={handleLogoClick}>
             <Navbar.Brand onClick={closeNavbarDropdown} className="py-0">
               <Logo height={40} width={80} label={t("navbar.logo-label")} />
             </Navbar.Brand>
