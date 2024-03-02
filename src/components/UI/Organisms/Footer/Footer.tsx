@@ -35,12 +35,8 @@ const Footer: React.FC = () => {
     <footer className="bg-dark text-white py-4 border-top">
       <Container>
         <Row>
-          <Col xs={12} className="mt-4">
-            <p>&copy; 2&zwj;024-2381 {WEBSITE_URL}</p>
-          </Col>
-        </Row>
-        <Row>
-          <Col xs={12} className="mb-4">
+          <Col xs={12} className="my-4">
+            <p className="mb-1">&copy; 2&zwj;024-2381 {WEBSITE_URL}</p>
             <p>
               <Trans
                 i18nKey="footer.made-by"
