@@ -50,6 +50,15 @@ const LanguageHandler: React.FC = () => {
   const { pathname } = useLocation();
   const navigate = useNavigate();
 
+  const handleLanguage = (selectedLanguage: LanguageList) => {
+    const splitLocation = pathname.split("/");
+    splitLocation[1] = selectedLanguage;
+    const newLocation = splitLocation.join("/");
+
+    changeLanguage(selectedLanguage);
+    navigate(newLocation);
+  };
+
   const flagContainerClassList = (flagLanguage: LanguageList) => {
     const classList = [`${CLASS_APP_NAME}-radio-flag`, `position-relative`];
 
@@ -60,29 +69,23 @@ const LanguageHandler: React.FC = () => {
     return generateClassNameValue(classList);
   };
 
-  const handleLanguage = (selectedLanguage: LanguageList) => {
-    const splitLocation = pathname.split("/");
-    splitLocation[1] = selectedLanguage;
-    const newLocation = splitLocation.join("/");
+  const getLabel = (option: LanguageOption) => {
+    const { language, flagComponent } = option;
+    const classList = flagContainerClassList(language);
 
-    changeLanguage(selectedLanguage);
-    navigate(newLocation);
+    return <div className={classList}>{flagComponent}</div>;
   };
 
   return (
     <Form>
-      <Form.Group as={Col} className=" d-flex flex-wrap gap-3">
+      <Form.Group as={Col} className="d-flex flex-wrap gap-3">
         {LANGUAGE_OPTIONS.map((option) => (
           <Form.Check
             key={option.language}
             id={`${CLASS_APP_NAME}-radio__${option.language}`}
             type="radio"
             name="language"
-            label={
-              <div className={flagContainerClassList(option.language)}>
-                {option.flagComponent}
-              </div>
-            }
+            label={getLabel(option)}
             value={option.language}
             checked={language === option.language}
             onChange={() => handleLanguage(option.language)}
