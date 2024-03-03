@@ -10,6 +10,7 @@ import {
   Form,
   InputGroup,
   Button,
+  Spinner,
 } from "react-bootstrap";
 import DropFileInput from "@/components/UI/Molecules/DropFileInput/DropFileInput";
 
@@ -30,11 +31,17 @@ import { getCleanFileName } from "@/utils/strings";
 // Locales
 import { useTranslation } from "react-i18next";
 
+// Constants
+import { ACCEPTED_IMAGE_FORMAT_LIST, CanvasTypeList } from "@/constants/images";
+
 const AddWatermark: React.FC = () => {
   const [uploadedImage, setUploadedImage] = useState<HTMLImageElement | null>(
     null
   );
   const [uploadedImageName, setUploadedImageName] = useState<string>();
+  const [canvasType, setCanvasType] = useState<CanvasTypeList>(
+    CanvasTypeList.JPG
+  );
   const [watermarkType, setWatermarkType] = useState<WatermarkType>(
     WatermarkType.Text
   );
@@ -53,6 +60,7 @@ const AddWatermark: React.FC = () => {
   const [watermarkPosition, setWatermarkPosition] =
     useState<WatermarkPositionType>(WatermarkPositionType.Center);
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const optionsRef = useRef<HTMLDivElement>(null);
 
@@ -65,7 +73,17 @@ const AddWatermark: React.FC = () => {
       const imageName = getCleanFileName(event.target?.files[0].name) || "_";
       const image = new Image();
       image.src = URL.createObjectURL(event.target.files[0]);
+
+      const fileType = ACCEPTED_IMAGE_FORMAT_LIST.includes(
+        event.target.files[0].type
+      )
+        ? (event.target.files[0].type as CanvasTypeList)
+        : CanvasTypeList.JPG;
+      setCanvasType(fileType);
+
       image.onload = () => {
+        const adaptedFontSize = String(Math.floor(image.width / 10)); // Approximation
+        setFontSize(adaptedFontSize);
         setUploadedImage(image);
         setUploadedImageName(imageName);
       };
@@ -100,6 +118,8 @@ const AddWatermark: React.FC = () => {
   };
 
   useEffect(() => {
+    setIsLoading(true);
+
     if (watermarkType === "text") {
       setWatermarkImage(null);
     }
@@ -148,6 +168,10 @@ const AddWatermark: React.FC = () => {
     // Set text properties
     ctx.font = `${fontSize}px ${fontFamily}`;
     ctx.fillStyle = textColor;
+    // ctx.shadowColor = "#000";
+    // ctx.shadowBlur = 4;
+    // ctx.shadowOffsetX = 2;
+    // ctx.shadowOffsetY = 2;
 
     let x = 0;
     let y = 0;
@@ -240,8 +264,9 @@ const AddWatermark: React.FC = () => {
       );
     }
 
-    const url = canvas.toDataURL("image/jpeg");
+    const url = canvas.toDataURL(canvasType);
     setPreviewUrl(url);
+    setIsLoading(false);
   };
 
   const handleDownload = () => {
@@ -528,24 +553,41 @@ const AddWatermark: React.FC = () => {
             </div>
           )}
           {previewUrl && (
-            <div>
-              <img
-                src={previewUrl}
-                alt={t("add-watermark.watermarked-preview")}
-                className="add-watermark__preview rounded d-block mx-auto mw-100"
-                draggable={false}
-              />
+            <>
+              <div
+                className={`position-relative ${
+                  isLoading ? "add-watermark__spinner-bg" : ""
+                }`}
+              >
+                <img
+                  src={previewUrl}
+                  alt={t("add-watermark.watermarked-preview")}
+                  className="add-watermark__preview rounded d-block mx-auto mw-100"
+                  draggable={false}
+                />
+                {isLoading && (
+                  <Spinner
+                    animation="border"
+                    role="status"
+                    className="add-watermark__spinner"
+                  >
+                    <span className="visually-hidden">{t("loading")}</span>
+                  </Spinner>
+                )}
+              </div>
               <a
                 href={previewUrl}
-                download={`${uploadedImageName}_watermarked.jpg`}
+                download={`${uploadedImageName}_watermarked.${
+                  canvasType === "image/png" ? "png" : "jpg"
+                }`}
                 className="text-decoration-none"
                 onClick={handleDownload}
               >
-                <Button className="d-block mt-3 mx-auto">
+                <Button className="d-block mx-auto">
                   {t("add-watermark.download")}
                 </Button>
               </a>
-            </div>
+            </>
           )}
         </div>
       </Col>

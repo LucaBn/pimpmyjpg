@@ -14,6 +14,9 @@ import { useTranslation } from "react-i18next";
 import { overlayBlend } from "@/utils/colors";
 import { getCleanFileName } from "@/utils/strings";
 
+// Constants
+import { ACCEPTED_IMAGE_FORMAT_LIST, CanvasTypeList } from "@/constants/images";
+
 enum FilterList {
   BlackAndWhite = "black-and-white",
   Sepia = "sepia",
@@ -39,6 +42,9 @@ const AddFilter: React.FC = () => {
     null
   );
   const [uploadedImageName, setUploadedImageName] = useState<string>();
+  const [canvasType, setCanvasType] = useState<CanvasTypeList>(
+    CanvasTypeList.JPG
+  );
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
   const [selectedFilters, setSelectedFilters] = useState<FilterList[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -78,6 +84,14 @@ const AddFilter: React.FC = () => {
       const imageName = getCleanFileName(event.target?.files[0].name) || "_";
       const image = new Image();
       image.src = URL.createObjectURL(event.target.files[0]);
+
+      const fileType = ACCEPTED_IMAGE_FORMAT_LIST.includes(
+        event.target.files[0].type
+      )
+        ? (event.target.files[0].type as CanvasTypeList)
+        : CanvasTypeList.JPG;
+      setCanvasType(fileType);
+
       image.onload = () => {
         setUploadedImage(image);
         setUploadedImageName(imageName);
@@ -116,7 +130,7 @@ const AddFilter: React.FC = () => {
           ctx.putImageData(imageData, 0, 0);
         }
 
-        const url = canvas.toDataURL("image/jpeg");
+        const url = canvas.toDataURL(canvasType);
         setPreviewUrl(url);
       }
     }
@@ -199,7 +213,9 @@ const AddFilter: React.FC = () => {
               {hasFilter ? (
                 <a
                   href={previewUrl}
-                  download={`${uploadedImageName}_filtered.jpg`}
+                  download={`${uploadedImageName}_filtered.${
+                    canvasType === "image/png" ? "png" : "jpg"
+                  }`}
                   className="text-decoration-none "
                   onClick={handleDownload}
                 >

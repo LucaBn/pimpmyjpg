@@ -41,6 +41,10 @@ const ThemeHandler: React.FC<IThemeHandler> = ({ forceColor }) => {
     );
   };
 
+  const getLabel = (option: ThemeList) => {
+    return <div className="mx-1">{getThemeIcon(option)}</div>;
+  };
+
   return (
     <Form>
       <Form.Group as={Col} className="d-flex flex-wrap gap-3">
@@ -51,8 +55,7 @@ const ThemeHandler: React.FC<IThemeHandler> = ({ forceColor }) => {
             name="language"
             id={`${CLASS_APP_NAME}-radio__${option}`}
             className={`${CLASS_APP_NAME}-radio__theme`}
-            label={<div className="mx-1">{getThemeIcon(option)}</div>}
-            value={option}
+            label={getLabel(option)}
             checked={theme === option}
             onChange={() => handleTheme(option)}
             title={t(`navbar.theme.${option}`)}

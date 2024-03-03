@@ -41,6 +41,10 @@ const BordersHandler: React.FC<IBordersHandler> = ({ forceColor }) => {
     );
   };
 
+  const getLabel = (option: BorderList) => {
+    return <div className="mx-1">{getBordersIcon(option)}</div>;
+  };
+
   return (
     <Form>
       <Form.Group as={Col} className="d-flex flex-wrap gap-3">
@@ -51,8 +55,7 @@ const BordersHandler: React.FC<IBordersHandler> = ({ forceColor }) => {
             name="borders"
             id={`${CLASS_APP_NAME}-radio__${option}`}
             className={`${CLASS_APP_NAME}-radio__borders`}
-            label={<div className="mx-1">{getBordersIcon(option)}</div>}
-            value={option}
+            label={getLabel(option)}
             checked={borders === option}
             onChange={() => handleBorders(option)}
             title={t(`navbar.borders.${option}`)}
