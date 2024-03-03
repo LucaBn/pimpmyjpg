@@ -1,6 +1,11 @@
 .image-compressor {
   &__accordion {
-    max-width: 400px;
+    max-width: 430px;
+
+    &-tip {
+      font-size: 0.875em;
+      line-height: 1;
+    }
   }
 
   &__quality-number {

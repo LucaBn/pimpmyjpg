@@ -82,11 +82,10 @@ const LanguageHandler: React.FC = () => {
         {LANGUAGE_OPTIONS.map((option) => (
           <Form.Check
             key={option.language}
-            id={`${CLASS_APP_NAME}-radio__${option.language}`}
             type="radio"
             name="language"
+            id={`${CLASS_APP_NAME}-radio__${option.language}`}
             label={getLabel(option)}
-            value={option.language}
             checked={language === option.language}
             onChange={() => handleLanguage(option.language)}
             title={option.title}

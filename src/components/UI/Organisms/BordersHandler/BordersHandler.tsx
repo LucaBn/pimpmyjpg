@@ -56,7 +56,6 @@ const BordersHandler: React.FC<IBordersHandler> = ({ forceColor }) => {
             id={`${CLASS_APP_NAME}-radio__${option}`}
             className={`${CLASS_APP_NAME}-radio__borders`}
             label={getLabel(option)}
-            value={option}
             checked={borders === option}
             onChange={() => handleBorders(option)}
             title={t(`navbar.borders.${option}`)}

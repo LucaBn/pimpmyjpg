@@ -24,29 +24,49 @@ import { useTranslation } from "react-i18next";
 import { LanguageList } from "@/typings/i18next";
 
 // Utils
-import { calculateSize, compareImageSizes } from "@/utils/image-compressor";
+import {
+  calculateSize,
+  compareImageSizes,
+  getCanvasType,
+} from "@/utils/image-compressor";
 import { localizeDecimalSeparator } from "@/utils/conversions";
 import { getCleanFileName } from "@/utils/strings";
 
-interface ImageInfo {
+// Constants
+import { CLASS_APP_NAME } from "@/constants/html-classes";
+
+type ImageInfo = {
   index: number;
   originalFile: File | Blob;
   file: Blob;
   name: string;
   downloaded: boolean;
+  type: string;
+};
+
+enum ImageFormat {
+  JPG = "jpg",
+  PNG = "png",
+  KEEP_FORMAT = "keep-format",
 }
 
 const DEFAULT_VALUES = {
   MAX_WIDTH: 0,
   MAX_HEIGHT: 0,
   QUALITY: 70,
+  IMAGE_FORMAT: ImageFormat.KEEP_FORMAT,
 };
+
+const ACCEPTED_IMAGE_FORMAT_LIST = ["image/jpeg", "image/png"];
 
 const ImageCompressor: React.FC = () => {
   const [inputFileValueKey, setInputFileValueKey] = useState<number>(0);
   const [maxWidth, setMaxWidth] = useState<number>(DEFAULT_VALUES.MAX_WIDTH);
   const [maxHeight, setMaxHeight] = useState<number>(DEFAULT_VALUES.MAX_HEIGHT);
   const [quality, setQuality] = useState<number>(DEFAULT_VALUES.QUALITY);
+  const [imageFormat, setImageFormat] = useState<ImageFormat>(
+    DEFAULT_VALUES.IMAGE_FORMAT
+  );
   const [totalImages, setTotalImages] = useState<number>(0);
   const [loadedImages, setLoadedImages] = useState<number>(0);
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -115,6 +135,12 @@ const ImageCompressor: React.FC = () => {
       const ctx = canvas.getContext("2d");
       ctx?.drawImage(img, 0, 0, newWidth, newHeight);
 
+      const fileType =
+        imageFormat === ImageFormat.KEEP_FORMAT &&
+        ACCEPTED_IMAGE_FORMAT_LIST.includes(file.type)
+          ? file.type
+          : getCanvasType(imageFormat);
+
       canvas.toBlob(
         (blob) => {
           if (blob) {
@@ -124,11 +150,12 @@ const ImageCompressor: React.FC = () => {
               file: blob,
               name: getCleanFileName(file.name),
               downloaded: false,
+              type: fileType,
             };
             setCompressedImageList((prevValue) => [...prevValue, imageInfo]);
           }
         },
-        "image/jpeg",
+        fileType,
         quality / 100
       );
 
@@ -136,35 +163,48 @@ const ImageCompressor: React.FC = () => {
     };
   };
 
-  const handleDownload = (compressedImage: ImageInfo) => {
-    const zip = new Blob();
-    const zipUrl = URL.createObjectURL(zip);
-
-    const zipLink = document.createElement("a");
-    zipLink.href = zipUrl;
-    zipLink.download = "compressed_images.zip"; // ???
-    document.body.appendChild(zipLink);
-
-    const imageUrl = URL.createObjectURL(compressedImage.file);
-    zipLink.href = URL.createObjectURL(new Blob([zip, compressedImage.file]));
-    zipLink.download = `${compressedImage.name}_compressed.jpg`;
-    zipLink.click();
-    URL.revokeObjectURL(imageUrl);
-
-    document.body.removeChild(zipLink);
-    URL.revokeObjectURL(zipUrl);
-
-    if (!compressedImage.downloaded) {
-      setCompressedImageList((currentImages) =>
-        currentImages.map((image) =>
-          image.index === compressedImage.index
-            ? { ...image, downloaded: true }
-            : image
-        )
-      );
+  const handleDownload = async (compressedImage: ImageInfo) => {
+    if (!compressedImage.file || !compressedImage.name) {
+      console.error("Invalid compressedImage data");
+      return;
     }
 
-    updateUsageCounter();
+    try {
+      const fileBlob = new Blob([compressedImage.file], {
+        type:
+          imageFormat === ImageFormat.KEEP_FORMAT &&
+          ACCEPTED_IMAGE_FORMAT_LIST.includes(compressedImage.type)
+            ? compressedImage.type
+            : imageFormat,
+      });
+      const fileUrl = URL.createObjectURL(fileBlob);
+
+      const downloadLink = document.createElement("a");
+      downloadLink.href = fileUrl;
+      const fileExtension =
+        compressedImage.type === "image/png" ? "png" : "jpg";
+      downloadLink.download = `${compressedImage.name}_compressed.${fileExtension}`;
+
+      document.body.appendChild(downloadLink);
+      downloadLink.click();
+      document.body.removeChild(downloadLink);
+
+      URL.revokeObjectURL(fileUrl);
+
+      if (!compressedImage.downloaded) {
+        setCompressedImageList((currentImages) =>
+          currentImages.map((image) =>
+            image.index === compressedImage.index
+              ? { ...image, downloaded: true }
+              : image
+          )
+        );
+      }
+
+      updateUsageCounter();
+    } catch (error) {
+      console.error("Error downloading the file:", error);
+    }
   };
 
   const handleDownloadAll = () => {
@@ -240,6 +280,42 @@ const ImageCompressor: React.FC = () => {
                 {/* TODO: add description on how options values work */}
                 <Container>
                   <Row className="g-3">
+                    <Col xs={12}>
+                      <Form.Label htmlFor="quality">
+                        {t("image-compressor.image-format")}
+                      </Form.Label>
+                      <Form.Group as={Col} className="d-flex flex-wrap">
+                        <Form.Check
+                          type="radio"
+                          name="language"
+                          id={`${CLASS_APP_NAME}-radio__keep-format`}
+                          className={`${CLASS_APP_NAME}-radio__theme me-3`}
+                          label={t("image-compressor.keep-format")}
+                          checked={imageFormat === ImageFormat.KEEP_FORMAT}
+                          onChange={() =>
+                            setImageFormat(ImageFormat.KEEP_FORMAT)
+                          }
+                        />
+                        <Form.Check
+                          type="radio"
+                          name="language"
+                          id={`${CLASS_APP_NAME}-radio__jpg`}
+                          className={`${CLASS_APP_NAME}-radio__theme me-3`}
+                          label={"JPG"}
+                          checked={imageFormat === ImageFormat.JPG}
+                          onChange={() => setImageFormat(ImageFormat.JPG)}
+                        />
+                        <Form.Check
+                          type="radio"
+                          name="language"
+                          id={`${CLASS_APP_NAME}-radio__png`}
+                          className={`${CLASS_APP_NAME}-radio__theme`}
+                          label={"PNG"}
+                          checked={imageFormat === ImageFormat.PNG}
+                          onChange={() => setImageFormat(ImageFormat.PNG)}
+                        />
+                      </Form.Group>
+                    </Col>
                     <Col xs={12} md={6}>
                       <Form.Group>
                         <Form.Label htmlFor="max-width">
@@ -255,6 +331,9 @@ const ImageCompressor: React.FC = () => {
                           )} /* Need this to prevent leading zeroes, hope it works correctly */
                           onChange={(e) => setMaxWidth(Number(e.target.value))}
                         />
+                        <p className="image-compressor__accordion-tip text-secondary mt-1 mb-0">
+                          {t("image-compressor.width-height-tip")}
+                        </p>
                       </Form.Group>
                     </Col>
                     <Col xs={12} md={6}>
@@ -272,6 +351,9 @@ const ImageCompressor: React.FC = () => {
                           )} /* Need this to prevent leading zeroes, hope it works correctly */
                           onChange={(e) => setMaxHeight(Number(e.target.value))}
                         />
+                        <p className="image-compressor__accordion-tip text-secondary mt-1 mb-0">
+                          {t("image-compressor.width-height-tip")}
+                        </p>
                       </Form.Group>
                     </Col>
                     <Col xs={12}>

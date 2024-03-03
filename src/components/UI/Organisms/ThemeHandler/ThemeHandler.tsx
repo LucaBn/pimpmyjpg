@@ -56,7 +56,6 @@ const ThemeHandler: React.FC<IThemeHandler> = ({ forceColor }) => {
             id={`${CLASS_APP_NAME}-radio__${option}`}
             className={`${CLASS_APP_NAME}-radio__theme`}
             label={getLabel(option)}
-            value={option}
             checked={theme === option}
             onChange={() => handleTheme(option)}
             title={t(`navbar.theme.${option}`)}

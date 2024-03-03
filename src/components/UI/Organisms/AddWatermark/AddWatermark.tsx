@@ -66,6 +66,8 @@ const AddWatermark: React.FC = () => {
       const image = new Image();
       image.src = URL.createObjectURL(event.target.files[0]);
       image.onload = () => {
+        const adaptedFontSize = String(Math.floor(image.width / 10)); // Approximation
+        setFontSize(adaptedFontSize);
         setUploadedImage(image);
         setUploadedImageName(imageName);
       };
@@ -148,6 +150,10 @@ const AddWatermark: React.FC = () => {
     // Set text properties
     ctx.font = `${fontSize}px ${fontFamily}`;
     ctx.fillStyle = textColor;
+    // ctx.shadowColor = "#000";
+    // ctx.shadowBlur = 4;
+    // ctx.shadowOffsetX = 2;
+    // ctx.shadowOffsetY = 2;
 
     let x = 0;
     let y = 0;
