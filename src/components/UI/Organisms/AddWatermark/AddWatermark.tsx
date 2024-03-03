@@ -10,6 +10,7 @@ import {
   Form,
   InputGroup,
   Button,
+  Spinner,
 } from "react-bootstrap";
 import DropFileInput from "@/components/UI/Molecules/DropFileInput/DropFileInput";
 
@@ -59,6 +60,7 @@ const AddWatermark: React.FC = () => {
   const [watermarkPosition, setWatermarkPosition] =
     useState<WatermarkPositionType>(WatermarkPositionType.Center);
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const optionsRef = useRef<HTMLDivElement>(null);
 
@@ -116,6 +118,8 @@ const AddWatermark: React.FC = () => {
   };
 
   useEffect(() => {
+    setIsLoading(true);
+
     if (watermarkType === "text") {
       setWatermarkImage(null);
     }
@@ -262,6 +266,7 @@ const AddWatermark: React.FC = () => {
 
     const url = canvas.toDataURL(canvasType);
     setPreviewUrl(url);
+    setIsLoading(false);
   };
 
   const handleDownload = () => {
@@ -548,13 +553,28 @@ const AddWatermark: React.FC = () => {
             </div>
           )}
           {previewUrl && (
-            <div>
-              <img
-                src={previewUrl}
-                alt={t("add-watermark.watermarked-preview")}
-                className="add-watermark__preview rounded d-block mx-auto mw-100"
-                draggable={false}
-              />
+            <>
+              <div
+                className={`position-relative ${
+                  isLoading ? "add-filter__spinner-bg" : ""
+                }`}
+              >
+                <img
+                  src={previewUrl}
+                  alt={t("add-watermark.watermarked-preview")}
+                  className="add-watermark__preview rounded d-block mx-auto mw-100"
+                  draggable={false}
+                />
+                {isLoading && (
+                  <Spinner
+                    animation="border"
+                    role="status"
+                    className="add-watermark__spinner"
+                  >
+                    <span className="visually-hidden">{t("loading")}</span>
+                  </Spinner>
+                )}
+              </div>
               <a
                 href={previewUrl}
                 download={`${uploadedImageName}_watermarked.${
@@ -563,11 +583,11 @@ const AddWatermark: React.FC = () => {
                 className="text-decoration-none"
                 onClick={handleDownload}
               >
-                <Button className="d-block mt-3 mx-auto">
+                <Button className="d-block mx-auto">
                   {t("add-watermark.download")}
                 </Button>
               </a>
-            </div>
+            </>
           )}
         </div>
       </Col>
