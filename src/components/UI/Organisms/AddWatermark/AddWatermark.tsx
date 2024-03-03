@@ -556,7 +556,7 @@ const AddWatermark: React.FC = () => {
             <>
               <div
                 className={`position-relative ${
-                  isLoading ? "add-filter__spinner-bg" : ""
+                  isLoading ? "add-watermark__spinner-bg" : ""
                 }`}
               >
                 <img
