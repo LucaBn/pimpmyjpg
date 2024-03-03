@@ -31,12 +31,7 @@ import { getCleanFileName } from "@/utils/strings";
 import { useTranslation } from "react-i18next";
 
 // Constants
-import { ACCEPTED_IMAGE_FORMAT_LIST } from "@/constants/images";
-
-enum CanvasTypeList {
-  JPG = "image/jpeg",
-  PNG = "image/png",
-}
+import { ACCEPTED_IMAGE_FORMAT_LIST, CanvasTypeList } from "@/constants/images";
 
 const AddWatermark: React.FC = () => {
   const [uploadedImage, setUploadedImage] = useState<HTMLImageElement | null>(

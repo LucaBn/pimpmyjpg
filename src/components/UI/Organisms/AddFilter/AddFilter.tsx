@@ -15,12 +15,7 @@ import { overlayBlend } from "@/utils/colors";
 import { getCleanFileName } from "@/utils/strings";
 
 // Constants
-import { ACCEPTED_IMAGE_FORMAT_LIST } from "@/constants/images";
-
-enum CanvasTypeList {
-  JPG = "image/jpeg",
-  PNG = "image/png",
-}
+import { ACCEPTED_IMAGE_FORMAT_LIST, CanvasTypeList } from "@/constants/images";
 
 enum FilterList {
   BlackAndWhite = "black-and-white",
