@@ -13,13 +13,13 @@ const OptionsModalForm: React.FC = () => {
 
   return (
     <>
-      <p className={"mb-2"}>{t("navbar.options.select-language")}:</p>
+      <p className={"mb-2"}>{t("navbar.options.select-language")}</p>
       <LanguageHandler />
 
-      <p className={"mt-3 mb-2"}>{t("navbar.options.select-theme")}:</p>
+      <p className={"mt-4 mb-2"}>{t("navbar.options.select-theme")}</p>
       <ThemeHandler />
 
-      <p className={"mt-3 mb-2"}>{t("navbar.options.select-borders")}:</p>
+      <p className={"mt-4 mb-2"}>{t("navbar.options.select-borders")}</p>
       <BordersHandler />
     </>
   );
