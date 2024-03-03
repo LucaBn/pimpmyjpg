@@ -90,11 +90,11 @@ enum CanvasImageFormat {
  * For generic string inputs, it assumes the string is a valid image format,
  * converts it to lowercase, and prefixes it with 'image/'.
  *
- * @param {CanvasImageFormat | string} imageFormat - The image format which can be
- * a value from the CanvasImageFormat enum or a generic string representing an image format.
+ * @param {string} imageFormat - The image format which is a string that is value from the
+ * CanvasImageFormat.
  * @returns {string} The MIME type of the image format suitable for use with <canvas> elements.
  */
-const getCanvasType = (imageFormat: CanvasImageFormat | string) => {
+const getCanvasType = (imageFormat: string): string => {
   if (
     Object.values(CanvasImageFormat).includes(imageFormat as CanvasImageFormat)
   ) {

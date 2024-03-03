@@ -34,6 +34,7 @@ import { getCleanFileName } from "@/utils/strings";
 
 // Constants
 import { CLASS_APP_NAME } from "@/constants/html-classes";
+import { ACCEPTED_IMAGE_FORMAT_LIST } from "@/constants/images";
 
 type ImageInfo = {
   index: number;
@@ -56,8 +57,6 @@ const DEFAULT_VALUES = {
   QUALITY: 70,
   IMAGE_FORMAT: ImageFormat.KEEP_FORMAT,
 };
-
-const ACCEPTED_IMAGE_FORMAT_LIST = ["image/jpeg", "image/png"];
 
 const ImageCompressor: React.FC = () => {
   const [inputFileValueKey, setInputFileValueKey] = useState<number>(0);

@@ -30,11 +30,22 @@ import { getCleanFileName } from "@/utils/strings";
 // Locales
 import { useTranslation } from "react-i18next";
 
+// Constants
+import { ACCEPTED_IMAGE_FORMAT_LIST } from "@/constants/images";
+
+enum CanvasTypeList {
+  JPG = "image/jpeg",
+  PNG = "image/png",
+}
+
 const AddWatermark: React.FC = () => {
   const [uploadedImage, setUploadedImage] = useState<HTMLImageElement | null>(
     null
   );
   const [uploadedImageName, setUploadedImageName] = useState<string>();
+  const [canvasType, setCanvasType] = useState<CanvasTypeList>(
+    CanvasTypeList.JPG
+  );
   const [watermarkType, setWatermarkType] = useState<WatermarkType>(
     WatermarkType.Text
   );
@@ -65,6 +76,14 @@ const AddWatermark: React.FC = () => {
       const imageName = getCleanFileName(event.target?.files[0].name) || "_";
       const image = new Image();
       image.src = URL.createObjectURL(event.target.files[0]);
+
+      const fileType = ACCEPTED_IMAGE_FORMAT_LIST.includes(
+        event.target.files[0].type
+      )
+        ? (event.target.files[0].type as CanvasTypeList)
+        : CanvasTypeList.JPG;
+      setCanvasType(fileType);
+
       image.onload = () => {
         const adaptedFontSize = String(Math.floor(image.width / 10)); // Approximation
         setFontSize(adaptedFontSize);
@@ -246,7 +265,7 @@ const AddWatermark: React.FC = () => {
       );
     }
 
-    const url = canvas.toDataURL("image/jpeg");
+    const url = canvas.toDataURL(canvasType);
     setPreviewUrl(url);
   };
 
@@ -543,7 +562,9 @@ const AddWatermark: React.FC = () => {
               />
               <a
                 href={previewUrl}
-                download={`${uploadedImageName}_watermarked.jpg`}
+                download={`${uploadedImageName}_watermarked.${
+                  canvasType === "image/png" ? "png" : "jpg"
+                }`}
                 className="text-decoration-none"
                 onClick={handleDownload}
               >
