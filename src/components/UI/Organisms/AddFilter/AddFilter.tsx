@@ -33,7 +33,7 @@ const EFFECT_CSS_TABLE: {
   sepia: "sepia(100%)",
   "deep-fried": "contrast(2.5) saturate(2.5) brightness(1.5)",
   mexico: "",
-  blurred: "blur(10px)",
+  blurred: "blur(6px)",
   "high-contrast": "contrast(2.5)",
 };
 
