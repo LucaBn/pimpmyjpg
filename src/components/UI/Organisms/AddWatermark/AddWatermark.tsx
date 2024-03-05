@@ -43,6 +43,7 @@ const lowercaseAppName = APP_NAME_SHORT.toLowerCase();
 const LS_WATERMARK_TYPE = `${lowercaseAppName}WatermarkType`;
 const LS_WATERMARK_TEXT = `${lowercaseAppName}WatermarkText`;
 const LS_WATERMARK_IMG = `${lowercaseAppName}WatermarkImg`;
+const WATERMARK_TEXT_DEFAULT = "My Watermark";
 
 const AddWatermark: React.FC = () => {
   const defaultWatermarkType: WatermarkType =
@@ -57,7 +58,9 @@ const AddWatermark: React.FC = () => {
   );
   const [watermarkType, setWatermarkType] =
     useState<WatermarkType>(defaultWatermarkType);
-  const [watermarkText, setWatermarkText] = useState<string>("My Watermark");
+  const [watermarkText, setWatermarkText] = useState<string>(
+    WATERMARK_TEXT_DEFAULT
+  );
   const [watermarkImage, setWatermarkImage] = useState<HTMLImageElement | null>(
     null
   );
@@ -161,14 +164,19 @@ const AddWatermark: React.FC = () => {
   };
 
   useEffect(() => {
+    const storedWatermarkText = readFromLocalStorage(
+      LS_WATERMARK_TEXT
+    ) as string;
+    if (storedWatermarkText && storedWatermarkText !== "") {
+      setWatermarkText(storedWatermarkText);
+    }
+  }, []);
+
+  useEffect(() => {
     setIsLoading(true);
 
     if (watermarkType === WatermarkType.Text) {
       setWatermarkImage(null);
-      const storedWatermarkText = readFromLocalStorage(
-        LS_WATERMARK_TEXT
-      ) as string;
-      setWatermarkText(storedWatermarkText);
     } else if (watermarkType === WatermarkType.Image) {
       const storedImageDataBase64 = readFromLocalStorage(
         LS_WATERMARK_IMG
@@ -523,7 +531,6 @@ const AddWatermark: React.FC = () => {
                             type="file"
                             accept="image/*"
                             onChange={handleWatermarkImageUpload}
-                            placeholder="Ciao"
                           />
                         </Form.Group>
                       </Col>
