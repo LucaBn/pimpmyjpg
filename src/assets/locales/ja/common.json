@@ -66,6 +66,7 @@
     "max-height": "最大高さ (px)",
     "max-width": "最大幅 (px)",
     "width-height-tip": "この値を無視するには0を設定する",
+    "format-tip": "PNGへの圧縮が効率的なのは、ソースファイル自体がウェブ用に最適化されていないPNGの場合だけです（DPIが72以上の場合など）。",
     "quality": "品質（推奨値70）",
     "from-to": "{{localizedOriginalSize}} から {{localizedCompressedSize}} へ",
     "size-reduction": "サイズを {{localizedPercentReduction}}% 縮小",

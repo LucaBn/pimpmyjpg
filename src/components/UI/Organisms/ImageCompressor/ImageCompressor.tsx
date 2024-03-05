@@ -55,7 +55,7 @@ const DEFAULT_VALUES = {
   MAX_WIDTH: 0,
   MAX_HEIGHT: 0,
   QUALITY: 70,
-  IMAGE_FORMAT: ImageFormat.KEEP_FORMAT,
+  IMAGE_FORMAT: ImageFormat.JPG,
 };
 
 const ImageCompressor: React.FC = () => {
@@ -287,17 +287,6 @@ const ImageCompressor: React.FC = () => {
                         <Form.Check
                           type="radio"
                           name="language"
-                          id={`${CLASS_APP_NAME}-radio__keep-format`}
-                          className={`${CLASS_APP_NAME}-radio__theme me-3`}
-                          label={t("image-compressor.keep-format")}
-                          checked={imageFormat === ImageFormat.KEEP_FORMAT}
-                          onChange={() =>
-                            setImageFormat(ImageFormat.KEEP_FORMAT)
-                          }
-                        />
-                        <Form.Check
-                          type="radio"
-                          name="language"
                           id={`${CLASS_APP_NAME}-radio__jpg`}
                           className={`${CLASS_APP_NAME}-radio__theme me-3`}
                           label={"JPG"}
@@ -308,11 +297,27 @@ const ImageCompressor: React.FC = () => {
                           type="radio"
                           name="language"
                           id={`${CLASS_APP_NAME}-radio__png`}
-                          className={`${CLASS_APP_NAME}-radio__theme`}
+                          className={`${CLASS_APP_NAME}-radio__theme me-3`}
                           label={"PNG"}
                           checked={imageFormat === ImageFormat.PNG}
                           onChange={() => setImageFormat(ImageFormat.PNG)}
                         />
+                        <Form.Check
+                          type="radio"
+                          name="language"
+                          id={`${CLASS_APP_NAME}-radio__keep-format`}
+                          className={`${CLASS_APP_NAME}-radio__theme`}
+                          label={t("image-compressor.keep-format")}
+                          checked={imageFormat === ImageFormat.KEEP_FORMAT}
+                          onChange={() =>
+                            setImageFormat(ImageFormat.KEEP_FORMAT)
+                          }
+                        />
+                        {imageFormat === ImageFormat.PNG && (
+                          <p className="image-compressor__accordion-tip text-secondary w-100 mt-1 mb-0">
+                            {t("image-compressor.format-tip")}
+                          </p>
+                        )}
                       </Form.Group>
                     </Col>
                     <Col xs={12} md={6}>
@@ -330,7 +335,7 @@ const ImageCompressor: React.FC = () => {
                           )} /* Need this to prevent leading zeroes, hope it works correctly */
                           onChange={(e) => setMaxWidth(Number(e.target.value))}
                         />
-                        <p className="image-compressor__accordion-tip text-secondary mt-1 mb-0">
+                        <p className="image-compressor__accordion-tip text-secondary w-100 mt-1 mb-0">
                           {t("image-compressor.width-height-tip")}
                         </p>
                       </Form.Group>
@@ -350,7 +355,7 @@ const ImageCompressor: React.FC = () => {
                           )} /* Need this to prevent leading zeroes, hope it works correctly */
                           onChange={(e) => setMaxHeight(Number(e.target.value))}
                         />
-                        <p className="image-compressor__accordion-tip text-secondary mt-1 mb-0">
+                        <p className="image-compressor__accordion-tip text-secondary w-100 mt-1 mb-0">
                           {t("image-compressor.width-height-tip")}
                         </p>
                       </Form.Group>
