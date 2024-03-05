@@ -27,14 +27,27 @@ import {
 
 // Utils
 import { getCleanFileName } from "@/utils/strings";
+import {
+  readFromLocalStorage,
+  writeToLocalStorage,
+} from "@/utils/local-storage";
 
 // Locales
 import { useTranslation } from "react-i18next";
 
 // Constants
+import { APP_NAME_SHORT } from "@/constants/app";
 import { ACCEPTED_IMAGE_FORMAT_LIST, CanvasTypeList } from "@/constants/images";
 
+const lowercaseAppName = APP_NAME_SHORT.toLowerCase();
+const LS_WATERMARK_TYPE = `${lowercaseAppName}WatermarkType`;
+const LS_WATERMARK_TEXT = `${lowercaseAppName}WatermarkText`;
+const LS_WATERMARK_IMG = `${lowercaseAppName}WatermarkImg`;
+
 const AddWatermark: React.FC = () => {
+  const defaultWatermarkType: WatermarkType =
+    (readFromLocalStorage(LS_WATERMARK_TYPE) as WatermarkType) ||
+    WatermarkType.Text;
   const [uploadedImage, setUploadedImage] = useState<HTMLImageElement | null>(
     null
   );
@@ -42,10 +55,9 @@ const AddWatermark: React.FC = () => {
   const [canvasType, setCanvasType] = useState<CanvasTypeList>(
     CanvasTypeList.JPG
   );
-  const [watermarkType, setWatermarkType] = useState<WatermarkType>(
-    WatermarkType.Text
-  );
-  const [textWatermark, setTextWatermark] = useState<string>("My Watermark");
+  const [watermarkType, setWatermarkType] =
+    useState<WatermarkType>(defaultWatermarkType);
+  const [watermarkText, setWatermarkText] = useState<string>("My Watermark");
   const [watermarkImage, setWatermarkImage] = useState<HTMLImageElement | null>(
     null
   );
@@ -90,6 +102,17 @@ const AddWatermark: React.FC = () => {
     }
   };
 
+  const handleWatermarkType = (type: WatermarkType) => {
+    setWatermarkType(type as WatermarkType);
+    writeToLocalStorage(LS_WATERMARK_TYPE, type);
+  };
+
+  const handleTextWatermark = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setWatermarkText(event.target.value);
+
+    writeToLocalStorage(LS_WATERMARK_TEXT, event.target.value);
+  };
+
   const handleWatermarkImageUpload = (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
@@ -99,20 +122,40 @@ const AddWatermark: React.FC = () => {
       image.onload = () => {
         // Resize watermark image if needed
         const aspectRatio = image.width / image.height;
+        const uploadedImageHalfHeight = uploadedImage!.height * 0.5;
+        const uploadedImageHalfWidth = uploadedImage!.width * 0.5;
         if (
           image.width > image.height &&
-          image.width > uploadedImage!.width * 0.5
+          image.width > uploadedImageHalfWidth
         ) {
-          image.width = uploadedImage!.width * 0.5;
-          image.height = image.width / aspectRatio;
+          image.width = uploadedImageHalfWidth;
+          image.height = uploadedImageHalfWidth / aspectRatio;
         } else if (
           image.height > image.width &&
-          image.height > uploadedImage!.height * 0.5
+          image.height > uploadedImageHalfHeight
         ) {
-          image.height = uploadedImage!.height * 0.5;
-          image.width = image.height * aspectRatio;
+          image.height = uploadedImageHalfHeight;
+          image.width = uploadedImageHalfHeight * aspectRatio;
+        } else {
+          if (uploadedImage!.width > uploadedImage!.height) {
+            image.height = uploadedImageHalfHeight;
+            image.width = uploadedImageHalfHeight * aspectRatio;
+          } else {
+            image.width = uploadedImageHalfWidth;
+            image.height = uploadedImageHalfWidth * aspectRatio;
+          }
         }
+
         setWatermarkImage(image);
+
+        const canvas = document.createElement("canvas");
+        canvas.width = image.width;
+        canvas.height = image.height;
+
+        const ctx = canvas.getContext("2d");
+        ctx!.drawImage(image, 0, 0, image.width, image.height);
+        const imageDataBase64 = canvas.toDataURL("image/png");
+        writeToLocalStorage(LS_WATERMARK_IMG, imageDataBase64);
       };
     }
   };
@@ -120,8 +163,22 @@ const AddWatermark: React.FC = () => {
   useEffect(() => {
     setIsLoading(true);
 
-    if (watermarkType === "text") {
+    if (watermarkType === WatermarkType.Text) {
       setWatermarkImage(null);
+      const storedWatermarkText = readFromLocalStorage(
+        LS_WATERMARK_TEXT
+      ) as string;
+      setWatermarkText(storedWatermarkText);
+    } else if (watermarkType === WatermarkType.Image) {
+      const storedImageDataBase64 = readFromLocalStorage(
+        LS_WATERMARK_IMG
+      ) as string;
+
+      if (storedImageDataBase64 && !watermarkImage) {
+        const image = new Image();
+        image.src = storedImageDataBase64;
+        setWatermarkImage(image);
+      }
     }
     const handler = setTimeout(() => {
       applyWatermark();
@@ -133,7 +190,7 @@ const AddWatermark: React.FC = () => {
   }, [
     uploadedImage,
     watermarkType,
-    textWatermark,
+    watermarkText,
     watermarkImage,
     fontSize,
     fontFamily,
@@ -181,15 +238,15 @@ const AddWatermark: React.FC = () => {
         x = uploadedImage.width / 2;
         y =
           uploadedImage.height / 2 +
-          (watermarkType === "text" ? Number(fontSize) / 3 : 0);
+          (watermarkType === WatermarkType.Text ? Number(fontSize) / 3 : 0);
         break;
       case "top-left":
         x = 15;
-        y = watermarkType === "text" ? parseInt(fontSize, 15) : 15;
+        y = watermarkType === WatermarkType.Text ? parseInt(fontSize, 15) : 15;
         break;
       case "top-right":
         x = uploadedImage.width - 15;
-        y = watermarkType === "text" ? parseInt(fontSize, 15) : 15;
+        y = watermarkType === WatermarkType.Text ? parseInt(fontSize, 15) : 15;
         ctx.textAlign = "right";
         break;
       case "bottom-left":
@@ -197,21 +254,21 @@ const AddWatermark: React.FC = () => {
         y =
           uploadedImage.height -
           15 -
-          +(watermarkType === "text" ? Number(fontSize) / 5 : 0);
+          +(watermarkType === WatermarkType.Text ? Number(fontSize) / 5 : 0);
         break;
       case "bottom-right":
         x = uploadedImage.width - 15;
         y =
           uploadedImage.height -
           15 -
-          +(watermarkType === "text" ? Number(fontSize) / 5 : 0);
+          +(watermarkType === WatermarkType.Text ? Number(fontSize) / 5 : 0);
         ctx.textAlign = "right";
         break;
     }
 
-    if (watermarkType === "text") {
-      ctx.fillText(textWatermark, x, y);
-    } else if (watermarkType === "image" && watermarkImage) {
+    if (watermarkType === WatermarkType.Text) {
+      ctx.fillText(watermarkText, x, y);
+    } else if (watermarkType === WatermarkType.Image && watermarkImage) {
       let watermarkImageWidth = watermarkImage.width;
       let watermarkImageHeight = watermarkImage.height;
 
@@ -285,16 +342,14 @@ const AddWatermark: React.FC = () => {
           {uploadedImage && (
             <div ref={optionsRef}>
               <Tabs
-                defaultActiveKey="text"
+                defaultActiveKey={watermarkType}
                 id="watermark-type-tab"
                 className="add-watermark__tabs w-100"
-                onSelect={(e) => {
-                  setWatermarkType(e as WatermarkType);
-                }}
+                onSelect={(type) => handleWatermarkType(type as WatermarkType)}
                 fill
               >
                 <Tab
-                  eventKey="text"
+                  eventKey={WatermarkType.Text}
                   title={t("add-watermark.tab-text")}
                   className="add-watermark__tabs-tab bg-tab-content mt-3 border border-top-0 rounded-bottom"
                 >
@@ -309,8 +364,8 @@ const AddWatermark: React.FC = () => {
                           <Form.Control
                             id="watermark-text"
                             type="text"
-                            value={textWatermark}
-                            onChange={(e) => setTextWatermark(e.target.value)}
+                            value={watermarkText}
+                            onChange={handleTextWatermark}
                           />
                         </Form.Group>
                       </Col>
@@ -452,7 +507,7 @@ const AddWatermark: React.FC = () => {
                   </Container>
                 </Tab>
                 <Tab
-                  eventKey="image"
+                  eventKey={WatermarkType.Image}
                   title={t("add-watermark.tab-image")}
                   className="add-watermark__tabs-tab bg-tab-content mt-3 border border-top-0 rounded-bottom"
                 >
@@ -468,6 +523,7 @@ const AddWatermark: React.FC = () => {
                             type="file"
                             accept="image/*"
                             onChange={handleWatermarkImageUpload}
+                            placeholder="Ciao"
                           />
                         </Form.Group>
                       </Col>
