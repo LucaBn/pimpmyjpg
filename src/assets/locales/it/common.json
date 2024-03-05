@@ -66,6 +66,7 @@
     "max-height": "Altezza massima (px)",
     "max-width": "Larghezza massima (px)",
     "width-height-tip": "Imposta a 0 per ignorare questo valore",
+    "format-tip": "Le compressioni verso PNG risultano efficienti solo se il file di origine è a sua volta un PNG non ottimizzato per il web (per esempio se i DPI sono maggiori di 72)",
     "quality": "Qualità (valore consigliato 70%)",
     "from-to": "Da {{localizedOriginalSize}} a {{localizedCompressedSize}}",
     "size-reduction": "Dimensione ridotta del {{localizedPercentReduction}}%",
