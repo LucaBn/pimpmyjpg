@@ -19,31 +19,29 @@ const Error404: React.FC = () => {
   }, [language]);
 
   return (
-    <>
-      <Container className="py-5">
-        <Row className="mt-4">
-          <Col xs={12}>
-            <h1 className="mt-2 mt-sm-3">{t("error-404.title")}</h1>
-            <p>{t("error-404.description")}</p>
-          </Col>
-          <Col xs={12}>
-            <Image
-              src="/assets/img/404.png"
-              title={t("error-404.title")}
-              height={360}
-              width={512}
-              className="mw-100 h-auto"
-              draggable={false}
-            />
-          </Col>
-          <Col xs={12} className="mt-4">
-            <Link to={`/${language}`}>
-              <Button>{t("error-404.goToHP")}</Button>
-            </Link>
-          </Col>
-        </Row>
-      </Container>
-    </>
+    <Container className="py-5">
+      <Row className="mt-4">
+        <Col xs={12}>
+          <h1 className="mt-2 mt-sm-3">{t("error-404.title")}</h1>
+          <p>{t("error-404.description")}</p>
+        </Col>
+        <Col xs={12}>
+          <Image
+            src="/assets/img/404.png"
+            title={t("error-404.title")}
+            height={360}
+            width={512}
+            className="mw-100 h-auto"
+            draggable={false}
+          />
+        </Col>
+        <Col xs={12} className="mt-4">
+          <Link to={`/${language}`}>
+            <Button>{t("error-404.goToHP")}</Button>
+          </Link>
+        </Col>
+      </Row>
+    </Container>
   );
 };
 
