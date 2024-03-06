@@ -24,17 +24,9 @@ import { useTranslation } from "react-i18next";
 import { LanguageList } from "@/typings/i18next";
 
 // Utils
-import {
-  calculateSize,
-  compareImageSizes,
-  getCanvasType,
-} from "@/utils/image-compressor";
+import { calculateSize, compareImageSizes } from "@/utils/image-compressor";
 import { localizeDecimalSeparator } from "@/utils/conversions";
 import { getCleanFileName } from "@/utils/strings";
-
-// Constants
-import { CLASS_APP_NAME } from "@/constants/html-classes";
-import { ACCEPTED_IMAGE_FORMAT_LIST } from "@/constants/images";
 
 type ImageInfo = {
   index: number;
@@ -45,17 +37,10 @@ type ImageInfo = {
   type: string;
 };
 
-enum ImageFormat {
-  JPG = "jpg",
-  PNG = "png",
-  KEEP_FORMAT = "keep-format",
-}
-
 const DEFAULT_VALUES = {
   MAX_WIDTH: 0,
   MAX_HEIGHT: 0,
   QUALITY: 70,
-  IMAGE_FORMAT: ImageFormat.JPG,
 };
 
 const ImageCompressor: React.FC = () => {
@@ -63,9 +48,6 @@ const ImageCompressor: React.FC = () => {
   const [maxWidth, setMaxWidth] = useState<number>(DEFAULT_VALUES.MAX_WIDTH);
   const [maxHeight, setMaxHeight] = useState<number>(DEFAULT_VALUES.MAX_HEIGHT);
   const [quality, setQuality] = useState<number>(DEFAULT_VALUES.QUALITY);
-  const [imageFormat, setImageFormat] = useState<ImageFormat>(
-    DEFAULT_VALUES.IMAGE_FORMAT
-  );
   const [totalImages, setTotalImages] = useState<number>(0);
   const [loadedImages, setLoadedImages] = useState<number>(0);
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -134,12 +116,6 @@ const ImageCompressor: React.FC = () => {
       const ctx = canvas.getContext("2d");
       ctx?.drawImage(img, 0, 0, newWidth, newHeight);
 
-      const fileType =
-        imageFormat === ImageFormat.KEEP_FORMAT &&
-        ACCEPTED_IMAGE_FORMAT_LIST.includes(file.type)
-          ? file.type
-          : getCanvasType(imageFormat);
-
       canvas.toBlob(
         (blob) => {
           if (blob) {
@@ -149,12 +125,12 @@ const ImageCompressor: React.FC = () => {
               file: blob,
               name: getCleanFileName(file.name),
               downloaded: false,
-              type: fileType,
+              type: "image/jpeg",
             };
             setCompressedImageList((prevValue) => [...prevValue, imageInfo]);
           }
         },
-        fileType,
+        "image/jpeg",
         quality / 100
       );
 
@@ -170,11 +146,7 @@ const ImageCompressor: React.FC = () => {
 
     try {
       const fileBlob = new Blob([compressedImage.file], {
-        type:
-          imageFormat === ImageFormat.KEEP_FORMAT &&
-          ACCEPTED_IMAGE_FORMAT_LIST.includes(compressedImage.type)
-            ? compressedImage.type
-            : imageFormat,
+        type: "image/jpeg",
       });
       const fileUrl = URL.createObjectURL(fileBlob);
 
@@ -279,62 +251,26 @@ const ImageCompressor: React.FC = () => {
                 {/* TODO: add description on how options values work */}
                 <Container>
                   <Row className="g-3">
-                    <Col xs={12}>
-                      <Form.Label htmlFor="quality">
-                        {t("image-compressor.image-format")}
-                      </Form.Label>
-                      <Form.Group as={Col} className="d-flex flex-wrap">
-                        <Form.Check
-                          type="radio"
-                          name="language"
-                          id={`${CLASS_APP_NAME}-radio__jpg`}
-                          className={`${CLASS_APP_NAME}-radio__theme me-3`}
-                          label={"JPG"}
-                          checked={imageFormat === ImageFormat.JPG}
-                          onChange={() => setImageFormat(ImageFormat.JPG)}
-                        />
-                        <Form.Check
-                          type="radio"
-                          name="language"
-                          id={`${CLASS_APP_NAME}-radio__png`}
-                          className={`${CLASS_APP_NAME}-radio__theme me-3`}
-                          label={"PNG"}
-                          checked={imageFormat === ImageFormat.PNG}
-                          onChange={() => setImageFormat(ImageFormat.PNG)}
-                        />
-                        <Form.Check
-                          type="radio"
-                          name="language"
-                          id={`${CLASS_APP_NAME}-radio__keep-format`}
-                          className={`${CLASS_APP_NAME}-radio__theme`}
-                          label={t("image-compressor.keep-format")}
-                          checked={imageFormat === ImageFormat.KEEP_FORMAT}
-                          onChange={() =>
-                            setImageFormat(ImageFormat.KEEP_FORMAT)
-                          }
-                        />
-                        {imageFormat === ImageFormat.PNG && (
-                          <p className="image-compressor__accordion-tip text-secondary w-100 mt-1 mb-0">
-                            {t("image-compressor.format-tip")}
-                          </p>
-                        )}
-                      </Form.Group>
-                    </Col>
                     <Col xs={12} md={6}>
                       <Form.Group>
                         <Form.Label htmlFor="max-width">
                           {t("image-compressor.max-width")}
                         </Form.Label>
-                        <Form.Control
-                          id="max-width"
-                          type="number"
-                          min="0"
-                          step="1"
-                          value={String(
-                            maxWidth
-                          )} /* Need this to prevent leading zeroes, hope it works correctly */
-                          onChange={(e) => setMaxWidth(Number(e.target.value))}
-                        />
+                        <InputGroup>
+                          <Form.Control
+                            id="max-width"
+                            type="number"
+                            min="0"
+                            step="1"
+                            value={String(
+                              maxWidth
+                            )} /* Need this to prevent leading zeroes, hope it works correctly */
+                            onChange={(e) =>
+                              setMaxWidth(Number(e.target.value))
+                            }
+                          />
+                          <InputGroup.Text>px</InputGroup.Text>
+                        </InputGroup>
                         <p className="image-compressor__accordion-tip text-secondary w-100 mt-1 mb-0">
                           {t("image-compressor.width-height-tip")}
                         </p>
@@ -345,16 +281,21 @@ const ImageCompressor: React.FC = () => {
                         <Form.Label htmlFor="max-height">
                           {t("image-compressor.max-height")}
                         </Form.Label>
-                        <Form.Control
-                          id="max-height"
-                          type="number"
-                          min="0"
-                          step="1"
-                          value={String(
-                            maxHeight
-                          )} /* Need this to prevent leading zeroes, hope it works correctly */
-                          onChange={(e) => setMaxHeight(Number(e.target.value))}
-                        />
+                        <InputGroup>
+                          <Form.Control
+                            id="max-height"
+                            type="number"
+                            min="0"
+                            step="1"
+                            value={String(
+                              maxHeight
+                            )} /* Need this to prevent leading zeroes, hope it works correctly */
+                            onChange={(e) =>
+                              setMaxHeight(Number(e.target.value))
+                            }
+                          />
+                          <InputGroup.Text>px</InputGroup.Text>
+                        </InputGroup>
                         <p className="image-compressor__accordion-tip text-secondary w-100 mt-1 mb-0">
                           {t("image-compressor.width-height-tip")}
                         </p>
@@ -377,7 +318,7 @@ const ImageCompressor: React.FC = () => {
                             )} /* Need this to prevent leading zeroes, hope it works correctly */
                             onChange={(e) => setQuality(Number(e.target.value))}
                             aria-labelledby="quality"
-                            className="image-compressor__quality-number me-1"
+                            className="image-compressor__quality-number"
                           />
                           <InputGroup.Text>%</InputGroup.Text>
                         </InputGroup>

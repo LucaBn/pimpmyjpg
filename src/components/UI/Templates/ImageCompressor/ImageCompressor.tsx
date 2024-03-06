@@ -28,6 +28,9 @@ const ImageCompressorTemplate: React.FC = () => {
           <p className="white-space-pre-line">
             {t("image-compressor.description")}
           </p>
+          <p className="white-space-pre-line">
+            <u>{t("image-compressor.description-warning")}</u>
+          </p>
         </Col>
       </Row>
       <Row className="mt-4">

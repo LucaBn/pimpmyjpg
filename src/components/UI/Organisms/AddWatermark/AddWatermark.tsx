@@ -454,7 +454,6 @@ const AddWatermark: React.FC = () => {
                                 setOpacity(Number(e.target.value))
                               }
                               aria-labelledby="watermark-txt-opacity"
-                              className="me-1"
                             />
                             <InputGroup.Text>%</InputGroup.Text>
                           </InputGroup>
@@ -552,7 +551,6 @@ const AddWatermark: React.FC = () => {
                                 setOpacity(Number(e.target.value))
                               }
                               aria-labelledby="watermark-img-opacity"
-                              className="me-1"
                             />
                             <InputGroup.Text>%</InputGroup.Text>
                           </InputGroup>
