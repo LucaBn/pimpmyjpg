@@ -76,32 +76,4 @@ const compareImageSizes = (
   };
 };
 
-// Monitor support for image/webp https://developer.mozilla.org/en-US/docs/Web/API/HTMLCanvasElement/toDataURL#browser_compatibility
-enum CanvasImageFormat {
-  jpg = "jpeg",
-  png = "png",
-}
-
-/**
- * Determines the MIME type for a given image format for use with the HTML canvas element.
- * This function can accept both predefined formats from the CanvasImageFormat enum
- * (e.g., 'jpeg', 'png') or any generic image format string (e.g., 'gif').
- * For predefined formats, it returns the format prefixed with 'image/' (e.g., 'image/jpeg').
- * For generic string inputs, it assumes the string is a valid image format,
- * converts it to lowercase, and prefixes it with 'image/'.
- *
- * @param {string} imageFormat - The image format which is a string that is value from the
- * CanvasImageFormat.
- * @returns {string} The MIME type of the image format suitable for use with <canvas> elements.
- */
-const getCanvasType = (imageFormat: string): string => {
-  if (
-    Object.values(CanvasImageFormat).includes(imageFormat as CanvasImageFormat)
-  ) {
-    return `image/${imageFormat}`;
-  } else {
-    return `image/jpeg`;
-  }
-};
-
-export { calculateSize, compareImageSizes, getCanvasType };
+export { calculateSize, compareImageSizes };
