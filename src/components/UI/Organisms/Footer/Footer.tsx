@@ -86,6 +86,11 @@ const Footer: React.FC = () => {
                 />
               </Link>
             </p>
+            <p>
+              {t("footer.my-address")}
+              <br />
+              0x7470cf0460d96a857094f748a18669585ea5c185
+            </p>
           </Col>
         </Row>
       </Container>

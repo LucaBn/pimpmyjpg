@@ -27,7 +27,8 @@
     "made-by": "Made with ♥ by <authorLink>{{authorName}}</authorLink>",
     "made-by-title": "Visit {{author}}'s GitHub Page",
     "stay-up-to-date": "Stay up to date",
-    "twitter-icon": "Go to X (former Twitter)"
+    "twitter-icon": "Go to X (former Twitter)",
+    "my-address": "Or, if you really love me,"
   },
   "beg-time": {
     "title": "Hey man!",
