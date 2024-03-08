@@ -27,7 +27,8 @@
     "made-by": "♥で作成された <authorLink>{{authorName}}</authorLink>",
     "made-by-title": "{{author}}のGitHubページを訪問",
     "stay-up-to-date": "最新情報",
-    "twitter-icon": "X（旧ツイッター）へ"
+    "twitter-icon": "X（旧ツイッター）へ",
+    "my-address": "あるいは、本当に私を愛しているなら"
   },
   "beg-time": {
     "title": "やあ！",
