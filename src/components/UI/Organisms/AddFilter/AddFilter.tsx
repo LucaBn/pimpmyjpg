@@ -24,17 +24,19 @@ enum FilterList {
   Mexico = "mexico",
   Blurred = "blurred",
   HighContrast = "high-contrast",
+  Terminal = "terminal",
 }
 
 const EFFECT_CSS_TABLE: {
   [key in FilterList]: string;
 } = {
   "black-and-white": "grayscale(100%)",
-  sepia: "sepia(100%)",
-  "deep-fried": "contrast(2.5) saturate(2.5) brightness(1.5)",
-  mexico: "saturate(0.5)",
   blurred: "blur(6px)",
+  "deep-fried": "contrast(2.5) saturate(2.5) brightness(1.5)",
   "high-contrast": "contrast(2.5)",
+  mexico: "saturate(0.5)",
+  sepia: "sepia(100%)",
+  terminal: "sepia(100%) hue-rotate(75deg) saturate(0.1)",
 };
 
 const AddFilter: React.FC = () => {
@@ -130,6 +132,38 @@ const AddFilter: React.FC = () => {
           ctx.putImageData(imageData, 0, 0);
         }
 
+        if (selectedFilters.includes(FilterList.Terminal)) {
+          const width = canvas.width;
+          const height = canvas.height;
+
+          const imageData = ctx.getImageData(0, 0, width, height);
+          const data = imageData.data;
+
+          const greens = [
+            { r: 0, g: 50, b: 0 },
+            { r: 0, g: 100, b: 0 },
+            { r: 0, g: 150, b: 0 },
+            { r: 0, g: 200, b: 0 },
+            { r: 0, g: 250, b: 0 },
+          ];
+
+          for (let i = 0; i < data.length; i += 4) {
+            const green = data[i + 1];
+
+            const closest = greens.reduce((prev, curr) => {
+              return Math.abs(curr.g - green) < Math.abs(prev.g - green)
+                ? curr
+                : prev;
+            });
+
+            data[i] = closest.r;
+            data[i + 1] = closest.g;
+            data[i + 2] = closest.b;
+          }
+
+          ctx.putImageData(imageData, 0, 0);
+        }
+
         const url = canvas.toDataURL(canvasType);
         setPreviewUrl(url);
       }
@@ -171,22 +205,28 @@ const AddFilter: React.FC = () => {
             <>
               <div ref={filtersRef}>
                 <Row className="g-3 justify-content-center">
-                  {Object.keys(EFFECT_CSS_TABLE).map((effect) => (
-                    <Col
-                      onClick={() => toggleFilter(effect as FilterList)}
-                      key={effect}
-                      className="add-filter__filters col-auto"
-                    >
-                      <Button
-                        className="ratio ratio-16x9"
-                        variant={getVariant(effect)}
+                  {Object.keys(EFFECT_CSS_TABLE)
+                    // .sort((a, b) =>
+                    //   t(`add-filter.filter-list.${a}`).localeCompare(
+                    //     t(`add-filter.filter-list.${b}`)
+                    //   )
+                    // )
+                    .map((effect) => (
+                      <Col
+                        onClick={() => toggleFilter(effect as FilterList)}
+                        key={effect}
+                        className="add-filter__filters col-auto"
                       >
-                        <div className="d-flex align-items-center justify-content-center fs-5 lh-1 px-1">
-                          {t(`add-filter.filter-list.${effect}`)}
-                        </div>
-                      </Button>
-                    </Col>
-                  ))}
+                        <Button
+                          className="ratio ratio-16x9"
+                          variant={getVariant(effect)}
+                        >
+                          <div className="d-flex align-items-center justify-content-center fs-5 lh-1 px-1">
+                            {t(`add-filter.filter-list.${effect}`)}
+                          </div>
+                        </Button>
+                      </Col>
+                    ))}
                 </Row>
               </div>
               <div
@@ -216,7 +256,7 @@ const AddFilter: React.FC = () => {
                   download={`${uploadedImageName}_filtered.${
                     canvasType === "image/png" ? "png" : "jpg"
                   }`}
-                  className="text-decoration-none "
+                  className="text-decoration-none"
                   onClick={handleDownload}
                 >
                   <Button className="d-block mx-auto" disabled={isLoading}>
