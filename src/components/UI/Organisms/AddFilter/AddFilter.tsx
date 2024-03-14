@@ -213,12 +213,12 @@ const AddFilter: React.FC = () => {
                     // )
                     .map((effect) => (
                       <Col
-                        onClick={() => toggleFilter(effect as FilterList)}
                         key={effect}
                         className="add-filter__filters col-auto"
                       >
                         <Button
-                          className="ratio ratio-16x9"
+                          onClick={() => toggleFilter(effect as FilterList)}
+                          className="add-filter__filter ratio ratio-16x9"
                           variant={getVariant(effect)}
                         >
                           <div className="d-flex align-items-center justify-content-center fs-5 lh-1 px-1">

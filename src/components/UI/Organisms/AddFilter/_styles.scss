@@ -11,6 +11,14 @@
     }
   }
 
+  &__filter {
+    &.btn-outline-secondary:hover {
+      color: var(--bs-btn-color) !important;
+      background-color: inherit !important;
+      border-color: inherit !important;
+    }
+  }
+
   &__spinner {
     position: absolute;
     top: calc(50% - 20px);
