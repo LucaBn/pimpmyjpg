@@ -81,11 +81,12 @@
     "file-input": "Clicca o trascina qui il tuo file.\nÈ permesso qualsiasi formato!",
     "filter-list": {
       "black-and-white": "Bianco e nero",
-      "sepia": "Seppia",
-      "deep-fried": "Deep fried",
-      "mexico": "Messico",
       "blurred": "Sfocato",
+      "deep-fried": "Deep fried",
       "high-contrast": "Alto Contrasto",
+      "mexico": "Messico",
+      "pop-art": "Pop Art",
+      "sepia": "Seppia",
       "terminal": "Terminale"
     },
     "filtered-preview": "Anteprima con filtro",
