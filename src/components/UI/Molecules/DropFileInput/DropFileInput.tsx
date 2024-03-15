@@ -29,7 +29,7 @@ const DropFileInput: React.FC<IDropFileInput> = ({
   const currentFileName = fileName && (
     <span className="text-muted">
       {`\n\n`}
-      <span className="text-nowrap small">
+      <span className="small">
         {t("input.current-file")}: {fileName}
       </span>
     </span>

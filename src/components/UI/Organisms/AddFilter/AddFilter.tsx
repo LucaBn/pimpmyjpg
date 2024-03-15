@@ -19,11 +19,12 @@ import { ACCEPTED_IMAGE_FORMAT_LIST, CanvasTypeList } from "@/constants/images";
 
 enum FilterList {
   BlackAndWhite = "black-and-white",
-  Sepia = "sepia",
-  DeepFried = "deep-fried",
-  Mexico = "mexico",
   Blurred = "blurred",
+  DeepFried = "deep-fried",
   HighContrast = "high-contrast",
+  Mexico = "mexico",
+  PopArt = "pop-art",
+  Sepia = "sepia",
   Terminal = "terminal",
 }
 
@@ -35,6 +36,7 @@ const EFFECT_CSS_TABLE: {
   "deep-fried": "contrast(2.5) saturate(2.5) brightness(1.5)",
   "high-contrast": "contrast(2.5)",
   mexico: "saturate(0.5)",
+  "pop-art": "blur(3px)",
   sepia: "sepia(100%)",
   terminal: "sepia(100%) hue-rotate(75deg) saturate(0.1)",
 };
@@ -132,25 +134,40 @@ const AddFilter: React.FC = () => {
           ctx.putImageData(imageData, 0, 0);
         }
 
-        if (selectedFilters.includes(FilterList.Terminal)) {
+        if (
+          selectedFilters.includes(FilterList.Terminal) ||
+          selectedFilters.includes(FilterList.PopArt)
+        ) {
           const width = canvas.width;
           const height = canvas.height;
 
           const imageData = ctx.getImageData(0, 0, width, height);
           const data = imageData.data;
 
-          const greens = [
-            { r: 0, g: 50, b: 0 },
-            { r: 0, g: 100, b: 0 },
-            { r: 0, g: 150, b: 0 },
-            { r: 0, g: 200, b: 0 },
-            { r: 0, g: 250, b: 0 },
-          ];
+          let colors;
+
+          if (selectedFilters.includes(FilterList.PopArt)) {
+            colors = [
+              { r: 186, g: 180, b: 218 },
+              { r: 247, g: 171, b: 0 },
+              { r: 67, g: 230, b: 253 },
+              { r: 254, g: 0, b: 52 },
+              { r: 0, g: 118, b: 40 },
+            ];
+          } else if (selectedFilters.includes(FilterList.Terminal)) {
+            colors = [
+              { r: 0, g: 50, b: 0 },
+              { r: 0, g: 100, b: 0 },
+              { r: 0, g: 150, b: 0 },
+              { r: 0, g: 200, b: 0 },
+              { r: 0, g: 250, b: 0 },
+            ];
+          }
 
           for (let i = 0; i < data.length; i += 4) {
             const green = data[i + 1];
 
-            const closest = greens.reduce((prev, curr) => {
+            const closest = colors!.reduce((prev, curr) => {
               return Math.abs(curr.g - green) < Math.abs(prev.g - green)
                 ? curr
                 : prev;

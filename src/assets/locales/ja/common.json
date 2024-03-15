@@ -81,11 +81,12 @@
     "file-input": "ここにファイルをクリックまたはドラッグしてください。\nどの形式でも構いません！",
     "filter-list": {
       "black-and-white": "モノクロ",
-      "sepia": "セピア",
-      "deep-fried": "ディープフライ",
-      "mexico": "メキシコ",
       "blurred": "ぼやけた",
+      "deep-fried": "ディープフライ",
       "high-contrast": "ハイコントラスト",
+      "mexico": "メキシコ",
+      "pop-art": "ポップ・アート",
+      "sepia": "セピア",
       "terminal": "コンピュータ端末"
     },
     "filtered-preview": "フィルター付きプレビュー",
