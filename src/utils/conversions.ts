@@ -28,7 +28,9 @@ const readableBytes = (bytes: number): string => {
  * @param {LanguageList} language - The language for which the decimal separator should be applied.
  * @returns {string} - The localized string with the appropriate decimal separator.
  */
-const localizeDecimalSeparator = (number: string, language: LanguageList) =>
-  number.toString().replace(".", DECIMAL_SEPARATOR[language]);
+const localizeDecimalSeparator = (
+  number: string,
+  language: LanguageList
+): string => number.toString().replace(".", DECIMAL_SEPARATOR[language]);
 
 export { readableBytes, localizeDecimalSeparator };
