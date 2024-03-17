@@ -4,7 +4,7 @@
  * @param {string} fileName - The original file name.
  * @returns {string} - The clean file name without the extension.
  */
-function getCleanFileName(fileName: string): string {
+const getCleanFileName = (fileName: string): string => {
   const lastDotIndex = fileName.lastIndexOf(".");
 
   if (lastDotIndex <= 0) {
@@ -12,6 +12,6 @@ function getCleanFileName(fileName: string): string {
   }
 
   return fileName.substring(0, lastDotIndex);
-}
+};
 
 export { getCleanFileName };
