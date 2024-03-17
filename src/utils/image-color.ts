@@ -8,7 +8,7 @@ import { ThemeList } from "@/constants/themes";
  * @param {string} [forceColor] - The forced color for the image. If not provided, the theme color is used.
  * @returns {string} - The calculated image color.
  */
-const getImageColor = (theme: ThemeList, forceColor?: string) => {
+const getImageColor = (theme: ThemeList, forceColor?: string): string => {
   if (forceColor) {
     return forceColor;
   }

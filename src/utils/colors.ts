@@ -8,7 +8,7 @@
  * @param {number} blend - The blend color value in the range 0-255.
  * @returns {number} The result of the overlay blend in the range 0-255, rounded to the nearest integer.
  */
-const overlayBlend = (base: number, blend: number) => {
+const overlayBlend = (base: number, blend: number): number => {
   base /= 255;
   blend /= 255;
   return Math.round(
