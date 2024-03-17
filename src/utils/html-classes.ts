@@ -14,7 +14,7 @@ const generateClassNameValue = (classList: string[]): string => {
  * @param {string} input - The input string to be transformed into a class name.
  * @returns {string} - The valid lowercase class name.
  */
-function stringToValidClassName(input: string): string {
+const stringToValidClassName = (input: string): string => {
   // Remove non-alphanumeric characters and replace spaces with hyphens
   const cleanedString = input
     .trim()
@@ -32,6 +32,6 @@ function stringToValidClassName(input: string): string {
 
   // Convert the result to lowercase
   return result.toLowerCase();
-}
+};
 
 export { generateClassNameValue, stringToValidClassName };
