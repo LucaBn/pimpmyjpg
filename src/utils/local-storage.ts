@@ -1,13 +1,11 @@
-type LocalStorageDataType = unknown;
-
 /**
  * Writes data to localStorage.
  *
  * @param {string} key - The key under which to store the data.
- * @param {LocalStorageDataType} data - The data to be stored in localStorage.
+ * @param {T} data - The data to be stored in localStorage.
  * @returns {void}
  */
-const writeToLocalStorage = (key: string, data: LocalStorageDataType): void => {
+const writeToLocalStorage = <T>(key: string, data: T): void => {
   try {
     localStorage.setItem(key, JSON.stringify(data));
   } catch (error) {
@@ -19,9 +17,9 @@ const writeToLocalStorage = (key: string, data: LocalStorageDataType): void => {
  * Reads data from localStorage.
  *
  * @param {string} key - The key under which the data is stored.
- * @returns {LocalStorageDataType} - The data retrieved from localStorage.
+ * @returns {T | null} - The data retrieved from localStorage, or null if not found or on error.
  */
-const readFromLocalStorage = (key: string): LocalStorageDataType => {
+const readFromLocalStorage = <T>(key: string): T | null => {
   try {
     const data = localStorage.getItem(key);
     return data ? JSON.parse(data) : null;
