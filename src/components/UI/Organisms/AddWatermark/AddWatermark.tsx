@@ -238,6 +238,8 @@ const AddWatermark: React.FC = () => {
     // ctx.shadowOffsetX = 2;
     // ctx.shadowOffsetY = 2;
 
+    console.log({ fontSize });
+
     let x = 0;
     let y = 0;
     switch (watermarkPosition) {
@@ -250,11 +252,11 @@ const AddWatermark: React.FC = () => {
         break;
       case "top-left":
         x = 15;
-        y = watermarkType === WatermarkType.Text ? parseInt(fontSize, 15) : 15;
+        y = watermarkType === WatermarkType.Text ? Number(fontSize) : 15;
         break;
       case "top-right":
         x = uploadedImage.width - 15;
-        y = watermarkType === WatermarkType.Text ? parseInt(fontSize, 15) : 15;
+        y = watermarkType === WatermarkType.Text ? Number(fontSize) : 15;
         ctx.textAlign = "right";
         break;
       case "bottom-left":
