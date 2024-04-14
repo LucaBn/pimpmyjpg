@@ -438,7 +438,7 @@ const AddWatermark: React.FC = () => {
                           </Form.Select>
                         </Form.Group>
                       </Col>
-                      <Col xs={12} md={8}>
+                      <Col xs={12} md={7}>
                         <Form.Group>
                           <Form.Label htmlFor="watermark-txt-opacity">
                             {t("add-watermark.opacity")}
@@ -469,7 +469,7 @@ const AddWatermark: React.FC = () => {
                           />
                         </Form.Group>
                       </Col>
-                      <Col xs={12} md={4}>
+                      <Col xs={12} md={5}>
                         <Form.Group>
                           <Form.Label htmlFor="watermark-txt-position">
                             {t("add-watermark.watermark-position")}
@@ -535,7 +535,7 @@ const AddWatermark: React.FC = () => {
                           />
                         </Form.Group>
                       </Col>
-                      <Col xs={12} md={8}>
+                      <Col xs={12} md={7}>
                         <Form.Group>
                           <Form.Label htmlFor="watermark-img-opacity">
                             {t("add-watermark.opacity")}
@@ -566,7 +566,7 @@ const AddWatermark: React.FC = () => {
                           />
                         </Form.Group>
                       </Col>
-                      <Col xs={12} md={4}>
+                      <Col xs={12} md={5}>
                         <Form.Group>
                           <Form.Label htmlFor="watermark-img-position">
                             {t("add-watermark.watermark-position")}
