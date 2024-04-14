@@ -2,6 +2,7 @@ import React from "react";
 
 // Components
 import FlagEn from "@/components/UI/Atoms/FlagEn/FlagEn";
+import FlagFr from "@/components/UI/Atoms/FlagFr/FlagFr";
 import FlagIt from "@/components/UI/Atoms/FlagIt/FlagIt";
 import FlagJa from "@/components/UI/Atoms/FlagJa/FlagJa";
 import { Col, Form } from "react-bootstrap";
@@ -30,6 +31,11 @@ const LANGUAGE_OPTIONS: LanguageOption[] = [
     language: LanguageList.En,
     flagComponent: <FlagEn />,
     title: "English",
+  },
+  {
+    language: LanguageList.Fr,
+    flagComponent: <FlagFr />,
+    title: "Français",
   },
   {
     language: LanguageList.It,

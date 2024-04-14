@@ -10,6 +10,7 @@ import { DEFAULT_LANGUAGE } from "@/constants/languages";
 
 // Locales
 import enCommon from "@/assets/locales/en/common.json";
+import frCommon from "@/assets/locales/fr/common.json";
 import itCommon from "@/assets/locales/it/common.json";
 import jaCommon from "@/assets/locales/ja/common.json";
 
@@ -21,6 +22,7 @@ i18n
   .init({
     resources: {
       en: { common: enCommon },
+      fr: { common: frCommon },
       it: { common: itCommon },
       ja: { common: jaCommon },
     },

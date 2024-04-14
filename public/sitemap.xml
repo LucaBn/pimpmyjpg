@@ -5,19 +5,31 @@
     <loc>https://www.pimpmyjpg.com/en</loc>
     <xhtml:link
         rel="alternate"
+        hreflang="en"
+        href="https://www.pimpmyjpg.com/en"/>
+    <xhtml:link
+        rel="alternate"
+        hreflang="fr"
+        href="https://www.pimpmyjpg.com/fr"/>
+    <xhtml:link
+        rel="alternate"
         hreflang="it"
         href="https://www.pimpmyjpg.com/it"/>
     <xhtml:link
         rel="alternate"
         hreflang="ja"
         href="https://www.pimpmyjpg.com/ja"/>
-    <xhtml:link
-        rel="alternate"
-        hreflang="en"
-        href="https://www.pimpmyjpg.com/en"/>
   </url>
   <url>
     <loc>https://www.pimpmyjpg.com/en/image-compressor</loc>
+    <xhtml:link
+        rel="alternate"
+        hreflang="en"
+        href="https://www.pimpmyjpg.com/en/image-compressor"/>
+    <xhtml:link
+        rel="alternate"
+        hreflang="fr"
+        href="https://www.pimpmyjpg.com/fr/image-compressor"/>
     <xhtml:link
         rel="alternate"
         hreflang="it"
@@ -26,13 +38,17 @@
         rel="alternate"
         hreflang="ja"
         href="https://www.pimpmyjpg.com/ja/image-compressor"/>
-    <xhtml:link
-        rel="alternate"
-        hreflang="en"
-        href="https://www.pimpmyjpg.com/en/image-compressor"/>
   </url>
   <url>
     <loc>https://www.pimpmyjpg.com/en/add-watermark</loc>
+    <xhtml:link
+        rel="alternate"
+        hreflang="en"
+        href="https://www.pimpmyjpg.com/en/add-watermark"/>
+    <xhtml:link
+        rel="alternate"
+        hreflang="fr"
+        href="https://www.pimpmyjpg.com/fr/add-watermark"/>
     <xhtml:link
         rel="alternate"
         hreflang="it"
@@ -41,13 +57,17 @@
         rel="alternate"
         hreflang="ja"
         href="https://www.pimpmyjpg.com/ja/add-watermark"/>
-    <xhtml:link
-        rel="alternate"
-        hreflang="en"
-        href="https://www.pimpmyjpg.com/en/add-watermark"/>
   </url>
   <url>
     <loc>https://www.pimpmyjpg.com/en/add-filter</loc>
+    <xhtml:link
+        rel="alternate"
+        hreflang="en"
+        href="https://www.pimpmyjpg.com/en/add-filter"/>
+    <xhtml:link
+        rel="alternate"
+        hreflang="fr"
+        href="https://www.pimpmyjpg.com/fr/add-filter"/>
     <xhtml:link
         rel="alternate"
         hreflang="it"
@@ -56,9 +76,5 @@
         rel="alternate"
         hreflang="ja"
         href="https://www.pimpmyjpg.com/ja/add-filter"/>
-    <xhtml:link
-        rel="alternate"
-        hreflang="en"
-        href="https://www.pimpmyjpg.com/en/add-filter"/>
   </url>
 </urlset>
