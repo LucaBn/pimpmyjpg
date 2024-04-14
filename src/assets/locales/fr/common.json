@@ -1,0 +1,131 @@
+{
+  "navbar": {
+    "logo-label": "Pimp My Jpg",
+    "logo-title": "Icône de fichier image avec des biceps incroyables",
+    "links": {
+      "image-compressor": "Compresseur d'Images",
+      "add-filter": "Ajouter un Filtre",
+      "add-watermark": "Ajouter un Filigrane"
+    },
+    "options": {
+      "title": "Options",
+      "save-and-close": "Enregistrer et fermer",
+      "select-borders": "Bordures de sécurité pour enfants",
+      "select-language": "Sélectionner la langue",
+      "select-theme": "Sélectionner le thème"
+    },
+    "theme": {
+      "dark": "Sombre",
+      "light": "Clair"
+    },
+    "borders": {
+      "rounded": "Arrondis",
+      "squared": "Carrés"
+    }
+  },
+  "footer": {
+    "made-by": "Créé avec ♥ par <authorLink>{{authorName}}</authorLink>",
+    "made-by-title": "Visitez la page GitHub de {{author}}",
+    "stay-up-to-date": "Restez informé",
+    "twitter-icon": "Aller à X (anciennement Twitter)",
+    "my-address": "Ou, si vous m'aimez vraiment,"
+  },
+  "beg-time": {
+    "title": "Hé l'ami !",
+    "description": "On dirait que tu aimes Pimp my Jpg !\nJe suis très heureux de cela et j'espère que tu passes une journée splendide, mais sais-tu ce qui rendrait cette journée encore plus mémorable ?\nOffre-moi un café en cliquant sur l'image ci-dessous !\nJe compte sur toi, ne me déçois pas ou je serai encore obligé de me nourrir de mousses et de lichens aujourd'hui 🥺",
+    "cta": "Je ne veux pas gaspiller mes sous"
+  },
+  "feature-selector": {
+    "title": "Salut 👋",
+    "description": "Si tu souhaites réduire le poids de tes images, les transformer avec des filtres époustouflants ou les protéger avec des filigranes distinctifs, tu es au bon endroit.\nExplore la suite complète de Pimp My Jpg, des outils pour valoriser et protéger tes images simplement et en toute confidentialité.",
+    "image-compressor": {
+      "image-alt": "Compresseur d'Images",
+      "title": "Compresseur d'Images",
+      "description": "Réduis le poids de tes images et télécharge-les en JPG sur ton appareil à la vitesse maximale sans aucune limite de taille, de format et de nombre de fichiers !",
+      "cta": "COMPRESSE MAINTENANT !"
+    },
+    "add-filter": {
+      "image-alt": "Ajouter un Filtre",
+      "title": "Ajouter un Filtre",
+      "description": "Des vibes vintage aux explosions de couleur excentriques ; transforme tes images en chefs-d'œuvre de la Renaissance tout comme tu le ferais avec les meilleures applications mobiles !",
+      "cta": "FILTRE MAINTENANT !"
+    },
+    "add-watermark": {
+      "image-alt": "Ajouter un Filigrane",
+      "title": "Ajouter un Filigrane",
+      "description": "Applique un filigrane personnel sur tes précieuses images pour éviter que les délinquants du web s'en emparent indûment !",
+      "cta": "APPLIQUE MAINTENANT !"
+    }
+  },
+  "image-compressor": {
+    "title": "Compresseur d'Images",
+    "description": "Réduis le poids de tes images en un clin d'œil en cliquant dans la boîte ci-dessous ou en y glissant directement tes fichiers.\nUtilise le menu des options pour fixer des limites maximales de taille et de qualité.",
+    "description-warning": "Les fichiers seront convertis en format JPG donc la transparence éventuelle sera perdue !",
+    "options": "Options",
+    "file-input-description": "Clique ou glisse ici tes fichiers.\nTout format est autorisé !",
+    "max-height": "Hauteur maximale (px)",
+    "max-width": "Largeur maximale (px)",
+    "width-height-tip": "Mettre à 0 pour ignorer cette valeur",
+    "quality": "Qualité (valeur recommandée 70%)",
+    "from-to": "De {{localizedOriginalSize}} à {{localizedCompressedSize}}",
+    "size-reduction": "Réduction de la taille de {{localizedPercentReduction}}%",
+    "not-compressed": "L'image ne peut pas être davantage compressée",
+    "not-compressed-size": "Le nouveau fichier pèse {{localizedCompressedSize}}",
+    "download": "Télécharger",
+    "download-all": "Télécharger tout",
+    "clear": "Vider"
+  },
+  "add-filter": {
+    "title": "Ajouter un Filtre",
+    "description": "Applique un ou plusieurs filtres à tes images et vante-toi auprès de tes amis en prétendant avoir un diplôme en manipulation du spectre chromatique !",
+    "file-input": "Clique ou glisse ici ton fichier.\nTout format est autorisé !",
+    "filter-list": {
+      "black-and-white": "Noir et blanc",
+      "blurred": "Flou",
+      "deep-fried": "Frit profond",
+      "high-contrast": "Haut Contraste",
+      "mexico": "Mexique",
+      "pop-art": "Art populaire",
+      "sepia": "Sépia",
+      "terminal": "Terminal"
+    },
+    "filtered-preview": "Aperçu avec filtre",
+    "apply-filter": "Applique un filtre pour télécharger l'image",
+    "download": "Télécharger l'image"
+  },
+  "add-watermark": {
+    "title": "Ajouter un Filigrane",
+    "description": "Applique un filigrane personnel sur tes précieuses images pour éviter que les criminels du web s'en emparent indûment !",
+    "file-input": "Clique ou glisse ici ton fichier.\nTout format est autorisé !",
+    "tab-text": "Texte",
+    "tab-image": "Image",
+    "watermark-text": "Texte du filigrane",
+    "font-size": "Taille de police",
+    "font-family": "Famille de police",
+    "color": "Couleur",
+    "color-options": {
+      "white": "Blanc",
+      "black": "Noir"
+    },
+    "opacity": "Opacité",
+    "watermark-position": "Position du filigrane",
+    "watermark-position-options": {
+      "center": "Centre",
+      "top-left": "En haut à gauche",
+      "top-right": "En haut à droite",
+      "bottom-left": "En bas à gauche",
+      "bottom-right": "En bas à droite"
+    },
+    "watermark-image": "Image du filigrane",
+    "watermarked-preview": "Aperçu avec filigrane",
+    "download": "Télécharger l'image"
+  },
+  "error-404": {
+    "title": "Erreur 404",
+    "description": "Page non trouvée",
+    "goToHP": "Retourner à la page d'accueil"
+  },
+  "buy-me-a-coffee": "Offre-moi un Café",
+  "loading": "Chargement...",
+  "input": { "current-file": "Fichier actuel" }
+}

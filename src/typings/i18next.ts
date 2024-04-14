@@ -15,6 +15,7 @@ declare module "i18next" {
 
 enum LanguageList {
   En = "en",
+  Fr = "fr",
   It = "it",
   Ja = "ja",
 }
