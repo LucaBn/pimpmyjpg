@@ -632,7 +632,7 @@ const AddWatermark: React.FC = () => {
                   <Spinner
                     animation="border"
                     role="status"
-                    className="add-watermark__spinner"
+                    className="add-watermark__spinner text-white"
                   >
                     <span className="visually-hidden">{t("loading")}</span>
                   </Spinner>

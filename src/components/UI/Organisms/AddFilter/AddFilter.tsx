@@ -261,7 +261,7 @@ const AddFilter: React.FC = () => {
                   <Spinner
                     animation="border"
                     role="status"
-                    className="add-filter__spinner"
+                    className="add-filter__spinner text-white"
                   >
                     <span className="visually-hidden">{t("loading")}</span>
                   </Spinner>
