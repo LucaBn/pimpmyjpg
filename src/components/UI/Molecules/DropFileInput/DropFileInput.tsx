@@ -18,7 +18,7 @@ const DropFileInput: React.FC<IDropFileInput> = ({
 
   const { t } = useTranslation("common");
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const newFile = e.target.files && e.target.files[0];
     const newFileName = newFile?.name;
 
