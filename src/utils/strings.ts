@@ -14,4 +14,19 @@ const getCleanFileName = (fileName: string): string => {
   return fileName.substring(0, lastDotIndex);
 };
 
-export { getCleanFileName };
+/**
+ * Checks if the given string is a valid URL.
+ *
+ * @param {string} url - The string to be checked.
+ * @returns {boolean} - Returns `true` if the string is a valid URL, otherwise `false`.
+ */
+const isValidUrl = (url: string): boolean => {
+  try {
+    new URL(url);
+    return true;
+  } catch {
+    return false;
+  }
+};
+
+export { getCleanFileName, isValidUrl };
