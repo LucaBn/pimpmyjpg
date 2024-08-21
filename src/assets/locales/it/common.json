@@ -127,5 +127,14 @@
   },
   "buy-me-a-coffee": "Offrimi un Caffè",
   "loading": "Caricamento...",
-  "input": { "current-file": "File corrente" }
+  "input": { "current-file": "File corrente" },
+  "image-from-url": {
+    "or": "oppure",
+    "import-from-url": "Importa da URL",
+    "insert-url": "Inserisci l'URL",
+    "errors": {
+      "invalid-url": "Inserisci un URL valido",
+      "js-error": "{{jsError}}"
+    }
+  }
 }
