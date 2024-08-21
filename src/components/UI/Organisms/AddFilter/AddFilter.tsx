@@ -3,6 +3,7 @@ import React, { useState, useEffect, useRef } from "react";
 // Components
 import { Row, Col, Button, Spinner } from "react-bootstrap";
 import DropFileInput from "@/components/UI/Molecules/DropFileInput/DropFileInput";
+import ImageFromUrl from "@/components/UI/Molecules/ImageFromUrl/ImageFromUrl";
 
 // Providers
 import { useUsageCounter } from "@/components/providers/UsageCounterProvider";
@@ -214,10 +215,16 @@ const AddFilter: React.FC = () => {
     <Row className="mt-4">
       <Col xs={12}>
         <div className="d-flex flex-column align-items-md-center gap-3 text-start">
+          {/* Drop picture component */}
           <DropFileInput
             label={t("add-filter.file-input")}
             handleImageChange={handleImageChange}
           />
+          {/* Get picture from URL */}
+          <div className="d-flex flex-column align-items-center">
+            <p className="mb-0 text-center">{t("image-from-url.or")}</p>
+            <ImageFromUrl handleImageChange={handleImageChange} />
+          </div>
           {previewUrl && (
             <>
               <div ref={filtersRef}>
