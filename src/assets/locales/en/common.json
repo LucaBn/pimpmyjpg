@@ -59,7 +59,7 @@
   },
   "image-compressor": {
     "title": "Image compressor",
-    "description": "Reduce the size of your images in the blink of an eye by clicking in the box below or by dragging your files directly into it.\nUse the options menu to set maximum width and height and quality limits.",
+    "description": "Reduce the size of your images in the blink of an eye by clicking in the box below, dragging your files directly into it or pasting the URL of a web resource.\nUse the options menu to set maximum width and height and quality limits.",
     "description-warning": "The files will be converted to JPG format so transparency will be lost!",
     "options": "Options",
     "file-input-description": "Click or drag your file(s) here.\nAny format is allowed!",

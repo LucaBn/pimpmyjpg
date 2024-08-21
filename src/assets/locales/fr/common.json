@@ -59,7 +59,7 @@
   },
   "image-compressor": {
     "title": "Compresseur d'Images",
-    "description": "Réduis le poids de tes images en un clin d'œil en cliquant dans la boîte ci-dessous ou en y glissant directement tes fichiers.\nUtilise le menu des options pour fixer des limites maximales de taille et de qualité.",
+    "description": "Réduisez le poids de vos images en un clin d'œil en cliquant dans la boîte ci-dessous, en y glissant directement vos fichiers ou en y collant l'URL d'une ressource web.\nUtilise le menu des options pour fixer des limites maximales de taille et de qualité.",
     "description-warning": "Les fichiers seront convertis en format JPG donc la transparence éventuelle sera perdue !",
     "options": "Options",
     "file-input-description": "Clique ou glisse ici tes fichiers.\nTout format est autorisé !",
