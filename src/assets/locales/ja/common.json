@@ -127,5 +127,14 @@
   },
   "buy-me-a-coffee": "コーヒーを買う",
   "loading": "読み込み中...",
-  "input": { "current-file": "現在のファイル" }
+  "input": { "current-file": "現在のファイル" },
+  "image-from-url": {
+    "or": "または",
+    "import-from-url": "URLからインポート",
+    "insert-url": "URLを入力",
+    "errors": {
+      "invalid-url": "有効なURLを入力してください",
+      "js-error": "{{jsError}}"
+    }
+  }
 }

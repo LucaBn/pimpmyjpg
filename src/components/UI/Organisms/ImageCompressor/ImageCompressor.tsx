@@ -13,6 +13,7 @@ import {
   Spinner,
 } from "react-bootstrap";
 import DropFileInput from "@/components/UI/Molecules/DropFileInput/DropFileInput";
+import ImageFromUrl from "@/components/UI/Molecules/ImageFromUrl/ImageFromUrl";
 
 // Providers
 import { useUsageCounter } from "@/components/providers/UsageCounterProvider";
@@ -234,13 +235,18 @@ const ImageCompressor: React.FC = () => {
     <Row>
       <Col xs={12}>
         <div className="d-flex flex-column align-items-center gap-3">
-          {/* Drop picture(s) container */}
+          {/* Drop picture(s) component */}
           <DropFileInput
             key={inputFileValueKey}
             label={t("image-compressor.file-input-description")}
             isMultiple={true}
             handleImageChange={handleImageChange}
           />
+          {/* Get picture from URL */}
+          <div className="d-flex flex-column align-items-center">
+            <p className="mb-0 text-center">{t("image-from-url.or")}</p>
+            <ImageFromUrl handleImageChange={handleImageChange} />
+          </div>
           {/* Options */}
           <Accordion className="image-compressor__accordion w-100 text-start">
             <Accordion.Item eventKey="0">
