@@ -157,11 +157,11 @@ const AddFilter: React.FC = () => {
 
           if (selectedFilters.includes(FilterList.PopArt)) {
             colors = [
-              { r: 186, g: 180, b: 218 },
-              { r: 247, g: 171, b: 0 },
+              { r: 255, g: 208, b: 0 },
+              { r: 254, g: 95, b: 85 },
               { r: 67, g: 230, b: 253 },
-              { r: 254, g: 0, b: 52 },
-              { r: 0, g: 118, b: 40 },
+              { r: 28, g: 124, b: 84 },
+              { r: 52, g: 52, b: 52 },
             ];
           } else if (selectedFilters.includes(FilterList.Terminal)) {
             colors = [
