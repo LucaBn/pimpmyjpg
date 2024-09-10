@@ -24,6 +24,7 @@ enum FilterList {
   DeepFried = "deep-fried",
   HighContrast = "high-contrast",
   Mexico = "mexico",
+  Pixels = "pixels",
   PopArt = "pop-art",
   Sepia = "sepia",
   Terminal = "terminal",
@@ -37,7 +38,8 @@ const EFFECT_CSS_TABLE: {
   "deep-fried": "contrast(2.5) saturate(2.5) brightness(1.5)",
   "high-contrast": "contrast(2.5)",
   mexico: "saturate(0.5)",
-  "pop-art": "blur(3px)",
+  pixels: "blur(3px)",
+  "pop-art": "",
   sepia: "sepia(100%)",
   terminal: "sepia(100%) hue-rotate(75deg) saturate(0.1)",
 };
@@ -119,6 +121,12 @@ const AddFilter: React.FC = () => {
                 uploadedImage.height > uploadedImage.width
                   ? uploadedImage.height / 150
                   : uploadedImage.width / 150;
+              filters += `blur(${blurValue}px)`;
+            } else if (filter === "pop-art") {
+              const blurValue =
+                uploadedImage.height < uploadedImage.width
+                  ? uploadedImage.height / 250
+                  : uploadedImage.width / 250;
               filters += `blur(${blurValue}px)`;
             } else {
               filters += EFFECT_CSS_TABLE[filter];
