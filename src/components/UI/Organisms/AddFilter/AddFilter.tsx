@@ -33,7 +33,7 @@ const EFFECT_CSS_TABLE: {
   [key in FilterList]: string;
 } = {
   "black-and-white": "grayscale(100%)",
-  blurred: "blur(6px)",
+  blurred: "",
   "deep-fried": "contrast(2.5) saturate(2.5) brightness(1.5)",
   "high-contrast": "contrast(2.5)",
   mexico: "saturate(0.5)",
@@ -114,7 +114,15 @@ const AddFilter: React.FC = () => {
         if (selectedFilters) {
           let filters = "";
           selectedFilters.forEach((filter) => {
-            filters += EFFECT_CSS_TABLE[filter];
+            if (filter === "blurred") {
+              const blurValue =
+                uploadedImage.height > uploadedImage.width
+                  ? uploadedImage.height / 150
+                  : uploadedImage.width / 150;
+              filters += `blur(${blurValue}px)`;
+            } else {
+              filters += EFFECT_CSS_TABLE[filter];
+            }
           });
           ctx.filter = filters;
         }
