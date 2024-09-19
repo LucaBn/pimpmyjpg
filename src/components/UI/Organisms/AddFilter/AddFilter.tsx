@@ -38,7 +38,7 @@ const EFFECT_CSS_TABLE: {
   "deep-fried": "contrast(2.5) saturate(2.5) brightness(1.5)",
   "high-contrast": "contrast(2.5)",
   mexico: "saturate(0.5)",
-  pixels: "blur(3px)",
+  pixels: "",
   "pop-art": "",
   sepia: "sepia(100%)",
   terminal: "sepia(100%) hue-rotate(75deg) saturate(0.1)",
@@ -134,9 +134,39 @@ const AddFilter: React.FC = () => {
           });
           ctx.filter = filters;
         }
+
         ctx.drawImage(uploadedImage, 0, 0, canvas.width, canvas.height);
 
-        if (selectedFilters.includes(FilterList.Mexico)) {
+        if (selectedFilters.includes(FilterList.Pixels)) {
+          const originalWidth = uploadedImage.width;
+          const originalHeight = uploadedImage.height;
+
+          const basePixelSize = 60;
+
+          let pixelWidth = basePixelSize;
+          let pixelHeight = (basePixelSize * originalHeight) / originalWidth;
+
+          if (originalHeight > originalWidth) {
+            pixelHeight = basePixelSize;
+            pixelWidth = (basePixelSize * originalWidth) / originalHeight;
+          }
+
+          ctx.imageSmoothingEnabled = false;
+
+          ctx.clearRect(0, 0, originalWidth, originalHeight);
+          ctx.drawImage(uploadedImage, 0, 0, pixelWidth, pixelHeight);
+          ctx.drawImage(
+            ctx.canvas,
+            0,
+            0,
+            pixelWidth,
+            pixelHeight,
+            0,
+            0,
+            originalWidth,
+            originalHeight
+          );
+        } else if (selectedFilters.includes(FilterList.Mexico)) {
           const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
           const data = imageData.data;
 
@@ -149,9 +179,7 @@ const AddFilter: React.FC = () => {
           }
 
           ctx.putImageData(imageData, 0, 0);
-        }
-
-        if (
+        } else if (
           selectedFilters.includes(FilterList.Terminal) ||
           selectedFilters.includes(FilterList.PopArt)
         ) {
