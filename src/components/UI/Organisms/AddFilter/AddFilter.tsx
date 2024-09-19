@@ -26,6 +26,7 @@ enum FilterList {
   Mexico = "mexico",
   Pixels = "pixels",
   PopArt = "pop-art",
+  Rainbow = "rainbow",
   Sepia = "sepia",
   Terminal = "terminal",
   Underwater = "underwater",
@@ -41,6 +42,7 @@ const EFFECT_CSS_TABLE: {
   mexico: "saturate(0.5)",
   pixels: "",
   "pop-art": "",
+  rainbow: "brightness(1.35)",
   sepia: "sepia(100%)",
   terminal: "sepia(100%) hue-rotate(75deg) saturate(0.1)",
   underwater: "",
@@ -226,6 +228,36 @@ const AddFilter: React.FC = () => {
           }
 
           ctx.putImageData(imageData, 0, 0);
+        } else if (selectedFilters.includes(FilterList.Rainbow)) {
+          const centerX = canvas.width / 2;
+          const centerY = canvas.height;
+          const radius = canvas.width * 0.8;
+          const lineWidth = canvas.width / 25;
+
+          const rainbowColors = [
+            "rgba(255, 0, 0, 0.25)",
+            "rgba(255, 165, 0, 0.25)",
+            "rgba(255, 255, 0, 0.25)",
+            "rgba(0, 255, 0, 0.25)",
+            "rgba(0, 0, 255, 0.25)",
+            "rgba(75, 0, 130, 0.25)",
+            "rgba(238, 130, 238, 0.25)",
+          ];
+
+          rainbowColors.forEach((color, index) => {
+            ctx.beginPath();
+            ctx.arc(
+              centerX,
+              centerY,
+              radius - index * lineWidth,
+              0,
+              Math.PI,
+              true
+            );
+            ctx.strokeStyle = color;
+            ctx.lineWidth = lineWidth;
+            ctx.stroke();
+          });
         } else if (selectedFilters.includes(FilterList.Underwater)) {
           ctx.fillStyle = "rgba(0, 100, 255, 0.4)";
           ctx.fillRect(0, 0, canvas.width, canvas.height);
