@@ -88,7 +88,8 @@
       "pixels": "Pixels",
       "pop-art": "Pop Art",
       "sepia": "Sepia",
-      "terminal": "Terminal"
+      "terminal": "Terminal",
+      "underwater": "Underwater"
     },
     "filtered-preview": "Filtered preview",
     "apply-filter": "Apply one filter to download the image",
