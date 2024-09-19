@@ -28,6 +28,7 @@ enum FilterList {
   PopArt = "pop-art",
   Sepia = "sepia",
   Terminal = "terminal",
+  Underwater = "underwater",
 }
 
 const EFFECT_CSS_TABLE: {
@@ -42,6 +43,7 @@ const EFFECT_CSS_TABLE: {
   "pop-art": "",
   sepia: "sepia(100%)",
   terminal: "sepia(100%) hue-rotate(75deg) saturate(0.1)",
+  underwater: "",
 };
 
 const AddFilter: React.FC = () => {
@@ -137,7 +139,20 @@ const AddFilter: React.FC = () => {
 
         ctx.drawImage(uploadedImage, 0, 0, canvas.width, canvas.height);
 
-        if (selectedFilters.includes(FilterList.Pixels)) {
+        if (selectedFilters.includes(FilterList.Mexico)) {
+          const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+          const data = imageData.data;
+
+          for (let i = 0; i < data.length; i += 4) {
+            const overlayColor = { r: 0xb7, g: 0x7d, b: 0x21 };
+
+            data[i] = overlayBlend(data[i], overlayColor.r); // R
+            data[i + 1] = overlayBlend(data[i + 1], overlayColor.g); // G
+            data[i + 2] = overlayBlend(data[i + 2], overlayColor.b); // B
+          }
+
+          ctx.putImageData(imageData, 0, 0);
+        } else if (selectedFilters.includes(FilterList.Pixels)) {
           const originalWidth = uploadedImage.width;
           const originalHeight = uploadedImage.height;
 
@@ -166,22 +181,9 @@ const AddFilter: React.FC = () => {
             originalWidth,
             originalHeight
           );
-        } else if (selectedFilters.includes(FilterList.Mexico)) {
-          const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-          const data = imageData.data;
-
-          for (let i = 0; i < data.length; i += 4) {
-            const overlayColor = { r: 0xb7, g: 0x7d, b: 0x21 };
-
-            data[i] = overlayBlend(data[i], overlayColor.r); // R
-            data[i + 1] = overlayBlend(data[i + 1], overlayColor.g); // G
-            data[i + 2] = overlayBlend(data[i + 2], overlayColor.b); // B
-          }
-
-          ctx.putImageData(imageData, 0, 0);
         } else if (
-          selectedFilters.includes(FilterList.Terminal) ||
-          selectedFilters.includes(FilterList.PopArt)
+          selectedFilters.includes(FilterList.PopArt) ||
+          selectedFilters.includes(FilterList.Terminal)
         ) {
           const width = canvas.width;
           const height = canvas.height;
@@ -224,6 +226,27 @@ const AddFilter: React.FC = () => {
           }
 
           ctx.putImageData(imageData, 0, 0);
+        } else if (selectedFilters.includes(FilterList.Underwater)) {
+          ctx.fillStyle = "rgba(0, 100, 255, 0.4)";
+          ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+          const bubbleCount = Math.floor(Math.random() * 10) + 5;
+
+          for (let i = 0; i < bubbleCount; i++) {
+            const radius = Math.random() * (uploadedImage.width / 20) + 15;
+            const x = Math.random() * canvas.width;
+            const y = Math.random() * canvas.height;
+            const gradient = ctx.createRadialGradient(x, y, 0, x, y, radius);
+
+            gradient.addColorStop(0, "rgba(255, 255, 255, 0)");
+            gradient.addColorStop(0.7, "rgba(255, 255, 255, 0.15)");
+            gradient.addColorStop(1, "rgba(50, 150, 255, 0.25)");
+
+            ctx.beginPath();
+            ctx.arc(x, y, radius, 0, 2 * Math.PI);
+            ctx.fillStyle = gradient;
+            ctx.fill();
+          }
         }
 
         const url = canvas.toDataURL(canvasType);

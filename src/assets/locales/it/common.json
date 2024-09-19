@@ -88,7 +88,8 @@
       "pixels": "Pixel",
       "pop-art": "Pop Art",
       "sepia": "Seppia",
-      "terminal": "Terminale"
+      "terminal": "Terminale",
+      "underwater": "Subacqueo"
     },
     "filtered-preview": "Anteprima con filtro",
     "apply-filter": "Applica un filtro per scaricare l'immagine",
