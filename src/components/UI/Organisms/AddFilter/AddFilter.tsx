@@ -171,18 +171,24 @@ const AddFilter: React.FC = () => {
           ctx.imageSmoothingEnabled = false;
 
           ctx.clearRect(0, 0, originalWidth, originalHeight);
-          ctx.drawImage(uploadedImage, 0, 0, pixelWidth, pixelHeight);
-          ctx.drawImage(
-            ctx.canvas,
-            0,
-            0,
-            pixelWidth,
-            pixelHeight,
-            0,
-            0,
-            originalWidth,
-            originalHeight
-          );
+
+          const canvasBis = document.createElement("canvas");
+          const ctxBis = canvasBis.getContext("2d");
+
+          if (ctxBis) {
+            ctxBis.drawImage(uploadedImage, 0, 0, pixelWidth, pixelHeight);
+            ctx.drawImage(
+              ctxBis.canvas,
+              0,
+              0,
+              pixelWidth,
+              pixelHeight,
+              0,
+              0,
+              originalWidth,
+              originalHeight
+            );
+          }
         } else if (
           selectedFilters.includes(FilterList.PopArt) ||
           selectedFilters.includes(FilterList.Terminal)
