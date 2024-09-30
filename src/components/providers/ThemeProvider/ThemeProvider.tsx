@@ -45,6 +45,9 @@ export const ThemeProvider: React.FC<IGenericComponent> = ({ children }) => {
       case ThemeList.Light:
         setTheme(ThemeList.Light);
         break;
+      case ThemeList.Pink:
+        setTheme(ThemeList.Pink);
+        break;
       default:
         break;
     }
