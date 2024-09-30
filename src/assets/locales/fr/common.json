@@ -16,7 +16,8 @@
     },
     "theme": {
       "dark": "Sombre",
-      "light": "Clair"
+      "light": "Clair",
+      "pink": "Rose"
     },
     "borders": {
       "rounded": "Arrondis",

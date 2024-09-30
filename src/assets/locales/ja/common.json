@@ -16,7 +16,8 @@
     },
     "theme": {
       "dark": "暗い",
-      "light": "明るい"
+      "light": "明るい",
+      "pink": "ピンク"
     },
     "borders": {
       "rounded": "丸みを帯びた",
