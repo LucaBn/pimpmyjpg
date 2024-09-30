@@ -81,6 +81,8 @@ const App: React.FC = () => {
   const textColorClass =
     theme === ThemeList.Dark
       ? `text-${ThemeList.Light}`
+      : theme === ThemeList.Pink
+      ? `text-${ThemeList.Light}`
       : `text-${ThemeList.Dark}`;
 
   document.body.dataset.bsTheme = theme;
