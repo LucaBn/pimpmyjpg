@@ -1,7 +1,7 @@
 enum ThemeList {
   Dark = "dark",
   Light = "light",
-  // Pink = "pink",
+  Pink = "pink",
 }
 
 export { ThemeList };

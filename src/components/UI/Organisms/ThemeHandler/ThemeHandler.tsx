@@ -3,6 +3,7 @@ import React from "react";
 // Components
 import IconMoon from "@/components/UI/Atoms/IconMoon/IconMoon";
 import IconSun from "@/components/UI/Atoms/IconSun/IconSun";
+import IconPink from "@/components/UI/Atoms/IconPink/IconPink";
 import { Col, Form } from "react-bootstrap";
 
 // Providers
@@ -36,6 +37,8 @@ const ThemeHandler: React.FC<IThemeHandler> = ({ forceColor }) => {
       <IconMoon forceColor={forceColor} />
     ) : theme === ThemeList.Light ? (
       <IconSun forceColor={forceColor} />
+    ) : theme === ThemeList.Pink ? (
+      <IconPink forceColor={forceColor} />
     ) : (
       <></>
     );
