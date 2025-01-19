@@ -11,3 +11,11 @@ body {
   word-break: break-word;
   text-rendering: optimizeSpeed;
 }
+
+.form-check-input:checked[type="radio"] + label svg {
+  opacity: 1;
+
+  &:hover {
+    opacity: 1;
+  }
+}

@@ -16,7 +16,7 @@ const getImageColor = (theme: ThemeList, forceColor?: string): string => {
   return theme === ThemeList.Dark
     ? "#fff"
     : theme === ThemeList.Pink
-    ? "#fff"
+    ? "#3e003e"
     : "#000"; // Check bootstrap bs-emphasis-color value
 };
 

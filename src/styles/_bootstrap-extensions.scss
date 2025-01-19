@@ -21,6 +21,79 @@
   }
 }
 
+[data-bs-theme="pink"] {
+  --bs-body-bg: #ffe6f2; /* Sfondo principale, un rosa pallido */
+  --bs-body-color: #3e003e; /* Testo principale, un viola scuro */
+  --bs-secondary-bg-rgb: 255, 230, 242; /* Sfondo secondario in RGB */
+  --bs-secondary-color: #b30086; /* Testo secondario, rosa scuro */
+  --bs-dark-rgb: 255, 128, 191; /* Colore scuro per elementi come header o footer */
+  --bs-primary: #ff66b2; /* Colore primario, un rosa acceso */
+  --bs-link-color: #ff3385; /* Colore dei link */
+  --bs-link-hover-color: #e60073; /* Colore dei link al passaggio del mouse */
+  --bs-border-color: #ff80bf; /* Colore dei bordi */
+  --bs-btn-bg: #ff4d94; /* Colore di sfondo dei pulsanti */
+  // --bs-btn-hover-bg: #e60073; /* Sfondo pulsante al passaggio del mouse */
+  --bs-btn-hover-border-color: #e60073;
+  --bs-light-rgb: 62, 0, 62;
+
+  .nav-tabs .nav-link.active,
+  .nav-tabs .nav-item.show .nav-link {
+    --bs-nav-tabs-link-active-color: #e60073;
+  }
+
+  .btn-dark,
+  .btn-primary {
+    --bs-btn-border-color: #e60073;
+    --bs-border-color: #ff80bf; /* Colore dei bordi */
+    --bs-btn-bg: #ff4d94; /* Colore di sfondo dei pulsanti */
+    --bs-btn-hover-bg: #e60073; /* Sfondo pulsante al passaggio del mouse */
+    --bs-btn-hover-border-color: #e60073;
+  }
+
+  .form-check-input:checked {
+    background-color: #e60073;
+    border-color: #e60073;
+  }
+
+  .accordion {
+    --bs-accordion-btn-focus-box-shadow: 0 0 0 0.25rem rgba(255, 128, 191, 0.25);
+    --bs-accordion-active-bg: #fc98ca;
+  }
+
+  .input-group-text,
+  .form-control {
+    --bs-tertiary-bg: #fc98ca;
+  }
+
+  .btn-outline-secondary {
+    --bs-btn-color: #e60073;
+    --bs-btn-border-color: #e60073;
+    --bs-btn-hover-bg: #e60073;
+    --bs-btn-hover-border-color: #e60073;
+    --bs-btn-active-bg: #e60073;
+    --bs-btn-active-border-color: #e60073;
+    --bs-btn-disabled-color: #e60073;
+    --bs-btn-disabled-border-color: #e60073;
+  }
+  .btn-secondary {
+    --bs-btn-bg: #e60073;
+    --bs-btn-border-color: #e60073;
+    --bs-btn-hover-bg: #cb0367;
+    --bs-btn-hover-border-color: #ad0458;
+    --bs-btn-active-bg: #ad0458;
+    --bs-btn-active-border-color: #be0260;
+    --bs-btn-disabled-bg: #e60073;
+    --bs-btn-disabled-border-color: #e60073;
+  }
+
+  .bg-body-tertiary {
+    --bs-tertiary-bg-rgb: #fc98ca;
+  }
+  .border-hover:hover {
+    --bs-emphasis-color: #e60073;
+  }
+}
+
 .border-hover:hover {
   border-color: var(--bs-emphasis-color) !important;
 }
