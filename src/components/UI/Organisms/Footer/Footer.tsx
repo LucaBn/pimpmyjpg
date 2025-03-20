@@ -3,7 +3,7 @@ import React from "react";
 // Components
 import { Container, Row, Col, Image } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import IconTwitter from "@/components/UI/Atoms/IconTwitter/IconTwitter";
+// import IconTwitter from "@/components/UI/Atoms/IconTwitter/IconTwitter";
 
 // Locales
 import { Trans, useTranslation } from "react-i18next";
@@ -49,7 +49,7 @@ const Footer: React.FC = () => {
             </p>
           </Col>
         </Row>
-        <Row>
+        {/* <Row>
           <Col xs={12} className="mb-4">
             <p className="mb-1">{t("footer.stay-up-to-date")}</p>
             <ul className="footer__social-list list-unstyled d-flex justify-content-center gap-2">
@@ -65,7 +65,7 @@ const Footer: React.FC = () => {
               </li>
             </ul>
           </Col>
-        </Row>
+        </Row> */}
         <Row>
           <Col xs={12} className="mb-4">
             <p>
