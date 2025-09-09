@@ -55,7 +55,7 @@ const ThemeHandler: React.FC<IThemeHandler> = ({ forceColor }) => {
           <Form.Check
             key={option}
             type="radio"
-            name="language"
+            name="theme"
             id={`${CLASS_APP_NAME}-radio__${option}`}
             className={`${CLASS_APP_NAME}-radio__theme`}
             label={getLabel(option)}
