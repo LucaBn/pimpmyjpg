@@ -3,7 +3,6 @@ import React from "react";
 // Components
 import { Container, Row, Col, Image } from "react-bootstrap";
 import { Link } from "react-router-dom";
-// import IconTwitter from "@/components/UI/Atoms/IconTwitter/IconTwitter";
 
 // Locales
 import { Trans, useTranslation } from "react-i18next";
@@ -26,6 +25,7 @@ const Footer: React.FC = () => {
       target="_blank"
       rel="noopener noreferrer nofollow"
       className="text-white"
+      tabIndex={0}
     >
       {authorName}
     </Link>
@@ -49,32 +49,15 @@ const Footer: React.FC = () => {
             </p>
           </Col>
         </Row>
-        {/* <Row>
-          <Col xs={12} className="mb-4">
-            <p className="mb-1">{t("footer.stay-up-to-date")}</p>
-            <ul className="footer__social-list list-unstyled d-flex justify-content-center gap-2">
-              <li>
-                <Link
-                  to="https://twitter.com/PimpMyJpg"
-                  title={t("footer.twitter-icon")}
-                  target="_blank"
-                  rel="noopener noreferrer nofollow"
-                >
-                  <IconTwitter forceColor="#fff" />
-                </Link>
-              </li>
-            </ul>
-          </Col>
-        </Row> */}
         <Row>
           <Col xs={12} className="mb-4">
-            <p>
+            <p className="d-flex justify-content-center">
               <Link
                 to="https://www.buymeacoffee.com/lucabn"
                 title={t("buy-me-a-coffee")}
                 target="_blank"
                 rel="noopener noreferrer nofollow"
-                className="d-contents"
+                tabIndex={0}
               >
                 <Image
                   src="/assets/img/buy-me-a-coffee.png"
@@ -86,10 +69,14 @@ const Footer: React.FC = () => {
                 />
               </Link>
             </p>
-            <p>
+            <p className="text-center">
               {t("footer.my-address")}
               <br />
-              ETH 0x7470cf0460d96a857094f748a18669585ea5c185
+              <small>
+                ETH 0x7470cf0460d96a857094
+                <wbr />
+                f748a18669585ea5c185
+              </small>
             </p>
           </Col>
         </Row>
