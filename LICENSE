@@ -32,10 +32,10 @@ Dependencies (MIT or Apache 2.0):
 - [i18next](https://github.com/i18next/i18next/blob/master/LICENSE) (MIT)
 - [i18next-browser-languagedetector](https://github.com/i18next/i18next-browser-languageDetector/blob/master/LICENSE) (MIT)
 - [react](https://github.com/facebook/react/blob/main/LICENSE) (MIT)
-- [react-dom](https://github.com/facebook/react/blob/main/LICENSE) (MIT)
 - [react-bootstrap](https://github.com/react-bootstrap/react-bootstrap/blob/master/LICENSE) (MIT)
-- [react-router-bootstrap](https://github.com/react-bootstrap/react-router-bootstrap/blob/master/LICENSE) (Apache 2.0)
+- [react-dom](https://github.com/facebook/react/blob/main/LICENSE) (MIT)
 - [react-i18next](https://github.com/i18next/react-i18next/blob/master/LICENSE) (MIT)
+- [react-router-bootstrap](https://github.com/react-bootstrap/react-router-bootstrap/blob/master/LICENSE) (Apache 2.0)
 - [react-router-dom](https://github.com/remix-run/react-router/blob/main/LICENSE.md) (MIT)
 
 DevDependencies (MIT or Apache 2.0, used for development/build):
