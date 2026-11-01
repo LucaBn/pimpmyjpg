@@ -26,7 +26,7 @@
   },
   "footer": {
     "made-by": "Créé avec ♥ par <authorLink>{{authorName}}</authorLink>",
-    "made-by-title": "Visitez la page GitHub de {{author}}",
+    "made-by-title": "Voir tous les projets de {{author}}",
     "stay-up-to-date": "Restez informé",
     "twitter-icon": "Aller à X (anciennement Twitter)",
     "my-address": "Ou, si vous m'aimez vraiment,"
