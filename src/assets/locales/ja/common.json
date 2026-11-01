@@ -26,7 +26,7 @@
   },
   "footer": {
     "made-by": "♥で作成された <authorLink>{{authorName}}</authorLink>",
-    "made-by-title": "{{author}}のGitHubページを訪問",
+    "made-by-title": "{{author}}のすべてのプロジェクトを表示する",
     "stay-up-to-date": "最新情報",
     "twitter-icon": "X（旧ツイッター）へ",
     "my-address": "あるいは、本当に私を愛しているなら"

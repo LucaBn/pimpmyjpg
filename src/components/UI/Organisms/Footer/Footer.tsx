@@ -14,7 +14,7 @@ const Footer: React.FC = () => {
   const { t } = useTranslation("common");
 
   const authorName: string = AUTHOR_NAME;
-  const authorLink: string = "https://github.com/LucaBn";
+  const authorLink: string = "https://luca-apps.pages.dev";
   const authorLinkTitle: string = t("footer.made-by-title", {
     author: authorName,
   });
